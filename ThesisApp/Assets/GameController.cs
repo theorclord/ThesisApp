@@ -4,19 +4,22 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
-
+    GameObject panel; 
     private List<GameObject> savedObjects;
 
     private GameObject selected;
 
     private bool spawnset;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         savedObjects = new List<GameObject>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	    panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
+    }
+    public bool pressedD = false;
+    public bool pressedU = false;
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetMouseButtonDown(0) && !spawnset)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -52,5 +55,34 @@ public class GameController : MonoBehaviour {
     public void ExitButton()
     {
         SceneManager.LoadScene("StartMenu");
+    }
+    public void ShowStats()
+    {
+        pressedD = !pressedD;
+        //GameObject panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
+        //ButtonDOWNpresser();
+        panel.SetActive(pressedD);
+    }
+   
+
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    public void ButtonDOWNpresser() //Called from the OnClick() section of the GUI button
+    {
+        pressedD = true;
+        StartCoroutine(Wait());
+        pressedD = false;
+
+    }
+
+    public void ButtonUPpresser()
+    {
+        pressedU = true;
+        StartCoroutine(Wait());
+        pressedU = false;
     }
 }
