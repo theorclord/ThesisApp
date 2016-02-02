@@ -5,21 +5,26 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
     GameObject panel; 
-    private List<GameObject> savedObjects;
-
-    private GameObject selected;
-
-    private bool spawnset;
     // Use this for initialization
     void Start () {
-        savedObjects = new List<GameObject>();
 	    panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
     }
     public bool pressedD = false;
     public bool pressedU = false;
 
-    // Update is called once per frame
-    void Update () {
+<<<<<<< HEAD
+    private List<GameObject> savedObjects;
+
+    private GameObject selected;
+
+    private bool spawnset;
+	// Use this for initialization
+	void Start () {
+        savedObjects = new List<GameObject>();
+	}
+	
+	// Update is called once per frame
+	void Update () {
         if (Input.GetMouseButtonDown(0) && !spawnset)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,6 +41,11 @@ public class GameController : MonoBehaviour {
             GameObject temp = Instantiate(selected, Camera.main.ScreenToWorldPoint( Input.mousePosition), Quaternion.identity) as GameObject;
             temp.transform.position = new Vector3(temp.transform.position.x, temp.transform.position.y);
         }
+=======
+    // Update is called once per frame
+    void Update () {
+        
+>>>>>>> c4b798182783ecee2b7d8b748ed77d5f9f420c07
 	}
 
     public void SaveSelectable()
