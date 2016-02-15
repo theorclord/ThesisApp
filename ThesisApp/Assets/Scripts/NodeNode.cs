@@ -36,8 +36,12 @@ public class NodeNode : MonoBehaviour {
                     //Debug.Log(selected.tag);
                     if (selected.tag == "LocationNode")
                     {
-                    //Debug.Log("H: " + header + ", F:" + flavour);
+                    if(selected.gameObject == this.gameObject)
+                    {
                         showLocationInfo(header, flavour);
+
+                    }
+                    //Debug.Log("H: " + header + ", F:" + flavour);
                     }
                 //selected.GetComponent<NodeNode>().
 
