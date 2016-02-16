@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour {
     }
     public void ShowStats()
     {
-        panel.SetActive(pressedD);
+        panel.SetActive(true);
     }
    
 }
