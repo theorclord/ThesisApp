@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         savedObjects = new List<GameObject>();
-	    panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
+
     }
 
     // Update is called once per frame
@@ -51,14 +51,31 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void BackButton()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void NodeViewButton()
+    {
+        SceneManager.LoadScene("NodeScene");
+    }
+
+    public void LocationButton()
+    {
+        GameObject p = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
+        p.SetActive(true);
+
+    }
+
     public void ExitButton()
     {
         SceneManager.LoadScene("StartMenu");
     }
     public void ShowStats()
     {
-        statspressed = !statspressed;
-        panel.SetActive(statspressed);
+        panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
+        // panel.SetActive(pressedD);
     }
    
 }
