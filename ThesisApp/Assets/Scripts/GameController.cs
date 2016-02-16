@@ -75,7 +75,6 @@ public class GameController : MonoBehaviour {
     public void ShowStats()
     {
         panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
-        // panel.SetActive(pressedD);
     }
    
 }
