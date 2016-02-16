@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
-    GameObject panel; 
+public class WorldController : MonoBehaviour {
+    GameObject panel;
     private List<GameObject> savedObjects;
 
     private GameObject selected;
@@ -12,30 +12,33 @@ public class GameController : MonoBehaviour {
 
     private bool spawnset;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         savedObjects = new List<GameObject>();
-
+        //panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0) && !spawnset)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if(hit.transform.gameObject.GetComponent<Selectable>() != null)
+                if (hit.transform.gameObject.GetComponent<Selectable>() != null)
                 {
                     selected = hit.transform.gameObject;
                 }
             }
-        } else if (spawnset && Input.GetMouseButtonDown(0))
+        }
+        else if (spawnset && Input.GetMouseButtonDown(0))
         {
-            GameObject temp = Instantiate(selected, Camera.main.ScreenToWorldPoint( Input.mousePosition), Quaternion.identity) as GameObject;
+            GameObject temp = Instantiate(selected, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
             temp.transform.position = new Vector3(temp.transform.position.x, temp.transform.position.y);
         }
-	}
+    }
 
     public void SaveSelectable()
     {
@@ -47,25 +50,8 @@ public class GameController : MonoBehaviour {
         if (savedObjects.Count > 0)
         {
             spawnset = !spawnset;
-            selected = savedObjects[savedObjects.Count-1];
+            selected = savedObjects[savedObjects.Count - 1];
         }
-    }
-
-    public void BackButton()
-    {
-        SceneManager.LoadScene("WorldScene");
-    }
-
-    public void NodeViewButton()
-    {
-        SceneManager.LoadScene("NodeScene");
-    }
-
-    public void LocationButton()
-    {
-        GameObject p = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
-        p.SetActive(true);
-
     }
 
     public void ExitButton()
@@ -74,8 +60,7 @@ public class GameController : MonoBehaviour {
     }
     public void ShowStats()
     {
-        panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
-        // panel.SetActive(pressedD);
+        statspressed = !statspressed;
+        //panel.SetActive(statspressed);
     }
-   
 }
