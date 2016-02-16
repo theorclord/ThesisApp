@@ -16,7 +16,7 @@ public class MenuController : MonoBehaviour {
 
     public void StartButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("WorldScene");
 
     }
 }

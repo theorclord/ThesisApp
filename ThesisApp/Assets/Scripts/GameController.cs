@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
 
     public void BackButton()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("WorldScene");
     }
 
     public void NodeViewButton()
