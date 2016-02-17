@@ -37,11 +37,14 @@ public class WorldController : MonoBehaviour {
             {
                 if (hit.transform.gameObject.GetComponent<WorldNode>() != null)
                 {
-										
-					target = hit.transform.gameObject;
-					Vector3 pos = hit.transform.position;
-					GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.transform.position = mainCam.GetComponent<Camera>().WorldToScreenPoint(pos);
-					GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(true);
+				    GameObject dp = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
+                    RectTransform rt = dp.GetComponent<RectTransform>();
+                    target = hit.transform.gameObject;
+                    mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
+					Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x/2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
+                    pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y , mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
+					dp.transform.position = pos ;
+					dp.SetActive(true);
                     //playerToken.GetComponent<WorldPlayer>().SetTarget(hit.transform.gameObject);
                 }
             }
