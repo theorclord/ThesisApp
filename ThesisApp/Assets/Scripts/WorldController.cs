@@ -14,6 +14,7 @@ public class WorldController : MonoBehaviour {
     private Vector3 lastPosition;
     private float mouseSensitivity = 0.2f;
 
+	private GameObject target = null;
     // Use this for initialization
     void Start()
     {
@@ -36,7 +37,12 @@ public class WorldController : MonoBehaviour {
             {
                 if (hit.transform.gameObject.GetComponent<WorldNode>() != null)
                 {
-                    playerToken.GetComponent<WorldPlayer>().SetTarget(hit.transform.gameObject);
+										
+					target = hit.transform.gameObject;
+					Vector3 pos = hit.transform.position;
+					GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.transform.position = mainCam.GetComponent<Camera>().WorldToScreenPoint(pos);
+					GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(true);
+                    //playerToken.GetComponent<WorldPlayer>().SetTarget(hit.transform.gameObject);
                 }
             }
             lastPosition = Input.mousePosition;
@@ -49,6 +55,18 @@ public class WorldController : MonoBehaviour {
             lastPosition = Input.mousePosition;
         }
     }
+
+
+	public void CloseButton()
+	{
+		GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+	}
+
+	public void AcceptButton()
+	{
+		GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+		playerToken.GetComponent<WorldPlayer>().SetTarget(target);
+	}
 
     public void ExitButton()
     {
