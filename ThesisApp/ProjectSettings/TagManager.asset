@@ -7,6 +7,7 @@ TagManager:
   - EventPanel
   - LocationNode
   - SystemNode
+  - DestinationPanel
   layers:
   - Default
   - TransparentFX
