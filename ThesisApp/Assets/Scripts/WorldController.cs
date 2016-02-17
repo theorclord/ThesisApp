@@ -48,6 +48,13 @@ public class WorldController : MonoBehaviour {
                     //playerToken.GetComponent<WorldPlayer>().SetTarget(hit.transform.gameObject);
                 }
             }
+            else
+            {
+                if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.active)
+                {
+                    //GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+                }
+            }
             lastPosition = Input.mousePosition;
         }
 
@@ -55,6 +62,10 @@ public class WorldController : MonoBehaviour {
         {
             Vector3 delta = Input.mousePosition - lastPosition;
             mainCam.transform.Translate((-1)*delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
+            if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.active && lastPosition != Input.mousePosition)
+            {
+                GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+            }
             lastPosition = Input.mousePosition;
         }
     }
