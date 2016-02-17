@@ -54,7 +54,7 @@ public class WorldController : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - lastPosition;
-            mainCam.transform.Translate(delta.x * mouseSensitivity, delta.y * mouseSensitivity, 0);
+            mainCam.transform.Translate((-1)*delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
             lastPosition = Input.mousePosition;
         }
     }
