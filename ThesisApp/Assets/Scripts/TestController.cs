@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Used for testing in the test scene
+/// </summary>
 public class TestController : MonoBehaviour {
     public GameObject Sphere;
     public GameObject Cube;

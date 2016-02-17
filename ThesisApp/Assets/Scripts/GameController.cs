@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+/// <summary>
+/// Deprecated
+/// </summary>
 public class GameController : MonoBehaviour {
     GameObject panel; 
     private List<GameObject> savedObjects;

@@ -2,11 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Utility;
 
 public class WorldController : MonoBehaviour {
-    private List<GameObject> savedObjects;
 
-    private GameObject selected;
     private GameObject playerToken;
 
     //Camera movement
@@ -17,12 +16,9 @@ public class WorldController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        playerToken = GameObject.Find("PlayerToken");
-        if (DataManager.instance.playerPos != Vector3.zero)
-        {
-            playerToken.transform.position = DataManager.instance.playerPos;
-        }
-        savedObjects = new List<GameObject>();
+        generateWorldNodes();
+        GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
+        playerToken = player;
     }
 
     // Update is called once per frame
@@ -42,6 +38,7 @@ public class WorldController : MonoBehaviour {
             lastPosition = Input.mousePosition;
         }
 
+        // Move the camera if mouse button is held
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - lastPosition;
@@ -50,8 +47,25 @@ public class WorldController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Exit to start menu
+    /// </summary>
     public void ExitButton()
     {
         SceneManager.LoadScene("StartMenu");
+    }
+
+    private void generateWorldNodes()
+    {
+        //TODO generate nodes
+        foreach(NodeStats stat in DataManager.instance.Nodes)
+        {
+            GameObject obj = Resources.Load("Prefabs/NodeWorld") as GameObject;
+            GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
+            WorldNode wn = node.GetComponent<WorldNode>();
+            wn.NodeName = stat.Name;
+            wn.NodeDesciption = stat.Description;
+            wn.Visited = stat.Visited;
+        }
     }
 }

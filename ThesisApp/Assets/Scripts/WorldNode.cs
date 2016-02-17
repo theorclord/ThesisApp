@@ -3,8 +3,22 @@ using System.Collections;
 
 public class WorldNode : MonoBehaviour {
 
-    private string NodeName;
-    private string NodeDesciption;
+    public string NodeName
+    {
+        get;
+        set;
+    }
+    public string NodeDesciption
+    {
+        get;
+        set;
+    }
+
+    public bool Visited
+    {
+        get;
+        set;
+    }
 
 	// Use this for initialization
 	void Start () {

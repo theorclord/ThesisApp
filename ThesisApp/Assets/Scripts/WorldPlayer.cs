@@ -34,7 +34,7 @@ public class WorldPlayer : MonoBehaviour {
         {
             //TODO: Should initialize the node layout for next scene
             other.transform.GetComponent<WorldNode>().GetNodeLayout();
-            DataManager.instance.playerPos = transform.position;
+            DataManager.instance.Player.Position = transform.position;
             SceneManager.LoadScene("NodeScene");
         }
     }
