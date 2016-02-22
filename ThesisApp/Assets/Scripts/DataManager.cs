@@ -11,6 +11,10 @@ public class DataManager : MonoBehaviour {
     public List<NodeStats> Nodes
     { get; private set; }
 
+    public NodeStats ActiveNode
+    {
+        get; set;
+    }
     void Awake()
     {
         if (!instance)

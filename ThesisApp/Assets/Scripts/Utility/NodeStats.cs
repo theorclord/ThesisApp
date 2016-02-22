@@ -14,10 +14,8 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public string Description
         { get; set; }
-
         public bool Visited
         { get; set; }
-
         public NodeType Type
         { get; set; }
         public NodeStats(Vector3 pos, string name, string description)
@@ -32,5 +30,7 @@ namespace Assets.Scripts.Utility
         public NodeStats()
         {
         }
+
+
     }
 }

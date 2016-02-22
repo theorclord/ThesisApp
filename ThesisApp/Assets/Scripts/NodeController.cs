@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Utility;
 
 public class NodeController : MonoBehaviour {
 
-    private string header = "Test";
-    private string flavour = "Test";
     private GameObject selected;
 
     // Use this for initialization
     void Start()
     {
-
+        generateNodes();
     }
 
     // Update is called once per frame
@@ -23,33 +22,32 @@ public class NodeController : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-
                 selected = hit.transform.gameObject;
-                //Debug.Log(selected.tag);
                 if (selected.tag == "LocationNode")
                 {
-                    if (selected.gameObject == this.gameObject)
+                    if (selected.GetComponent<NodeNode>() != null)
                     {
-                        showLocationInfo(header, flavour);
-
+                        showLocationInfo(selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
-                    //Debug.Log("H: " + header + ", F:" + flavour);
                 }
-                //selected.GetComponent<NodeNode>().
-
             }
         }
 
     }
-    private void showLocationInfo(string header, string flavour)
+    private void showLocationInfo(string titlename, string flavour)
     {
-        GameObject p = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
-        p.GetComponent<EventPanel>().OpenWithText(header, flavour);
-        // p.SetActive(true);
+        GameObject panel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
+        panel.GetComponent<EventPanel>().OpenWithText(titlename, flavour);
     }
 
     public void BackButton()
     {
         SceneManager.LoadScene("WorldScene");
+    }
+
+    private void generateNodes()
+    {
+        NodeStats stats = DataManager.instance.ActiveNode;
+        GameObject node = Instantiate(Resources.Load("Prefabs/NodeNode"), stats.Position, Quaternion.identity) as GameObject;
     }
 }
