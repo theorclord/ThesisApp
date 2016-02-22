@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Utility;
 
 public class WorldNode : MonoBehaviour {
 
@@ -19,7 +20,8 @@ public class WorldNode : MonoBehaviour {
         get;
         set;
     }
-
+    public NodeType Type
+    { get; set; }
 	// Use this for initialization
 	void Start () {
 	

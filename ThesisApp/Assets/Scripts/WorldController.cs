@@ -12,8 +12,16 @@ public class WorldController : MonoBehaviour {
     public GameObject mainCam;
     private Vector3 lastPosition;
     private float mouseSensitivity = 0.2f;
+    //Zooming
+    private float zoomSpeed = 0.5f;
+    private float timeForDoubleClick = 0;
+    private bool oneClick = false;
+    private float doubleDelay = 0.5f;
+    private float maxZoom = 20f;
+    private float minZoom = 1f;
 
-	private GameObject target = null;
+
+    private GameObject target = null;
     // Use this for initialization
     void Start()
     {
@@ -27,6 +35,7 @@ public class WorldController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        // Select object
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -36,14 +45,14 @@ public class WorldController : MonoBehaviour {
                 if (hit.transform.gameObject.GetComponent<WorldNode>() != null)
                 {
                     // Spawns a panel next to the selected object
-				    GameObject destpanel = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
+                    GameObject destpanel = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
                     RectTransform rt = destpanel.GetComponent<RectTransform>();
                     target = hit.transform.gameObject;
                     mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
-					Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x/2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
-                    pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y , mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
-					destpanel.transform.position = pos ;
-					destpanel.SetActive(true);
+                    Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x / 2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
+                    pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y, mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
+                    destpanel.transform.position = pos;
+                    destpanel.SetActive(true);
                 }
             }
             lastPosition = Input.mousePosition;
@@ -53,7 +62,7 @@ public class WorldController : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             Vector3 delta = Input.mousePosition - lastPosition;
-            mainCam.transform.Translate((-1)*delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
+            mainCam.transform.Translate((-1) * delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
             //Sets the destination panel to inactive if the camera moves
             if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.activeSelf && lastPosition != Input.mousePosition)
             {
@@ -61,6 +70,46 @@ public class WorldController : MonoBehaviour {
             }
             lastPosition = Input.mousePosition;
         }
+
+        //Zoom features
+        // Reset zoom with double click
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (!oneClick) // first click no previous clicks
+            {
+                oneClick = true;
+
+                timeForDoubleClick = Time.time; // save the current time
+            }
+            else
+            {
+                //Double click
+                oneClick = false;
+                Debug.Log("Double click");
+                mainCam.GetComponent<Camera>().orthographicSize = 5 ;
+            }
+        }
+        if (oneClick)
+        {
+            // Checks if more time have passed than the delay 
+            if ((Time.time - timeForDoubleClick) > doubleDelay)
+            {
+                // Reset double click
+                oneClick = false;
+            }
+        }
+        float mouseDelta = Input.GetAxis("Mouse ScrollWheel");
+        if (mouseDelta > 0f)
+        {
+            //Zoom in
+            mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp( mainCam.GetComponent<Camera>().orthographicSize - 1 * zoomSpeed,minZoom, maxZoom);
+        }
+        else if (mouseDelta < 0f)
+        {
+            //Zoom out
+            mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(mainCam.GetComponent<Camera>().orthographicSize + 1 * zoomSpeed, minZoom, maxZoom);
+        }
+
     }
 
 
@@ -94,6 +143,7 @@ public class WorldController : MonoBehaviour {
             wn.NodeName = stat.Name;
             wn.NodeDesciption = stat.Description;
             wn.Visited = stat.Visited;
+            wn.Type = stat.Type;
         }
     }
 }
