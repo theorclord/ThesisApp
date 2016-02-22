@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Utility;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -33,9 +34,26 @@ public class WorldPlayer : MonoBehaviour {
         if(other.transform.gameObject == target)
         {
             //TODO: Should initialize the node layout for next scene
+            foreach(NodeStats nodestats in DataManager.instance.Nodes)
+            {
+                if(nodestats.Position == target.transform.position)
+                {
+                    nodestats.Visited = true;
+                }
+            }
+            
+            target.GetComponent<WorldNode>().Visited = true;
             other.transform.GetComponent<WorldNode>().GetNodeLayout();
             DataManager.instance.Player.Position = transform.position;
-            SceneManager.LoadScene("NodeScene");
+            if(target.GetComponent<WorldNode>().Type == NodeType.GOAL)
+            {
+                DataManager.instance.clearNodes();
+                SceneManager.LoadScene("ScoreScene");
+            }
+            else
+            {
+                SceneManager.LoadScene("NodeScene");
+            }
         }
     }
 }

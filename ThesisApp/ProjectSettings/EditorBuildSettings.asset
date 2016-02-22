@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/NodeScene.unity
   - enabled: 1
     path: Assets/Scenes/WorldScene.unity
+  - enabled: 1
+    path: Assets/Scenes/ScoreScene.unity

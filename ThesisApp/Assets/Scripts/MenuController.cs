@@ -19,4 +19,9 @@ public class MenuController : MonoBehaviour {
         SceneManager.LoadScene("WorldScene");
 
     }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
 }

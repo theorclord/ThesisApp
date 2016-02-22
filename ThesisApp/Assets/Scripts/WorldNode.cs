@@ -26,10 +26,40 @@ public class WorldNode : MonoBehaviour {
 	void Start () {
 	
 	}
+
+    void setAllHaloInactive()
+    {
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
+        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        // Could be done in the initialization and in SetVisited(true)
+	    if(Type == NodeType.START)
+        {
+            setAllHaloInactive();
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }else if(Type == NodeType.GOAL)
+        {
+            setAllHaloInactive();
+            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else if(Type == NodeType.NORMAL)
+        {
+            if (Visited)
+            {
+                setAllHaloInactive();
+                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                setAllHaloInactive();
+                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+            }
+        }
 	}
 
     public void GetNodeLayout()
