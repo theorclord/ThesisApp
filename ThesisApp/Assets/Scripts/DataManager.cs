@@ -87,7 +87,7 @@ public class DataManager : MonoBehaviour {
     public void InitializeNodes()
     {
         //TODO pcg generation of new node map
-        WorldNodeStats node1 = new WorldNodeStats();
+      /*  WorldNodeStats node1 = new WorldNodeStats();
         node1.Name = "Mats";
         node1.Description = "This is mats";
         node1.Position = new Vector3(0f, 0f);
@@ -101,7 +101,7 @@ public class DataManager : MonoBehaviour {
         node2.Description = "This is mikkel";
         node2.Position = new Vector3(5f, 0f);
         node2.Type = NodeType.GOAL;
-        Nodes.Add(node2);
+        Nodes.Add(node2);*/
 
         int numnodes = 10;
         for (int i = 0; i < numnodes; i++)
