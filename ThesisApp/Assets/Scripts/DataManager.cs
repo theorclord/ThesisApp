@@ -31,21 +31,21 @@ public class DataManager : MonoBehaviour {
         //TODO generate using PCG
         //Set player start based on start node
 
-        NodeStats node1 = new NodeStats();
+        /*NodeStats node1 = new NodeStats();
         node1.Name = "Mats";
         node1.Description = "This is mats";
         node1.Position = new Vector3(0f,0f);
         node1.Type = NodeType.START;
-        Nodes.Add(node1);
+        Nodes.Add(node1);*/
 
-        Player.Position = new Vector3(node1.Position.x, node1.Position.y+1.3f);
+       // Player.Position = new Vector3(node1.Position.x, node1.Position.y+1.3f);
 
-        NodeStats node2 = new NodeStats();
+        /*NodeStats node2 = new NodeStats();
         node2.Name = "Mikkel";
         node2.Description = "This is mikkel";
         node2.Position = new Vector3(5f, 0f);
         node2.Type = NodeType.GOAL;
-        Nodes.Add(node2);
+        Nodes.Add(node2);*/
 
         int numnodes = 10;
         for(int i = 0; i< numnodes; i++)
