@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class NodeController : MonoBehaviour {
 
@@ -45,5 +46,10 @@ public class NodeController : MonoBehaviour {
         GameObject p = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
         p.GetComponent<EventPanel>().OpenWithText(header, flavour);
         // p.SetActive(true);
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("WorldScene");
     }
 }
