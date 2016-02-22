@@ -39,6 +39,7 @@ public class WorldPlayer : MonoBehaviour {
                 if(nodestats.Position == target.transform.position)
                 {
                     nodestats.Visited = true;
+                    DataManager.instance.ActiveNode = nodestats;
                 }
             }
             

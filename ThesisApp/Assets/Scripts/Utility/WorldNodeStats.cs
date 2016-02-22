@@ -18,8 +18,10 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public NodeType Type
         { get; set; }
+        public List<NodeStats> Nodes { get; set; }
         public WorldNodeStats(Vector3 pos, string name, string description)
         {
+            Nodes = new List<NodeStats>();
             Position = pos;
             Name = name;
             Description = description;

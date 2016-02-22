@@ -7,13 +7,9 @@ public class NodeNode : MonoBehaviour {
     { get; set; }
     public string FlavourText
     { get; set; }
-    private GameObject selected;
 
     // Use this for initialization
     void Start () {
-        //Todo load from generation
-	    TitleName = "Test Header";
-        FlavourText = "Test Flavour";
     }
 
 	

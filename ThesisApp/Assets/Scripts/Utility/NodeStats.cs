@@ -10,16 +10,16 @@ namespace Assets.Scripts.Utility
     {
         public Vector3 Position
         { get; set; }
-        public string Name
+        public string TitleName
         { get; set; }
-        public string Description
+        public string FlavourText
         { get; set; }
         
-        public NodeStats(Vector3 pos, string name, string description)
+        public NodeStats(Vector3 pos, string titlename, string flavourText)
         {
             Position = pos;
-            Name = name;
-            Description = description;
+            TitleName = titlename;
+            FlavourText = flavourText;
         }
 
         public NodeStats()

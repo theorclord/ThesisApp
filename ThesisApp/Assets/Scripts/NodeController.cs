@@ -28,7 +28,6 @@ public class NodeController : MonoBehaviour {
                 {
                     if (selected.GetComponent<NodeNode>() != null)
                     {
-                        Debug.Log("Hit");
                         showLocationInfo(selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
                 }
@@ -49,7 +48,13 @@ public class NodeController : MonoBehaviour {
 
     private void generateNodes()
     {
-        //WorldNodeStats stats = DataManager.instance.ActiveNode;
-        //GameObject node = Instantiate(Resources.Load("Prefabs/NodeNode"), stats.Position, Quaternion.identity) as GameObject;
+        WorldNodeStats stats = DataManager.instance.ActiveNode;
+        foreach( NodeStats nodestat in stats.Nodes)
+        {
+            GameObject nodeObj = Instantiate(Resources.Load("Prefabs/NodeNode"), nodestat.Position, Quaternion.identity) as GameObject;
+            NodeNode node = nodeObj.GetComponent<NodeNode>();
+            node.FlavourText = nodestat.FlavourText;
+            node.TitleName = nodestat.TitleName;
+        }
     }
 }
