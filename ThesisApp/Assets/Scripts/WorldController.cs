@@ -25,6 +25,7 @@ public class WorldController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        DataManager.instance.InitializeNodes();
         generateWorldNodes();
         GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
         playerToken = player;

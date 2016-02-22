@@ -45,7 +45,15 @@ public class WorldPlayer : MonoBehaviour {
             target.GetComponent<WorldNode>().Visited = true;
             other.transform.GetComponent<WorldNode>().GetNodeLayout();
             DataManager.instance.Player.Position = transform.position;
-            SceneManager.LoadScene("NodeScene");
+            if(target.GetComponent<WorldNode>().Type == NodeType.GOAL)
+            {
+                DataManager.instance.clearNodes();
+                SceneManager.LoadScene("ScoreScene");
+            }
+            else
+            {
+                SceneManager.LoadScene("NodeScene");
+            }
         }
     }
 }
