@@ -37,6 +37,7 @@ public class WorldNode : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Could be done in the initialization and in SetVisited(true)
 	    if(Type == NodeType.START)
         {
             setAllHaloInactive();
