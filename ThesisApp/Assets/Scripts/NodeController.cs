@@ -47,7 +47,7 @@ public class NodeController : MonoBehaviour {
 
     private void generateNodes()
     {
-        //NodeStats stats = DataManager.instance.ActiveNode;
+        //WorldNodeStats stats = DataManager.instance.ActiveNode;
         //GameObject node = Instantiate(Resources.Load("Prefabs/NodeNode"), stats.Position, Quaternion.identity) as GameObject;
     }
 }

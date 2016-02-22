@@ -136,7 +136,7 @@ public class WorldController : MonoBehaviour {
     private void generateWorldNodes()
     {
         //TODO generate nodes
-        foreach(NodeStats stat in DataManager.instance.Nodes)
+        foreach(WorldNodeStats stat in DataManager.instance.Nodes)
         {
             GameObject obj = Resources.Load("Prefabs/NodeWorld") as GameObject;
             GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;

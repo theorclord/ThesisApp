@@ -8,10 +8,10 @@ public class DataManager : MonoBehaviour {
     
     public PlayerStats Player
     { get; set; }
-    public List<NodeStats> Nodes
+    public List<WorldNodeStats> Nodes
     { get; private set; }
 
-    public NodeStats ActiveNode
+    public WorldNodeStats ActiveNode
     {
         get; set;
     }
@@ -30,7 +30,7 @@ public class DataManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Player = new PlayerStats();
-        Nodes = new List<NodeStats>();
+        Nodes = new List<WorldNodeStats>();
         //Load world
         //TODO generate using PCG
         //Set player start based on start node
@@ -67,7 +67,7 @@ public class DataManager : MonoBehaviour {
                 type = NodeType.GOAL;
             }
             
-            NodeStats newNode = new NodeStats(position, name, description);
+            WorldNodeStats newNode = new WorldNodeStats(position, name, description);
             newNode.Type = type;
             Nodes.Add(newNode);
         }
@@ -87,7 +87,7 @@ public class DataManager : MonoBehaviour {
     public void InitializeNodes()
     {
         //TODO pcg generation of new node map
-        NodeStats node1 = new NodeStats();
+        WorldNodeStats node1 = new WorldNodeStats();
         node1.Name = "Mats";
         node1.Description = "This is mats";
         node1.Position = new Vector3(0f, 0f);
@@ -96,7 +96,7 @@ public class DataManager : MonoBehaviour {
 
         Player.Position = new Vector3(node1.Position.x, node1.Position.y + 1.3f);
 
-        NodeStats node2 = new NodeStats();
+        WorldNodeStats node2 = new WorldNodeStats();
         node2.Name = "Mikkel";
         node2.Description = "This is mikkel";
         node2.Position = new Vector3(5f, 0f);
@@ -121,7 +121,7 @@ public class DataManager : MonoBehaviour {
                 type = NodeType.GOAL;
             }
 
-            NodeStats newNode = new NodeStats(position, name, description);
+            WorldNodeStats newNode = new WorldNodeStats(position, name, description);
             newNode.Type = type;
             Nodes.Add(newNode);
         }

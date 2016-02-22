@@ -34,7 +34,7 @@ public class WorldPlayer : MonoBehaviour {
         if(other.transform.gameObject == target)
         {
             //TODO: Should initialize the node layout for next scene
-            foreach(NodeStats nodestats in DataManager.instance.Nodes)
+            foreach(WorldNodeStats nodestats in DataManager.instance.Nodes)
             {
                 if(nodestats.Position == target.transform.position)
                 {

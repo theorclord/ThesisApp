@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utility
 {
-    public class NodeStats
+    public class WorldNodeStats
     {
         public Vector3 Position
         { get; set; }
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public NodeType Type
         { get; set; }
-        public NodeStats(Vector3 pos, string name, string description)
+        public WorldNodeStats(Vector3 pos, string name, string description)
         {
             Position = pos;
             Name = name;
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Utility
             Type = NodeType.NORMAL;
         }
 
-        public NodeStats()
+        public WorldNodeStats()
         {
         }
 
