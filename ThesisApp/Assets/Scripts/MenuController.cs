@@ -16,12 +16,16 @@ public class MenuController : MonoBehaviour {
 
     public void StartButton()
     {
+        //DataManager.instance.clearNodes();
+        //DataManager.instance.InitializeNodes();
+
         SceneManager.LoadScene("WorldScene");
 
     }
 
     public void RestartButton()
     {
+        DataManager.instance.clearNodes();
         SceneManager.LoadScene("StartMenu");
     }
 }
