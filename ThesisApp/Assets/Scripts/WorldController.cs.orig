@@ -20,8 +20,6 @@ public class WorldController : MonoBehaviour {
         generateWorldNodes();
         GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
         playerToken = player;
-        // Move camera to player
-        mainCam.transform.position = new Vector3(DataManager.instance.Player.Position.x,DataManager.instance.Player.Position.y,-10f);
     }
 
     // Update is called once per frame
@@ -35,15 +33,22 @@ public class WorldController : MonoBehaviour {
             {
                 if (hit.transform.gameObject.GetComponent<WorldNode>() != null)
                 {
-                    // Spawns a panel next to the selected object
-				    GameObject destpanel = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
-                    RectTransform rt = destpanel.GetComponent<RectTransform>();
+				    GameObject dp = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
+                    RectTransform rt = dp.GetComponent<RectTransform>();
                     target = hit.transform.gameObject;
                     mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
 					Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x/2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
                     pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y , mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
-					destpanel.transform.position = pos ;
-					destpanel.SetActive(true);
+					dp.transform.position = pos ;
+					dp.SetActive(true);
+                    //playerToken.GetComponent<WorldPlayer>().SetTarget(hit.transform.gameObject);
+                }
+            }
+            else
+            {
+                if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.active)
+                {
+                    //GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
                 }
             }
             lastPosition = Input.mousePosition;
@@ -54,8 +59,7 @@ public class WorldController : MonoBehaviour {
         {
             Vector3 delta = Input.mousePosition - lastPosition;
             mainCam.transform.Translate((-1)*delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
-            //Sets the destination panel to inactive if the camera moves
-            if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.activeSelf && lastPosition != Input.mousePosition)
+            if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.active && lastPosition != Input.mousePosition)
             {
                 GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
             }
@@ -63,6 +67,11 @@ public class WorldController : MonoBehaviour {
         }
     }
 
+<<<<<<< HEAD
+    /// <summary>
+    /// Exit to start menu
+    /// </summary>
+=======
 
 	public void CloseButton()
 	{
@@ -75,9 +84,7 @@ public class WorldController : MonoBehaviour {
 		playerToken.GetComponent<WorldPlayer>().SetTarget(target);
 	}
 
-    /// <summary>
-    /// Exit to start menu
-    /// </summary>
+>>>>>>> 4c6d538b928c9246a080a5a0b60ff440440f0f70
     public void ExitButton()
     {
         SceneManager.LoadScene("StartMenu");

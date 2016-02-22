@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// Deprecated
 /// </summary>
 public class GameController : MonoBehaviour {
-    GameObject panel; 
+    //GameObject panel; 
     private List<GameObject> savedObjects;
 
     private GameObject selected;
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour {
     }
     public void ShowStats()
     {
-        panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
+        //panel = GameObject.Find("StatButton").transform.GetChild(1).gameObject;
     }
    
 }
