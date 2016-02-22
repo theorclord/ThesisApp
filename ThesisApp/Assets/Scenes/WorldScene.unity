@@ -904,7 +904,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11488358, guid: 143da24124077a946b2e0e6176220762, type: 2}
+      - m_Target: {fileID: 1500619870}
         m_MethodName: ExitButton
         m_Mode: 1
         m_Arguments:
