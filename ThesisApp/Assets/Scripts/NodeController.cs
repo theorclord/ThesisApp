@@ -22,11 +22,13 @@ public class NodeController : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
+                
                 selected = hit.transform.gameObject;
                 if (selected.tag == "LocationNode")
                 {
                     if (selected.GetComponent<NodeNode>() != null)
                     {
+                        Debug.Log("Hit");
                         showLocationInfo(selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
                 }
