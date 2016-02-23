@@ -15,13 +15,15 @@ namespace Assets.Scripts.Utility
         public string FlavourText
         { get; set; }
 
+
         public Event nodeEvent = new Event();
         
-        public NodeStats(Vector3 pos, string titlename, string flavourText)
+        public NodeStats(Vector3 pos, string titlename, string flavourText, Event e)
         {
             Position = pos;
             TitleName = titlename;
             FlavourText = flavourText;
+            nodeEvent = e;
         }
 
         public NodeStats()

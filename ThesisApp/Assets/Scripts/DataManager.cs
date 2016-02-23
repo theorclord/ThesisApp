@@ -78,7 +78,9 @@ public class DataManager : MonoBehaviour {
                 Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
                 string tempname = "Internal node " + j;
                 string flavText = "The node " + j + " was freaking awesome";
-                newNode.Nodes.Add(new NodeStats(intNodePos, tempname, flavText));
+                Event ev = new Event();
+                ev.getXml();
+                newNode.Nodes.Add(new NodeStats(intNodePos, tempname, flavText, ev));
             }
             Nodes.Add(newNode);
         }

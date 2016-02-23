@@ -32,6 +32,7 @@ public class Event : MonoBehaviour {
         Debug.Log("Root Loaded");
         root = new XmlDocument();
         root.Load(localizedStringsFile);
+        //Add PCG to create the different types of events and rewards
         eventText = root.SelectSingleNode("Events/Basic/Gathering/Header").InnerText;
         eventReward = "Reward for completion: " + Random.Range(1,3) +" "+root.SelectSingleNode("Events/Basic/Gathering/Rewards/Scrap").InnerText;
     }
