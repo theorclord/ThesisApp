@@ -80,7 +80,9 @@ public class DataManager : MonoBehaviour {
                 string flavText = "The node " + j + " was freaking awesome";
                 Event ev = new Event();
                 ev.getXml();
-                newNode.Nodes.Add(new NodeStats(intNodePos, tempname, flavText, ev));
+                NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
+                ns.generateEventType(Random.Range(0,3));
+                newNode.Nodes.Add(ns);
             }
             Nodes.Add(newNode);
         }

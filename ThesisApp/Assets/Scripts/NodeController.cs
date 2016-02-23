@@ -57,6 +57,20 @@ public class NodeController : MonoBehaviour {
             node.TitleName = nodestat.TitleName;
             //nodestat.nodeEvent.getXml();
             node.nodeEvent = nodestat.nodeEvent;
+            node.type = nodestat.type;
+            switch (node.type)
+            {
+                case EventSpec.GATHER:
+                    nodeObj.transform.FindChild("Gathering").gameObject.SetActive(true);
+                    break;
+                case EventSpec.RESEARCH:
+                    nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
+                    break;
+                case EventSpec.DIPLOMACY:
+                    nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
+                    break;
+            }
+            
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public string FlavourText
         { get; set; }
+        public EventSpec type { get; set; }
 
 
         public Event nodeEvent = new Event();
@@ -24,6 +25,23 @@ namespace Assets.Scripts.Utility
             TitleName = titlename;
             FlavourText = flavourText;
             nodeEvent = e;
+        }
+
+        public void generateEventType(int typeNumber)
+        {
+
+            switch (typeNumber)
+            {
+                case 0:
+                    type = EventSpec.GATHER;
+                    break;
+                case 1:
+                    type = EventSpec.RESEARCH;
+                    break;
+                case 2:
+                    type = EventSpec.DIPLOMACY;
+                    break;
+            }
         }
 
         public NodeStats()
