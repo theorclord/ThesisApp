@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class WorldPlayer : MonoBehaviour {
 
-    private float speed = 2;
+    private float speed = 10;
     private GameObject target;
 
 	// Use this for initialization
@@ -34,6 +34,12 @@ public class WorldPlayer : MonoBehaviour {
         if(other.transform.gameObject == target)
         {
             //TODO: Should initialize the node layout for next scene
+
+            bool canGo = true;
+            if (target.GetComponent<WorldNode>().Visited)
+            {
+                canGo = false;
+            }
             foreach(WorldNodeStats nodestats in DataManager.instance.Nodes)
             {
                 if(nodestats.Position == target.transform.position)
@@ -53,7 +59,10 @@ public class WorldPlayer : MonoBehaviour {
             }
             else
             {
+                if (canGo)
+                {
                 SceneManager.LoadScene("NodeScene");
+                }
             }
         }
     }

@@ -13,6 +13,9 @@ public class WorldController : MonoBehaviour {
     public GameObject mainCam;
     private Vector3 lastPosition;
     private float mouseSensitivity = 0.2f;
+
+    private float maxDistance = 10.0f;
+
     //Zooming
     private float zoomSpeed = 0.5f;
     private float timeForDoubleClick = 0;
@@ -52,7 +55,13 @@ public class WorldController : MonoBehaviour {
                     // Spawns a panel next to the selected object
                     GameObject destpanel = GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject;
                     RectTransform rt = destpanel.GetComponent<RectTransform>();
-                    target = hit.transform.gameObject;
+
+                    float distanceToTarget = Vector3.Distance(hit.transform.position, playerToken.transform.position);
+                    Debug.Log("Distance = " + distanceToTarget);
+
+                    if(distanceToTarget <= maxDistance)
+                    {
+                        target = hit.transform.gameObject;
                     mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
                     Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x / 2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
                     pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y, mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
@@ -60,6 +69,7 @@ public class WorldController : MonoBehaviour {
                     destpanel.transform.FindChild("LocationName").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeName;
                     destpanel.transform.FindChild("LocationDescription").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeDesciption;
                     destpanel.SetActive(true);
+                    }
                 }
             }
         }
