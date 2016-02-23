@@ -1,0 +1,170 @@
+<Events>
+  <Basic>
+    <Gathering>
+      <Header>Basic Gathering Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Gathering>
+  
+    <Exploration>
+      <Header>Basic Exploration Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Exploration>
+  
+    <Research>
+      <Header>Basic Gathering Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Research>
+  </Basic>
+
+  <Intermediate>
+    <Gathering>
+      <Header>Intermediate Gathering Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Gathering>
+  
+    <Exploration>
+      <Header>Intermediate Exploration Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Exploration>
+  
+    <Research>
+      <Header>Intermediate Research Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Research>
+  </Intermediate>
+
+  <Hard>
+    <Gathering>
+      <Header>Hard Gathering Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Gathering>
+  
+    <Exploration>
+      <Header>Hard Exploration Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Exploration>
+  
+    <Research>
+      <Header>Hard Research Event</Header>
+      <Rewards>
+        <Scrap>Scrap</Scrap>
+      </Rewards>
+      <Conditions>
+        <Crew-Members>Crew Members</Crew-Members>
+        <Room-Types>
+          <Engine>Engine Room</Engine>
+          <Diplomacy>Diplomacy Room</Diplomacy>
+          <Exploration>Exploration Room</Exploration>
+          <Science>Science Room</Science>
+        </Room-Types>
+        <Energy>Energy Available</Energy>
+        <Research>Research point</Research>
+      </Conditions>
+    </Research>
+  </Hard>
+
+</Events>
