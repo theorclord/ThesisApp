@@ -7,6 +7,8 @@ public class NodeNode : MonoBehaviour {
     { get; set; }
     public string FlavourText
     { get; set; }
+    public Event nodeEvent
+    { get; set; }
 
     // Use this for initialization
     void Start () {

@@ -14,6 +14,8 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public string FlavourText
         { get; set; }
+
+        public Event nodeEvent = new Event();
         
         public NodeStats(Vector3 pos, string titlename, string flavourText)
         {

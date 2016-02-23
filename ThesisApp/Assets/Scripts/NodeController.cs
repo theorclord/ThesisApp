@@ -28,17 +28,17 @@ public class NodeController : MonoBehaviour {
                 {
                     if (selected.GetComponent<NodeNode>() != null)
                     {
-                        showLocationInfo(selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
+                        showLocationInfo(selected.GetComponent<NodeNode>().nodeEvent, selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
                 }
             }
         }
 
     }
-    private void showLocationInfo(string titlename, string flavour)
+    private void showLocationInfo(Event e, string titlename, string flavour)
     {
         GameObject panel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
-        panel.GetComponent<EventPanel>().OpenWithText(titlename, flavour);
+        panel.GetComponent<EventPanel>().OpenWithText(e, titlename, flavour);
     }
 
     public void BackButton()
@@ -55,6 +55,7 @@ public class NodeController : MonoBehaviour {
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
+            node.nodeEvent = nodestat.nodeEvent;
         }
     }
 }
