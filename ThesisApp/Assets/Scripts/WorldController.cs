@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Utility;
+using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour {
 
@@ -39,7 +40,7 @@ public class WorldController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // Select object
+        // Select World node
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -56,12 +57,19 @@ public class WorldController : MonoBehaviour {
                     Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x / 2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
                     pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y, mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
                     destpanel.transform.position = pos;
+                    destpanel.transform.FindChild("LocationName").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeName;
+                    destpanel.transform.FindChild("LocationDescription").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeDesciption;
                     destpanel.SetActive(true);
                 }
             }
-            lastPosition = Input.mousePosition;
         }
 
+        #region Camera controls
+        if (Input.GetMouseButtonDown(0))
+        {
+            //For mouse movement
+            lastPosition = Input.mousePosition;
+        }
         // Move the camera if mouse button is held
         if (Input.GetMouseButton(0))
         {
@@ -113,15 +121,20 @@ public class WorldController : MonoBehaviour {
             //Zoom out
             mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(mainCam.GetComponent<Camera>().orthographicSize + 1 * zoomSpeed, minZoom, maxZoom);
         }
-
+        #endregion
     }
 
-
-	public void CloseButton()
+    /// <summary>
+    /// Closes the panel with destination information
+    /// </summary>
+    public void CloseButton()
 	{
 		GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
 	}
 
+    /// <summary>
+    /// Sets the destination for the player and closes the panel
+    /// </summary>
 	public void AcceptButton()
 	{
 		GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);

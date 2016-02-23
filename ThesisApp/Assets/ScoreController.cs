@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour {
+public class ScoreController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,8 +14,9 @@ public class MenuController : MonoBehaviour {
 	
 	}
 
-    public void StartButton()
+    public void RestartButton()
     {
-        SceneManager.LoadScene("WorldScene");
+        DataManager.instance.clearNodes();
+        SceneManager.LoadScene("StartMenu");
     }
 }

@@ -93,25 +93,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 259128125}
-  - 114: {fileID: 259128124}
+  - 114: {fileID: 259128126}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: ScoreController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &259128124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 259128123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6832d2fdc6e1c4b8a220695c867a10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &259128125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -129,6 +118,17 @@ RectTransform:
   m_AnchoredPosition: {x: 838, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &259128126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259128123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21143f87d511534e86c02945fb23a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &308821524
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ GameObject:
   - 114: {fileID: 370179359}
   - 114: {fileID: 370179358}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ReturnToStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 259128124}
+      - m_Target: {fileID: 259128126}
         m_MethodName: RestartButton
         m_Mode: 1
         m_Arguments:
