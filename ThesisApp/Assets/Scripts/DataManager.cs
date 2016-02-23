@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour {
     { get; set; }
     public List<WorldNodeStats> Nodes
     { get; private set; }
+    public float cameraZoom = 5.0f;
 
     public WorldNodeStats ActiveNode
     {

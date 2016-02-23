@@ -38,6 +38,7 @@ public class WorldController : MonoBehaviour {
         playerToken = player;
         // Move camera to player
         mainCam.transform.position = new Vector3(DataManager.instance.Player.Position.x,DataManager.instance.Player.Position.y,-10f);
+        mainCam.GetComponent<Camera>().orthographicSize = DataManager.instance.cameraZoom;
     }
 
     // Update is called once per frame
@@ -125,11 +126,14 @@ public class WorldController : MonoBehaviour {
         {
             //Zoom in
             mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp( mainCam.GetComponent<Camera>().orthographicSize - 1 * zoomSpeed,minZoom, maxZoom);
+            DataManager.instance.cameraZoom = mainCam.GetComponent<Camera>().orthographicSize;
         }
         else if (mouseDelta < 0f)
         {
             //Zoom out
             mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(mainCam.GetComponent<Camera>().orthographicSize + 1 * zoomSpeed, minZoom, maxZoom);
+            
+            DataManager.instance.cameraZoom = mainCam.GetComponent<Camera>().orthographicSize;
         }
         #endregion
     }
