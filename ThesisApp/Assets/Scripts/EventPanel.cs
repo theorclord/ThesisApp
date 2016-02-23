@@ -11,11 +11,11 @@ public class EventPanel : MonoBehaviour {
 	
 	}
 
-    public void OpenWithText(string titlename, string flavour)
+    public void OpenWithText(Event e, string titlename, string flavour)
     {
         //Debug.Log(header + ", " + flavour);
-        this.gameObject.transform.FindChild("LocationName").GetComponent<Text>().text = titlename;
-        this.gameObject.transform.FindChild("EventText").GetComponent<Text>().text = flavour;
+        this.gameObject.transform.FindChild("LocationName").GetComponent<Text>().text = e.eventText+"\n"+e.eventReward;
+        this.gameObject.transform.FindChild("EventText").GetComponent<Text>().text = e.conditionOne + "\n" +e.conditionTwo + "\n" +e.conditionThree;
         this.gameObject.SetActive(true);
     }
 	

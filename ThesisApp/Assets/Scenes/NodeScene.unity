@@ -324,8 +324,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 315, y: 30}
+  m_AnchoredPosition: {x: 0, y: -20.75}
+  m_SizeDelta: {x: 431, y: 41.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &477395742
 MonoBehaviour:
@@ -350,7 +350,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
@@ -614,7 +614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11482922, guid: 65795aea184959943a0ec0ebab667083, type: 2}
       propertyPath: m_FontData.m_BestFit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11482922, guid: 65795aea184959943a0ec0ebab667083, type: 2}
       propertyPath: m_FontData.m_Alignment
@@ -694,6 +694,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22429338, guid: 65795aea184959943a0ec0ebab667083, type: 2}
       propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22442352, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22442352, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 107.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22442352, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 415
+      objectReference: {fileID: 0}
+    - target: {fileID: 22442352, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22442352, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

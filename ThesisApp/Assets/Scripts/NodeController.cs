@@ -28,17 +28,17 @@ public class NodeController : MonoBehaviour {
                 {
                     if (selected.GetComponent<NodeNode>() != null)
                     {
-                        showLocationInfo(selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
+                        showLocationInfo(selected.GetComponent<NodeNode>().nodeEvent, selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
                 }
             }
         }
 
     }
-    private void showLocationInfo(string titlename, string flavour)
+    private void showLocationInfo(Event e, string titlename, string flavour)
     {
         GameObject panel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
-        panel.GetComponent<EventPanel>().OpenWithText(titlename, flavour);
+        panel.GetComponent<EventPanel>().OpenWithText(e, titlename, flavour);
     }
 
     public void BackButton()
@@ -55,6 +55,22 @@ public class NodeController : MonoBehaviour {
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
+            //nodestat.nodeEvent.getXml();
+            node.nodeEvent = nodestat.nodeEvent;
+            node.type = nodestat.type;
+            switch (node.type)
+            {
+                case EventSpec.GATHER:
+                    nodeObj.transform.FindChild("Gathering").gameObject.SetActive(true);
+                    break;
+                case EventSpec.RESEARCH:
+                    nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
+                    break;
+                case EventSpec.DIPLOMACY:
+                    nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
+                    break;
+            }
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Utility;
 
 public class NodeNode : MonoBehaviour {
 
@@ -7,7 +8,10 @@ public class NodeNode : MonoBehaviour {
     { get; set; }
     public string FlavourText
     { get; set; }
-
+    public Event nodeEvent
+    { get; set; }
+    public EventSpec type
+    { get; set; }
     // Use this for initialization
     void Start () {
     }

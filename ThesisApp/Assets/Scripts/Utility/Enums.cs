@@ -12,6 +12,20 @@ namespace Assets.Scripts.Utility
         NORMAL
     }
 
+    public enum EventSpec
+    {
+        GATHER,
+        RESEARCH,
+        DIPLOMACY
+    }
+
+    public enum EventDifficulty
+    {
+        BASIC,
+        INTERMEDIATE,
+        HARD
+    }
+
     class Enums
     {
     }

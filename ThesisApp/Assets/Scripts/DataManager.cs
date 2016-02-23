@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour {
     { get; set; }
     public List<WorldNodeStats> Nodes
     { get; private set; }
+    public float cameraZoom = 5.0f;
 
     public WorldNodeStats ActiveNode
     {
@@ -77,7 +78,11 @@ public class DataManager : MonoBehaviour {
                 Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
                 string tempname = "Internal node " + j;
                 string flavText = "The node " + j + " was freaking awesome";
-                newNode.Nodes.Add(new NodeStats(intNodePos, tempname, flavText));
+                Event ev = new Event();
+                ev.getXml();
+                NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
+                ns.generateEventType(Random.Range(0,3));
+                newNode.Nodes.Add(ns);
             }
             Nodes.Add(newNode);
         }
