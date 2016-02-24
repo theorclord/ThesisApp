@@ -49,19 +49,70 @@ public class Event {
         root = new XmlDocument();
         root.Load(localizedStringsFile);
 
+        int numberOfPeople = 0;
+        int numberOfPeopleAlt = 0;
+        int numberOfPower = 0;
+        int numberOfPowerAlt = 0;
+        int numberOfResearch = 0;
+        int numberOfResearchAlt = 0;
+
         switch (eventNumber)
         {
             case 0:// gather
                 eventText = root.SelectSingleNode(basic + gathering + header).InnerText;
                 eventReward = "Reward for completion: " + Random.Range(1, 3) + " " + root.SelectSingleNode(basic + gathering + rewards + scrap).InnerText;
+
+                //Should have people in gathering machine + power
+                numberOfPower = Random.Range(0, 3); //0, 1 or 2
+                numberOfPeople = 2-numberOfPower;
+                conditionOne = numberOfPeople + " available workers + " + numberOfPower + " power.";
+                if (numberOfPeople != numberOfPower) {
+                    conditionTwo = numberOfPower + " available workers + " + numberOfPeople + " power.";
+                }
+                else {
+                    conditionTwo = "";
+                }
+                conditionThree = "1 Research token available";
+
+
                 break;
             case 1://research
                 eventText = root.SelectSingleNode(basic + research + header).InnerText;
                 eventReward = "Reward for completion: " + Random.Range(1, 3) + " " + root.SelectSingleNode(basic + research + rewards + scrap).InnerText;
+
+                // should have people + research token
+                numberOfResearch = Random.Range(0, 3); //0, 1 or 2
+                numberOfPeople = 2 - numberOfResearch;
+                conditionOne = numberOfPeople + " available workers + " + numberOfResearch + " research tokens.";
+                if (numberOfPeople != numberOfResearch)
+                {
+                    conditionTwo = numberOfResearch + " available workers + " + numberOfPeople + " research tokens.";
+                }
+                else
+                {
+                    conditionTwo = "";
+                }
+                
+                conditionThree = "2 power tokens available";
                 break;
             case 2://diplomacy
                 eventText = root.SelectSingleNode(basic + exploration + header).InnerText;
                 eventReward = "Reward for completion: " + Random.Range(1, 3) + " " + root.SelectSingleNode(basic + exploration + rewards + scrap).InnerText;
+
+                //should have more people available
+                numberOfPeople = Random.Range(1, 3); //1 or 2
+                numberOfResearch = 2 - numberOfPeople;
+                conditionOne = numberOfPeople + " available workers + " + numberOfResearch + " power.";
+                if (numberOfPeople != numberOfResearch)
+                {
+                    conditionTwo = numberOfResearch + " available workers + " + numberOfPeople + " power.";
+                    }
+                else
+                {
+                    conditionTwo = "";
+                }
+               
+                conditionThree = "2 power tokens available";
                 break;
 
         }
