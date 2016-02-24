@@ -61,12 +61,15 @@ public class NodeController : MonoBehaviour {
             switch (node.type)
             {
                 case EventSpec.GATHER:
+                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/GatherMaterial") as Material;
                     nodeObj.transform.FindChild("Gathering").gameObject.SetActive(true);
                     break;
                 case EventSpec.RESEARCH:
+                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/ResearchMaterial") as Material;
                     nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
                     break;
                 case EventSpec.DIPLOMACY:
+                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/DiplomacyMaterial") as Material;
                     nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
                     break;
             }
