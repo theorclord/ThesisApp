@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ShaderMaterial
-  m_Shader: {fileID: 4800000, guid: 6192b2ff11faa0a4d9deb5cc82a5d206, type: 3}
+  m_Shader: {fileID: 4800000, guid: c43a798bfc687744e9018ae3a2fcc12e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -93,6 +93,18 @@ Material:
         second: 0.5
       data:
         first:
+          name: _OuterRadius
+        second: 0.5
+      data:
+        first:
+          name: _InnerRadius
+        second: 0.49
+      data:
+        first:
+          name: _Hardness
+        second: 3
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -127,18 +139,6 @@ Material:
         first:
           name: _Metallic
         second: 0
-      data:
-        first:
-          name: _OuterRadius
-        second: 0.5
-      data:
-        first:
-          name: _InnerRadius
-        second: -0.5
-      data:
-        first:
-          name: _Hardness
-        second: 1
       data:
         first:
           name: _Edge
