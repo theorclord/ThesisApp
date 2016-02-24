@@ -79,9 +79,10 @@ public class DataManager : MonoBehaviour {
                 string tempname = "Internal node " + j;
                 string flavText = "The node " + j + " was freaking awesome";
                 Event ev = new Event();
-                ev.getXml();
+                int eventNumber = Random.Range(0, 3);
+                ev.getXml(eventNumber);
                 NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-                ns.generateEventType(Random.Range(0,3));
+                ns.generateEventType(eventNumber);
                 newNode.Nodes.Add(ns);
             }
             Nodes.Add(newNode);

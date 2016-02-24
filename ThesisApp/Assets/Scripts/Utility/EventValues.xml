@@ -18,9 +18,9 @@
         <Research>Research point</Research>
       </Conditions>
     </Gathering>
-  
-    <Exploration>
-      <Header>Basic Exploration Event</Header>
+
+    <Diplomacy>
+      <Header>Basic Diplomacy Event</Header>
       <Rewards>
         <Scrap>Scrap</Scrap>
       </Rewards>
@@ -35,10 +35,10 @@
         <Energy>Energy Available</Energy>
         <Research>Research point</Research>
       </Conditions>
-    </Exploration>
+    </Diplomacy>
   
     <Research>
-      <Header>Basic Gathering Event</Header>
+      <Header>Basic Research Event</Header>
       <Rewards>
         <Scrap>Scrap</Scrap>
       </Rewards>
@@ -74,9 +74,9 @@
         <Research>Research point</Research>
       </Conditions>
     </Gathering>
-  
-    <Exploration>
-      <Header>Intermediate Exploration Event</Header>
+
+    <Diplomacy>
+      <Header>Intermediate Diplomacy Event</Header>
       <Rewards>
         <Scrap>Scrap</Scrap>
       </Rewards>
@@ -91,7 +91,7 @@
         <Energy>Energy Available</Energy>
         <Research>Research point</Research>
       </Conditions>
-    </Exploration>
+    </Diplomacy>
   
     <Research>
       <Header>Intermediate Research Event</Header>
@@ -130,9 +130,9 @@
         <Research>Research point</Research>
       </Conditions>
     </Gathering>
-  
-    <Exploration>
-      <Header>Hard Exploration Event</Header>
+
+    <Diplomacy>
+      <Header>Hard Diplomacy Event</Header>
       <Rewards>
         <Scrap>Scrap</Scrap>
       </Rewards>
@@ -147,7 +147,7 @@
         <Energy>Energy Available</Energy>
         <Research>Research point</Research>
       </Conditions>
-    </Exploration>
+    </Diplomacy>
   
     <Research>
       <Header>Hard Research Event</Header>
