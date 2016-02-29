@@ -67,7 +67,7 @@ public class WorldController : MonoBehaviour {
                     float distanceToTarget = Vector3.Distance(hit.transform.position, playerToken.transform.position);
                     Debug.Log("Distance = " + distanceToTarget);
 
-                    if(distanceToTarget <= maxDistance)
+                    if(distanceToTarget <= maxDistance && !destpanel.active)
                     {
                         target = hit.transform.gameObject;
                     mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
