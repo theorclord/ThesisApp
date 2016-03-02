@@ -5,6 +5,14 @@ using System.Text;
 
 namespace Assets.Scripts.Utility
 {
+    public enum PCGNodeType
+    {
+        A,
+        B,
+        C,
+        S,
+        E
+    }
     public enum NodeType
     {
         START,
