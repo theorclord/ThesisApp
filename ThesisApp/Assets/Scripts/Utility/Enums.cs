@@ -10,6 +10,7 @@ namespace Assets.Scripts.Utility
         A,
         B,
         C,
+        D,
         S,
         E
     }

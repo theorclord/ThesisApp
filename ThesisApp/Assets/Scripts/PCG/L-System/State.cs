@@ -2,11 +2,24 @@
 using System.Collections;
 
 public class State : MonoBehaviour {
-    double x;
-    double y;
-    double angle;
-    double length;
-    double turningAngle;
+    public double x {
+        get; set; }
+    public double y
+    {
+        get; set;
+    }
+    public double angle
+    {
+        get; set;
+    }
+    public double length
+    {
+        get; set;
+    }
+    public double turningAngle
+    {
+        get; set;
+    }
 
     public State(double x, double y, double startAngle, double length, double turningA)
     {
