@@ -10,7 +10,12 @@ namespace Assets.Scripts.Utility
     {
         public Vector3 Position
         { get; set; }
-        
-        
+        private float speed = 10;
+        public float Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
+
     }
 }

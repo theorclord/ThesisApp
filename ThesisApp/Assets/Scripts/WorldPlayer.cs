@@ -7,13 +7,6 @@ using UnityEngine.SceneManagement;
 /// Responsible for moving the player around in the world map
 /// </summary>
 public class WorldPlayer : MonoBehaviour {
-
-    private float speed = 10;
-    public float Speed
-    {
-        get { return speed; }
-        set { speed = value; }
-    }
     private GameObject target;
 
 	// Use this for initialization
@@ -25,7 +18,7 @@ public class WorldPlayer : MonoBehaviour {
 	void Update () {
         if (target != null)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, DataManager.instance.Player.Speed * Time.deltaTime);
         }
     }
 

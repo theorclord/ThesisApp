@@ -32,13 +32,14 @@ public class WorldController : MonoBehaviour {
         if(DataManager.instance.Nodes.Count == 0)
         {
             DataManager.instance.InitializeNodes();
+            //DataManager.instance.GraphTest();
         }
         generateWorldNodes();
         GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
         playerToken = player;
         // Set player movement indicator
         //Gets the movement quad as first child
-        float playerspeed = playerToken.GetComponent<WorldPlayer>().Speed;
+        float playerspeed = DataManager.instance.Player.Speed;
         float ringSize = playerspeed * 2;
         float innerRadius = 0.0005f * ringSize + 0.485f;
         playerToken.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetFloat("_InnerRadius", innerRadius);
