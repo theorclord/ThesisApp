@@ -132,9 +132,26 @@ public class DataManager : MonoBehaviour {
 
     public void InitializeNodes()
     {
+        LSystem ls = new LSystem();
+        ls.axiom = "SNN";
+        ls.ruleSets.Add("S", "S[-N][+N]");
+       /* int a = Random.Range(0, 2);
+        if (a < 1)
+        {
+        ls.ruleSets.Add("N", "[-N]N[++N]");
+
+        }
+        else
+        {*/
+        ls.ruleSets.Add("N", "N[+N]-N");
+
+        //}
+       // Debug.Log(ls.ruleSets["N"]);
+        ls.expand(3);
+        ls.interpret();
         //TODO pcg generation of new node map
         //TODO generate using PCG
-        int numnodes = 10;
+        /*int numnodes = 10;
         for (int i = 0; i < numnodes; i++)
         {
             Vector3 position = new Vector3(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f));
@@ -169,7 +186,7 @@ public class DataManager : MonoBehaviour {
                 newNode.Nodes.Add(ns);
             }
             Nodes.Add(newNode);
-        }
+        }*/
     }
 
 }
