@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RuleCollection : MonoBehaviour {
+public class RuleCollection{
 
 
     ArrayList ruleCollection = new ArrayList();
@@ -15,11 +15,11 @@ public class RuleCollection : MonoBehaviour {
     {
         // First Rule
         LRule rule1 = new LRule();
-        rule1.axiom = "N-N-N-N";
-        //rule1.rules.Add("S", "S[-N][+N]");
-        rule1.rules.Add("N", "N-N+N+NN-N-N+N");
-        rule1.expandingIterations = 1;
-        rule1.delta = Mathf.PI / 2;
+        rule1.axiom = "ONN";
+        rule1.rules.Add("O", "O[--N][+N]");
+        rule1.rules.Add("N", "N[-N+N][+N++N]");
+        rule1.expandingIterations = 2;
+        rule1.delta = (float)(Mathf.PI / (7.2));
         ruleCollection.Add(rule1);
 
         // Second Rule *STAR FORMATION*
@@ -30,14 +30,5 @@ public class RuleCollection : MonoBehaviour {
         rule2.delta = Mathf.PI / 3;
         ruleCollection.Add(rule2);
     }
-
-    // Use this for initialization
-    void Start () {
-       
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
 }

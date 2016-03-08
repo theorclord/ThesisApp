@@ -44,7 +44,7 @@ public class LSystem {
             int a = Random.Range(0, resList.Length);
             if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+')
             {
-                Debug.Log("Found candidate: " + resList[a].ToString());
+               // Debug.Log("Found candidate: " + resList[a].ToString());
                 string tmpRes = "";
                 for(int i = 0; i < a; i++)
                 {
@@ -64,7 +64,7 @@ public class LSystem {
         {
             string b = "S" + result;
             result = b;
-            Debug.Log("does not contain S");
+            //Debug.Log("does not contain S");
           /*  for(int i = 0; i < result.ToCharArray().Length; i++)
             {
                 if (result.ToCharArray()[i] == 'N')
@@ -207,19 +207,34 @@ public class LSystem {
     
     private void generateNodeStats(WorldNodeStats newNode)
     {
-        int numIntNodes = Random.Range(1, 4);
-        for (int j = 0; j < numIntNodes; j++)
+        bool duplicate = false;
+
+        foreach(WorldNodeStats wn in DataManager.instance.Nodes)
         {
-            Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-            string tempname = "Internal node " + j;
-            string flavText = "The node " + j + " was freaking awesome";
-            Event ev = new Event();
-            int eventNumber = Random.Range(0, 3);
-            ev.getXml(eventNumber);
-            NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-            ns.setEventType(eventNumber);
-            newNode.Nodes.Add(ns);
+            if(wn.Position == newNode.Position)
+            {
+                Debug.Log("Duplicate found and removed");
+                duplicate = true;
+                break;
+            }
         }
-        DataManager.instance.Nodes.Add(newNode);
+
+        if (!duplicate)
+        {
+            int numIntNodes = Random.Range(1, 4);
+            for (int j = 0; j < numIntNodes; j++)
+            {
+                Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
+                string tempname = "Internal node " + j;
+                string flavText = "The node " + j + " was freaking awesome";
+                Event ev = new Event();
+                int eventNumber = Random.Range(0, 3);
+                ev.getXml(eventNumber);
+                NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
+                ns.setEventType(eventNumber);
+                newNode.Nodes.Add(ns);
+            }
+            DataManager.instance.Nodes.Add(newNode);
+        }
     }
 }
