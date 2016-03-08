@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Utility;
 
-public class LSystem : MonoBehaviour {
+public class LSystem {
     
     public string axiom { get; set; }
     public IDictionary ruleSets = new Dictionary<string, string>();
@@ -72,20 +72,7 @@ public class LSystem : MonoBehaviour {
                     //NodeStats (World Node)
                     WorldNodeStats newNode = new WorldNodeStats(position, name, description);
                     newNode.Type = type;
-                    int numIntNodes = Random.Range(1, 4);
-                    for (int j = 0; j < numIntNodes; j++)
-                    {
-                        Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                        string tempname = "Internal node " + j;
-                        string flavText = "The node " + j + " was freaking awesome";
-                        Event ev = new Event();
-                        int eventNumber = Random.Range(0, 3);
-                        ev.getXml(eventNumber);
-                        NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-                        ns.generateEventType(eventNumber);
-                        newNode.Nodes.Add(ns);
-                    }
-                    DataManager.instance.Nodes.Add(newNode);
+                    generateNodeStats(newNode);
                     numNodes++;
 
                     break;
@@ -110,20 +97,7 @@ public class LSystem : MonoBehaviour {
                     //NodeStats (World Node)
                     newNode = new WorldNodeStats(position, name, description);
                     newNode.Type = type;
-                    numIntNodes = Random.Range(1, 4);
-                    for (int j = 0; j < numIntNodes; j++)
-                    {
-                        Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                        string tempname = "Internal node " + j;
-                        string flavText = "The node " + j + " was freaking awesome";
-                        Event ev = new Event();
-                        int eventNumber = Random.Range(0, 3);
-                        ev.getXml(eventNumber);
-                        NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-                        ns.generateEventType(eventNumber);
-                        newNode.Nodes.Add(ns);
-                    }
-                    DataManager.instance.Nodes.Add(newNode);
+                    generateNodeStats(newNode);
                     numNodes++;
                     break;
                 case 'E'://End Node
@@ -146,20 +120,7 @@ public class LSystem : MonoBehaviour {
                     //NodeStats (World Node)
                     newNode = new WorldNodeStats(position, name, description);
                     newNode.Type = type;
-                    numIntNodes = Random.Range(1, 4);
-                    for (int j = 0; j < numIntNodes; j++)
-                    {
-                        Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                        string tempname = "Internal node " + j;
-                        string flavText = "The node " + j + " was freaking awesome";
-                        Event ev = new Event();
-                        int eventNumber = Random.Range(0, 3);
-                        ev.getXml(eventNumber);
-                        NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-                        ns.generateEventType(eventNumber);
-                        newNode.Nodes.Add(ns);
-                    }
-                    DataManager.instance.Nodes.Add(newNode);
+                    generateNodeStats(newNode);
                     numNodes++;
                     break;
                 case '-':
@@ -179,13 +140,22 @@ public class LSystem : MonoBehaviour {
             }
         }
     }
-
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
+    private void generateNodeStats(WorldNodeStats newNode)
+    {
+        int numIntNodes = Random.Range(1, 4);
+        for (int j = 0; j < numIntNodes; j++)
+        {
+            Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
+            string tempname = "Internal node " + j;
+            string flavText = "The node " + j + " was freaking awesome";
+            Event ev = new Event();
+            int eventNumber = Random.Range(0, 3);
+            ev.getXml(eventNumber);
+            NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
+            ns.setEventType(eventNumber);
+            newNode.Nodes.Add(ns);
+        }
+        DataManager.instance.Nodes.Add(newNode);
+    }
 }

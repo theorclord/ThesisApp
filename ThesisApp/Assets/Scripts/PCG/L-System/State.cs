@@ -1,25 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class State : MonoBehaviour {
-    public double x {
-        get; set; }
+public class State {
+    public double x
+    { get; set; }
     public double y
-    {
-        get; set;
-    }
+    { get; set; }
     public double angle
-    {
-        get; set;
-    }
+    { get; set; }
     public double length
-    {
-        get; set;
-    }
+    { get; set; }
     public double turningAngle
-    {
-        get; set;
-    }
+    { get; set; }
 
     public State(double x, double y, double startAngle, double length, double turningA)
     {

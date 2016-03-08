@@ -6,7 +6,6 @@ using Assets.Scripts.Utility;
 
 public class Event {
 
-
     //XML Difficulties
     string basic = "Events/Basic";
     string intermediate = "Events/Intermediate";

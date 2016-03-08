@@ -27,7 +27,7 @@ namespace Assets.Scripts.Utility
             nodeEvent = e;
         }
 
-        public void generateEventType(int typeNumber)
+        public void setEventType(int typeNumber)
         {
 
             switch (typeNumber)

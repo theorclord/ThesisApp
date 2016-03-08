@@ -32,9 +32,8 @@ public class WorldController : MonoBehaviour {
         if(DataManager.instance.Nodes.Count == 0)
         {
             DataManager.instance.InitializeNodes();
-            //DataManager.instance.GraphTest();
         }
-        generateWorldNodes();
+        spawnWorldNodes();
         GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
         playerToken = player;
         // Set player movement indicator
@@ -68,7 +67,7 @@ public class WorldController : MonoBehaviour {
                     float distanceToTarget = Vector3.Distance(hit.transform.position, playerToken.transform.position);
                     Debug.Log("Distance = " + distanceToTarget);
 
-                    if(distanceToTarget <= maxDistance && !destpanel.active)
+                    if(distanceToTarget <= maxDistance && !destpanel.activeSelf)
                     {
                         target = hit.transform.gameObject;
                     mainCam.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, mainCam.transform.position.z);
@@ -171,9 +170,8 @@ public class WorldController : MonoBehaviour {
         SceneManager.LoadScene("StartMenu");
     }
 
-    private void generateWorldNodes()
+    private void spawnWorldNodes()
     {
-        //TODO generate nodes
         foreach(WorldNodeStats stat in DataManager.instance.Nodes)
         {
             GameObject obj = Resources.Load("Prefabs/NodeWorld") as GameObject;

@@ -59,7 +59,7 @@ public class WorldPlayer : MonoBehaviour {
             {
                 if (canGo)
                 {
-                SceneManager.LoadScene("NodeScene");
+                    SceneManager.LoadScene("NodeScene");
                 }
             }
         }
