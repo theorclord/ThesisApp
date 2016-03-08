@@ -7,12 +7,12 @@ using System.Xml;
 public class LSystem {
     
     public string axiom { get; set; }
-    public IDictionary ruleSets = new Dictionary<string, string>();
+    //public IDictionary ruleSets = new Dictionary<string, string>();
     public string expanded { get; set; }
+    public float delta { get; set; }
+    float distance = 9.0f;
 
-    float distance = 5.0f;
-
-    public void expand(int depth)
+    public void expand(int depth, IDictionary ruleSets)
     {
         string result = axiom;
         //Debug.Log(depth);
@@ -37,7 +37,47 @@ public class LSystem {
             
             result = newString;
         }
-        result += "E";
+
+        bool replaced = false;
+        char[] resList = result.ToCharArray();
+        while (!replaced)
+        { 
+            int a = Random.Range(0, resList.Length);
+            if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+')
+            {
+               // Debug.Log("Found candidate: " + resList[a].ToString());
+                string tmpRes = "";
+                for(int i = 0; i < a; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                tmpRes += "E";
+                for(int i = a+1; i < resList.Length; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                result = tmpRes;
+                replaced = true;
+            }
+        }
+
+        if (!result.Contains("S"))
+        {
+            string b = "S" + result;
+            result = b;
+            //Debug.Log("does not contain S");
+          /*  for(int i = 0; i < result.ToCharArray().Length; i++)
+            {
+                if (result.ToCharArray()[i] == 'N')
+                {
+                    char[] tmp = result.ToCharArray();
+                    tmp[i] = 'S';
+                    string a = tmp.ToString();
+                    break;
+                }
+            }*/
+        }
+       // result += "E";
         expanded = result;
         Debug.Log(result);
     }
@@ -45,7 +85,7 @@ public class LSystem {
     public void interpret()
     {
         Stack statestack = new Stack();
-        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0,9,0.47);
+        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0,distance,delta);
         double x, y, a;
         char[] chars = expanded.ToCharArray();
         int numNodes = 0;
@@ -78,6 +118,30 @@ public class LSystem {
 
                     break;
                 case 'N'://Normal World Node
+                    preX = s.x;
+                    preY = s.y;
+                    //Debug.Log("y->Sin " + s.angle + ": " + Mathf.Sin((float)s.angle));
+                    x = s.x + (int)(s.length * Mathf.Cos((float)s.angle));
+                    y = s.y + (int)(s.length * Mathf.Sin((float)s.angle));
+                    s = new State(x, y, s.angle, s.length, s.turningAngle);
+                    //place normal world node
+                    //place world node at position
+                    position = new Vector3((float)x, (float)y);
+                    name = "Node " + numNodes;
+                    description = "Description of node " + numNodes;
+                    type = NodeType.NORMAL;
+                    //Test generate 10 random nodes
+                    //Set player start based on start node
+
+                    //Player.Position = new Vector3(position.x, position.y + 1.3f);
+
+                    //NodeStats (World Node)
+                    newNode = new WorldNodeStats(position, name, description);
+                    newNode.Type = type;
+                    generateNodeStats(newNode);
+                    numNodes++;
+                    break;
+                case 'O'://Normal World Node
                     preX = s.x;
                     preY = s.y;
                     //Debug.Log("y->Sin " + s.angle + ": " + Mathf.Sin((float)s.angle));
@@ -144,11 +208,25 @@ public class LSystem {
     
     private void generateNodeStats(WorldNodeStats newNode)
     {
-        int numIntNodes = Random.Range(1, 4);
-        for (int j = 0; j < numIntNodes; j++)
+        bool duplicate = false;
+
+        foreach(WorldNodeStats wn in DataManager.instance.Nodes)
         {
+            if(wn.Position == newNode.Position)
+            {
+                Debug.Log("Duplicate found and removed");
+                duplicate = true;
+                break;
+            }
+        }
+
+        if (!duplicate)
+        {
+            int numIntNodes = Random.Range(1, 4);
+            for (int j = 0; j < numIntNodes; j++)
+            {
             // The position of the nodes are currently just at 3 different points
-            Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
+                Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
             // Get name of nodes from xml
             XmlDocument nodeNameCollection = new XmlDocument();
             nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
@@ -159,13 +237,14 @@ public class LSystem {
             string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
 
             // Generate event
-            Event ev = new Event();
-            int eventNumber = Random.Range(0, 3);
-            ev.getXml(eventNumber);
+                Event ev = new Event();
+                int eventNumber = Random.Range(0, 3);
+                ev.getXml(eventNumber);
             NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
-            ns.setEventType(eventNumber);
-            newNode.Nodes.Add(ns);
+                ns.setEventType(eventNumber);
+                newNode.Nodes.Add(ns);
+            }
+            DataManager.instance.Nodes.Add(newNode);
         }
-        DataManager.instance.Nodes.Add(newNode);
     }
 }
