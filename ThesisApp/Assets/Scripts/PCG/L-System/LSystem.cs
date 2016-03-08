@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Utility;
+using System.Xml;
 
 public class LSystem {
     
@@ -146,13 +147,22 @@ public class LSystem {
         int numIntNodes = Random.Range(1, 4);
         for (int j = 0; j < numIntNodes; j++)
         {
+            // The position of the nodes are currently just at 3 different points
             Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-            string tempname = "Internal node " + j;
-            string flavText = "The node " + j + " was freaking awesome";
+            // Get name of nodes from xml
+            XmlDocument nodeNameCollection = new XmlDocument();
+            nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
+            XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/nodeFlavour");
+
+            int selectedTitle = Random.Range(0, nameList.Count);
+            string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
+            string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
+
+            // Generate event
             Event ev = new Event();
             int eventNumber = Random.Range(0, 3);
             ev.getXml(eventNumber);
-            NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
+            NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
             ns.setEventType(eventNumber);
             newNode.Nodes.Add(ns);
         }

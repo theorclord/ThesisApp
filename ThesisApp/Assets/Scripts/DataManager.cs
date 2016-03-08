@@ -12,8 +12,6 @@ public class DataManager : MonoBehaviour {
     { get; private set; }
     public float cameraZoom = 5.0f;
 
-    private float angleSpread = Mathf.PI/2;
-
     public WorldNodeStats ActiveNode
     {
         get; set;

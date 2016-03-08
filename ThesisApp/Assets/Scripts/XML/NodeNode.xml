@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NodeNode>
+  <nodeFlavour>
+    <name>Yavin</name>
+    <flavourText>A large gas planet</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Shire</name>
+    <flavourText>Small village full og hobbits</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Bulguard</name>
+    <flavourText>An original place</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Baldur's Gate</name>
+    <flavourText>Large city with plenty of adventure</flavourText>
+  </nodeFlavour>
+</NodeNode>

@@ -8,6 +8,8 @@ TagManager:
   - LocationNode
   - SystemNode
   - DestinationPanel
+  - NodeInformationPanel
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

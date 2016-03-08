@@ -29,7 +29,7 @@ public class Event {
     string energy = "/Energy";
     string researchPoints = "/Research";
     //XML
-    public string localizedStringsFile = "assets/scripts/utility/EventValues.xml";
+    public string localizedStringsFile = "assets/scripts/XML/EventValues.xml";
     string language;
     string grouping;
     XmlDocument root;
@@ -49,11 +49,8 @@ public class Event {
         root.Load(localizedStringsFile);
 
         int numberOfPeople = 0;
-        int numberOfPeopleAlt = 0;
         int numberOfPower = 0;
-        int numberOfPowerAlt = 0;
         int numberOfResearch = 0;
-        int numberOfResearchAlt = 0;
 
         switch (eventNumber)
         {
