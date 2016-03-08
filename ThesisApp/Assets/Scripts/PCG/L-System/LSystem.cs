@@ -36,9 +36,36 @@ public class LSystem {
             
             result = newString;
         }
-        if (!result.Contains("s"))
+
+        bool replaced = false;
+        char[] resList = result.ToCharArray();
+        while (!replaced)
+        { 
+            int a = Random.Range(0, resList.Length);
+            if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+')
+            {
+                Debug.Log("Found candidate: " + resList[a].ToString());
+                string tmpRes = "";
+                for(int i = 0; i < a; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                tmpRes += "E";
+                for(int i = a+1; i < resList.Length; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                result = tmpRes;
+                replaced = true;
+            }
+        }
+
+        if (!result.Contains("S"))
         {
-            for(int i = 0; i < result.ToCharArray().Length; i++)
+            string b = "S" + result;
+            result = b;
+            Debug.Log("does not contain S");
+          /*  for(int i = 0; i < result.ToCharArray().Length; i++)
             {
                 if (result.ToCharArray()[i] == 'N')
                 {
@@ -47,9 +74,9 @@ public class LSystem {
                     string a = tmp.ToString();
                     break;
                 }
-            }
+            }*/
         }
-        result += "E";
+       // result += "E";
         expanded = result;
         Debug.Log(result);
     }
@@ -90,6 +117,30 @@ public class LSystem {
 
                     break;
                 case 'N'://Normal World Node
+                    preX = s.x;
+                    preY = s.y;
+                    //Debug.Log("y->Sin " + s.angle + ": " + Mathf.Sin((float)s.angle));
+                    x = s.x + (int)(s.length * Mathf.Cos((float)s.angle));
+                    y = s.y + (int)(s.length * Mathf.Sin((float)s.angle));
+                    s = new State(x, y, s.angle, s.length, s.turningAngle);
+                    //place normal world node
+                    //place world node at position
+                    position = new Vector3((float)x, (float)y);
+                    name = "Node " + numNodes;
+                    description = "Description of node " + numNodes;
+                    type = NodeType.NORMAL;
+                    //Test generate 10 random nodes
+                    //Set player start based on start node
+
+                    //Player.Position = new Vector3(position.x, position.y + 1.3f);
+
+                    //NodeStats (World Node)
+                    newNode = new WorldNodeStats(position, name, description);
+                    newNode.Type = type;
+                    generateNodeStats(newNode);
+                    numNodes++;
+                    break;
+                case 'O'://Normal World Node
                     preX = s.x;
                     preY = s.y;
                     //Debug.Log("y->Sin " + s.angle + ": " + Mathf.Sin((float)s.angle));

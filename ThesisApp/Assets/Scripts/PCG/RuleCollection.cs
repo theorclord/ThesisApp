@@ -22,8 +22,13 @@ public class RuleCollection : MonoBehaviour {
         rule1.delta = Mathf.PI / 2;
         ruleCollection.Add(rule1);
 
-        // Second Rule
-
+        // Second Rule *STAR FORMATION*
+        LRule rule2 = new LRule();
+        rule2.axiom = "N--N--N";
+        rule2.rules.Add("N", "N+N--N+N");
+        rule2.expandingIterations = 1;
+        rule2.delta = Mathf.PI / 3;
+        ruleCollection.Add(rule2);
     }
 
     // Use this for initialization
