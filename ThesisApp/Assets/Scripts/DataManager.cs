@@ -52,22 +52,21 @@ public class DataManager : MonoBehaviour {
     public void InitializeNodes()
     {
         LSystem ls = new LSystem();
-        ls.axiom = "SNN";
-        ls.ruleSets.Add("S", "S[-N][+N]");
-       /* int a = Random.Range(0, 2);
-        if (a < 1)
-        {
-        ls.ruleSets.Add("N", "[-N]N[++N]");
-
-        }
-        else
-        {*/
-        ls.ruleSets.Add("N", "N[+N]-N");
-
-        //}
-       // Debug.Log(ls.ruleSets["N"]);
-        ls.expand(3);
+        RuleCollection rc = new RuleCollection();
+        rc.GenerateRules();
+        int selectedIndex = Random.Range(0, rc.GetCollection().Count);
+        LRule r = (LRule)rc.GetCollection()[selectedIndex];
+        ls.axiom = r.axiom;
+        ls.delta = r.delta;
+        // JUST GO THROUGH THE RANDOMLY SELECTED RULE, USE ITS COLLECTION IN THE EXPAND AND INTERPRET
+        ls.expand(r.expandingIterations, r.rules);
         ls.interpret();
+       /* ls.axiom = "SNN";
+        ls.ruleSets.Add("S", "S[-N][+N]");
+        ls.ruleSets.Add("N", "N[+N]-N");
+        ls.expand(3);
+        ls.interpret();  */
+
         //TODO pcg generation of new node map
         //TODO generate using PCG
         /*int numnodes = 10;

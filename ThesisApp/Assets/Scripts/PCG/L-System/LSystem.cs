@@ -6,12 +6,12 @@ using Assets.Scripts.Utility;
 public class LSystem {
     
     public string axiom { get; set; }
-    public IDictionary ruleSets = new Dictionary<string, string>();
+    //public IDictionary ruleSets = new Dictionary<string, string>();
     public string expanded { get; set; }
+    public float delta { get; set; }
+    float distance = 9.0f;
 
-    float distance = 5.0f;
-
-    public void expand(int depth)
+    public void expand(int depth, IDictionary ruleSets)
     {
         string result = axiom;
         //Debug.Log(depth);
@@ -36,6 +36,19 @@ public class LSystem {
             
             result = newString;
         }
+        if (!result.Contains("s"))
+        {
+            for(int i = 0; i < result.ToCharArray().Length; i++)
+            {
+                if (result.ToCharArray()[i] == 'N')
+                {
+                    char[] tmp = result.ToCharArray();
+                    tmp[i] = 'S';
+                    string a = tmp.ToString();
+                    break;
+                }
+            }
+        }
         result += "E";
         expanded = result;
         Debug.Log(result);
@@ -44,7 +57,7 @@ public class LSystem {
     public void interpret()
     {
         Stack statestack = new Stack();
-        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0,9,0.47);
+        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0,distance,delta);
         double x, y, a;
         char[] chars = expanded.ToCharArray();
         int numNodes = 0;
