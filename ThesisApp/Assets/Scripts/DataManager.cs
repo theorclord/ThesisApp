@@ -52,11 +52,13 @@ public class DataManager : MonoBehaviour {
         LSystem ls = new LSystem();
         RuleCollection rc = new RuleCollection();
         rc.GenerateRules();
+        Debug.Log("Size = " + rc.GetCollection().Count);
         int selectedIndex = Random.Range(0, rc.GetCollection().Count);
         LRule r = (LRule)rc.GetCollection()[selectedIndex];
         ls.axiom = r.axiom;
         ls.delta = r.delta;
         // JUST GO THROUGH THE RANDOMLY SELECTED RULE, USE ITS COLLECTION IN THE EXPAND AND INTERPRET
+        Debug.Log(r.name);
         ls.expand(r.expandingIterations, r.rules);
         ls.interpret();
        /* ls.axiom = "SNN";
