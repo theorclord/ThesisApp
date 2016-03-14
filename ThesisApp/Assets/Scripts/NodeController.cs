@@ -101,27 +101,25 @@ public class NodeController : MonoBehaviour {
         // Set conditions and choices:
         Transform buttoncont = eventPanel.transform.FindChild("ButtonController");
 
-        int conditionCount = 0;
-        GameObject button = Instantiate (Resources.Load("Prefabs/ChoiceButton") as GameObject);
-        button.transform.SetParent(buttoncont);
-        button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(e.conditionOne); });
-        button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * conditionCount);
-        conditionCount++;
+        for(int i = 0; i<e.EventConditions.Count; i++)
+        {
+            //Need to copy else the value is only set to the last i
+            int tempint = i;
+            GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
+            button.transform.SetParent(buttoncont);
+            button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(e.EventConditions[tempint]); });
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
+            button.transform.GetChild(0).GetComponent<Text>().text = e.EventConditions[tempint];
+        }
 
-        button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
-        button.transform.SetParent(buttoncont);
-        button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(e.conditionTwo); });
-        button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * conditionCount);
-        conditionCount++;
-
-        button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
-        button.transform.SetParent(buttoncont);
-        button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(e.conditionThree); });
-        button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * conditionCount);
-        conditionCount++;
-
+        // TODO Clean up
         eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n" + e.eventReward;
-        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = e.conditionOne + "\n" + e.conditionTwo + "\n" + e.conditionThree;
+        string eventtext = "";
+        foreach(string str in e.EventConditions)
+        {
+            eventtext += str + "\n";
+        }
+        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
         eventPanel.SetActive(true);
     }
 
@@ -129,6 +127,7 @@ public class NodeController : MonoBehaviour {
     {
         Debug.Log(result);
         eventPanel.SetActive(false);
+        //TODO load event end scene
         SceneManager.LoadScene("WorldScene");
     }
 }
