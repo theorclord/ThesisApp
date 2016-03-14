@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class LRule {
 
+    public string name = "";
     public string axiom = "";
     public IDictionary rules = new Dictionary<string, string>();
     public int expandingIterations = 1;

@@ -79,6 +79,7 @@ public class LSystem {
         }
        // result += "E";
         expanded = result;
+        
         Debug.Log(result);
     }
 
@@ -214,7 +215,7 @@ public class LSystem {
         {
             if(wn.Position == newNode.Position)
             {
-                Debug.Log("Duplicate found and removed");
+                //Debug.Log("Duplicate found and removed");
                 duplicate = true;
                 break;
             }
