@@ -24,4 +24,72 @@
     <name>Eagle Point</name>
     <flavourText>Looks like this place was once a scouting facility of some sort.</flavourText>
   </nodeFlavour>
+  <nodeFlavour>
+    <name>Fraglor</name>
+    <flavourText>The conditions on may not be ideal, but very promising. If nothing else, it would be perfect as a new home.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Xerthor</name>
+    <flavourText>The conditions are violent, but it is a violence that is strangely beautiful, yet eerily frightening.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Renbor</name>
+    <flavourText></flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Klewam</name>
+    <flavourText>The coral underwater are perhaps more astonishing than the organisms on the surface, which is because they look almost the same, especially from a distance.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Gostag</name>
+    <flavourText>It looks like some sort of fragmented element is scattered all across this area.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Arekgir</name>
+    <flavourText>Mystery is glowing in the distance.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Kestuythea</name>
+    <flavourText>Looks like someone else might have been here before us.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Leclurn</name>
+    <flavourText>So. Much. FLOWERS!</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Ehiri</name>
+    <flavourText>If only this place had a bar.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Foruta</name>
+    <flavourText>Aturof?</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Whabezuno</name>
+    <flavourText>welcome to Whazvenoru? Whazuben? WHAT IS THIS!?</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Thecunus</name>
+    <flavourText>More like The Cocunuts! No? ... oh well. </flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Drurn</name>
+    <flavourText>This place sounds like it was made by dwarves of old.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Cubrippe</name>
+    <flavourText>Many creatures seems to be huddling up in a pile.</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Efleon</name>
+    <flavourText>Ever played pokemon? This sure sounds like one!</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Chilia</name>
+    <flavourText>Ye. There is Chili EVERYWHERE!</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Thion</name>
+    <flavourText>This place has no flavour.</flavourText>
+  </nodeFlavour>
 </NodeNode>
