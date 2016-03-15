@@ -207,6 +207,10 @@ public class LSystem {
         }
     }
     
+    /// <summary>
+    /// Generates the stats for the individual nodes in the world node
+    /// </summary>
+    /// <param name="newNode"></param>
     private void generateNodeStats(WorldNodeStats newNode)
     {
         bool duplicate = false;

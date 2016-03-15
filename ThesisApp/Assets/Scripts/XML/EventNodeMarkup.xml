@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Events>
+		<Gathering>
+	    <basic>
+		    <event>
+			    <eventText>Send a crew member to collect scrap</eventText>
+			    <results>
+				    <result>
+					    <chance>30</chance>
+					    <flavourText>You collect what you can.(1 Scrap)</flavourText>
+					    <outcome>1 Scrap</outcome>
+				    </result>
+				    <result>
+					    <chance>45</chance>
+					    <flavourText>The ground is too resistant! You don’t get the bonus from your skill level. (1 Scrap)</flavourText>
+					    <outcome>1 Scrap</outcome>
+				    </result>
+				    <result>
+					    <chance>15</chance>
+					    <flavourText>Your crew member has been attacked! He’s injured. (1 injured CM)</flavourText>
+					    <outcome>1 injured crew member</outcome>
+				    </result>
+				    <result>
+					    <chance>10</chance>
+					    <flavourText>Your crew member has been attacked! He’s dead. (Lose 1 CM)</flavourText>
+					    <outcome>lose 1 crew member</outcome>
+				    </result>
+			    </results>
+		    </event>
+	    </basic>
+		  <second>
+			  <event>
+				  <eventText>Send two crew members for a safer expedition</eventText>
+				  <results>
+					  <result>
+						  <chance>75</chance>
+						  <flavourText>You collect what you can. (1 - 2 Scrap)</flavourText>
+						  <outcome>1 - 2 Scrap</outcome>
+					  </result>
+					  <result>
+						  <chance>25</chance>
+						  <flavourText>The ground is too resistant! You don’t get the bonus from your skill level. (1 Scrap)</flavourText>
+						  <outcome>1 Scrap</outcome>
+					  </result>
+				  </results>
+			  </event>
+        <event>
+          <eventText>Use an energy point to dig deeper</eventText>
+          <results>
+            <result>
+              <chance>60</chance>
+              <flavourText>You collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>10</chance>
+              <flavourText>You collect what you can but your machine overheated and your Crew member was injured! (2 Scrap + 1 injured CM)</flavourText>
+              <outcome>2 Scrap + 1 injured CM</outcome>
+            </result>
+            <result>
+              <chance>5</chance>
+              <flavourText>You collect what you can but your machine overheated and your Crew member was killed!. (2 Scrap + Lose 1 CM)</flavourText>
+              <outcome>2 Scrap + Lose 1 CM</outcome>
+            </result>
+            <result>
+              <chance>25</chance>
+              <flavourText>Your machine overheated and needs to be repaired! (Choose 1 engine room and disable it).</flavourText>
+              <outcome>Choose 1 engine room and disable it</outcome>
+            </result>
+          </results>
+        </event>
+		  </second>
+      <third>
+        <event>
+          <eventText>(Research skill required) Analyse the site thoroughly before collecting what you can</eventText>
+          <results>
+            <result>
+              <chance>80</chance>
+              <flavourText>You safely and efficiently collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>20</chance>
+              <flavourText>You are attacked but you manage to gather what you collected before running away (1 Scrap)</flavourText>
+              <outcome>1 Scrap</outcome>
+            </result>
+          </results>
+        </event>
+      </third>
+	</Gathering>
+</Events>

@@ -6,7 +6,16 @@ using Assets.Scripts.Utility;
 using System.Collections.Generic;
 
 public class Event {
+    //XML path
+    private string filepath = "assets/scripts/XML/EventNodeMarkup.xml";
 
+    //XML gather values
+    private string gather = "Events/Gathering";
+
+    //XML type events
+    private string Tbasic = "/basic";
+    private string Tsecond = "/second";
+    private string Tthird = "/third";
     //XML Difficulties
     string basic = "Events/Basic";
     //string intermediate = "Events/Intermediate";
@@ -65,17 +74,32 @@ public class Event {
         switch (eventNumber)
         {
             case 0:// gather
+                int numEvents = Random.Range(0, 2)+2;
+                XmlDocument gatherSection = new XmlDocument();
+                gatherSection.Load(filepath);
+                XmlNode gatherBasic = gatherSection.SelectSingleNode(gather+Tbasic);
+                EventConditions.Add(gatherBasic.SelectSingleNode("event/eventText").InnerText);
+                
+                XmlNode gatherSecond = gatherSection.SelectSingleNode(gather + Tsecond);
+                XmlNodeList secondEventList = gatherSecond.SelectNodes("event");
+                EventConditions.Add(secondEventList[Random.Range(0, secondEventList.Count)].SelectSingleNode("eventText").InnerText);
+                if (numEvents == 3)
+                {
+                    XmlNode gatherThird = gatherSection.SelectSingleNode(gather + Tthird);
+                    XmlNodeList thirdEventList = gatherThird.SelectNodes("event");
+                    EventConditions.Add(thirdEventList[Random.Range(0, thirdEventList.Count)].SelectSingleNode("eventText").InnerText);
+                }
                 eventText = root.SelectSingleNode(basic + gathering + header).InnerText;
                 eventReward = "Reward for completion: " + Random.Range(1, 3) + " " + root.SelectSingleNode(basic + gathering + rewards + scrap).InnerText;
 
                 //Should have people in gathering machine + power
                 numberOfPower = Random.Range(0, 3); //0, 1 or 2
                 numberOfPeople = 2-numberOfPower;
-                EventConditions.Add(numberOfPeople + " available workers + " + numberOfPower + " power.");
+                //EventConditions.Add(numberOfPeople + " available workers + " + numberOfPower + " power.");
                 if (numberOfPeople != numberOfPower) {
-                    EventConditions.Add(numberOfPower + " available workers + " + numberOfPeople + " power.");
+                    //EventConditions.Add(numberOfPower + " available workers + " + numberOfPeople + " power.");
                 }
-                EventConditions.Add("1 Research token available");
+                //EventConditions.Add("1 Research token available");
 
 
                 break;
