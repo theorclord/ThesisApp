@@ -6,7 +6,7 @@
   </nodeFlavour>
   <nodeFlavour>
     <name>Shire</name>
-    <flavourText>Small village full og hobbits</flavourText>
+    <flavourText>Small village full of hobbits</flavourText>
   </nodeFlavour>
   <nodeFlavour>
     <name>Bulguard</name>
@@ -15,5 +15,13 @@
   <nodeFlavour>
     <name>Baldur's Gate</name>
     <flavourText>Large city with plenty of adventure</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Giant's Nest</name>
+    <flavourText>Something smells really awful here...</flavourText>
+  </nodeFlavour>
+  <nodeFlavour>
+    <name>Eagle Point</name>
+    <flavourText>Looks like this place was once a scouting facility of some sort.</flavourText>
   </nodeFlavour>
 </NodeNode>
