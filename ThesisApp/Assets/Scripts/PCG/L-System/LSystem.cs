@@ -219,6 +219,10 @@ public class LSystem {
         {
             if(wn.Position == newNode.Position)
             {
+                if(newNode.Type == NodeType.GOAL && wn.Type != NodeType.GOAL)
+                {
+                    wn.Type = NodeType.GOAL;
+                }
                 //Debug.Log("Duplicate found and removed");
                 duplicate = true;
                 break;
