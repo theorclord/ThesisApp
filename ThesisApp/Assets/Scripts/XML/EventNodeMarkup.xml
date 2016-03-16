@@ -30,7 +30,7 @@
 	    </basic>
 		  <second>
 			  <event>
-				  <eventText>Send two crew members for a safer expedition</eventText>
+				  <eventText>Send two crew members for a safer expedition (+1 Crew Member)</eventText>
 				  <results>
 					  <result>
 						  <chance>75</chance>
@@ -45,7 +45,7 @@
 				  </results>
 			  </event>
         <event>
-          <eventText>Use an energy point to dig deeper</eventText>
+          <eventText>Use an energy point to dig deeper(+1 Energy point)</eventText>
           <results>
             <result>
               <chance>60</chance>
@@ -69,7 +69,27 @@
             </result>
           </results>
         </event>
-		  </second>
+        <event>
+          <eventText>Use a science point to collect resources safely and efficiently (+1 Science Point)</eventText>
+          <results>
+            <result>
+              <chance>85</chance>
+              <flavourText>You collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>10</chance>
+              <flavourText>You collect what you can but your crew member has been attacked! He’s injured. (2 Scrap + 1 injured CM)</flavourText>
+              <outcome>2 Scrap + 1 injured CM</outcome>
+            </result>
+            <result>
+              <chance>5</chance>
+              <flavourText>You collect what you can but your crew member has been attacked! He’s dead. (2 Scrap + Lose 1 CM)</flavourText>
+              <outcome>2 Scrap + Lose 1 CM</outcome>
+            </result>
+          </results>
+        </event>
+      </second>
       <third>
         <event>
           <eventText>(Research skill required) Analyse the site thoroughly before collecting what you can</eventText>
@@ -86,6 +106,244 @@
             </result>
           </results>
         </event>
+        <event>
+          <eventText>(Research skill required + 1 science point) You spot some valuable resource!</eventText>
+          <results>
+            <result>
+              <chance>50</chance>
+              <flavourText>You collect some materials and bring the valuable resource with you (1 Scrap + 1 research point)</flavourText>
+              <outcome>1 Scrap + 1 research point</outcome>
+            </result>
+            <result>
+              <chance>30</chance>
+              <flavourText>When looking for materials, you found fuel to power your generator (1 Scrap + 1 energy point)</flavourText>
+              <outcome>1 Scrap + 1 energy point</outcome>
+            </result>
+            <result>
+              <chance>20</chance>
+              <flavourText>You are attacked but you manage to gather what you collected before running away (1 Scrap)</flavourText>
+              <outcome>1 Scrap</outcome>
+            </result>
+          </results>
+        </event>
+        <event>
+          <eventText>(Diplomacy skill required) Ask the locals to help you in your research</eventText>
+          <results>
+            <result>
+              <chance>80</chance>
+              <flavourText>You safely and efficiently collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>20</chance>
+              <flavourText>They tried to betray you! Your crew member runs away with some materials but is injured in the process (1 Scrap + 1 injured CM)</flavourText>
+              <outcome>1 Scrap + 1 injured CM</outcome>
+            </result>
+          </results>
+        </event>
+        <event>
+          <eventText>(Command skill required) Encourage your team to work harder</eventText>
+          <results>
+            <result>
+              <chance>50</chance>
+              <flavourText>You collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>50</chance>
+              <flavourText>You collect what you can but one of your CM got injured (1 OR 2 Scrap + 1 CM injured)</flavourText>
+              <outcome>1 OR 2 Scrap + 1 CM injured</outcome>
+            </result>
+          </results>
+        </event>
+        <event>
+          <eventText>(Command Skill required) Follow the expedition from the base and stay in contact with your scouting team.</eventText>
+          <results>
+            <result>
+              <chance>70</chance>
+              <flavourText>You safely and efficiently collect what you can. (2 Scrap)</flavourText>
+              <outcome>2 Scrap</outcome>
+            </result>
+            <result>
+              <chance>30</chance>
+              <flavourText>When looking for materials, you found fuel to power your generator (1 Scrap + 1 energy point)</flavourText>
+              <outcome>1 Scrap + 1 energy point</outcome>
+            </result>
+          </results>
+        </event>
       </third>
 	</Gathering>
+  
+  <Research>
+    <basic>
+      <event>
+        <eventText>Send a crew member to study the surroundings</eventText>
+        <results>
+          <result>
+            <chance>60</chance>
+            <flavourText>The atmosphere around is not breathable! You take a sample before leaving the place. (+1 Science Point)</flavourText>
+            <outcome>+1 Science Point</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>The atmosphere around is not breathable! Your scout takes a sample before leaving the place, but the poisonous gas already went into his lungs. He is done for. (+1 Science Point, 1 CM dead)</flavourText>
+            <outcome>+1 Science Point, 1 CM dead</outcome>
+          </result>
+          <result>
+            <chance>30</chance>
+            <flavourText>Your crew member alone doesn’t find anything of interest.</flavourText>
+            <outcome>Nothing</outcome>
+          </result>
+        </results>
+      </event>
+    </basic>
+    <second>
+      <event>
+        <eventText>Power the nearby abandoned facility with your generator</eventText>
+        <results>
+          <result>
+            <chance>30</chance>
+            <flavourText>The facility is full of resources! (-1 energy, +2 Science Points, +2 Scrap)</flavourText>
+            <outcome>-1 energy, +2 Science Points, +2 Scrap</outcome>
+          </result>
+          <result>
+            <chance>30</chance>
+            <flavourText>The facility seems to be an old research lab on genetics. You woke up an alien clone, and decide to bring him with you on your ship. (-1 energy, +2 Science Points, +1 Cm)</flavourText>
+            <outcome>-1 energy, +2 Science Points, +1 Cm</outcome>
+          </result>
+          <result>
+            <chance>20</chance>
+            <flavourText>>The facility seems completely out of order. You try to analyze all the broken machines and leave (-1 energy +1 Science Point)</flavourText>
+            <outcome>-1 energy +1 Science Point</outcome>
+          </result>
+        </results>
+      </event>
+    </second>
+    <third>
+      <event>
+        <eventText>(Gather skill required) Disassemble the machines from the nearby abandoned facility</eventText>
+        <results>
+          <result>
+            <chance>100</chance>
+            <flavourText>You gather some valuable resources and some samples to study on your ship. (+2 Scrap, +2 Research Points)</flavourText>
+            <outcome>+2 Scrap, +2 Research Points</outcome>
+          </result>
+        </results>
+      </event>
+    </third>
+  </Research>
+  
+  <Diplomacy>
+    <basic>
+      <event>
+        <eventText>Send a crew member to meet the locals</eventText>
+        <results>
+          <result>
+            <chance>35</chance>
+            <flavourText>They are peaceful. You learn more about their culture. (+1 Science point)</flavourText>
+            <outcome>1 Science point</outcome>
+          </result>
+          <result>
+            <chance>35</chance>
+            <flavourText>They are peaceful. They offer you some material to welcome you. (+1 Scrap)</flavourText>
+            <outcome>1 Scrap</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>One of them wants to join your crew! (+1 Crew Member)</flavourText>
+            <outcome>1 Crew Member</outcome>
+          </result>
+          <result>
+            <chance>15</chance>
+            <flavourText>They are hostiles! You manage to escape, but your crew member barely made it to the base! (1 Crew Member injured)</flavourText>
+            <outcome>1 crew member injured</outcome>
+          </result>
+          <result>
+            <chance>5</chance>
+            <flavourText>They are hostiles! You barely manage to escape. (1 Crew Member dead)</flavourText>
+            <outcome>1 Crew Member dead</outcome>
+          </result>
+        </results>
+      </event>
+    </basic>
+    <second>
+      <event>
+        <eventText>Bring some scrap with you to trade with the locals</eventText>
+        <results>
+          <result>
+            <chance>30</chance>
+            <flavourText>They agree to trade with you. They make an offer (-1 Scrap, - 1 Science Point, +1 Energy)</flavourText>
+            <outcome>-1 Scrap, - 1 Science point, +1 Energy</outcome>
+          </result>
+          <result>
+            <chance>30</chance>
+            <flavourText>They offer you a slave against some resources (-2 Scrap, + 1 Crew Member) </flavourText>
+            <outcome>-2 Scrap + 1 crew member</outcome>
+          </result>
+          <result>
+            <chance>30</chance>
+            <flavourText>They agree to trade with you. They make an offer (- 1 Science Point, +3 Scrap)</flavourText>
+            <outcome>-1 Science Point + 3 Scrap</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>They try to steal your supplies! You kill one of them and run away! (1 crew member injured)</flavourText>
+            <outcome>1 crew member injured</outcome>
+          </result>
+        </results>
+      </event>
+      <event>
+        <eventText>Kill all the locals and salvage what you can</eventText>
+        <results>
+          <result>
+            <chance>40</chance>
+            <flavourText>You coldly assassinate the locals and steal all their supplies (+3 scrap, +1 Research Point)</flavourText>
+            <outcome>+3 scrap, +1 Research Point</outcome>
+          </result>
+          <result>
+            <chance>20</chance>
+            <flavourText>You coldly assassinate the locals and steal all their supplies (+1 energy point)</flavourText>
+            <outcome>+1 energy point</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>You kill all the locals but one. You force him to join your crew. (+1 CM)</flavourText>
+            <outcome>-1 crew member</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>While you load the supplies in your hold, a survivor attacks you. He kills one of your crew members before you kill him. (+ 1 Scrap, -1 CM dead)</flavourText>
+            <outcome>+1 Scrap, -1 CM dead</outcome>
+          </result>
+          <result>
+            <chance>20</chance>
+            <flavourText>While you load the supplies in your hold, a survivor attacks you. He injures one of your crew members before you kill him. (+ 1 Scrap, 1 CM injured)</flavourText>
+            <outcome>+ 1 Scrap, 1 CM injured</outcome>
+          </result>
+        </results>
+      </event>
+    </second>
+    <third>
+      <event>
+        <eventText>(Mechanic Skill required) The locals need help repairing their generator. Send a mechanic to see what is wrong.</eventText>
+        <results>
+          <result>
+            <chance>40</chance>
+            <flavourText>You safely repair their generator. They reward you with some fuel for your ship. (+1 energy)</flavourText>
+            <outcome>+1 energy</outcome>
+          </result>
+          <result>
+            <chance>50</chance>
+            <flavourText>You safely repair their generator, which costed you a lot of resources. They decide reward you with some fuel for your ship. (-2 Scrap + 1 energy)</flavourText>
+            <outcome>-2 Scrap + 1 energy</outcome>
+          </result>
+          <result>
+            <chance>10</chance>
+            <flavourText>Their generator exploded! You quickly leave before the locals get mad at you. (1 Injured Cm)</flavourText>
+            <outcome>1 Injured Cm</outcome>
+          </result>
+        </results>
+      </event>
+    </third>
+  </Diplomacy>
 </Events>

@@ -11,6 +11,7 @@ public class NodeController : MonoBehaviour {
     private GameObject nodeInfoPanel;
     private GameObject eventPanel;
     private NodeNode selectNode;
+    private GameObject resultPanel;
 
     // Use this for initialization
     void Start()
@@ -18,6 +19,7 @@ public class NodeController : MonoBehaviour {
         generateNodes();
         nodeInfoPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("NodeInformation").gameObject;
         eventPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
+        resultPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("EventResolution").gameObject;
     }
 
     // Update is called once per frame
@@ -107,27 +109,28 @@ public class NodeController : MonoBehaviour {
             int tempint = i;
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
-            button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(e.EventConditions[tempint]); });
+            button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
             button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
-            button.transform.GetChild(0).GetComponent<Text>().text = e.EventConditions[tempint];
+            button.transform.GetChild(0).GetComponent<Text>().text = e.EventConditions[tempint].FlavorText;
         }
 
         // TODO Clean up
         eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n" + e.eventReward;
         string eventtext = "";
-        foreach(string str in e.EventConditions)
+        foreach(EventResult evr in e.EventConditions)
         {
-            eventtext += str + "\n";
+            eventtext += evr.FlavorText + "\n";
         }
         eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
+        //TODO set event information in own class
         eventPanel.SetActive(true);
     }
 
-    public void ResolveEvent(string result)
+    public void ResolveEvent(int eventnum)
     {
-        Debug.Log(result);
         eventPanel.SetActive(false);
-        //TODO load event end scene
-        SceneManager.LoadScene("WorldScene");
+        resultPanel.SetActive(true);
+        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
+        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
     }
 }
