@@ -191,6 +191,7 @@ public class Event {
     private EventResult getEventResult(XmlNodeList nodelist)
     {
         int chance = Random.Range(1, 101);
+        Debug.Log("The chance value " + chance);
         EventResult evres = new EventResult();
         int accChance = 0;
         for (int i = 0; i < nodelist.Count; i++)
@@ -201,8 +202,8 @@ public class Event {
             {
                 evres.Result = nodelist[i].SelectSingleNode("outcome").InnerText;
                 evres.ResultText = nodelist[i].SelectSingleNode("flavourText").InnerText;
+                break;
             }
-
         }
         return evres;
     }
