@@ -13,6 +13,8 @@ public class NodeController : MonoBehaviour {
     private NodeNode selectNode;
     private GameObject resultPanel;
 
+    private bool panelOpen;
+
     // Use this for initialization
     void Start()
     {
@@ -25,7 +27,7 @@ public class NodeController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!panelOpen && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -38,7 +40,6 @@ public class NodeController : MonoBehaviour {
                     if (selected.GetComponent<NodeNode>() != null)
                     {
                         showLocationInfo(selected);
-                        //showLocationInfo(selected.GetComponent<NodeNode>().nodeEvent, selected.GetComponent<NodeNode>().TitleName, selected.GetComponent<NodeNode>().FlavourText);
                     }
                 }
             }
@@ -52,10 +53,12 @@ public class NodeController : MonoBehaviour {
         nodeInfoPanel.SetActive(true);
         nodeInfoPanel.transform.Find("LocationName").GetComponent<Text>().text = selectNode.TitleName;
         nodeInfoPanel.transform.Find("FlavorText").GetComponent<Text>().text = selectNode.FlavourText;
+        panelOpen = true;
     }
 
     public void BackButton()
     {
+        panelOpen = false;
         SceneManager.LoadScene("WorldScene");
     }
 
@@ -92,6 +95,7 @@ public class NodeController : MonoBehaviour {
 
     public void ClosePanel(GameObject panel)
     {
+        panelOpen = false;
         panel.SetActive(false);
     }
 
@@ -123,12 +127,14 @@ public class NodeController : MonoBehaviour {
         }
         eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
         //TODO set event information in own class
+        panelOpen = true;
         eventPanel.SetActive(true);
     }
 
     public void ResolveEvent(int eventnum)
     {
         eventPanel.SetActive(false);
+        panelOpen = true;
         resultPanel.SetActive(true);
         resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
         resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;

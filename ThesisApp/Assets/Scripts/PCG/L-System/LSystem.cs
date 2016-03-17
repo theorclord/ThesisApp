@@ -248,7 +248,7 @@ public class LSystem {
                 // Generate event
                 Event ev = new Event();
                 int eventNumber = Random.Range(0, 3);
-                ev.getXml(eventNumber);
+                ev.GenerateEvent(eventNumber);
                 NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
                 ns.setEventType(eventNumber);
                 newNode.Nodes.Add(ns);

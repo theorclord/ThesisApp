@@ -18,36 +18,9 @@ public class Event {
     private string Tbasic = "/basic";
     private string Tsecond = "/second";
     private string Tthird = "/third";
-    //XML Difficulties
-    //string basic = "Events/Basic";
-    //string intermediate = "Events/Intermediate";
-    //string hard = "Events/Hard";
-    //XML Header
-    //string header = "/Header";
-    //XML Types
-    //string gathering = "/Gathering";
-    //string exploration = "/Diplomacy";
-    //string research = "/Research";
-    //XML Rewards
-    //string rewards = "/Rewards";
-    //string scrap = "/Scrap";
-    //XML Conditions
-    //string conditions = "/Conditions";
-    //string crew = "/Crew-Members";
-    //string engineRoom = "/Room-types/Engine";
-    //string diplomacyRoom = "/Room-types/Diplomacy";
-    //string exploreRoom = "/Room-types/Exploration";
-    //string scienceRoom = "/Room-types/Science";
-    //string energy = "/Energy";
-    //string researchPoints = "/Research";
-    //XML
-    public string localizedStringsFile = "assets/scripts/XML/EventValues.xml";
-    string language;
-    string grouping;
-    XmlDocument root;
 
     //Variables
-    public string eventText = "Basic Gathering Event";
+    public string eventText = "";
     public string eventReward = "Successful event yields 3 scraps";
 
     //TODO find use for enum
@@ -64,134 +37,31 @@ public class Event {
     }
     
 
-    public void getXml(int eventNumber)
+    public void GenerateEvent(int eventNumber)
     {
-        int numEvents = Random.Range(0, 2) + 2;
-        EventResult evbasic = null;
-        XmlNodeList secondEventList = null;
-        XmlNode tempevent = null;
-        XmlNodeList secresults = null;
-        EventResult evsec = null;
         //Add PCG to create the different types of events and rewards
         switch (eventNumber)
         {
             case 0:// gather
-                //basic
-                XmlDocument gatherSection = new XmlDocument();
-                gatherSection.Load(filepath);
-                XmlNode gatherBasic = gatherSection.SelectSingleNode(gather+Tbasic);
-                XmlNodeList gatherBasicList = gatherBasic.SelectNodes("event/results/result");
-
-                evbasic = getEventResult(gatherBasicList);
-                evbasic.FlavorText = gatherBasic.SelectSingleNode("event/eventText").InnerText;
-                EventConditions.Add(evbasic);
-                
-                //second
-                XmlNode gatherSecond = gatherSection.SelectSingleNode(gather + Tsecond);
-                secondEventList = gatherSecond.SelectNodes("event");
-                // random event
-                tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
-                secresults = tempevent.SelectNodes("results/result");
-                evsec = getEventResult(secresults);
-                evsec.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                EventConditions.Add(evsec);
-
-                //third
-                if (numEvents == 3)
-                {
-                    
-                    XmlNode gatherThird = gatherSection.SelectSingleNode(gather + Tthird);
-                    XmlNodeList thirdEventList = gatherThird.SelectNodes("event");
-                    // random event
-                    tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
-                    XmlNodeList thiresults = tempevent.SelectNodes("results/result");
-                    EventResult evres = getEventResult(thiresults);
-                    evres.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                    EventConditions.Add(evres);
-                }
+                setEventDataFromXml(gather);
                 //TODO Set eventText
-                //eventText
+                eventText = "Gathering Event";
                 break;
             case 1://research
-                //basic
-                XmlDocument researchSection = new XmlDocument();
-                researchSection.Load(filepath);
-                XmlNode researchBasic = researchSection.SelectSingleNode(research + Tbasic);
-                XmlNodeList researchBasicList = researchBasic.SelectNodes("event/results/result");
-
-                evbasic = getEventResult(researchBasicList);
-                evbasic.FlavorText = researchBasic.SelectSingleNode("event/eventText").InnerText;
-                EventConditions.Add(evbasic);
-
-                //second
-                XmlNode researchSecond = researchSection.SelectSingleNode(research + Tsecond);
-                secondEventList = researchSecond.SelectNodes("event");
-                // random event
-                tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
-                secresults = tempevent.SelectNodes("results/result");
-                evsec = getEventResult(secresults);
-                evsec.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                EventConditions.Add(evsec);
-
-                //third
-                if (numEvents == 3)
-                {
-
-                    XmlNode diplomacyThird = researchSection.SelectSingleNode(research + Tthird);
-                    XmlNodeList thirdEventList = diplomacyThird.SelectNodes("event");
-                    // random event
-                    tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
-                    XmlNodeList thiresults = tempevent.SelectNodes("results/result");
-                    EventResult evres = getEventResult(thiresults);
-                    evres.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                    EventConditions.Add(evres);
-                }
+                setEventDataFromXml(research);
                 //TODO Set eventText
-                //eventText
+                eventText = "Research Event";
                 break;
             case 2://diplomacy
-                //basic
-                XmlDocument diplomacySection = new XmlDocument();
-                diplomacySection.Load(filepath);
-                XmlNode diplomacyBasic = diplomacySection.SelectSingleNode(diplomacy + Tbasic);
-                XmlNodeList diplomacyBasicList = diplomacyBasic.SelectNodes("event/results/result");
-
-                evbasic = getEventResult(diplomacyBasicList);
-                evbasic.FlavorText = diplomacyBasic.SelectSingleNode("event/eventText").InnerText;
-                EventConditions.Add(evbasic);
-
-                //second
-                XmlNode diplomacySecond = diplomacySection.SelectSingleNode(diplomacy + Tsecond);
-                secondEventList = diplomacySecond.SelectNodes("event");
-                // random event
-                tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
-                secresults = tempevent.SelectNodes("results/result");
-                evsec = getEventResult(secresults);
-                evsec.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                EventConditions.Add(evsec);
-
-                //third
-                if (numEvents == 3)
-                {
-
-                    XmlNode diplomacyThird = diplomacySection.SelectSingleNode(diplomacy + Tthird);
-                    XmlNodeList thirdEventList = diplomacyThird.SelectNodes("event");
-                    // random event
-                    tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
-                    XmlNodeList thiresults = tempevent.SelectNodes("results/result");
-                    EventResult evres = getEventResult(thiresults);
-                    evres.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
-                    EventConditions.Add(evres);
-                }
+                setEventDataFromXml(diplomacy);
                 //TODO Set eventText
-                //eventText
+                eventText = "Diplomacy Event";
                 break;
         }
     }
     private EventResult getEventResult(XmlNodeList nodelist)
     {
         int chance = Random.Range(1, 101);
-        Debug.Log("The chance value " + chance);
         EventResult evres = new EventResult();
         int accChance = 0;
         for (int i = 0; i < nodelist.Count; i++)
@@ -206,5 +76,42 @@ public class Event {
             }
         }
         return evres;
+    }
+
+    private void setEventDataFromXml(string eventType)
+    {
+        int numEvents = Random.Range(0, 2) + 2;
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(filepath);
+        XmlNode basic = xmlDoc.SelectSingleNode(eventType + Tbasic);
+        XmlNodeList basicList = basic.SelectNodes("event/results/result");
+
+        EventResult evbasic = getEventResult(basicList);
+        evbasic.FlavorText = basic.SelectSingleNode("event/eventText").InnerText;
+        EventConditions.Add(evbasic);
+
+        //second
+        XmlNode second = xmlDoc.SelectSingleNode(eventType + Tsecond);
+        XmlNodeList secondEventList = second.SelectNodes("event");
+        // random event
+        XmlNode tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
+        XmlNodeList secresults = tempevent.SelectNodes("results/result");
+        EventResult evsec = getEventResult(secresults);
+        evsec.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
+        EventConditions.Add(evsec);
+
+        //third
+        if (numEvents == 3)
+        {
+
+            XmlNode gatherThird = xmlDoc.SelectSingleNode(eventType + Tthird);
+            XmlNodeList thirdEventList = gatherThird.SelectNodes("event");
+            // random event
+            tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
+            XmlNodeList thiresults = tempevent.SelectNodes("results/result");
+            EventResult evres = getEventResult(thiresults);
+            evres.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
+            EventConditions.Add(evres);
+        }
     }
 }
