@@ -42,7 +42,7 @@ public class LSystem {
         char[] resList = result.ToCharArray();
         while (!replaced)
         { 
-            int a = Random.Range(0, resList.Length);
+            int a = Random.Range(resList.Length/2, resList.Length);
             if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+')
             {
                // Debug.Log("Found candidate: " + resList[a].ToString());
