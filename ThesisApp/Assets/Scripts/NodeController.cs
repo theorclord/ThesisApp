@@ -71,7 +71,6 @@ public class NodeController : MonoBehaviour {
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
-            //nodestat.nodeEvent.getXml();
             node.nodeEvent = nodestat.nodeEvent;
             node.type = nodestat.type;
             switch (node.type)

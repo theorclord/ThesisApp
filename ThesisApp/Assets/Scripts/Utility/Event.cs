@@ -21,7 +21,7 @@ public class Event {
 
     //Variables
     public string eventText = "";
-    public string eventReward = "Successful event yields 3 scraps";
+    public string eventReward = "";
 
     //TODO find use for enum
     //private EventSpec eventSpec;

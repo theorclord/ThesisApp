@@ -14,10 +14,11 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public string FlavourText
         { get; set; }
+
+        public Event nodeEvent
+        { get; set; }
+
         public EventSpec type { get; set; }
-
-
-        public Event nodeEvent = new Event();
         
         public NodeStats(Vector3 pos, string titlename, string flavourText, Event e)
         {

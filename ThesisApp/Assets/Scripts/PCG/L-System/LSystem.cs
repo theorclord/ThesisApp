@@ -232,6 +232,15 @@ public class LSystem {
         if (!duplicate)
         {
             int numIntNodes = Random.Range(1, 4);
+            int[] eventTypeOrder = new int[] {1,2,3 };
+            for(int i = 0; i< eventTypeOrder.Length; i++)
+            {
+                int random = Random.Range(0, eventTypeOrder.Length);
+                int temp = eventTypeOrder[random];
+                eventTypeOrder[random] = eventTypeOrder[i];
+                eventTypeOrder[i] = temp;
+            }
+
             for (int j = 0; j < numIntNodes; j++)
             {
                 // The position of the nodes are currently just at 3 different points
@@ -247,10 +256,9 @@ public class LSystem {
 
                 // Generate event
                 Event ev = new Event();
-                int eventNumber = Random.Range(0, 3);
-                ev.GenerateEvent(eventNumber);
+                ev.GenerateEvent(eventTypeOrder[j]);
                 NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
-                ns.setEventType(eventNumber);
+                ns.setEventType(eventTypeOrder[j]);
                 newNode.Nodes.Add(ns);
             }
             DataManager.instance.Nodes.Add(newNode);
