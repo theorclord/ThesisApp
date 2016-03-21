@@ -450,7 +450,7 @@
           </result>
           <result>
             <chance>40</chance>
-            <flavourText>The atmosphere around here is not breathable! You take a sample before leaving the place. You don’t get the bnus from your skill level</flavourText>
+            <flavourText>The atmosphere around here is not breathable! You take a sample before leaving the place. You don’t get the bonus from your skill level</flavourText>
             <outcome>+ 2 Science points</outcome>
           </result>
           <result>
