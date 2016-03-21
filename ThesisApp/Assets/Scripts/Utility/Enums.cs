@@ -18,7 +18,10 @@ namespace Assets.Scripts.Utility
     {
         START,
         GOAL,
-        NORMAL
+        NORMAL,
+        TRADING,
+        DISTRESS,
+        RANDOM
     }
 
     public enum EventSpec

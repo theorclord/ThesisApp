@@ -60,7 +60,7 @@ public class LSystem {
                 replaced = true;
             }
         }
-
+       // result = addPOIs(result);
         if (!result.Contains("S"))
         {
             string b = "S" + result;
@@ -81,6 +81,35 @@ public class LSystem {
         expanded = result;
         
         Debug.Log(result);
+    }
+
+    public string addPOIs(string str)
+    {
+        string res = "";
+        bool replaced = false;
+        char[] resList = str.ToCharArray();
+        int a = Random.Range(resList.Length / 2, resList.Length);
+        while (!replaced)
+        {
+            // adds Trading post
+            if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+' && resList[a] != 'E')
+            {
+                // Debug.Log("Found candidate: " + resList[a].ToString());
+                string tmpRes = "";
+                for (int i = 0; i < a; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                tmpRes += "T";
+                for (int i = a + 1; i < resList.Length; i++)
+                {
+                    tmpRes += resList[i].ToString();
+                }
+                res = tmpRes;
+                replaced = true;
+            }
+        }
+        return res;
     }
 
     public void interpret()
@@ -189,6 +218,35 @@ public class LSystem {
                     generateNodeStats(newNode);
                     numNodes++;
                     break;
+
+                case 'R'://Random place
+                    break;
+                case 'T'://Trading post
+                    preX = s.x;
+                    preY = s.y;
+                    //Debug.Log("y->Sin " + s.angle + ": " + Mathf.Sin((float)s.angle));
+                    x = s.x + (int)(s.length * Mathf.Cos((float)s.angle));
+                    y = s.y + (int)(s.length * Mathf.Sin((float)s.angle));
+                    s = new State(x, y, s.angle, s.length, s.turningAngle);
+                    //place normal world node
+                    //place world node at position
+                    position = new Vector3((float)x, (float)y);
+                    name = "Node " + numNodes;
+                    description = "Description of node " + numNodes;
+                    type = NodeType.TRADING;
+                    //Test generate 10 random nodes
+                    //Set player start based on start node
+
+                    //Player.Position = new Vector3(position.x, position.y + 1.3f);
+
+                    //NodeStats (World Node)
+                    newNode = new WorldNodeStats(position, name, description);
+                    newNode.Type = type;
+                    generateNodeStats(newNode);
+                    numNodes++;
+                    break;
+                case 'D':// Distress signal
+                    break;
                 case '-':
                     //Debug.Log("Before: " + s.angle);
                     s = new State(s.x, s.y, s.angle - s.turningAngle, s.length, s.turningAngle);
@@ -231,28 +289,37 @@ public class LSystem {
 
         if (!duplicate)
         {
-            int numIntNodes = Random.Range(1, 4);
-            for (int j = 0; j < numIntNodes; j++)
+           /* if (newNode.Type == NodeType.TRADING)
             {
-                // The position of the nodes are currently just at 3 different points
-                Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                // Get name of nodes from xml
-                XmlDocument nodeNameCollection = new XmlDocument();
-                nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
-                XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/nodeFlavour");
-
-                int selectedTitle = Random.Range(0, nameList.Count);
-                string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
-                string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
-
-                // Generate event
-                Event ev = new Event();
-                int eventNumber = Random.Range(0, 3);
-                ev.GenerateEvent(eventNumber);
-                NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
-                ns.setEventType(eventNumber);
+                NodeStats ns = new NodeStats(new Vector3(0, 0), "Trading post", "A Trading post used to trade post", null);
                 newNode.Nodes.Add(ns);
             }
+            else
+            {*/
+
+                int numIntNodes = Random.Range(1, 4);
+                for (int j = 0; j < numIntNodes; j++)
+                {
+                    // The position of the nodes are currently just at 3 different points
+                    Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
+                    // Get name of nodes from xml
+                    XmlDocument nodeNameCollection = new XmlDocument();
+                    nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
+                    XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/nodeFlavour");
+
+                    int selectedTitle = Random.Range(0, nameList.Count);
+                    string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
+                    string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
+
+                    // Generate event
+                    Event ev = new Event();
+                    int eventNumber = Random.Range(0, 3);
+                    ev.GenerateEvent(eventNumber);
+                    NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
+                    ns.setEventType(eventNumber);
+                    newNode.Nodes.Add(ns);
+                }
+            //}
             DataManager.instance.Nodes.Add(newNode);
         }
     }
