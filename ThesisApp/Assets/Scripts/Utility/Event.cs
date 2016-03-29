@@ -23,9 +23,6 @@ public class Event {
     public string eventText = "";
     public string eventReward = "";
 
-    //TODO find use for enum
-    //private EventSpec eventSpec;
-
     public List<EventResult> EventConditions
     {
         get; set;
@@ -81,6 +78,16 @@ public class Event {
         return evres;
     }
 
+    private string renameString(string text)
+    {
+        string alterString = text;
+        foreach(KeyValuePair<string,string> pair in DataManager.instance.BoardPieces)
+        {
+            text.Replace(pair.Key, pair.Value);
+        }
+        return alterString;
+    }
+
     private void setEventDataFromXml(string eventType)
     {
         int numEvents = Random.Range(0, 2) + 2;
@@ -90,7 +97,8 @@ public class Event {
         XmlNodeList basicList = basic.SelectNodes("event/results/result");
 
         EventResult evbasic = getEventResult(basicList);
-        evbasic.FlavorText = basic.SelectSingleNode("event/eventText").InnerText;
+        evbasic.FlavorText = renameString(basic.SelectSingleNode("event/eventText").InnerText);
+        
         EventConditions.Add(evbasic);
 
         //second

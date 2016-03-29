@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pieces>
+  <piece>
+    <flavorName>Castle Crew</flavorName>
+    <enumName>crewMember</enumName>
+  </piece>
+  <piece>
+    <flavorName>Building Materials</flavorName>
+    <enumName>scrap</enumName>
+  </piece>
+  <piece>
+    <flavorName>Building Materials</flavorName>
+    <enumName>scrap</enumName>
+  </piece>
+  <piece>
+    <flavorName>Crystal Charge</flavorName>
+    <enumName>energyPoint</enumName>
+  </piece>
+  <piece>
+    <flavorName>Miners Guild</flavorName>
+    <enumName>EngineeringRoom</enumName>
+  </piece>
+  <piece>
+    <flavorName>Workshop</flavorName>
+    <enumName>MechanicRoom</enumName>
+  </piece>
+  <piece>
+    <flavorName>Alchemical Materials</flavorName>
+    <enumName>sciencePoint</enumName>
+  </piece>
+</Pieces>

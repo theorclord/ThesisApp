@@ -3,7 +3,7 @@
   <Gathering>
     <basic>
       <event>
-        <eventText>Send a crew member to collect resources.</eventText>
+        <eventText>Send a crewMember to collect resources.</eventText>
           <results>
             <result>
               <chance>30</chance>
@@ -17,20 +17,20 @@
             </result>
             <result>
               <chance>15</chance>
-              <flavourText>Your crew member has been attacked!</flavourText>
-              <outcome>1 Crew member injured</outcome>
+              <flavourText>Your crewMember has been attacked!</flavourText>
+              <outcome>1 crewMember injured</outcome>
             </result>
             <result>
               <chance>10</chance>
-              <flavourText>Your crew member has been attacked!</flavourText>
-              <outcome>1 Crew member dead</outcome>
+              <flavourText>Your crewMember has been attacked!</flavourText>
+              <outcome>1 crewMember dead</outcome>
             </result>
           </results>
         </event>
     </basic>
     <second>
       <event>
-        <eventText>Send two crew members for a safer expedition.(Requires 2 available Crew members)</eventText>
+        <eventText>Send two crewMembers for a safer expedition.(Requires 2 available crewMembers)</eventText>
         <results>
           <result>
             <chance>80</chance>
@@ -55,12 +55,12 @@
           <result>
             <chance>10</chance>
             <flavourText>You collect what you can but your machine overheated!</flavourText>
-            <outcome>+ 2 Scrap, 1 Crew member injured</outcome>
+            <outcome>+ 2 Scrap, 1 crewMember injured</outcome>
           </result>
           <result>
             <chance>5</chance>
             <flavourText>You collect what you can but your machine overheated!</flavourText>
-            <outcome>+ 2 Scrap, 1 Crew member dead</outcome>
+            <outcome>+ 2 Scrap, 1 crewMember dead</outcome>
           </result>
           <result>
             <chance>15</chance>
@@ -92,7 +92,7 @@
           <result>
             <chance>20</chance>
             <flavourText>You are attacked but you manage to gather what you collected before running away.</flavourText>
-            <outcome>+ 1 Scrap, + 1 Crew member injured</outcome>
+            <outcome>+ 1 Scrap, + 1 crewMember injured</outcome>
           </result>
         </results>
       </event>
@@ -126,8 +126,8 @@
           </result>
           <result>
             <chance>20</chance>
-            <flavourText>They tried to betray you! Your crew member runs away with some materials.</flavourText>
-            <outcome>+ 1 Scrap, 1 Crew member injured</outcome>
+            <flavourText>They tried to betray you! Your crewMember runs away with some materials.</flavourText>
+            <outcome>+ 1 Scrap, 1 crewMember injured</outcome>
           </result>
         </results>
       </event>
@@ -141,8 +141,8 @@
           </result>
           <result>
             <chance>40</chance>
-            <flavourText>You collect what you can, but one of your crew member got injured.</flavourText>
-            <outcome>+ 2 Scrap, 1 Crew member injured</outcome>
+            <flavourText>You collect what you can, but one of your crewMember got injured.</flavourText>
+            <outcome>+ 2 Scrap, 1 crewMember injured</outcome>
           </result>
         </results>
       </event>
@@ -166,7 +166,7 @@
   <Diplomacy>
     <basic>
       <event>
-        <eventText>Send a crew member to meet the locals.</eventText>
+        <eventText>Send a crewMember to meet the locals.</eventText>
         <results>
           <result>
             <chance>35</chance>
@@ -181,24 +181,24 @@
           <result>
             <chance>15</chance>
             <flavourText>One of them wants to join your crew!</flavourText>
-            <outcome>+ 1 Crew Member</outcome>
+            <outcome>+ 1 crewMember</outcome>
           </result>
           <result>
             <chance>10</chance>
-            <flavourText>They are hostiles! You manage to escape, but your crew member barely made it to the base!</flavourText>
-            <outcome>1 Crew member injured</outcome>
+            <flavourText>They are hostiles! You manage to escape, but your crewMember barely made it to the base!</flavourText>
+            <outcome>1 crewMember injured</outcome>
           </result>
             <result>
               <chance>5</chance>
               <flavourText>They are hostiles! You barely manage to escape.</flavourText>
-              <outcome>1 Crew member dead</outcome>
+              <outcome>1 crewMember dead</outcome>
             </result>
           </results>
       </event>
     </basic>
     <second>
       <event>
-        <eventText>Send a second crew member for more safety. </eventText>
+        <eventText>Send a second crewMember for more safety. </eventText>
         <results>
           <result>
             <chance>35</chance>
@@ -213,7 +213,7 @@
           <result>
             <chance>10</chance>
             <flavourText>One of them wants to join your crew!</flavourText>
-            <outcome>+ 1 Crew member</outcome>
+            <outcome>+ 1 crewMember</outcome>
           </result>
           <result>
             <chance>20</chance>
@@ -233,7 +233,7 @@
           <result>
             <chance>30</chance>
             <flavourText>They offer you a slave against some resources.</flavourText>
-            <outcome>- 2 Scrap, + 1 Crew member</outcome>
+            <outcome>- 2 Scrap, + 1 crewMember</outcome>
           </result>
           <result>
             <chance>30</chance>
@@ -243,7 +243,7 @@
           <result>
             <chance>10</chance>
             <flavourText>They try to steal your supplies! You kill one of them and run away!</flavourText>
-            <outcome>1 Crew member injured</outcome>
+            <outcome>1 crewMember injured</outcome>
           </result>
         </results>
       </event>
@@ -263,12 +263,12 @@
           <result>
             <chance>10</chance>
             <flavourText>You kill all the locals but one. You force him to join your crew.</flavourText>
-            <outcome>+ 1 Crew member</outcome>
+            <outcome>+ 1 crewMember</outcome>
           </result>
           <result>
             <chance>10</chance>
             <flavourText>While you load the supplies in your hold, a survivor attacks you!</flavourText>
-            <outcome>+ 1 Scrap, 1 Crew member dead</outcome>
+            <outcome>+ 1 Scrap, 1 crewMember dead</outcome>
           </result>
           <result>
             <chance>15</chance>
@@ -320,7 +320,7 @@
           <result>
             <chance>20</chance>
             <flavourText>You profaned a holy ground! The locals are becoming mad at you and you quickly run away.</flavourText>
-            <outcome>1 Crew member injured</outcome>
+            <outcome>1 crewMember injured</outcome>
           </result>
         </results>
       </event>
@@ -340,7 +340,7 @@
           <result>
             <chance>10</chance>
             <flavourText>Their generator exploded! You quickly leave before the locals get mad at you.</flavourText>
-            <outcome>1 Crew member injured</outcome>
+            <outcome>1 crewMember injured</outcome>
           </result>
           <result>
             <chance>10</chance>
@@ -379,7 +379,7 @@
   <Research>
     <basic>
       <event>
-        <eventText>Send a crew member to study the surroundings.</eventText>
+        <eventText>Send a crewMember to study the surroundings.</eventText>
         <results>
           <result>
             <chance>60</chance>
@@ -389,11 +389,11 @@
           <result>
             <chance>10</chance>
             <flavourText>The atmosphere around here is not breathable! Your scout takes a sample before leaving the place, but the poisonous gas already went into his lungs.</flavourText>
-            <outcome>+ 1 Science point, 1 Crew member dead</outcome>
+            <outcome>+ 1 Science point, 1 crewMember dead</outcome>
           </result>
           <result>
             <chance>30</chance>
-            <flavourText>Your crew member alone does not find anything really interesting.</flavourText>
+            <flavourText>Your crewMember alone does not find anything really interesting.</flavourText>
             <outcome></outcome>
           </result>
         </results>
@@ -411,7 +411,7 @@
           <result>
             <chance>30</chance>
             <flavourText>The facility seems to be an old research lab. You woke up a strange humanoid and decide to bring him with you in your base.</flavourText>
-            <outcome>- 1 Energy point, + 1 Science point, + 1 Crew member</outcome>
+            <outcome>- 1 Energy point, + 1 Science point, + 1 crewMember</outcome>
           </result>
           <result>
             <chance>20</chance>
@@ -421,7 +421,7 @@
         </results>
       </event>
       <event>
-        <eventText>Send another crew member to study the surroundings efficiently. (Requires 2 available Crew members)(</eventText>
+        <eventText>Send another crewMember to study the surroundings efficiently. (Requires 2 available crewMembers)(</eventText>
         <results>
           <result>
             <chance>60</chance>
@@ -431,7 +431,7 @@
           <result>
             <chance>20</chance>
             <flavourText>The atmosphere around here is not breathable! Your team takes a sample before leaving the place.</flavourText>
-            <outcome>+ 1 Science point, 1 Crew member injured</outcome>
+            <outcome>+ 1 Science point, 1 crewMember injured</outcome>
           </result>
           <result>
             <chance>20</chance>
@@ -503,17 +503,17 @@
             <result>
               <chance>35</chance>
               <flavourText>He wrecked the infirmary in his delirium, but he is safe now. He decides to repay his debt by following you on your journey.</flavourText>
-              <outcome>+ 1 Crew member, Disable 1 Medic room</outcome>
+              <outcome>+ 1 crewMember, Disable 1 Medic room</outcome>
             </result>
             <result>
               <chance>5</chance>
               <flavourText>He wrecked the infirmary in his delirium, but he is safe now. He decides to repay his debt by following you on your journey.</flavourText>
-              <outcome>+ 1 Crew member, Destroy 1 Medic room</outcome>
+              <outcome>+ 1 crewMember, Destroy 1 Medic room</outcome>
             </result>
             <result>
               <chance>40</chance>
               <flavourText>He would not have made it without you. He decides to repay his debt by following you on your journey, but he will first need some more medical assistance.</flavourText>
-              <outcome>+ 1 Crew member (injured)</outcome>
+              <outcome>+ 1 crewMember (injured)</outcome>
             </result>
             <result>
               <chance>20</chance>

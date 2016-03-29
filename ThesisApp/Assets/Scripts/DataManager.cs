@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Utility;
+using System.Xml;
 
 public class DataManager : MonoBehaviour {
     public static DataManager instance;
@@ -13,9 +14,15 @@ public class DataManager : MonoBehaviour {
     public float cameraZoom = 5.0f;
 
     public WorldNodeStats ActiveNode
-    {
-        get; set;
-    }
+    { get; set; }
+
+    public Dictionary<string,string> BoardPieces { get; set; }
+
+    //XML loading variables
+    private string xmlfilepath = "assets/scripts/XML/BoardPieces.xml";
+    private string piecesString = "Pieces/piece";
+    private string identifier = "enumName";
+    private string pieceName = "flavorName";
     void Awake()
     {
         if (!instance)
@@ -31,14 +38,27 @@ public class DataManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Player = new PlayerStats();
+        BoardPieces = new Dictionary<string, string>();
         Nodes = new List<WorldNodeStats>();
+        loadBoardPieces();
         //Load world
         InitializeNodes();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void loadBoardPieces()
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(xmlfilepath);
+        XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
+        foreach(XmlNode node in pieces)
+        {
+            BoardPieces.Add(node.SelectSingleNode(identifier).InnerText, node.SelectSingleNode(pieceName).InnerText);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
