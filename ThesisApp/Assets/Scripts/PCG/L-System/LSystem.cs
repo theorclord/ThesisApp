@@ -298,7 +298,7 @@ public class LSystem {
             {*/
 
                 int numIntNodes = Random.Range(1, 4);
-            int[] eventTypeOrder = new int[] {1,2,3 };
+            int[] eventTypeOrder = new int[] {0,1,2};
             for(int i = 0; i< eventTypeOrder.Length; i++)
             {
                 int random = Random.Range(0, eventTypeOrder.Length);
@@ -323,6 +323,11 @@ public class LSystem {
                     // Generate event
                     Event ev = new Event();
                 ev.GenerateEvent(eventTypeOrder[j]);
+               /* if (eventTypeOrder[j] == 1)
+                {
+                    Debug.Log("Name = " + titlename + ", flav = " + flavour);
+
+                }*/
                     NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
                 ns.setEventType(eventTypeOrder[j]);
                     newNode.Nodes.Add(ns);
