@@ -57,9 +57,9 @@ public class Event {
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
                 break;
-            case 3:
+            /*case 3:
                 eventText = "Trading Post";
-                break;
+                break;*/
         }
     }
     private EventResult getEventResult(XmlNodeList nodelist)
