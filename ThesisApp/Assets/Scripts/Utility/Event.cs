@@ -34,22 +34,22 @@ public class Event {
     }
     
 
-    public void GenerateEvent(int eventNumber)
+    public void GenerateEvent(EventSpec eventType)
     {
         //Add PCG to create the different types of events and rewards
-        switch (eventNumber)
+        switch (eventType)
         {
-            case 0:// gather
+            case EventSpec.GATHER:// gather
                 setEventDataFromXml(gather);
                 //TODO Set eventText
                 eventText = "Gathering Event";
                 break;
-            case 1://research
+            case EventSpec.RESEARCH://research
                 setEventDataFromXml(research);
                 //TODO Set eventText
                 eventText = "Research Event";
                 break;
-            case 2://diplomacy
+            case EventSpec.DIPLOMACY://diplomacy
                 setEventDataFromXml(diplomacy);
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
@@ -70,8 +70,8 @@ public class Event {
             accChance += eventchance;
             if (accChance >= chance)
             {
-                evres.Result = nodelist[i].SelectSingleNode("outcome").InnerText;
-                evres.ResultText = nodelist[i].SelectSingleNode("flavourText").InnerText;
+                evres.Result = renameString(nodelist[i].SelectSingleNode("outcome").InnerText);
+                evres.ResultText = renameString(nodelist[i].SelectSingleNode("flavourText").InnerText);
                 break;
             }
         }
@@ -83,7 +83,7 @@ public class Event {
         string alterString = text;
         foreach(KeyValuePair<string,string> pair in DataManager.instance.BoardPieces)
         {
-            text.Replace(pair.Key, pair.Value);
+            alterString = alterString.Replace(pair.Key, pair.Value);
         }
         return alterString;
     }
@@ -108,7 +108,7 @@ public class Event {
         XmlNode tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
         XmlNodeList secresults = tempevent.SelectNodes("results/result");
         EventResult evsec = getEventResult(secresults);
-        evsec.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
+        evsec.FlavorText = renameString(tempevent.SelectSingleNode("eventText").InnerText);
         EventConditions.Add(evsec);
 
         //third
@@ -121,7 +121,7 @@ public class Event {
             tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
             XmlNodeList thiresults = tempevent.SelectNodes("results/result");
             EventResult evres = getEventResult(thiresults);
-            evres.FlavorText = tempevent.SelectSingleNode("eventText").InnerText;
+            evres.FlavorText = renameString(tempevent.SelectSingleNode("eventText").InnerText);
             EventConditions.Add(evres);
         }
     }

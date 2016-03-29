@@ -9,10 +9,6 @@
     <enumName>scrap</enumName>
   </piece>
   <piece>
-    <flavorName>Building Materials</flavorName>
-    <enumName>scrap</enumName>
-  </piece>
-  <piece>
     <flavorName>Crystal Charge</flavorName>
     <enumName>energyPoint</enumName>
   </piece>

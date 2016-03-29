@@ -322,14 +322,9 @@ public class LSystem {
 
                     // Generate event
                     Event ev = new Event();
-                ev.GenerateEvent(eventTypeOrder[j]);
-               /* if (eventTypeOrder[j] == 1)
-                {
-                    Debug.Log("Name = " + titlename + ", flav = " + flavour);
-
-                }*/
+                    //ev.GenerateEvent(eventTypeOrder[j]);
                     NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
-                ns.setEventType(eventTypeOrder[j]);
+                    ns.setEventType(eventTypeOrder[j]);
                     newNode.Nodes.Add(ns);
                 }
             //}
