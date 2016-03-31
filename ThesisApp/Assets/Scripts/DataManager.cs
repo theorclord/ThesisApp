@@ -6,7 +6,9 @@ using System.Xml;
 
 public class DataManager : MonoBehaviour {
     public static DataManager instance;
-    
+    public Sprite IslandSprite;
+    public Sprite ConqueredSprite;
+    public Sprite GoalSprite;
     public PlayerStats Player
     { get; set; }
     public List<WorldNodeStats> Nodes

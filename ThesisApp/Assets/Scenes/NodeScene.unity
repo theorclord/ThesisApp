@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a91af72495b21024cb5034e3c0e13716, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -684,6 +684,10 @@ Prefab:
     - target: {fileID: 451018, guid: 20c1e1043520f614a87bc5957cb072e4, type: 2}
       propertyPath: m_LocalScale.y
       value: 1.2880578
+      objectReference: {fileID: 0}
+    - target: {fileID: 158524, guid: 20c1e1043520f614a87bc5957cb072e4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20c1e1043520f614a87bc5957cb072e4, type: 2}

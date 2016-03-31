@@ -174,13 +174,33 @@ public class WorldController : MonoBehaviour {
     {
         foreach(WorldNodeStats stat in DataManager.instance.Nodes)
         {
-            GameObject obj = Resources.Load("Prefabs/NodeWorld") as GameObject;
-            GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
-            WorldNode wn = node.GetComponent<WorldNode>();
-            wn.NodeName = stat.Name;
-            wn.NodeDesciption = stat.Description;
-            wn.Visited = stat.Visited;
-            wn.Type = stat.Type;
+            if(stat.Type != NodeType.GOAL)
+            {
+                GameObject obj = Resources.Load("Prefabs/NodeWorldNormal") as GameObject;
+                GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
+                WorldNode wn = node.GetComponent<WorldNode>();
+                wn.NodeName = stat.Name;
+                wn.NodeDesciption = stat.Description;
+                wn.Visited = stat.Visited;
+                wn.Type = stat.Type;
+                if (wn.Visited)
+                {
+                    // Transform t = node.gameObject.transform.FindChild("Sprite");
+                    node.GetComponent<SpriteRenderer>().sprite = DataManager.instance.ConqueredSprite;//Resources.Load("Sprites/Conquered", typeof(Sprite)) as Sprite;
+                }
+            }
+            else
+            {
+                GameObject obj = Resources.Load("Prefabs/NodeWorldGoal") as GameObject;
+                GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
+                WorldNode wn = node.GetComponent<WorldNode>();
+                wn.NodeName = stat.Name;
+                wn.NodeDesciption = stat.Description;
+                wn.Visited = stat.Visited;
+                wn.Type = stat.Type;
+            }
+           
+           
         }
     }
 }

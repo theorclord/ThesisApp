@@ -59,6 +59,8 @@ public class WorldPlayer : MonoBehaviour {
             {
                 if (canGo)
                 {
+                   // Transform t = target.gameObject.transform.FindChild("Sprite");
+                   // t.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Sprits/IslandConquered") as Sprite;
                     SceneManager.LoadScene("NodeScene");
                 }
             }

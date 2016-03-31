@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a91af72495b21024cb5034e3c0e13716, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -654,11 +654,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 71.5
+      value: 62.7
       objectReference: {fileID: 0}
     - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -36.3
+      value: 12.7
       objectReference: {fileID: 0}
     - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
       propertyPath: m_LocalPosition.z
@@ -682,7 +682,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 173356, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21214482, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0606f4ae85fbb9a448cac740fd5a9027,
+        type: 3}
+    - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 9.630166
+      objectReference: {fileID: 0}
+    - target: {fileID: 488396, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 8.05196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8760d519c35eb6448bd2e5d975600864, type: 2}
