@@ -289,17 +289,17 @@ public class LSystem {
 
         if (!duplicate)
         {
-           /* if (newNode.Type == NodeType.TRADING)
-            {
-                NodeStats ns = new NodeStats(new Vector3(0, 0), "Trading post", "A Trading post used to trade post", null);
-                newNode.Nodes.Add(ns);
-            }
-            else
-            {*/
+            /* if (newNode.Type == NodeType.TRADING)
+             {
+                 NodeStats ns = new NodeStats(new Vector3(0, 0), "Trading post", "A Trading post used to trade post", null);
+                 newNode.Nodes.Add(ns);
+             }
+             else
+             {*/
 
-                int numIntNodes = Random.Range(1, 4);
-            int[] eventTypeOrder = new int[] {0,1,2};
-            for(int i = 0; i< eventTypeOrder.Length; i++)
+            int numIntNodes = Random.Range(1, 4);
+            int[] eventTypeOrder = new int[] { 0, 1, 2 };
+            for (int i = 0; i < eventTypeOrder.Length; i++)
             {
                 int random = Random.Range(0, eventTypeOrder.Length);
                 int temp = eventTypeOrder[random];
@@ -307,28 +307,43 @@ public class LSystem {
                 eventTypeOrder[i] = temp;
             }
 
-                for (int j = 0; j < numIntNodes; j++)
+            for (int j = 0; j < numIntNodes; j++)
+            {
+                // The position of the nodes are currently just at 3 different points
+                Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
+                NodeStats ns = new NodeStats();
+                Event ev = new Event();
+                ns.Position = intNodePos;
+                ns.nodeEvent = ev;
+                ns.setEventType(eventTypeOrder[j]);
+                newNode.Nodes.Add(ns);
+                switch (ns.type)
                 {
-                    // The position of the nodes are currently just at 3 different points
-                    Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                    // Get name of nodes from xml
-                    XmlDocument nodeNameCollection = new XmlDocument();
-                    nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
-                    XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/nodeFlavour");
-
-                    int selectedTitle = Random.Range(0, nameList.Count);
-                    string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
-                    string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
-
-                    // Generate event
-                    Event ev = new Event();
-                    //ev.GenerateEvent(eventTypeOrder[j]);
-                    NodeStats ns = new NodeStats(intNodePos, titlename, flavour, ev);
-                    ns.setEventType(eventTypeOrder[j]);
-                    newNode.Nodes.Add(ns);
-                }
+                    case EventSpec.GATHER:
+                        setNameAndFlavor("Gather", ns);
+                        break;
+                    case EventSpec.DIPLOMACY:
+                        setNameAndFlavor("Diplomacy", ns);
+                        break;
+                    case EventSpec.RESEARCH:
+                        setNameAndFlavor("Research", ns);
+                        break;
+                } 
+            }
             //}
             DataManager.instance.Nodes.Add(newNode);
         }
+    }
+    private void setNameAndFlavor(string type, NodeStats ns)
+    {
+        // Get name of nodes from xml
+        XmlDocument nodeNameCollection = new XmlDocument();
+        nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
+        XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/" +type+"/nodeFlavour");
+        int selectedTitle = Random.Range(0, nameList.Count);
+        string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
+        string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
+        ns.TitleName = titlename;
+        ns.FlavourText = flavour;
     }
 }
