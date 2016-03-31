@@ -41,16 +41,19 @@ public class Event {
         switch (eventType)
         {
             case EventSpec.GATHER:// gather
+                setDataFromXml(EventSpec.GATHER);
                 setEventDataFromXml(gather);
                 //TODO Set eventText
                 eventText = "Gathering Event";
                 break;
             case EventSpec.RESEARCH://research
+                setDataFromXml(EventSpec.RESEARCH);
                 setEventDataFromXml(research);
                 //TODO Set eventText
                 eventText = "Research Event";
                 break;
             case EventSpec.DIPLOMACY://diplomacy
+                setDataFromXml(EventSpec.DIPLOMACY);
                 setEventDataFromXml(diplomacy);
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
@@ -161,6 +164,17 @@ public class Event {
         int outSelect = Random.Range(0, outcomeList.Count);
         Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect].SelectSingleNode("piece").InnerText];
         opt.Results.Add(tempOutPiece, int.Parse(outcomeList[outSelect].SelectSingleNode("amount").InnerText));
+        generateConditionFlavor(xmlDoc, conSelect);
         
+    }
+
+    private void generateConditionFlavor(XmlDocument doc, int condNum)
+    {
+        string flav = "";
+        XmlNodeList condList = doc.SelectNodes("eventSystem/eventConditions/condition");
+        XmlNodeList flavList = condList[condNum].SelectNodes("flavors");
+        int r = Random.Range(0, flavList.Count);
+        flav = flavList[r].InnerText;
+        Debug.Log("Flavor text found: " + flav);
     }
 }
