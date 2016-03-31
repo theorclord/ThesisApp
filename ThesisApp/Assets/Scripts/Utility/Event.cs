@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class Event {
     //XML path
     private string filepath = "assets/scripts/XML/EventNodeMarkup.xml";
+    private string eventxmlpath = "assets/scripts/XML/EventSystem.xml";
 
     //XML gather values
     private string gather = "Events/Gathering";
@@ -101,7 +102,10 @@ public class Event {
         }
         return alterString;
     }
-
+    /// <summary>
+    /// Gets the data for the event based on its type
+    /// </summary>
+    /// <param name="eventType"></param>
     private void setEventDataFromXml(string eventType)
     {
         int numEvents = Random.Range(0, 2) + 2;
@@ -138,5 +142,19 @@ public class Event {
             evres.FlavorText = renameString(tempevent.SelectSingleNode("eventText").InnerText);
             EventConditions.Add(evres);
         }
+    }
+
+    private void setDataFromXml(EventSpec eventtype)
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(eventxmlpath);
+
+        //Get conditions
+        XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions");
+
+        //get outcomes
+
+        //get pieces?
+
     }
 }
