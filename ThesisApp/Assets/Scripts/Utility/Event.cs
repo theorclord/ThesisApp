@@ -70,7 +70,21 @@ public class Event {
             accChance += eventchance;
             if (accChance >= chance)
             {
-                evres.Result = renameString(nodelist[i].SelectSingleNode("outcome").InnerText);
+                XmlNodeList outcomes = nodelist[i].SelectNodes("eventOutcome/outcome");
+                string resString ="";
+                for(int j = 0; j<outcomes.Count;j++)
+                {
+                    string[] ranges = outcomes[j].SelectSingleNode("range").InnerText.Split(',');
+                    int amount = Random.Range(int.Parse(ranges[0]), int.Parse(ranges[1]) + 1);
+                    resString = amount + " " + renameString(outcomes[j].SelectSingleNode("piece").InnerText);
+                    resString += " " + outcomes[j].SelectSingleNode("extraFlavor").InnerText;
+                    if(j != outcomes.Count - 1)
+                    {
+                        resString += ", ";
+                    }
+                }
+
+                evres.Result = resString; //renameString(nodelist[i].SelectSingleNode("outcome").InnerText);
                 evres.ResultText = renameString(nodelist[i].SelectSingleNode("flavourText").InnerText);
                 break;
             }

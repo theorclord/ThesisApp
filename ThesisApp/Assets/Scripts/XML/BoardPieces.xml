@@ -5,7 +5,7 @@
     <enumName>crewMember</enumName>
   </piece>
   <piece>
-    <flavorName>Building Materials</flavorName>
+    <flavorName>Building Material</flavorName>
     <enumName>scrap</enumName>
   </piece>
   <piece>
@@ -21,7 +21,11 @@
     <enumName>MechanicRoom</enumName>
   </piece>
   <piece>
-    <flavorName>Alchemical Materials</flavorName>
+    <flavorName>Alchemical Material</flavorName>
     <enumName>sciencePoint</enumName>
+  </piece>
+  <piece>
+    <flavorName>Alchemical Lab</flavorName>
+    <enumName>labRoom</enumName>
   </piece>
 </Pieces>
