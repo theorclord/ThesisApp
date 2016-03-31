@@ -13,37 +13,49 @@
     <condition>
       <piece>sciencePoint</piece>
       <amount>1</amount>
-      <flavors>Use some alchemical knowledge to assist your quest.</flavors>
+      <flavors>
+		<flavor>Use some alchemical knowledge to assist your quest.</flavor>
+	  </flavors>
     </condition>
     
     <condition>
       <piece>scrap</piece>
       <amount>1</amount>
-      <flavors>Take some of your scrap with you in case of bargaining.</flavors>
+      <flavors>
+		<flavor>Take some of your scrap with you in case of bargaining.</flavor>
+	  </flavors>
     </condition>
 
     <condition>
       <piece>energyPoint</piece>
       <amount>1</amount>
-      <flavors>Sacrifice some of your Powercrystal's precious power</flavors>
+      <flavors>
+		<flavor>Sacrifice some of your Powercrystal's precious power</flavor>
+	  </flavors>
     </condition>
 
     <condition>
       <piece>EngineeringRoom</piece>
       <amount>1</amount>
-      <flavors>Take use of your mining skills to better aid digging in this area</flavors>
+      <flavors>
+	    <flavor>Take use of your mining skills to better aid digging in this area</flavor>
+	  </flavors>
     </condition>
 
     <condition>
       <piece>MechanicRoom</piece>
       <amount>1</amount>
-      <flavors>With a workshop, your knowledge of how things work will hopefully give you an advantage here</flavors>
+      <flavors>
+	    <flavor>With a workshop, your knowledge of how things work will hopefully give you an advantage here</flavor>
+	  </flavors>
     </condition>
 
     <condition>
       <piece>labRoom</piece>
       <amount>1</amount>
-      <flavors>Having an alchemical lab in your castle, can be of great value when researching</flavors>
+      <flavors>
+	    <flavor>Having an alchemical lab in your castle, can be of great value when researching</flavor>
+	  </flavors>
     </condition>
   </eventConditions>
 
