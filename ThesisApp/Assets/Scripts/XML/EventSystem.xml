@@ -4,25 +4,46 @@
     <condition>
       <piece>crewMember</piece>
       <amount>1</amount>
-      <flavor></flavor>
+      <flavors>
+        <flavor>Send one castle crew member.</flavor>
+        <flavor>other random flavor for castle crew.</flavor>
+      </flavors>
     </condition>
     
     <condition>
       <piece>sciencePoint</piece>
       <amount>1</amount>
-      <flavor></flavor>
+      <flavors>Use some alchemical knowledge to assist your quest.</flavors>
     </condition>
     
     <condition>
       <piece>scrap</piece>
       <amount>1</amount>
-      <flavor></flavor>
+      <flavors>Take some of your scrap with you in case of bargaining.</flavors>
     </condition>
-    
+
     <condition>
-      <piece></piece>
-      <amount></amount>
-      <flavor></flavor>
+      <piece>energyPoint</piece>
+      <amount>1</amount>
+      <flavors>Sacrifice some of your Powercrystal's precious power</flavors>
+    </condition>
+
+    <condition>
+      <piece>EngineeringRoom</piece>
+      <amount>1</amount>
+      <flavors>Take use of your mining skills to better aid digging in this area</flavors>
+    </condition>
+
+    <condition>
+      <piece>MechanicRoom</piece>
+      <amount>1</amount>
+      <flavors>With a workshop, your knowledge of how things work will hopefully give you an advantage here</flavors>
+    </condition>
+
+    <condition>
+      <piece>labRoom</piece>
+      <amount>1</amount>
+      <flavors>Having an alchemical lab in your castle, can be of great value when researching</flavors>
     </condition>
   </eventConditions>
 
@@ -30,12 +51,97 @@
     <outcome>
       <piece>scrap</piece>
       <range>1,1</range>
-      <extraFlavor></extraFlavor>
+      <extraFlavor>
+        <positive>
+          <flavor>Your quest was very successful indeed!</flavor>
+          <flavor>What a bounty!</flavor>
+        </positive>
+        <negative>
+          <flavor>What a shame.</flavor>
+          <flavor>That's too bad.</flavor>
+        </negative>
+      </extraFlavor>
     </outcome>
     <outcome>
       <piece>sciencePoints</piece>
       <range>1,1</range>
-      <extraFlavor></extraFlavor>
+      <extraFlavor>
+        <positive>
+          <flavor>Holy Cricket! That is great!</flavor>
+          <flavor>FOR SCIENCE!</flavor>
+        </positive>
+        <negative>
+          <flavor>feeling dumber already.</flavor>
+          <flavor>What a waste.</flavor>
+        </negative>
+      </extraFlavor>
+    </outcome>
+    <outcome>
+      <piece>crewMember</piece>
+      <range>1,1</range>
+      <extraFlavor>
+        <positive>
+          <flavor>Welcome new recruit.</flavor>
+          <flavor>That's a good-looking boardpiece!</flavor>
+        </positive>
+        <negative>
+          <flavor>Noooo! Don't die.</flavor>
+        </negative>
+      </extraFlavor>
+    </outcome>
+    <outcome>
+      <piece>labRoom</piece>
+      <range>1,1</range>
+      <extraFlavor>
+        <positive>
+          <flavor>Will you look at that!?</flavor>
+          <flavor>what a nice addition</flavor>
+        </positive>
+        <negative>
+          <flavor>Darn it!</flavor>
+        </negative>
+      </extraFlavor>
+    </outcome>
+    <outcome>
+      <piece>MechanicRoom</piece>
+      <range>1,1</range>
+      <extraFlavor>
+        <positive>
+          <flavor>Spacious.</flavor>
+          <flavor>Not bad, not bad at all.</flavor>
+        </positive>
+        <negative>
+          <flavor>WHY?</flavor>
+          <flavor>HOW?</flavor>
+        </negative>
+      </extraFlavor>
+    </outcome>
+    <outcome>
+      <piece>EngineeringRoom</piece>
+      <range>1,1</range>
+      <extraFlavor>
+        <positive>
+          <flavor>Alright!</flavor>
+          <flavor>Great success.</flavor>
+        </positive>
+        <negative>
+          <flavor>Less resources from now on.</flavor>
+        </negative>
+      </extraFlavor>
+    </outcome>
+    <outcome>
+      <piece>energyPoint</piece>
+      <range>1,1</range>
+      <extraFlavor>
+        <positive>
+          <flavor>ALL HAIL THE MIGHTY CRYSTAL!</flavor>
+          <flavor>Another piece to fuel our floating castle.</flavor>
+        </positive>
+        <negative>
+          <flavor>Don't give up on us, Crystal!</flavor>
+          <flavor>Let's not lose another one, k?</flavor>
+        </negative>
+      </extraFlavor>
     </outcome>
   </eventOutcome>
 
