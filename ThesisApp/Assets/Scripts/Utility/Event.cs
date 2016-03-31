@@ -153,14 +153,14 @@ public class Event {
         //Get conditions
         XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
         int conSelect = Random.Range(0, conditionList.Count);
-        Piece tempPiece = DataManager.instance.BoardPieces[conditionList[conSelect].SelectSingleNode("piece").InnerText];
-        opt.Conditions.Add(tempPiece, int.Parse( conditionList[conSelect].SelectSingleNode("amount").InnerText));
+        Piece tempConPiece = DataManager.instance.BoardPieces[conditionList[conSelect].SelectSingleNode("piece").InnerText];
+        opt.Conditions.Add(tempConPiece, int.Parse( conditionList[conSelect].SelectSingleNode("amount").InnerText));
 
         //Get outcomes
         XmlNodeList outcomeList = xmlDoc.SelectNodes("eventSystem/eventOutcome/outcome");
         int outSelect = Random.Range(0, outcomeList.Count);
-
-        //get pieces?
-
+        Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect].SelectSingleNode("piece").InnerText];
+        opt.Results.Add(tempOutPiece, int.Parse(outcomeList[outSelect].SelectSingleNode("amount").InnerText));
+        
     }
 }
