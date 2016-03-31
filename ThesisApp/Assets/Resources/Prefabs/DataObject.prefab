@@ -39,6 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0713a69a09a4fa141ae362abf89d05b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IslandSprite: {fileID: 21300000, guid: 04eb26923287dfd44a1049eaec6bf8f5, type: 3}
+  ConqueredSprite: {fileID: 21300000, guid: 94d544d200094ab41a1eb38db51d1387, type: 3}
+  GoalSprite: {fileID: 21300000, guid: 376e7f1e13ab301469bf27c356eb1cdb, type: 3}
+  cameraZoom: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

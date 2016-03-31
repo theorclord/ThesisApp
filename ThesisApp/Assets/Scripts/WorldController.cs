@@ -183,6 +183,11 @@ public class WorldController : MonoBehaviour {
                 wn.NodeDesciption = stat.Description;
                 wn.Visited = stat.Visited;
                 wn.Type = stat.Type;
+                if (wn.Visited)
+                {
+                    // Transform t = node.gameObject.transform.FindChild("Sprite");
+                    node.GetComponent<SpriteRenderer>().sprite = DataManager.instance.ConqueredSprite;//Resources.Load("Sprites/Conquered", typeof(Sprite)) as Sprite;
+                }
             }
             else
             {
