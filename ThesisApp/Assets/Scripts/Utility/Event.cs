@@ -96,12 +96,13 @@ public class Event {
     private string renameString(string text)
     {
         string alterString = text;
-        foreach(KeyValuePair<string,string> pair in DataManager.instance.BoardPieces)
+        foreach(KeyValuePair<string,Piece> pair in DataManager.instance.BoardPieces)
         {
-            alterString = alterString.Replace(pair.Key, pair.Value);
+            alterString = alterString.Replace(pair.Key, pair.Value.BoardName);
         }
         return alterString;
     }
+
     /// <summary>
     /// Gets the data for the event based on its type
     /// </summary>
@@ -148,11 +149,16 @@ public class Event {
     {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventxmlpath);
-
+        EventOption opt = new EventOption();
         //Get conditions
-        XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions");
+        XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
+        int conSelect = Random.Range(0, conditionList.Count);
+        Piece tempPiece = DataManager.instance.BoardPieces[conditionList[conSelect].SelectSingleNode("piece").InnerText];
+        opt.Conditions.Add(tempPiece, int.Parse( conditionList[conSelect].SelectSingleNode("amount").InnerText));
 
-        //get outcomes
+        //Get outcomes
+        XmlNodeList outcomeList = xmlDoc.SelectNodes("eventSystem/eventOutcome/outcome");
+        int outSelect = Random.Range(0, outcomeList.Count);
 
         //get pieces?
 

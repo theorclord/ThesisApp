@@ -18,7 +18,7 @@ public class DataManager : MonoBehaviour {
     public WorldNodeStats ActiveNode
     { get; set; }
 
-    public Dictionary<string,string> BoardPieces { get; set; }
+    public Dictionary<string, Piece> BoardPieces { get; set; }
 
     //XML loading variables
     private string xmlfilepath = "assets/scripts/XML/BoardPieces.xml";
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Player = new PlayerStats();
-        BoardPieces = new Dictionary<string, string>();
+        BoardPieces = new Dictionary<string, Piece>();
         Nodes = new List<WorldNodeStats>();
         loadBoardPieces();
         //Load world
@@ -55,7 +55,7 @@ public class DataManager : MonoBehaviour {
         XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
         foreach(XmlNode node in pieces)
         {
-            BoardPieces.Add(node.SelectSingleNode(identifier).InnerText, node.SelectSingleNode(pieceName).InnerText);
+            BoardPieces.Add(node.SelectSingleNode(identifier).InnerText,new Piece( node.SelectSingleNode(pieceName).InnerText));
         }
     }
 
@@ -83,50 +83,6 @@ public class DataManager : MonoBehaviour {
         Debug.Log(r.name);
         ls.expand(r.expandingIterations, r.rules);
         ls.interpret();
-       /* ls.axiom = "SNN";
-        ls.ruleSets.Add("S", "S[-N][+N]");
-        ls.ruleSets.Add("N", "N[+N]-N");
-        ls.expand(3);
-        ls.interpret();  */
-
-        //TODO pcg generation of new node map
-        //TODO generate using PCG
-        /*int numnodes = 10;
-        for (int i = 0; i < numnodes; i++)
-        {
-            Vector3 position = new Vector3(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f));
-            string name = "Node " + i;
-            string description = "Description of node " + i;
-            NodeType type = NodeType.NORMAL;
-            //Test generate 10 random nodes
-            if (i == 0)
-            {
-                //Set player start based on start node
-                type = NodeType.START;
-                Player.Position = new Vector3(position.x, position.y + 1.3f);
-            }
-            else if (i == numnodes - 1)
-            {
-                type = NodeType.GOAL;
-            }
-
-            WorldNodeStats newNode = new WorldNodeStats(position, name, description);
-            newNode.Type = type;
-            int numIntNodes = Random.Range(1, 4);
-            for (int j = 0; j < numIntNodes; j++)
-            {
-                Vector3 intNodePos = new Vector3(-5 + j * 5, 0);
-                string tempname = "Internal node " + j;
-                string flavText = "The node " + j + " was freaking awesome";
-                Event ev = new Event();
-                int eventNumber = Random.Range(0, 3);
-                ev.getXml(eventNumber);
-                NodeStats ns = new NodeStats(intNodePos, tempname, flavText, ev);
-                ns.generateEventType(eventNumber);
-                newNode.Nodes.Add(ns);
-            }
-            Nodes.Add(newNode);
-        }*/
     }
 
 }
