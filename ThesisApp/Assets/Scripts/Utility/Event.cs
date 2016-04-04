@@ -218,6 +218,79 @@ public class Event {
     }
 
     /// <summary>
+    /// !!!Not working yet!!!
+    /// Builds events from chosing conditions then matching outcomes
+    /// </summary>
+    /// <param name="eventtype"></param>
+    private void setDataFromXml(string eventtype)
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(eventxmlpath);
+        XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
+        
+        
+        string[] rangeArr;
+
+        // Basic event
+        EventOption basic = new EventOption();
+        // Select single event condition
+        int[] conBasSelect = randomArray(conditionList.Count);
+        Piece basConPiece = DataManager.instance.BoardPieces[conditionList[conBasSelect[0]].SelectSingleNode("piece").InnerText];
+        basic.Conditions.Add(basConPiece, int.Parse(conditionList[conBasSelect[0]].SelectSingleNode("amount").InnerText));
+
+        //Select common outcome
+        XmlNodeList outcomesList = xmlDoc.SelectNodes("eventSystem/Outcomes/outcome");
+        int[] basoutSelect = randomArray(outcomesList.Count);
+        for(int i =0; i < basoutSelect.Length; i++)
+        {
+            XmlNode xn = outcomesList[basoutSelect[i]];
+            if (xn.SelectSingleNode("type").InnerText == eventtype && xn.SelectSingleNode("rarity").InnerText == "common")
+            {
+                Piece basOutPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
+                rangeArr = xn.SelectSingleNode("range").InnerText.Split(',');
+                basic.Results.Add(new EventOutcome(basOutPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
+                break;
+            }
+        }
+        
+        //################WORK FROM HERE#####################
+        
+        //Select uncommon outcome
+        XmlNodeList outuncom = xmlDoc.SelectNodes("eventSystem/eventOutcome/uncommon/outcome");
+        basoutSelect = randomArray(outuncom.Count);
+        Piece basUnConPiece = DataManager.instance.BoardPieces[outcomesList[basoutSelect[0]].SelectSingleNode("piece").InnerText];
+        rangeArr = outcomesList[basoutSelect[0]].SelectSingleNode("range").InnerText.Split(',');
+        basic.Results.Add(new EventOutcome(basUnConPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
+
+        EventOptions.Add(basic);
+
+        // Second event
+        EventOption opt = new EventOption();
+        //Get conditions
+        //TODO select condition amount based on turns and internal logic
+
+        int numCon = Random.Range(1, 4);
+        int[] conSelect = randomArray(conditionList.Count);
+        for (int i = 0; i < numCon; i++)
+        {
+            Piece tempConPiece = DataManager.instance.BoardPieces[conditionList[conSelect[i]].SelectSingleNode("piece").InnerText];
+            opt.Conditions.Add(tempConPiece, int.Parse(conditionList[conSelect[i]].SelectSingleNode("amount").InnerText));
+        }
+
+        //Get outcomes
+        int numOut = Random.Range(1, 4);
+        XmlNodeList outcomeList = xmlDoc.SelectNodes("eventSystem/eventOutcome/outcome");
+        int[] outSelect = randomArray(outcomeList.Count);
+        for (int i = 0; i < numOut; i++)
+        {
+            Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect[i]].SelectSingleNode("piece").InnerText];
+            rangeArr = outcomeList[outSelect[i]].SelectSingleNode("range").InnerText.Split(',');
+            opt.Results.Add(new EventOutcome(tempOutPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
+        }
+        EventOptions.Add(opt);
+    }
+
+    /// <summary>
     /// Randomizes the array 
     /// </summary>
     /// <param name="size"></param>

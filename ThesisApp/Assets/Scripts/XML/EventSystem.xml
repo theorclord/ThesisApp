@@ -59,17 +59,54 @@
     </condition>
   </eventConditions>
 
-
-  <outcome>
-    <conditions>
-      <condition>crew</condition>
-      <condition>energy</condition>
-    </conditions>
-    <rarity>rare</rarity>
-    <piece>scrap</piece>
-    <range>1,10</range>
-    <type>gathering</type>
-  </outcome>
+  <Outcomes>
+    <outcome>
+      <conditions>
+        <condition>crewMember</condition>
+      </conditions>
+      <rarity>common</rarity>
+      <piece>scrap</piece>
+      <range>1,1</range>
+      <type>gathering</type>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>crewMember</condition>
+      </conditions>
+      <rarity>common</rarity>
+      <piece>sciencePoint</piece>
+      <range>1,1</range>
+      <type>research</type>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>crewMember</condition>
+      </conditions>
+      <rarity>common</rarity>
+      <piece>crew</piece>
+      <range>1,1</range>
+      <type>diplomacy</type>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>crewMember</condition>
+      </conditions>
+      <rarity>common</rarity>
+      <piece>crew</piece>
+      <range>1,1</range>
+      <type>research</type>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>crewMember</condition>
+        <condition>energy</condition>
+      </conditions>
+      <rarity>rare</rarity>
+      <piece>scrap</piece>
+      <range>2,4</range>
+      <type>gathering</type>
+    </outcome>
+  </Outcomes>
   
   <eventOutcome>
     <common>

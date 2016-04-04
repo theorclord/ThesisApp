@@ -184,6 +184,7 @@ public class NodeController : MonoBehaviour {
         resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text =
             curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName +
             curEvent.EventOptions[eventnum].Results[chance].Amount;
+        // This should be the flavor text
         resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text =
             curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName;
     }
