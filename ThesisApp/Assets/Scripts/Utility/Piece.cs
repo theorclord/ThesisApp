@@ -12,5 +12,14 @@ namespace Assets.Scripts.Utility
         {
             BoardName = name;
         }
+        public override int GetHashCode()
+        {
+            return BoardName.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            
+            return base.Equals(obj) && BoardName .Equals( ((Piece)obj).BoardName);
+        }
     }
 }

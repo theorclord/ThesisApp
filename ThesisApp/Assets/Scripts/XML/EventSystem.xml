@@ -59,10 +59,118 @@
     </condition>
   </eventConditions>
 
+
+  <outcome>
+    <conditions>
+      <condition>crew</condition>
+      <condition>energy</condition>
+    </conditions>
+    <rarity>rare</rarity>
+    <piece>scrap</piece>
+    <range>1,10</range>
+    <type>gathering</type>
+  </outcome>
+  
   <eventOutcome>
+    <common>
+      <outcome>
+        <piece>scrap</piece>
+        <range>1,1</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Your quest was very successful indeed!</flavor>
+            <flavor>What a bounty!</flavor>
+          </positive>
+          <negative>
+            <flavor>What a shame.</flavor>
+            <flavor>That's too bad.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+      <outcome>
+        <piece>sciencePoint</piece>
+        <range>1,1</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Holy Cricket! That is great!</flavor>
+            <flavor>FOR SCIENCE!</flavor>
+          </positive>
+          <negative>
+            <flavor>feeling dumber already.</flavor>
+            <flavor>What a waste.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+      <outcome>
+        <piece>crewMember</piece>
+        <range>1,1</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Welcome new recruit.</flavor>
+            <flavor>That's a good-looking boardpiece!</flavor>
+          </positive>
+          <negative>
+            <flavor>Noooo! Don't die.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+    </common>
+    <uncommon>
+      <outcome>
+        <piece>scrap</piece>
+        <range>-1,2</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Your quest was very successful indeed!</flavor>
+            <flavor>What a bounty!</flavor>
+          </positive>
+          <negative>
+            <flavor>What a shame.</flavor>
+            <flavor>That's too bad.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+      <outcome>
+        <piece>sciencePoint</piece>
+        <range>-1,2</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Holy Cricket! That is great!</flavor>
+            <flavor>FOR SCIENCE!</flavor>
+          </positive>
+          <negative>
+            <flavor>feeling dumber already.</flavor>
+            <flavor>What a waste.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+      <outcome>
+        <piece>crewMember</piece>
+        <range>-1,2</range>
+        <chance></chance>
+        <extraFlavor>
+          <positive>
+            <flavor>Welcome new recruit.</flavor>
+            <flavor>That's a good-looking boardpiece!</flavor>
+          </positive>
+          <negative>
+            <flavor>Noooo! Don't die.</flavor>
+          </negative>
+        </extraFlavor>
+      </outcome>
+    </uncommon>
+    <rare>
+      
+    </rare>
     <outcome>
       <piece>scrap</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Your quest was very successful indeed!</flavor>
@@ -75,8 +183,9 @@
       </extraFlavor>
     </outcome>
     <outcome>
-      <piece>sciencePoints</piece>
+      <piece>sciencePoint</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Holy Cricket! That is great!</flavor>
@@ -91,6 +200,7 @@
     <outcome>
       <piece>crewMember</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Welcome new recruit.</flavor>
@@ -104,6 +214,7 @@
     <outcome>
       <piece>labRoom</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Will you look at that!?</flavor>
@@ -117,6 +228,7 @@
     <outcome>
       <piece>MechanicRoom</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Spacious.</flavor>
@@ -131,6 +243,7 @@
     <outcome>
       <piece>EngineeringRoom</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>Alright!</flavor>
@@ -144,6 +257,7 @@
     <outcome>
       <piece>energyPoint</piece>
       <range>1,1</range>
+      <chance></chance>
       <extraFlavor>
         <positive>
           <flavor>ALL HAIL THE MIGHTY CRYSTAL!</flavor>

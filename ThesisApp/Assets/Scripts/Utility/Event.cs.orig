@@ -24,7 +24,6 @@ public class Event {
     public string eventText = "";
     public string eventReward = "";
 
-    public List<EventOption> EventOptions { get; set; }
     public List<EventResult> EventConditions
     {
         get; set;
@@ -33,10 +32,8 @@ public class Event {
     public Event()
     {
         EventConditions = new List<EventResult>();
-
-        // Test option
-        EventOptions = new List<EventOption>();
     }
+    
 
     public void GenerateEvent(EventSpec eventType)
     {
@@ -44,33 +41,28 @@ public class Event {
         switch (eventType)
         {
             case EventSpec.GATHER:// gather
+                setDataFromXml(EventSpec.GATHER);
                 setEventDataFromXml(gather);
                 //TODO Set eventText
                 eventText = "Gathering Event";
-                //Testoption
-                setDataFromXml(EventSpec.GATHER);
                 break;
             case EventSpec.RESEARCH://research
+                setDataFromXml(EventSpec.RESEARCH);
                 setEventDataFromXml(research);
                 //TODO Set eventText
                 eventText = "Research Event";
-                //Testoption
-                setDataFromXml(EventSpec.RESEARCH);
                 break;
             case EventSpec.DIPLOMACY://diplomacy
+                setDataFromXml(EventSpec.DIPLOMACY);
                 setEventDataFromXml(diplomacy);
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
-                //Testoption
-                setDataFromXml(EventSpec.DIPLOMACY);
                 break;
+            /*case 3:
+                eventText = "Trading Post";
+                break;*/
         }
     }
-    /// <summary>
-    /// Selects the result of events which are based on an eventlist
-    /// </summary>
-    /// <param name="nodelist"></param>
-    /// <returns></returns>
     private EventResult getEventResult(XmlNodeList nodelist)
     {
         int chance = Random.Range(1, 101);
@@ -104,11 +96,6 @@ public class Event {
         return evres;
     }
 
-    /// <summary>
-    /// Renames boardgame pieces based on their enum name
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
     private string renameString(string text)
     {
         string alterString = text;
@@ -120,9 +107,9 @@ public class Event {
     }
 
     /// <summary>
-    /// Builds events from predefined events
+    /// Gets the data for the event based on its type
     /// </summary>
-    /// <param name="eventType">used for selecting the xml path</param>
+    /// <param name="eventType"></param>
     private void setEventDataFromXml(string eventType)
     {
         int numEvents = Random.Range(0, 2) + 2;
@@ -161,82 +148,30 @@ public class Event {
         }
     }
 
-    /// <summary>
-    /// Builds events from blocks of outcomes and conditions
-    /// </summary>
-    /// <param name="eventtype"></param>
     private void setDataFromXml(EventSpec eventtype)
     {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventxmlpath);
-        string[] rangeArr;
-
-        // Basic event
-        EventOption basic = new EventOption();
-        // Send a crew member, basic event
-        basic.Conditions.Add(DataManager.instance.BoardPieces["crewMember"], 1);
-        //Select common outcome
-        XmlNodeList outcom = xmlDoc.SelectNodes("eventSystem/eventOutcome/common/outcome");
-        int[] basoutSelect = randomArray(outcom.Count);
-        Piece basConPiece = DataManager.instance.BoardPieces[outcom[basoutSelect[0]].SelectSingleNode("piece").InnerText];
-        rangeArr = outcom[basoutSelect[0]].SelectSingleNode("range").InnerText.Split(',');
-        basic.Results.Add(new EventOutcome(basConPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
-        //Select uncommon outcome
-        XmlNodeList outuncom = xmlDoc.SelectNodes("eventSystem/eventOutcome/uncommon/outcome");
-        basoutSelect = randomArray(outuncom.Count);
-        Piece basUnConPiece = DataManager.instance.BoardPieces[outcom[basoutSelect[0]].SelectSingleNode("piece").InnerText];
-        rangeArr = outcom[basoutSelect[0]].SelectSingleNode("range").InnerText.Split(',');
-        basic.Results.Add(new EventOutcome( basUnConPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
-
-        EventOptions.Add(basic);
-
-        // Second event
         EventOption opt = new EventOption();
         //Get conditions
-        //TODO select condition amount based on turns and internal logic
-
-        int numCon = Random.Range(1,4);
         XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
-        int[] conSelect = randomArray(conditionList.Count);
-        for (int i = 0; i < numCon; i++)
-        {
-            Piece tempConPiece = DataManager.instance.BoardPieces[conditionList[conSelect[i]].SelectSingleNode("piece").InnerText];
-            opt.Conditions.Add(tempConPiece, int.Parse(conditionList[conSelect[i]].SelectSingleNode("amount").InnerText));
-        }
+        int conSelect = Random.Range(0, conditionList.Count);
+        Piece tempConPiece = DataManager.instance.BoardPieces[conditionList[conSelect].SelectSingleNode("piece").InnerText];
+        opt.Conditions.Add(tempConPiece, int.Parse( conditionList[conSelect].SelectSingleNode("amount").InnerText));
 
         //Get outcomes
-        int numOut = Random.Range(1, 4);
         XmlNodeList outcomeList = xmlDoc.SelectNodes("eventSystem/eventOutcome/outcome");
-        int[] outSelect = randomArray(outcomeList.Count);
-        for (int i = 0; i < numOut; i++)
-        {
-            Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect[i]].SelectSingleNode("piece").InnerText];
-            rangeArr = outcomeList[outSelect[i]].SelectSingleNode("range").InnerText.Split(',');
-            opt.Results.Add(new EventOutcome( tempOutPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
-        }
-        EventOptions.Add(opt);
-    }
+        int outSelect = Random.Range(0, outcomeList.Count);
+<<<<<<< HEAD
+        Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect].SelectSingleNode("piece").InnerText];
+        opt.Results.Add(tempOutPiece, int.Parse(outcomeList[outSelect].SelectSingleNode("amount").InnerText));
+        
+=======
 
-    /// <summary>
-    /// Randomizes the array 
-    /// </summary>
-    /// <param name="size"></param>
-    /// <returns></returns>
-    private int[] randomArray(int size)
-    {
-        int[] randomArr = new int[size];
-        for(int i=0; i < randomArr.Length; i++)
-        {
-            randomArr[i] = i;
-        }
-        for(int i = 0; i < randomArr.Length; i++)
-        {
-            int random = Random.Range(0, randomArr.Length);
-            int temp = randomArr[random];
-            randomArr[random] = randomArr[i];
-            randomArr[i] = temp;
-        }
-        return randomArr;
+        //get pieces?
+        generateConditionFlavor(xmlDoc, conSelect);
+
+>>>>>>> 6705cc10881f15fa3437b5b5e2151e4cb2f555b6
     }
 
     private void generateConditionFlavor(XmlDocument doc, int condNum)

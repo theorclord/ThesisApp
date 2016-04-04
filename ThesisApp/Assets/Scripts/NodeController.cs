@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Utility;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class NodeController : MonoBehaviour {
 
@@ -107,6 +108,41 @@ public class NodeController : MonoBehaviour {
         // Set conditions and choices:
         Transform buttoncont = eventPanel.transform.FindChild("ButtonController");
 
+        //EventOption button section
+        for (int i = 0; i < e.EventOptions.Count; i++)
+        {
+            //Need to copy else the value is only set to the last i
+            int tempint = i;
+            GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
+            button.transform.SetParent(buttoncont);
+            button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
+            string buttonText = "";
+            int numCon = 0;
+            foreach(KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
+            {
+                buttonText += pair.Key.BoardName + " " + pair.Value; 
+                numCon++;
+                if(e.EventOptions[tempint].Conditions.Count != numCon)
+                {
+                    buttonText += ", ";
+                }
+            }
+            button.transform.GetChild(0).GetComponent<Text>().text = buttonText;
+        }
+
+        // TODO Clean up
+        // TODO Set flavor text based on eventOption
+        eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n" + e.eventReward;
+        string eventtext = "";
+        foreach (EventResult evr in e.EventConditions)
+        {
+            eventtext += evr.FlavorText + "\n";
+        }
+        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
+
+        //EventResult button section
+        /*
         for(int i = 0; i<e.EventConditions.Count; i++)
         {
             //Need to copy else the value is only set to the last i
@@ -127,16 +163,28 @@ public class NodeController : MonoBehaviour {
         }
         eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
         //TODO set event information in own class
+        */
         panelOpen = true;
         eventPanel.SetActive(true);
     }
 
     public void ResolveEvent(int eventnum)
     {
+        Event curEvent = selectNode.nodeEvent;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
-        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
+        //Old function
+        //resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
+        //resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
+
+        //New function
+        // TODO select random result based on chance of outcome
+        int chance = Random.Range(0, curEvent.EventOptions[eventnum].Results.Count);
+        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text =
+            curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName +
+            curEvent.EventOptions[eventnum].Results[chance].Amount;
+        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text =
+            curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName;
     }
 }
