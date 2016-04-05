@@ -49,7 +49,7 @@ public class Event {
                 eventText = "Gathering Event";
                 //Testoption
                 //setDataFromXml(EventSpec.GATHER);
-                setDataFromXml("gahtering");
+                setDataFromXml("gathering");
 
                 break;
             case EventSpec.RESEARCH://research
