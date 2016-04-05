@@ -83,7 +83,7 @@
         <condition>crewMember</condition>
       </conditions>
       <rarity>common</rarity>
-      <piece>crew</piece>
+      <piece>crewMember</piece>
       <range>1,1</range>
       <type>diplomacy</type>
     </outcome>
@@ -92,7 +92,7 @@
         <condition>crewMember</condition>
       </conditions>
       <rarity>common</rarity>
-      <piece>crew</piece>
+      <piece>crewMember</piece>
       <range>1,1</range>
       <type>research</type>
     </outcome>

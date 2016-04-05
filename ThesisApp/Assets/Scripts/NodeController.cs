@@ -181,6 +181,8 @@ public class NodeController : MonoBehaviour {
         //New function
         // TODO select random result based on chance of outcome
         int chance = Random.Range(0, curEvent.EventOptions[eventnum].Results.Count);
+        Debug.Log(chance);
+        Debug.Log(curEvent.EventOptions[eventnum].Results.Count);
         resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text =
             curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName +
             curEvent.EventOptions[eventnum].Results[chance].Amount;

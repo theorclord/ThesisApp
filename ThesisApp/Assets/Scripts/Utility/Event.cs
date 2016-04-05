@@ -44,25 +44,29 @@ public class Event {
         switch (eventType)
         {
             case EventSpec.GATHER:// gather
-                setEventDataFromXml(gather);
+                //setEventDataFromXml(gather);
                 //TODO Set eventText
                 eventText = "Gathering Event";
                 //Testoption
-                setDataFromXml(EventSpec.GATHER);
+                //setDataFromXml(EventSpec.GATHER);
+                setDataFromXml("gahtering");
+
                 break;
             case EventSpec.RESEARCH://research
-                setEventDataFromXml(research);
+                //setEventDataFromXml(research);
                 //TODO Set eventText
                 eventText = "Research Event";
                 //Testoption
-                setDataFromXml(EventSpec.RESEARCH);
+                //setDataFromXml(EventSpec.RESEARCH);
+                setDataFromXml("research");
                 break;
             case EventSpec.DIPLOMACY://diplomacy
-                setEventDataFromXml(diplomacy);
+                //setEventDataFromXml(diplomacy);
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
                 //Testoption
-                setDataFromXml(EventSpec.DIPLOMACY);
+                //setDataFromXml(EventSpec.DIPLOMACY);
+                setDataFromXml("diplomacy");
                 break;
         }
     }
@@ -227,8 +231,8 @@ public class Event {
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventxmlpath);
         XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
-        
-        
+        XmlNodeList outcomesList = xmlDoc.SelectNodes("eventSystem/Outcomes/outcome");
+
         string[] rangeArr;
 
         // Basic event
@@ -239,11 +243,11 @@ public class Event {
         basic.Conditions.Add(basConPiece, int.Parse(conditionList[conBasSelect[0]].SelectSingleNode("amount").InnerText));
 
         //Select common outcome
-        XmlNodeList outcomesList = xmlDoc.SelectNodes("eventSystem/Outcomes/outcome");
         int[] basoutSelect = randomArray(outcomesList.Count);
         for(int i =0; i < basoutSelect.Length; i++)
         {
             XmlNode xn = outcomesList[basoutSelect[i]];
+            
             if (xn.SelectSingleNode("type").InnerText == eventtype && xn.SelectSingleNode("rarity").InnerText == "common")
             {
                 Piece basOutPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
@@ -253,15 +257,21 @@ public class Event {
             }
         }
         
-        //################WORK FROM HERE#####################
-        
         //Select uncommon outcome
-        XmlNodeList outuncom = xmlDoc.SelectNodes("eventSystem/eventOutcome/uncommon/outcome");
-        basoutSelect = randomArray(outuncom.Count);
-        Piece basUnConPiece = DataManager.instance.BoardPieces[outcomesList[basoutSelect[0]].SelectSingleNode("piece").InnerText];
-        rangeArr = outcomesList[basoutSelect[0]].SelectSingleNode("range").InnerText.Split(',');
-        basic.Results.Add(new EventOutcome(basUnConPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
+        basoutSelect = randomArray(outcomesList.Count);
+        for (int i = 0; i < basoutSelect.Length; i++)
+        {
+            XmlNode xn = outcomesList[basoutSelect[i]];
+            if (xn.SelectSingleNode("type").InnerText == eventtype && xn.SelectSingleNode("rarity").InnerText == "uncommon")
+            {
+                Piece basOutPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
+                rangeArr = xn.SelectSingleNode("range").InnerText.Split(',');
+                basic.Results.Add(new EventOutcome(basOutPiece, Random.Range(int.Parse(rangeArr[0]), int.Parse(rangeArr[1]))));
+                break;
+            }
+        }
 
+        //################WORK FROM HERE#####################
         EventOptions.Add(basic);
 
         // Second event
