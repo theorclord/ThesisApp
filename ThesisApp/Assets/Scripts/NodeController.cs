@@ -135,35 +135,7 @@ public class NodeController : MonoBehaviour {
         // TODO Set flavor text based on eventOption
         eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n" + e.eventReward;
         string eventtext = "";
-        foreach (EventResult evr in e.EventConditions)
-        {
-            eventtext += evr.FlavorText + "\n";
-        }
         eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
-
-        //EventResult button section
-        /*
-        for(int i = 0; i<e.EventConditions.Count; i++)
-        {
-            //Need to copy else the value is only set to the last i
-            int tempint = i;
-            GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
-            button.transform.SetParent(buttoncont);
-            button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
-            button.transform.GetChild(0).GetComponent<Text>().text = e.EventConditions[tempint].FlavorText;
-        }
-
-        // TODO Clean up
-        eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n" + e.eventReward;
-        string eventtext = "";
-        foreach(EventResult evr in e.EventConditions)
-        {
-            eventtext += evr.FlavorText + "\n";
-        }
-        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = eventtext;
-        //TODO set event information in own class
-        */
         panelOpen = true;
         eventPanel.SetActive(true);
     }
@@ -179,13 +151,32 @@ public class NodeController : MonoBehaviour {
         //resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
 
         //New function
-        // TODO select random result based on chance of outcome
-        int chance = Random.Range(0, curEvent.EventOptions[eventnum].Results.Count);
-        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text =
-            curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName +
-            curEvent.EventOptions[eventnum].Results[chance].Amount;
+        string resultString = "";
+        int chance = Random.Range(0, 100) + 1;
+        int accumChance = 0;
+        for (int i = 0; i < curEvent.EventOptions[eventnum].Results.Count; i++)
+        {
+            EventOutcome eo = curEvent.EventOptions[eventnum].Results[i];
+            if(eo.Chance >= chance-accumChance)
+            {
+                int tempCount = 0;
+                foreach(KeyValuePair<Piece,int[]> pair in eo.Pieces)
+                {
+                    tempCount++;
+                    resultString += pair.Key.BoardName + " " + Random.Range(pair.Value[0], pair.Value[1] + 1);
+                    if (eo.Pieces.Count != tempCount)
+                    {
+                        resultString += ", ";
+                    }
+                }
+                break;
+            } else
+            {
+                accumChance += eo.Chance;
+            }
+        }
+        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
         // This should be the flavor text
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text =
-            curEvent.EventOptions[eventnum].Results[chance].BoardPiece.BoardName;
+        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultString;
     }
 }

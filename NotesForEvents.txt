@@ -1,0 +1,2 @@
+Notes on Events:
+Have faction as input. Take max val from range if allied. Take min if enemy

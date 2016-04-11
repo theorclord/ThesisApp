@@ -1,0 +1,5 @@
+Event generation:
+From fixed event structure
+From list of basic/second/tertiary
+From piece wise with conditions and outcomes
+From piece wise with conditions and outcomes linked

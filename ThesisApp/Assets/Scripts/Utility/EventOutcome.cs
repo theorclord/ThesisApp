@@ -7,18 +7,26 @@ namespace Assets.Scripts.Utility
 {
     public class EventOutcome
     {
+        public Dictionary<Piece, int[]> Pieces { get; set; }
 
-        public EventOutcome(Piece basConPiece, int amount)
+        public EventOutcome()
         {
-            this.BoardPiece = basConPiece;
-            this.Amount = amount;
+            Pieces = new Dictionary<Piece, int[]>();
         }
 
-        public int Amount { get; set; }
-
-        public Piece BoardPiece { get; set; }
-
         public int Chance { get; set; }
-
+        public EventOutcomeType Type { get; set; }
+        public void AddPiece(Piece piece, int[] range)
+        {
+            if (Pieces.ContainsKey(piece))
+            {
+                Pieces[piece][0] += range[0];
+                Pieces[piece][1] += range[1];
+            } else
+            {
+                Pieces.Add(piece, range);
+            }
+        }
+        
     }
 }

@@ -38,6 +38,12 @@ namespace Assets.Scripts.Utility
         HARD
     }
 
+    public enum EventOutcomeType
+    {
+        SUCCESS,
+        NEUTRAL,
+        FAILURE
+    }
     class Enums
     {
     }
