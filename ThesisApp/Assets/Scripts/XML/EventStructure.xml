@@ -65,7 +65,8 @@
               <range>1,2</range>
             </piece>  
             <flavors>
-              <flavor></flavor>
+              <flavor>Your castle member was able to collect some resources for you.</flavor>
+              <flavor>This is all that the castle member was able to find.</flavor>
             </flavors>
           </option>
         </normal>
@@ -125,7 +126,8 @@
               <range>1,2</range>
             </piece>
             <flavors>
-              <flavor></flavor>
+              <flavor>Your castle member couldn't find much of value, but at least there was something.</flavor>
+              <flavor>There wasn't much to be collected here, after all.</flavor>
             </flavors>
           </option>
         </normal>
@@ -136,7 +138,8 @@
               <range>1,2</range>
             </piece>
             <flavors>
-              <flavor></flavor>
+              <flavor>All that could be gathered was this.</flavor>
+              <flavor>Not much. But it is something.</flavor>
             </flavors>
           </option>
         </critical>
@@ -359,9 +362,6 @@
               <name>crewMember</name>
               <range>-1,-1</range>
             </piece>
-            <flavors>
-              <flavor></flavor>
-            </flavors>
             <piece>
               <name>scrap</name>
               <range>1,1</range>
