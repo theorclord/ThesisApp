@@ -13,14 +13,14 @@ public class Event {
     // Crit val
     private int crit = 75;
     //XML gather values
-    private string gather = "Events/Gathering";
-    private string research = "Events/Research";
-    private string diplomacy = "Events/Diplomacy";
+    //private string gather = "Events/Gathering";
+    //private string research = "Events/Research";
+    //private string diplomacy = "Events/Diplomacy";
 
     //XML type events
-    private string Tbasic = "/basic";
-    private string Tsecond = "/second";
-    private string Tthird = "/third";
+    //private string Tbasic = "/basic";
+    //private string Tsecond = "/second";
+    //private string Tthird = "/third";
 
     //Variables
     public string eventText = "";
