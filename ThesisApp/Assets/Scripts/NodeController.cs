@@ -152,6 +152,7 @@ public class NodeController : MonoBehaviour {
 
         //New function
         string resultString = "";
+        string resFlavor = "";
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
         for (int i = 0; i < curEvent.EventOptions[eventnum].Results.Count; i++)
@@ -159,6 +160,7 @@ public class NodeController : MonoBehaviour {
             EventOutcome eo = curEvent.EventOptions[eventnum].Results[i];
             if(eo.Chance >= chance-accumChance)
             {
+                resFlavor = eo.outcomeFlavor;
                 int tempCount = 0;
                 foreach(KeyValuePair<Piece,int[]> pair in eo.Pieces)
                 {
@@ -177,6 +179,6 @@ public class NodeController : MonoBehaviour {
         }
         resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
         // This should be the flavor text
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultString;
+        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resFlavor;
     }
 }

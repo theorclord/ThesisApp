@@ -212,6 +212,12 @@ public class Event {
             int[] range = new int[] { int.Parse(rangestr[0]), int.Parse(rangestr[1]) };
             evo.AddPiece(outPiece, range);
         }
+        // Fetching Result Flavor text
+        XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
+        int[] flavArr = randomArray(resFlavors.Count);
+        string resFlavText = resFlavors[flavArr[0]].InnerText;
+        evo.outcomeFlavor = resFlavText;
+
         return evo;
     }
 }

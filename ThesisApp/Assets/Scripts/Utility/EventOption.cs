@@ -11,6 +11,7 @@ namespace Assets.Scripts.Utility
         public List<EventOutcome> Results { get; set; }
 
         public string FlavorText { get; set; }
+        public string ResultFlavor { get; set; }
 
         public EventOption()
         {
