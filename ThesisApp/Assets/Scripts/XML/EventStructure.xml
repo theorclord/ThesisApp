@@ -537,5 +537,22 @@
         </critical>
       </failure>
     </outcome>
+    <introflavor>
+      <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
+      <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
+      <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
+      <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
+      <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
+      <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
+      <flavor>The rubbles from an airship remain on the edge of the island</flavor>
+      <flavor>You see a huge structure that looks like your castle.</flavor>
+      <flavor>An old airship seems to have crashed here long ago.</flavor>
+      <flavor>You see an old construction site nearby.</flavor>
+      <flavor>An abandoned factory appears in the distance.</flavor>
+      <flavor>You spot the ruins of an old factory.</flavor>
+      <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
+      <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
+      <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
+    </introflavor>
   </gathering>
 </eventstructure>
