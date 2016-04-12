@@ -65,7 +65,8 @@
               <range>1,2</range>
             </piece>  
             <flavors>
-              <flavor></flavor>
+              <flavor>Your castle member was able to collect some resources for you.</flavor>
+              <flavor>This is all that the castle member was able to find.</flavor>
             </flavors>
           </option>
         </normal>
@@ -359,9 +360,6 @@
               <name>crewMember</name>
               <range>-1,-1</range>
             </piece>
-            <flavors>
-              <flavor></flavor>
-            </flavors>
             <piece>
               <name>scrap</name>
               <range>1,1</range>
