@@ -25,6 +25,7 @@ public class Event {
     //Variables
     public string eventText = "";
     public string eventReward = "";
+    public string entryFlavor = "";
 
     public List<EventOption> EventOptions { get; set; }
 
@@ -193,6 +194,9 @@ public class Event {
                 break;
             }
         }
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
+        int[] flSel = randomArray(entryflavs.Count);
+        entryFlavor = entryflavs[flSel[0]].InnerText;
         
         return evOpt;
     }
