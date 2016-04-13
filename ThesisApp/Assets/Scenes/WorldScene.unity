@@ -233,6 +233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0713a69a09a4fa141ae362abf89d05b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IslandSprite: {fileID: 0}
+  ConqueredSprite: {fileID: 0}
+  GoalSprite: {fileID: 0}
   cameraZoom: 5
 --- !u!4 &616867044
 Transform:
