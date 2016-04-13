@@ -196,9 +196,9 @@ public class Event {
                 break;
             }
         }
-      /*  XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + "/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
-        entryFlavor = entryflavs[flSel[0]].InnerText;*/
+        entryFlavor = entryflavs[flSel[0]].InnerText;
         
         return evOpt;
     }
