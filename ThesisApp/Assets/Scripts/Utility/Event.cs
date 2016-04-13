@@ -194,6 +194,7 @@ public class Event {
                 break;
             }
         }
+        //Set flavors
         XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
         int[] flSel = randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
