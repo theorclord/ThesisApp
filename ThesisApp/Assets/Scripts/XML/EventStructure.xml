@@ -574,6 +574,29 @@
       <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
       <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
     </alchemy>
+    <diplomacy>
+      
+    </diplomacy>
+    <abandoned>
+      <main>
+        <flavor>You realize this place used to belong to </flavor>
+        <flavor>You see some remnants of a faction that have been here </flavor>
+        <flavor>There are traces of beings that have lived around here.</flavor>
+        <flavor>This place reminds you of another place you have seen before. You recall someone who lives like this. </flavor>
+      </main>
+      <second>
+        <flavor> they might still be around. </flavor>
+        <flavor> it is unclear if they are still here.</flavor>
+        <flavor> Maybe some of them are nearby?</flavor>
+        <flavor> Could there be someone here?</flavor>
+      </second>
+      <extra>
+        <flavor>Be careful.</flavor>
+        <flavor>Keep an eye open.</flavor>
+        <flavor>You will have to remain careful.</flavor>
+        <flavor>Don't let your guard down.</flavor>
+      </extra>
+    </abandoned>
   </introflavor>
   <endflavor>
     <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
