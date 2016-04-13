@@ -575,7 +575,11 @@
       <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
     </alchemy>
     <diplomacy>
-      
+      <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
+      <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
+      <flavor></flavor>
+      <flavor></flavor>
+      <flavor></flavor>
     </diplomacy>
     <abandoned>
       <main>
