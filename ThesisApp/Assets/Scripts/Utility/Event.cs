@@ -197,7 +197,7 @@ public class Event {
             }
         }
         XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
-        int[] flSel = randomArray(entryflavs.Count);
+        int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
         
         return evOpt;
@@ -220,7 +220,7 @@ public class Event {
         }
         // Fetching Result Flavor text
         XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
-        int[] flavArr = randomArray(resFlavors.Count);
+        int[] flavArr = DataManager.randomArray(resFlavors.Count);
         string resFlavText = resFlavors[flavArr[0]].InnerText;
         evo.outcomeFlavor = resFlavText;
 
