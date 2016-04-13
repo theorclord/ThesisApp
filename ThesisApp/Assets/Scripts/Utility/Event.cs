@@ -196,9 +196,9 @@ public class Event {
                 break;
             }
         }
-        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
+      /*  XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
-        entryFlavor = entryflavs[flSel[0]].InnerText;
+        entryFlavor = entryflavs[flSel[0]].InnerText;*/
         
         return evOpt;
     }
@@ -219,10 +219,10 @@ public class Event {
             evo.AddPiece(outPiece, range);
         }
         // Fetching Result Flavor text
-        XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
+       /* XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
         int[] flavArr = DataManager.randomArray(resFlavors.Count);
         string resFlavText = resFlavors[flavArr[0]].InnerText;
-        evo.outcomeFlavor = resFlavText;
+        evo.outcomeFlavor = resFlavText;*/
 
         return evo;
     }
