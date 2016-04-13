@@ -77,34 +77,20 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype)
     {
-        //Basic event
+        //Basic option
         EventOptions.Add(generateEvent(0, 1, eventtype));
+        //Second option
         EventOptions.Add(generateEvent(1, 2, eventtype));
+        //Third option
         EventOptions.Add(generateEvent(2, 3, eventtype));
     }
-    /*
     /// <summary>
-    /// Randomizes the array 
+    /// Generates the content of the events based on the condition
     /// </summary>
-    /// <param name="size"></param>
+    /// <param name="conType">Type of conditions, 0 for required, 1 for basic, 2 for advanced</param>
+    /// <param name="numCon">Number of conditions</param>
+    /// <param name="eventtype">The type of event, gathering, diplomacy, research</param>
     /// <returns></returns>
-    private int[] randomArray(int size)
-    {
-        int[] randomArr = new int[size];
-        for(int i=0; i < randomArr.Length; i++)
-        {
-            randomArr[i] = i;
-        }
-        for(int i = 0; i < randomArr.Length; i++)
-        {
-            int random = Random.Range(0, randomArr.Length);
-            int temp = randomArr[random];
-            randomArr[random] = randomArr[i];
-            randomArr[i] = temp;
-        }
-        return randomArr;
-    }
-    */
     private EventOption generateEvent(int conType, int numCon, string eventtype)
     {
         // test vars
@@ -113,7 +99,6 @@ public class Event {
         //int numOut = 1;
         //string eventtype = "gathering";
         //string eventLevel = "basic";
-
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventstructurepath);
         XmlNodeList conditionList = xmlDoc.SelectNodes(eventconditions);

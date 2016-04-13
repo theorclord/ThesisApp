@@ -20,6 +20,11 @@ public class DataManager : MonoBehaviour {
 
     public Dictionary<string, Piece> BoardPieces { get; set; }
 
+    public List<Event> SavedEvents
+    {
+        get; set;
+    }
+
     //XML loading variables
     private string xmlfilepath = "assets/scripts/XML/BoardPieces.xml";
     private string piecesString = "Pieces/piece";
