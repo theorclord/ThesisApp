@@ -13,18 +13,19 @@ public class Event {
     // Crit val
     private int crit = 75;
     //XML gather values
-    private string gather = "Events/Gathering";
-    private string research = "Events/Research";
-    private string diplomacy = "Events/Diplomacy";
+    //private string gather = "Events/Gathering";
+    //private string research = "Events/Research";
+    //private string diplomacy = "Events/Diplomacy";
 
     //XML type events
-    private string Tbasic = "/basic";
-    private string Tsecond = "/second";
-    private string Tthird = "/third";
+    //private string Tbasic = "/basic";
+    //private string Tsecond = "/second";
+    //private string Tthird = "/third";
 
     //Variables
     public string eventText = "";
     public string eventReward = "";
+    public string entryFlavor = "";
 
     public List<EventOption> EventOptions { get; set; }
 
@@ -195,6 +196,9 @@ public class Event {
                 break;
             }
         }
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
+        int[] flSel = randomArray(entryflavs.Count);
+        entryFlavor = entryflavs[flSel[0]].InnerText;
         
         return evOpt;
     }
@@ -214,6 +218,12 @@ public class Event {
             int[] range = new int[] { int.Parse(rangestr[0]), int.Parse(rangestr[1]) };
             evo.AddPiece(outPiece, range);
         }
+        // Fetching Result Flavor text
+        XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
+        int[] flavArr = randomArray(resFlavors.Count);
+        string resFlavText = resFlavors[flavArr[0]].InnerText;
+        evo.outcomeFlavor = resFlavText;
+
         return evo;
     }
 }

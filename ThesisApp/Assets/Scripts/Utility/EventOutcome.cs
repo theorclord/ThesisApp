@@ -13,7 +13,7 @@ namespace Assets.Scripts.Utility
         {
             Pieces = new Dictionary<Piece, int[]>();
         }
-
+        public string outcomeFlavor { get; set; }
         public int Chance { get; set; }
         public EventOutcomeType Type { get; set; }
         public void AddPiece(Piece piece, int[] range)
