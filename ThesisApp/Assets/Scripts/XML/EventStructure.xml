@@ -537,7 +537,10 @@
         </critical>
       </failure>
     </outcome>
-    <introflavor>
+  </gathering>
+
+  <introflavor>
+    <gathering>
       <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
       <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
       <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
@@ -553,6 +556,103 @@
       <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
       <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
       <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
-    </introflavor>
-  </gathering>
+    </gathering>
+  </introflavor>
+
+  <factions>
+    <humans>
+      <friendly>
+        <flavor>Lots of life and joyeous sounds emminates from the distance. The humans living here sure seem nice.</flavor>
+        <flavor>When approaching, a warm welcome is being shown towards you by the humans living there.</flavor>
+      </friendly>
+      <neutral>
+        <flavor>As you approach, the people living there go inside. I don't think they care much about your presence.</flavor>
+        <flavor>All the people just stand back and look at you as you approach. they seem confused.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>The people here are aggressive towards you. they do not like intruders.</flavor>
+        <flavor>The people living nearby do not want to be disturbed, and you just have. They are not happy about that.</flavor>
+      </enemy>
+    </humans>
+    
+    <highbourne>
+      <friendly>
+        <flavor>A small group of highbournes are gathered up and are waving happily as you approach their settlement.</flavor>
+        <flavor>Your presence is accepted with smiling faces from the locals, as you approach.</flavor>
+      </friendly>
+      <neutral>
+        <flavor>The people here don't look friendly, but they don't look dangerous either.</flavor>
+        <flavor>The highbournes seem to be slightly confused as to what you want.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>You have entered the realm of the highbournes. they are not pleased by this intrusion.</flavor>
+        <flavor>These creatures, the highbournes, are not looking very inviting. They don't say much, but you feel eery.</flavor>
+      </enemy>
+    </highbourne>
+    
+    <nomads>
+      <friendly>
+        <flavor>The Nomads seem pleased by your visit and are gathering to see who you are.</flavor>
+        <flavor>The nomadic children wants to play with you. They sure are a curious bunch!</flavor>
+      </friendly>
+      <neutral>
+        <flavor>Eyes stare blankly at you. The nomads seem startled by your presence.</flavor>
+        <flavor>As you approach, the nomadic people living here seem indifferent to your existence.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>The nomads here may be peaceful normally, but they seem to be aggravated by you as you are approaching.</flavor>
+        <flavor>The Nomads do not like to share, as that will reduce their resources. They are willing to fight if needed.</flavor>
+      </enemy>
+    </nomads>
+  </factions>
+
+  <resultflavor>
+    <alchemy>
+      <flavor>Within your findings, you discover a new alchemical material. </flavor>
+      <flavor>As you unload your bags from the expedition on the island, you see a strange new spore on one of your castle member's shoe. </flavor>
+    </alchemy>
+    <scrap>
+      <flavor>Your expedition yielded some usable building materials. </flavor>
+      <flavor>There were some new materials down on the island that you thought could be used in your castle. </flavor>
+    </scrap>
+    <crewinjured>
+      <flavor>During the quest, a castle member got badly injured and need medical attention. </flavor>
+      <flavor>One of your castle members twisted his foot whilst stepping on to the island, and needs some medical attention. </flavor>
+    </crewinjured>
+    <crewdead>
+      <flavor>One castle member was unable to make it back alive. May he rest in peace. </flavor>
+      <flavor>While entering the area, one of your crew member choked on a piece of bread from his lunch and suffocated. </flavor>
+    </crewdead>
+    <crewrecruited>
+      <flavor>While on the island, a strange figure wanted to join your forces and help your cause. </flavor>
+      <flavor>As you head back to the castle, you see a man standing infront of the gates. He wants to team up with you. </flavor>
+    </crewrecruited>
+    <crewrecruitedinjured>
+      <flavor>Down on the island, you found a man who was badly injured. He agrees to join you if you are able to mend his wounds. </flavor>
+      <flavor>Heading back, you see a person crawling on his stomach, making a painful sound. You decide to recruit him and heal him back to health. </flavor>
+    </crewrecruitedinjured>
+    <energygained>
+      <flavor>While completing the quest, your castle member found a crystal that looks identical to the one powering your castle. </flavor>
+      <flavor>Somehow, your castle's power crystal is shining more brightly now than it did before. </flavor>
+    </energygained>
+    <energylost>
+      <flavor>As you return from your quest, you notice that the power crystal in your castle is glowing less brightly. </flavor>
+      <flavor>As you fly away from the island, a piece of your power crystal falls off.   </flavor>
+    </energylost>
+    <roomdamaged>
+      <flavor>When retreating from the island, one of your rooms seems to be shaking uncontrollably. </flavor>
+      <flavor>Having overused your spacial capacity, one of your rooms starts to crack in the walls. </flavor>
+    </roomdamaged>
+    <roomdestroyed>
+      <flavor>Something happened on your castle as you landed on the island, and one of your rooms caved in on itself. </flavor>
+      <flavor>Your power crystal overcharged, and a beam of magic light hit one of your rooms and destroyed it. </flavor>
+    </roomdestroyed>
+    <roomgained>
+      <flavor>While exploring the island, you discover a new way of expanding your castle magically. </flavor>
+      <flavor>As you return to your castle, you see that a new room has magically appeared! </flavor>
+    </roomgained>
+      
+  
+  </resultflavor>
+
 </eventstructure>

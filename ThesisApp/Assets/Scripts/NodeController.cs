@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Assets.Scripts.Utility;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Xml;
 
 public class NodeController : MonoBehaviour {
 
@@ -15,7 +16,7 @@ public class NodeController : MonoBehaviour {
     private GameObject resultPanel;
 
     private bool panelOpen;
-
+    private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
     // Use this for initialization
     void Start()
     {
@@ -155,6 +156,8 @@ public class NodeController : MonoBehaviour {
         string resFlavor = "";
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
+        ArrayList resPieces = new ArrayList();
+        ArrayList resPieceNumbs = new ArrayList();
         for (int i = 0; i < curEvent.EventOptions[eventnum].Results.Count; i++)
         {
             EventOutcome eo = curEvent.EventOptions[eventnum].Results[i];
@@ -182,7 +185,10 @@ public class NodeController : MonoBehaviour {
                     {
                         outPiece = pair.Key;
                     }
-                    resultString += outPiece.BoardName + " " + Random.Range(pair.Value[0], pair.Value[1] + 1);
+                    int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                    resultString += outPiece.BoardName + " " + num;
+                    resPieces.Add(outPiece.BoardName);
+                    resPieceNumbs.Add(num);
                     if (eo.Pieces.Count != tempCount)
                     {
                         resultString += ", ";
@@ -196,6 +202,184 @@ public class NodeController : MonoBehaviour {
         }
         resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
         // This should be the flavor text
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resFlavor;
+
+        string resultflavortext = "";
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(eventstructurepath);
+        XmlNodeList list;
+        for (int i = 0; i < resPieces.Count; i++)
+        {
+            string s = (string) resPieces[i];
+            int r;
+            switch (s)
+            {
+                
+                case "Castle Crew":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewdead/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }else if((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewinjured/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }else if((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruited/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Building Material":
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/scrap/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    break;
+                case "Crystal Charge":
+                    if ((int)resPieceNumbs[i] < 0)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/energylost/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/energygained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Miners Guild":
+                    if((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if((int)resPieceNumbs[i]==1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Workshop":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Alchemical Material":
+                    list = xmlDoc.SelectNodes("eventstructure/resultflavor/alchemy/flavor");
+                    r = Random.Range(0, list.Count);
+                    resultflavortext += list[r].InnerText;
+                    break;
+                case "Alchemical Lab":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Cleric Quarters":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "Ambassadors Quarters":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+                case "RandomRoom":
+                    if ((int)resPieceNumbs[i] == -10)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }
+                    break;
+            }
+        }
+
+
+        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
     }
 }

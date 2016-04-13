@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Utility;
 using System.Xml;
+using Assets.Scripts.Events;
 
 public class DataManager : MonoBehaviour {
     public static DataManager instance;
@@ -20,7 +21,7 @@ public class DataManager : MonoBehaviour {
 
     public Dictionary<string, Piece> BoardPieces { get; set; }
 
-    public List<Event> SavedEvents
+    public List<SavedResult> SavedEvents
     {
         get; set;
     }
