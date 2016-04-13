@@ -165,7 +165,24 @@ public class NodeController : MonoBehaviour {
                 foreach(KeyValuePair<Piece,int[]> pair in eo.Pieces)
                 {
                     tempCount++;
-                    resultString += pair.Key.BoardName + " " + Random.Range(pair.Value[0], pair.Value[1] + 1);
+                    Piece outPiece = null;
+                    if( pair.Key.BoardName == "RandomRoom")
+                    {
+                        List<Piece> tempRooms = new List<Piece>();
+                        foreach(KeyValuePair<string, Piece> piecePair in DataManager.instance.BoardPieces)
+                        {
+                            if(piecePair.Value.Type == BoardType.ROOM)
+                            {
+                                tempRooms.Add(piecePair.Value);
+                            }
+                        }
+                        int[] roomOrder = DataManager.randomArray(tempRooms.Count);
+                        outPiece = tempRooms[roomOrder[0]];
+                    } else
+                    {
+                        outPiece = pair.Key;
+                    }
+                    resultString += outPiece.BoardName + " " + Random.Range(pair.Value[0], pair.Value[1] + 1);
                     if (eo.Pieces.Count != tempCount)
                     {
                         resultString += ", ";

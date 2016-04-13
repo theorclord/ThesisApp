@@ -46,7 +46,7 @@
     <type>room</type>
   </piece>
   <piece>
-    <flavorName>Random Room</flavorName>
+    <flavorName>RandomRoom</flavorName>
     <enumName>randomRoom</enumName>
     <type>room</type>
   </piece>

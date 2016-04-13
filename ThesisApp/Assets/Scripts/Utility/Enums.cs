@@ -44,6 +44,11 @@ namespace Assets.Scripts.Utility
         NEUTRAL,
         FAILURE
     }
+    public enum BoardType
+    {
+        RESOURCE,
+        ROOM
+    }
     class Enums
     {
     }
