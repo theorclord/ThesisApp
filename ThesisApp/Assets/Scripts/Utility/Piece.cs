@@ -8,6 +8,7 @@ namespace Assets.Scripts.Utility
     public class Piece
     {
         public string BoardName { get; set; }
+        public BoardType Type { get; set; }
         public Piece (string name)
         {
             BoardName = name;
@@ -21,5 +22,6 @@ namespace Assets.Scripts.Utility
             
             return base.Equals(obj) && BoardName .Equals( ((Piece)obj).BoardName);
         }
+
     }
 }

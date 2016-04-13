@@ -55,7 +55,15 @@ public class DataManager : MonoBehaviour {
         XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
         foreach(XmlNode node in pieces)
         {
-            BoardPieces.Add(node.SelectSingleNode(identifier).InnerText,new Piece( node.SelectSingleNode(pieceName).InnerText));
+            Piece newPiece = new Piece(node.SelectSingleNode(pieceName).InnerText);
+            if(node.SelectSingleNode("type").InnerText == "room")
+            {
+                newPiece.Type = BoardType.ROOM;
+            } else
+            {
+                newPiece.Type = BoardType.RESOURCE;
+            }
+            BoardPieces.Add(node.SelectSingleNode(identifier).InnerText, newPiece);
         }
     }
 
@@ -83,6 +91,28 @@ public class DataManager : MonoBehaviour {
         Debug.Log(r.name);
         ls.expand(r.expandingIterations, r.rules);
         ls.interpret();
+    }
+
+    /// <summary>
+    /// Randomizes the array 
+    /// </summary>
+    /// <param name="size"></param>
+    /// <returns></returns>
+    public static int[] randomArray(int size)
+    {
+        int[] randomArr = new int[size];
+        for (int i = 0; i < randomArr.Length; i++)
+        {
+            randomArr[i] = i;
+        }
+        for (int i = 0; i < randomArr.Length; i++)
+        {
+            int random = Random.Range(0, randomArr.Length);
+            int temp = randomArr[random];
+            randomArr[random] = randomArr[i];
+            randomArr[i] = temp;
+        }
+        return randomArr;
     }
 
 }

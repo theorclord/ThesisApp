@@ -79,8 +79,9 @@ public class Event {
         //Basic event
         EventOptions.Add(generateEvent(0, 1, eventtype));
         EventOptions.Add(generateEvent(1, 2, eventtype));
-
+        EventOptions.Add(generateEvent(2, 3, eventtype));
     }
+    /*
     /// <summary>
     /// Randomizes the array 
     /// </summary>
@@ -102,6 +103,7 @@ public class Event {
         }
         return randomArr;
     }
+    */
     private EventOption generateEvent(int conType, int numCon, string eventtype)
     {
         // test vars
@@ -139,7 +141,7 @@ public class Event {
         // Select event conditions
         for (int j = 0; j < numCon-1; j++)
         {   
-            int[] conSelect = randomArray(conditionList.Count);
+            int[] conSelect = DataManager.randomArray(conditionList.Count);
             for (int i = 0; i < conditionList.Count; i++)
             {
                 XmlNode xn = conditionList[conSelect[i]];
@@ -164,7 +166,7 @@ public class Event {
         
         //Select outcomes
         XmlNodeList Outcome = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/outcome");
-        int[] outSelect = randomArray(Outcome.Count);
+        int[] outSelect = DataManager.randomArray(Outcome.Count);
         for (int i = 0; i < outSelect.Length; i++)
         {
             XmlNode xn = Outcome[outSelect[i]];
@@ -201,7 +203,7 @@ public class Event {
     {
         EventOutcome evo = new EventOutcome();
         XmlNodeList outOptions = selectedNode.SelectNodes(typepath + crit + "/option");
-        int[] optArr = randomArray(outOptions.Count);
+        int[] optArr = DataManager.randomArray(outOptions.Count);
         XmlNodeList pieces = outOptions[optArr[0]].SelectNodes("piece");
         evo.Chance = int.Parse(selectedNode.SelectSingleNode(typepath).Attributes["chance"].Value);
         evo.Type = type;
