@@ -39,9 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0713a69a09a4fa141ae362abf89d05b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IslandSprite: {fileID: 21300000, guid: 04eb26923287dfd44a1049eaec6bf8f5, type: 3}
-  ConqueredSprite: {fileID: 21300000, guid: 94d544d200094ab41a1eb38db51d1387, type: 3}
-  GoalSprite: {fileID: 21300000, guid: 4385a57309686594fa1e8bb59881a8f0, type: 3}
+  IslandSprite: {fileID: 21300000, guid: adf794d4f57b7cb4c9c917714ad47582, type: 3}
+  ConqueredSprite: {fileID: 21300000, guid: adf794d4f57b7cb4c9c917714ad47582, type: 3}
+  GoalSprite: {fileID: 21300000, guid: 28dc07066145cbd41bfd805f759e66b5, type: 3}
   cameraZoom: 5
 --- !u!1001 &100100000
 Prefab:
@@ -49,7 +49,22 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: IslandSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: adf794d4f57b7cb4c9c917714ad47582,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: GoalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28dc07066145cbd41bfd805f759e66b5,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: ConqueredSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: adf794d4f57b7cb4c9c917714ad47582,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 135492}
