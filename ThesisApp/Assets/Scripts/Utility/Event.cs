@@ -164,36 +164,70 @@ public class Event {
                 }
             }
         }
-        
+        int conSelectnum = numCon;
+        int addedCons = 0;
         //Select outcomes
-        XmlNodeList Outcome = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/outcome");
-        int[] outSelect = DataManager.randomArray(Outcome.Count);
-        for (int i = 0; i < outSelect.Length; i++)
+        while (addedCons < numCon)
         {
-            XmlNode xn = Outcome[outSelect[i]];
-            XmlNodeList xnConlist = xn.SelectNodes("conditions/condition");
-            bool found = true;
-            for (int j = 0; j < xnConlist.Count; j++)
+            string numberString = "";
+            switch (conSelectnum)
             {
-                XmlNode xnCon = xnConlist[j];
-                if (!evOpt.Conditions.ContainsKey(DataManager.instance.BoardPieces[xnCon.SelectSingleNode("piece").InnerText]))
+                case 2:
+                    numberString = "/two";
+                    break;
+                case 1:
+                    numberString = "/one";
+                    break;
+                case 3:
+                    numberString = "/three";
+                    break;
+            }
+
+            XmlNodeList Outcome = xmlDoc.SelectNodes("eventstructure/" + eventtype + numberString + "/outcome");
+            int[] outSelect = DataManager.randomArray(Outcome.Count);
+            for (int i = 0; i < outSelect.Length; i++)
+            {
+                XmlNode xn = Outcome[outSelect[i]];
+                XmlNodeList xnConlist = xn.SelectNodes("conditions/condition");
+                bool found = true;
+
+                for (int j = 0; j < xnConlist.Count; j++)
                 {
-                    found = false;
+                    XmlNode xnCon = xnConlist[j];
+
+                    Piece conPiece = DataManager.instance.BoardPieces[xnCon.SelectSingleNode("piece").InnerText];
+                    if (!evOpt.Conditions.ContainsKey(conPiece) ||
+                        evOpt.Conditions[conPiece] < int.Parse(xnCon.SelectSingleNode("amount").InnerText))
+                    {
+                        found = false;
+                        break;
+                    }
+                }
+                if (found)
+                {
+                    for(int j = 0; j<xnConlist.Count; j++)
+                    {
+                        XmlNode xnCon = xnConlist[j];
+                        addedCons = addedCons + int.Parse(xnCon.SelectSingleNode("amount").InnerText);
+                    }
+                    
+                    string critString = "/normal";
+                    if ((Random.Range(0, 100) + 1) > crit)
+                    {
+                        critString = "/critical";
+                    }
+
+                    evOpt.Results.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
+                    evOpt.Results.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
+                    evOpt.Results.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
                     break;
                 }
             }
-            if (found)
+            //Debug.Log("Selected part " + conSelectnum);
+            //Debug.Log("Added conditions " +addedCons);
+            if( conSelectnum != 1)
             {
-                string critString = "/normal";
-                if((Random.Range(0, 100) + 1) > crit)
-                {
-                    critString = "/critical";
-                }
-
-                evOpt.Results.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
-                evOpt.Results.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
-                evOpt.Results.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
-                break;
+                conSelectnum--;
             }
         }
         XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
