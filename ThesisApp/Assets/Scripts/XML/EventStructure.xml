@@ -48,6 +48,57 @@
       <type>2</type>
     </condition>
   </conditions>
+
+  <conditionflavor>
+    <basics>
+      <crew>
+        <flavor></flavor>
+      </crew>
+      <material>
+        <flavor></flavor>
+      </material>
+      <crystal>
+        <flavor></flavor>
+      </crystal>
+      <minersguild>
+        <flavor></flavor>
+      </minersguild>
+      <workshop>
+        <flavor></flavor>
+      </workshop>
+      <alchemy>
+        <flavor></flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor></flavor>
+      </alchemylab>
+      <cleric>
+        <flavor></flavor>
+      </cleric>
+      <ambassador>
+        <flavor></flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </basics>
+    <mine>
+      
+    </mine>
+    <quarry>
+      
+    </quarry>
+    <wreckage>
+      
+    </wreckage>
+    <factory>
+      
+    </factory>
+    <village>
+      
+    </village>
+  </conditionflavor>
+  
   
   <gathering>
     <outcome>
@@ -578,46 +629,71 @@
   </diplomacy>
   <introflavor>
     <gathering>
-      <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
-      <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
-      <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
-      <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
-      <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
-      <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
-      <flavor>The rubbles from an airship remain on the edge of the island</flavor>
-      <flavor>You see a huge structure that looks like your castle.</flavor>
-      <flavor>An old airship seems to have crashed here long ago.</flavor>
-      <flavor>You see an old construction site nearby.</flavor>
-      <flavor>An abandoned factory appears in the distance.</flavor>
-      <flavor>You spot the ruins of an old factory.</flavor>
-      <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
-      <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
-      <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
+      <!-- split it into locations-->
+      <mine>
+        <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
+        <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
+        <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
+      </mine>
+      <quarry>
+        <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
+        <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
+        <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
+      </quarry>
+      <wreckage>
+        <flavor>The rubbles from an airship remain on the edge of the island</flavor>
+        <flavor>You see a huge structure that looks like your castle.</flavor>
+        <flavor>An old airship seems to have crashed here long ago.</flavor>
+      </wreckage>
+      <factory>
+        <flavor>You see an old construction site nearby.</flavor>
+        <flavor>An abandoned factory appears in the distance.</flavor>
+        <flavor>You spot the ruins of an old factory.</flavor>
+      </factory>
+      <village>
+        <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
+        <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
+        <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
+      </village>
     </gathering>
+    
     <research>
-      <flavor>As you approach, you see nothing but green forests all over.</flavor>
-      <flavor>You see a large blue lake filled with glimmering reflections on the surface. It is truly a beautiful sight.</flavor>
-      <flavor>There is a thin layer of floating dust and rocks on the ground. The entire area seem to be filled with magic.</flavor>
-      <flavor>As you come closer, you see a formation of rocks and clay. It is ancient ruins and there are large structures with ancient writings around.</flavor>
-      <flavor>As you approach, you become aware of rocks floating around you in clusters. It seems like a dangerous place for people who don't know where to place their feet.</flavor>
-      <flavor>As you come close, your castle is almost hit by all the floating rocks that are floating all over. Something is making the earth behave like this.</flavor>
-      <flavor>There is nothing but rubble and broken constructions all around. These ruins must be from a previous millenia.</flavor>
-      <flavor>As you arrive, you feel a strange energy flowing all over the area. Magical sparks are appearing in the air around you, and the plants around are sort of glowing.</flavor>
-      <flavor>At your arrival, you see a giant lake where there are fish jumping up of the water, leaving perfect ripples all across the face of the water.</flavor>
-      <flavor>Green. That is the color you see. Trees upon trees as far as the eyes can see. This forest is a beautiful sight.</flavor>
-      <flavor>In the distance, through the mist, you see trees the size of giant castles. This forest seems neverending and massive, yet beautiful to behold.</flavor>
-      <flavor>When you approach the island, you are having a hard time picking an entry point. You spot a safe place next to the giant lake that seems to make up most of the island.</flavor>
-      <flavor>There are glowing sigils all over the ground in this area. Clearly this site has been used for magical practices.</flavor>
-      <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
-      <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
+      <forest>
+        <flavor>As you approach, you see nothing but green forests all over.</flavor>
+        <flavor>In the distance, through the mist, you see trees the size of giant castles. This forest seems neverending and massive, yet beautiful to behold.</flavor>
+        <flavor>Green. That is the color you see. Trees upon trees as far as the eyes can see. This forest is a beautiful sight.</flavor>
+      </forest>
+      <rockformation>
+        <flavor>As you approach, you become aware of rocks floating around you in clusters. It seems like a dangerous place for people who don't know where to place their feet.</flavor>
+        <flavor>As you come close, your castle is almost hit by all the floating rocks that are floating all over. Something is making the earth behave like this.</flavor>
+        <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
+      </rockformation>
+      <magicsite>
+        <flavor>There is a thin layer of floating dust and rocks on the ground. The entire area seem to be filled with magic.</flavor>
+        <flavor>As you arrive, you feel a strange energy flowing all over the area. Magical sparks are appearing in the air around you, and the plants around are sort of glowing.</flavor>
+        <flavor>There are glowing sigils all over the ground in this area. Clearly this site has been used for magical practices.</flavor>
+      </magicsite>
+      <lake>
+        <flavor>You see a large blue lake filled with glimmering reflections on the surface. It is truly a beautiful sight.</flavor>
+        <flavor>At your arrival, you see a giant lake where there are fish jumping up of the water, leaving perfect ripples all across the face of the water.</flavor>
+        <flavor>When you approach the island, you are having a hard time picking an entry point. You spot a safe place next to the giant lake that seems to make up most of the island.</flavor>
+      </lake>
+      <ruins>
+        <flavor>As you come closer, you see a formation of rocks and clay. It is ancient ruins and there are large structures with ancient writings around.</flavor>
+        <flavor>There is nothing but rubble and broken constructions all around. These ruins must be from a previous millenia.</flavor>
+        <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
+      </ruins>
     </research>
+    
     <diplomacy>
-      <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
-      <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
-      <flavor></flavor>
-      <flavor></flavor>
-      <flavor></flavor>
+      <cathedral>
+        <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
+      </cathedral>
+      <settlement>
+        <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
+      </settlement>
     </diplomacy>
+    
     <abandoned>
       <main>
         <flavor>You realize this place used to belong to </flavor>
@@ -639,6 +715,7 @@
       </extra>
     </abandoned>
   </introflavor>
+  
   <endflavor>
     <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
     <flavor>Your castle runs out of control and crashes into the island. The castle collapse and everybody dies. THE END!</flavor>
@@ -709,8 +786,6 @@
       <flavor>As you return to your castle, you see that a new room has magically appeared! </flavor>
       <flavor>Your castle crew have found new strength, and are willing to expand the castle.</flavor>
     </roomgained>
-      
-  
   </resultflavor>
 
 </eventstructure>
