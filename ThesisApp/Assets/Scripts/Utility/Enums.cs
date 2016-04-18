@@ -49,6 +49,22 @@ namespace Assets.Scripts.Utility
         RESOURCE,
         ROOM
     }
+
+    public enum Location
+    {
+        MINE,
+        QUARRY,
+        WRECKAGE,
+        FACTORY,
+        VILLAGE,
+        FOREST,
+        ROCKFORMATION,
+        MAGICSITE,
+        LAKE,
+        RUINS,
+        CATHEDRAL,
+        SETTLEMENT
+    }
     class Enums
     {
     }

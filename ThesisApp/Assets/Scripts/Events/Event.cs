@@ -225,18 +225,23 @@ public class Event {
                 {
                     case 0:
                         location = "/mine";
+                        evOpt.locType = Location.MINE;
                         break;
                     case 1:
                         location = "/quarry";
+                        evOpt.locType = Location.QUARRY;
                         break;
                     case 2:
                         location = "/wreckage";
+                        evOpt.locType = Location.WRECKAGE;
                         break;
                     case 3:
                         location = "/factory";
+                        evOpt.locType = Location.FACTORY;
                         break;
                     case 4:
                         location = "/village";
+                        evOpt.locType = Location.VILLAGE;
                         break;
                 }
                 break;
