@@ -78,12 +78,13 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype)
     {
+        int r = Random.Range(0, 5); //which type of location
         //Basic option
-        EventOptions.Add(generateEvent(0, 1, eventtype));
+        EventOptions.Add(generateEvent(0, 1, eventtype, r));
         //Second option
-        EventOptions.Add(generateEvent(1, 2, eventtype));
+        EventOptions.Add(generateEvent(1, 2, eventtype, r));
         //Third option
-        EventOptions.Add(generateEvent(2, 3, eventtype));
+        EventOptions.Add(generateEvent(2, 3, eventtype, r));
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -92,7 +93,7 @@ public class Event {
     /// <param name="numCon">Number of conditions</param>
     /// <param name="eventtype">The type of event, gathering, diplomacy, research</param>
     /// <returns></returns>
-    private EventOption generateEvent(int conType, int numCon, string eventtype)
+    private EventOption generateEvent(int conType, int numCon, string eventtype, int r)
     {
         // test vars
         //int conType = 0;
@@ -220,7 +221,6 @@ public class Event {
         switch (eventtype)
         {
             case "gathering":
-                int r = Random.Range(0, 5);
                 switch (r)
                 {
                     case 0:

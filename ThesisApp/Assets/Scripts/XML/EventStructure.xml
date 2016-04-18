@@ -52,23 +52,35 @@
   <conditionflavor>
     <basics>
       <crew>
-        <flavor>Send castle crew</flavor>
+        <flavor>
+          <first>Send </first>
+          <second>x castle crew</second>
+        </flavor>
       </crew>
       <material>
-        <flavor>Bring building material</flavor>
+        <flavor>
+          <first>Bring </first>
+          <second>x building material</second>
+        </flavor>
       </material>
       <crystal>
-        <flavor>Take with a power crystal</flavor>
+        <flavor>
+          <first>Take with </first>
+          <second>x power crystal</second>
+        </flavor>
       </crystal>
+      <alchemy>
+        <flavor>
+          <first>Use </first>
+          <second>x alchemy point</second>
+        </flavor>
+      </alchemy>
       <minersguild>
         <flavor>Use the miner's guild</flavor>
       </minersguild>
       <workshop>
         <flavor>Use the workshop</flavor>
       </workshop>
-      <alchemy>
-        <flavor>Use alchemy</flavor>
-      </alchemy>
       <alchemylab>
         <flavor>Take use of the alchemy lab</flavor>
       </alchemylab>
@@ -85,6 +97,7 @@
     <mine>
       <crew>
         <flavor> to explore the mine's riches.</flavor>
+        <flavor> to venture down into the mine.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
@@ -96,21 +109,27 @@
       </crystal>
       <minersguild>
         <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to make sure you have a strategy for how to mine the most resources.</flavor>
       </minersguild>
       <workshop>
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
+        <flavor> to be prepared to fix potentially broken tools.</flavor>
       </workshop>
       <alchemy>
         <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to give the crew nightvision.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
+        <flavor> to prepare antidotes if they catch new diseases.</flavor>
       </alchemylab>
       <cleric>
         <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+        <flavor> to boost the faith of the crew so that they will not faulter.</flavor>
       </cleric>
       <ambassador>
         <flavor> to be diplomatic with potential encounters.</flavor>
+        <flavor> to act as a diplomatic safety net in case you meet unknown humanoids.</flavor>
       </ambassador>
       <randomroom>
         <flavor></flavor>
@@ -118,24 +137,25 @@
     </mine>
     <quarry>
       <crew>
-        <flavor> to explore the mine's riches.</flavor>
+        <flavor> to explore the quarry's riches.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the mine.</flavor>
+        <flavor> to repair potential old machinery in the quarry.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture down the mine.</flavor>
-        <flavor> to power up potential old machinery in the mine.</flavor>
+        <flavor> to use for light as you venture down the quarry.</flavor>
+        <flavor> to power up potential old machinery in the quarry.</flavor>
       </crystal>
       <minersguild>
-        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to something quarry.<!--ensure that you have the machinery needed to be able to mine what you can.-->
+        </flavor>
       </minersguild>
       <workshop>
-        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+        <flavor> to make sure your facilities don't get broken too badly when in the quarry.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create strength potions so you can get as much from the quarry as possible.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -152,24 +172,24 @@
     </quarry>
     <wreckage>
       <crew>
-        <flavor> to explore the mine's riches.</flavor>
+        <flavor> to explore the wreckage's riches.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the mine.</flavor>
+        <flavor> to repair potential old machinery in the wreckage.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture down the mine.</flavor>
-        <flavor> to power up potential old machinery in the mine.</flavor>
+        <flavor> to use for light as you enter the wreckage.</flavor>
+        <flavor> to power up potential old machinery within the wreckage.</flavor>
       </crystal>
       <minersguild>
-        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to ensure that you have the machinery needed to be able to use the wreckage to your advantage.</flavor>
       </minersguild>
       <workshop>
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create a oil that can be used on the wreckage.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -186,18 +206,18 @@
     </wreckage>
     <factory>
       <crew>
-        <flavor> to explore the mine's riches.</flavor>
+        <flavor> to explore the factory's riches.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the mine.</flavor>
+        <flavor> to repair potential old machinery in the factory.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture down the mine.</flavor>
-        <flavor> to power up potential old machinery in the mine.</flavor>
+        <flavor> to use for light as you venture into the factory.</flavor>
+        <flavor> to power up potential old machinery in the factory.</flavor>
       </crystal>
       <minersguild>
-        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
       </minersguild>
       <workshop>
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
@@ -220,18 +240,18 @@
     </factory>
     <village>
       <crew>
-        <flavor> to explore the mine's riches.</flavor>
+        <flavor> to explore the village's riches.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the mine.</flavor>
+        <flavor> to repair potential old machinery in the village.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture down the mine.</flavor>
-        <flavor> to power up potential old machinery in the mine.</flavor>
+        <flavor> to use for light as you venture into the village.</flavor>
+        <flavor> to power up potential old machinery in the village.</flavor>
       </crystal>
       <minersguild>
-        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
       </minersguild>
       <workshop>
         <flavor> to make sure your facilities don't get broken too badly.</flavor>

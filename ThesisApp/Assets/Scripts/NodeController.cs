@@ -128,10 +128,19 @@ public class NodeController : MonoBehaviour {
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);
                 //Basic first, then add the location based for the piece.
                 XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
-                Debug.Log("Number of flavors: " + butFlav.Count);
+                
                 int[] flSel = DataManager.randomArray(butFlav.Count);
-                btx += butFlav[flSel[0]].InnerText;
-
+                if(pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
+                {
+                    btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/first").InnerText;
+                    btx += pair.Value;
+                    btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/second").InnerText;
+                }
+                else
+                {
+                    btx += butFlav[flSel[0]].InnerText;
+                }
+                Debug.Log("Location: " + e.EventOptions[tempint].locationXmlString);
                 butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
                 flSel = DataManager.randomArray(butFlav.Count);
                 btx += butFlav[flSel[0]].InnerText;
