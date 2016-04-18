@@ -26,6 +26,7 @@ public class Event {
     public string eventText = "";
     public string eventReward = "";
     public string entryFlavor = "";
+    public string locationXmlString = "";
 
     public List<EventOption> EventOptions { get; set; }
 
@@ -216,7 +217,6 @@ public class Event {
             }
         }
         //Set flavors
-        string location = "";
         switch (eventtype)
         {
             case "gathering":
@@ -224,29 +224,30 @@ public class Event {
                 switch (r)
                 {
                     case 0:
-                        location = "/mine";
+                        locationXmlString = "/mine";
                         evOpt.locType = Location.MINE;
                         break;
                     case 1:
-                        location = "/quarry";
+                        locationXmlString = "/quarry";
                         evOpt.locType = Location.QUARRY;
                         break;
                     case 2:
-                        location = "/wreckage";
+                        locationXmlString = "/wreckage";
                         evOpt.locType = Location.WRECKAGE;
                         break;
                     case 3:
-                        location = "/factory";
+                        locationXmlString = "/factory";
                         evOpt.locType = Location.FACTORY;
                         break;
                     case 4:
-                        location = "/village";
+                        locationXmlString = "/village";
                         evOpt.locType = Location.VILLAGE;
                         break;
                 }
                 break;
         }
-        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + location+"/flavor");
+        evOpt.locationXmlString = locationXmlString;
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + locationXmlString + "/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
         

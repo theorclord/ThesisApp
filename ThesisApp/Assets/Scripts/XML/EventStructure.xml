@@ -52,50 +52,205 @@
   <conditionflavor>
     <basics>
       <crew>
-        <flavor></flavor>
+        <flavor>Send castle crew</flavor>
       </crew>
       <material>
-        <flavor></flavor>
+        <flavor>Bring building material</flavor>
       </material>
       <crystal>
-        <flavor></flavor>
+        <flavor>Take with a power crystal</flavor>
       </crystal>
       <minersguild>
-        <flavor></flavor>
+        <flavor>Use the miner's guild</flavor>
       </minersguild>
       <workshop>
-        <flavor></flavor>
+        <flavor>Use the workshop</flavor>
       </workshop>
       <alchemy>
-        <flavor></flavor>
+        <flavor>Use alchemy</flavor>
       </alchemy>
       <alchemylab>
-        <flavor></flavor>
+        <flavor>Take use of the alchemy lab</flavor>
       </alchemylab>
       <cleric>
-        <flavor></flavor>
+        <flavor>Use the cleric</flavor>
       </cleric>
       <ambassador>
-        <flavor></flavor>
+        <flavor>Use the ambassador</flavor>
       </ambassador>
       <randomroom>
         <flavor></flavor>
       </randomroom>
     </basics>
     <mine>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </mine>
     <quarry>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </quarry>
     <wreckage>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </wreckage>
     <factory>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </factory>
     <village>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </village>
   </conditionflavor>
 

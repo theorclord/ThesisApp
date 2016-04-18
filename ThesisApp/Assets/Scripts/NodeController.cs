@@ -120,16 +120,31 @@ public class NodeController : MonoBehaviour {
             button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
             string buttonText = "";
             int numCon = 0;
-            foreach(KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
+            string btx = "";
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(eventstructurepath);
+            foreach (KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
             {
+                string pieceName = getPieceNameForXml(pair.Key.BoardName);
+                //Basic first, then add the location based for the piece.
+                XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
+                Debug.Log("Number of flavors: " + butFlav.Count);
+                int[] flSel = DataManager.randomArray(butFlav.Count);
+                btx += butFlav[flSel[0]].InnerText;
+
+                butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
+                flSel = DataManager.randomArray(butFlav.Count);
+                btx += butFlav[flSel[0]].InnerText;
+
                 buttonText += pair.Key.BoardName + " " + pair.Value; 
                 numCon++;
                 if(e.EventOptions[tempint].Conditions.Count != numCon)
                 {
                     buttonText += ", ";
+                    btx += " ";
                 }
             }
-            button.transform.GetChild(0).GetComponent<Text>().text = buttonText;
+            button.transform.GetChild(0).GetComponent<Text>().text = btx;
         }
 
         // TODO Clean up
@@ -139,6 +154,42 @@ public class NodeController : MonoBehaviour {
         eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
         eventPanel.SetActive(true);
+    }
+
+    public string getPieceNameForXml(string name)
+    {
+        string outS = "";
+        switch (name)
+        {
+            case "Castle Crew":
+                outS = "/crew";
+                break;
+            case "Building Material":
+                outS = "/material";
+                break;
+            case "Crystal Charge":
+                outS = "/crystal";
+                break;
+            case "Miners Guild":
+                outS = "/minersguild";
+                break;
+            case "Workshop":
+                outS = "/workshop";
+                break;
+            case "Alchemical Material":
+                outS = "/alchemy";
+                break;
+            case "Alchemical Lab":
+                outS = "/alchemylab";
+                break;
+            case "Cleric Quarters":
+                outS = "/cleric";
+                break;
+            case "Ambassadors Quarters":
+                outS = "/ambassador";
+                break;
+        }
+        return outS;
     }
 
     public void ResolveEvent(int eventnum)
