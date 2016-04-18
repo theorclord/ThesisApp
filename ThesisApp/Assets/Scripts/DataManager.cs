@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Utility;
 using System.Xml;
+using Assets.Scripts.Events;
 
 public class DataManager : MonoBehaviour {
     public static DataManager instance;
@@ -19,6 +20,11 @@ public class DataManager : MonoBehaviour {
     { get; set; }
 
     public Dictionary<string, Piece> BoardPieces { get; set; }
+
+    public List<SavedResult> SavedEvents
+    {
+        get; set;
+    }
 
     //XML loading variables
     private string xmlfilepath = "assets/scripts/XML/BoardPieces.xml";

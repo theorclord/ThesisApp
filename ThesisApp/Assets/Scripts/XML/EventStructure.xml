@@ -49,6 +49,57 @@
     </condition>
   </conditions>
 
+  <conditionflavor>
+    <basics>
+      <crew>
+        <flavor></flavor>
+      </crew>
+      <material>
+        <flavor></flavor>
+      </material>
+      <crystal>
+        <flavor></flavor>
+      </crystal>
+      <minersguild>
+        <flavor></flavor>
+      </minersguild>
+      <workshop>
+        <flavor></flavor>
+      </workshop>
+      <alchemy>
+        <flavor></flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor></flavor>
+      </alchemylab>
+      <cleric>
+        <flavor></flavor>
+      </cleric>
+      <ambassador>
+        <flavor></flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </basics>
+    <mine>
+      
+    </mine>
+    <quarry>
+      
+    </quarry>
+    <wreckage>
+      
+    </wreckage>
+    <factory>
+      
+    </factory>
+    <village>
+      
+    </village>
+  </conditionflavor>
+
+
   <gathering>
     <one>
       <outcome>
@@ -543,24 +594,167 @@
     </two>
     <three>
     </three>
-
-
-    <introflavor>
-      <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
-      <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
-      <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
-      <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
-      <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
-      <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
-      <flavor>The rubbles from an airship remain on the edge of the island</flavor>
-      <flavor>You see a huge structure that looks like your castle.</flavor>
-      <flavor>An old airship seems to have crashed here long ago.</flavor>
-      <flavor>You see an old construction site nearby.</flavor>
-      <flavor>An abandoned factory appears in the distance.</flavor>
-      <flavor>You spot the ruins of an old factory.</flavor>
-      <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
-      <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
-      <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
-    </introflavor>
   </gathering>
+    
+  <introflavor>
+    <gathering>
+      <!-- split it into locations-->
+      <mine>
+        <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
+        <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
+        <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
+      </mine>
+      <quarry>
+        <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
+        <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
+        <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
+      </quarry>
+      <wreckage>
+        <flavor>The rubbles from an airship remain on the edge of the island</flavor>
+        <flavor>You see a huge structure that looks like your castle.</flavor>
+        <flavor>An old airship seems to have crashed here long ago.</flavor>
+      </wreckage>
+      <factory>
+        <flavor>You see an old construction site nearby.</flavor>
+        <flavor>An abandoned factory appears in the distance.</flavor>
+        <flavor>You spot the ruins of an old factory.</flavor>
+      </factory>
+      <village>
+        <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
+        <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
+        <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
+      </village>
+    </gathering>
+    
+    <research>
+      <forest>
+        <flavor>As you approach, you see nothing but green forests all over.</flavor>
+        <flavor>In the distance, through the mist, you see trees the size of giant castles. This forest seems neverending and massive, yet beautiful to behold.</flavor>
+        <flavor>Green. That is the color you see. Trees upon trees as far as the eyes can see. This forest is a beautiful sight.</flavor>
+      </forest>
+      <rockformation>
+        <flavor>As you approach, you become aware of rocks floating around you in clusters. It seems like a dangerous place for people who don't know where to place their feet.</flavor>
+        <flavor>As you come close, your castle is almost hit by all the floating rocks that are floating all over. Something is making the earth behave like this.</flavor>
+        <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
+      </rockformation>
+      <magicsite>
+        <flavor>There is a thin layer of floating dust and rocks on the ground. The entire area seem to be filled with magic.</flavor>
+        <flavor>As you arrive, you feel a strange energy flowing all over the area. Magical sparks are appearing in the air around you, and the plants around are sort of glowing.</flavor>
+        <flavor>There are glowing sigils all over the ground in this area. Clearly this site has been used for magical practices.</flavor>
+      </magicsite>
+      <lake>
+        <flavor>You see a large blue lake filled with glimmering reflections on the surface. It is truly a beautiful sight.</flavor>
+        <flavor>At your arrival, you see a giant lake where there are fish jumping up of the water, leaving perfect ripples all across the face of the water.</flavor>
+        <flavor>When you approach the island, you are having a hard time picking an entry point. You spot a safe place next to the giant lake that seems to make up most of the island.</flavor>
+      </lake>
+      <ruins>
+        <flavor>As you come closer, you see a formation of rocks and clay. It is ancient ruins and there are large structures with ancient writings around.</flavor>
+        <flavor>There is nothing but rubble and broken constructions all around. These ruins must be from a previous millenia.</flavor>
+        <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
+      </ruins>
+    </research>
+    
+    <diplomacy>
+      <cathedral>
+        <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
+      </cathedral>
+      <settlement>
+        <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
+      </settlement>
+    </diplomacy>
+    
+    <abandoned>
+      <main>
+        <flavor>You realize this place used to belong to </flavor>
+        <flavor>You see some remnants of a faction that have been here </flavor>
+        <flavor>There are traces of beings that have lived around here.</flavor>
+        <flavor>This place reminds you of another place you have seen before. You recall someone who lives like this. </flavor>
+      </main>
+      <second>
+        <flavor> they might still be around. </flavor>
+        <flavor> it is unclear if they are still here.</flavor>
+        <flavor> Maybe some of them are nearby?</flavor>
+        <flavor> Could there be someone here?</flavor>
+      </second>
+      <extra>
+        <flavor>Be careful.</flavor>
+        <flavor>Keep an eye open.</flavor>
+        <flavor>You will have to remain careful.</flavor>
+        <flavor>Don't let your guard down.</flavor>
+      </extra>
+    </abandoned>
+  </introflavor>
+  
+  <endflavor>
+    <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
+    <flavor>Your castle runs out of control and crashes into the island. The castle collapse and everybody dies. THE END!</flavor>
+    <flavor>When reaching the final island, you remember that magic and power crystals don't really exist. So you wake yourself up, and get out of bed.</flavor>
+  </endflavor>
+
+  <resultflavor>
+    <alchemy>
+      <flavor>Within your findings, you discover a new alchemical material. </flavor>
+      <flavor>As you unload your bags from the expedition on the island, you see a strange new spore on one of your castle member's shoe. </flavor>
+      <flavor>What is this? Some chemical material that has never been seen before! </flavor>
+      <flavor>On the island, you were able to extract some sort of new and weird plant.</flavor>
+      <flavor>Your castle member has found a strange new plant that can be used in alchemy.</flavor>
+      <flavor>Your castle member returns with a new alchemical compound.</flavor>
+    </alchemy>
+    <scrap>
+      <flavor>Your expedition yielded some usable building materials. </flavor>
+      <flavor>There were some new materials down on the island that you thought could be used in your castle. </flavor>
+      <flavor>Your castle crew scavenged all the materials possible.</flavor>
+    </scrap>
+    <crewinjured>
+      <flavor>During the quest, a castle member got badly injured and need medical attention. </flavor>
+      <flavor>One of your castle members twisted his foot whilst stepping on to the island, and needs some medical attention. </flavor>
+      <flavor>One of your crew has fallen ill with some type of nasty flu. </flavor>
+      <flavor>Your castle member returns from the quest with minor injuries. He should visit the medical ward nonetheless.</flavor>
+    </crewinjured>
+    <crewdead>
+      <flavor>One castle member was unable to make it back alive. May he rest in peace. </flavor>
+      <flavor>While entering the area, one of your crew member choked on a piece of bread from his lunch and suffocated. </flavor>
+      <flavor>After feeling ill for some time, one of your castle member has fallen down lifeless.</flavor>
+      <flavor>Unfortunately for the person down on the island, he were bitten by a venomous snake, and died after only 10 seconds.</flavor>
+      <flavor>Your castle member suffered an allergic reaction to some substance down on the island. He didn't make it.</flavor>
+    </crewdead>
+    <crewrecruited>
+      <flavor>While on the island, a strange figure wanted to join your forces and help your cause. </flavor>
+      <flavor>As you head back to the castle, you see a man standing infront of the gates. He wants to team up with you. </flavor>
+      <flavor>You were able to recruit a new soul down on the island. Welcome aboard! </flavor>
+    </crewrecruited>
+    <crewrecruitedinjured>
+      <flavor>Down on the island, you found a man who was badly injured. He agrees to join you if you are able to mend his wounds. </flavor>
+      <flavor>Heading back, you see a person crawling on his stomach, making a painful sound. You decide to recruit him and heal him back to health. </flavor>
+      <flavor>A person wants to join your castle crew, but he is in need of some medicine. </flavor>
+    </crewrecruitedinjured>
+    <energygained>
+      <flavor>While completing the quest, your castle member found a crystal that looks identical to the one powering your castle. </flavor>
+      <flavor>Somehow, your castle's power crystal is shining more brightly now than it did before. </flavor>
+      <flavor>As you enter your castle again, the power crystal flashes a massive flash and is now more potent than before.</flavor>
+    </energygained>
+    <energylost>
+      <flavor>As you return from your quest, you notice that the power crystal in your castle is glowing less brightly. </flavor>
+      <flavor>As you fly away from the island, a piece of your power crystal falls off.   </flavor>
+      <flavor>You are not sure just why, but your power crystal is fading slowly.</flavor>
+      <flavor>When returning from the quest, your power crystal seems to have been drained from sources unknown.</flavor>
+      <flavor>When landing on the surface, you hit too hard, and the power crystal flickers and shines a little less bright.</flavor>
+    </energylost>
+    <roomdamaged>
+      <flavor>When retreating from the island, one of your rooms seems to be shaking uncontrollably. </flavor>
+      <flavor>Having overused your spacial capacity, one of your rooms starts to crack in the walls. </flavor>
+      <flavor>One of your castle members has gone berserk in a room and damaged a lot of its contents.</flavor>
+    </roomdamaged>
+    <roomdestroyed>
+      <flavor>Something happened on your castle as you landed on the island, and one of your rooms caved in on itself. </flavor>
+      <flavor>Your power crystal overcharged, and a beam of magic light hit one of your rooms and destroyed it. </flavor>
+      <flavor>There was some sort of reaction happening in one of the rooms as your castle crew returned. It blew up! </flavor>
+    </roomdestroyed>
+    <roomgained>
+      <flavor>While exploring the island, you discover a new way of expanding your castle magically. </flavor>
+      <flavor>As you return to your castle, you see that a new room has magically appeared! </flavor>
+      <flavor>Your castle crew have found new strength, and are willing to expand the castle.</flavor>
+    </roomgained>
+  </resultflavor>
+
 </eventstructure>

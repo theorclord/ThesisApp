@@ -7,33 +7,32 @@ using System.Collections.Generic;
 
 public class Event {
     //XML path
-    private string filepath = "assets/scripts/XML/EventNodeMarkup.xml";
-    private string eventxmlpath = "assets/scripts/XML/EventSystem.xml";
+    private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
+    private string eventconditions = "eventstructure/conditions/condition";
 
+    // Crit val
+    private int crit = 75;
     //XML gather values
-    private string gather = "Events/Gathering";
-    private string research = "Events/Research";
-    private string diplomacy = "Events/Diplomacy";
+    //private string gather = "Events/Gathering";
+    //private string research = "Events/Research";
+    //private string diplomacy = "Events/Diplomacy";
 
     //XML type events
-    private string Tbasic = "/basic";
-    private string Tsecond = "/second";
-    private string Tthird = "/third";
+    //private string Tbasic = "/basic";
+    //private string Tsecond = "/second";
+    //private string Tthird = "/third";
 
     //Variables
     public string eventText = "";
     public string eventReward = "";
+    public string entryFlavor = "";
 
-    public List<EventResult> EventConditions
-    {
-        get; set;
-    }
+    public List<EventOption> EventOptions { get; set; }
 
     public Event()
     {
-        EventConditions = new List<EventResult>();
+        EventOptions = new List<EventOption>();
     }
-    
 
     public void GenerateEvent(EventSpec eventType)
     {
@@ -41,61 +40,27 @@ public class Event {
         switch (eventType)
         {
             case EventSpec.GATHER:// gather
-                setDataFromXml(EventSpec.GATHER);
-                setEventDataFromXml(gather);
                 //TODO Set eventText
                 eventText = "Gathering Event";
+                buildDataFromXml("gathering");
                 break;
             case EventSpec.RESEARCH://research
-                setDataFromXml(EventSpec.RESEARCH);
-                setEventDataFromXml(research);
                 //TODO Set eventText
                 eventText = "Research Event";
+                buildDataFromXml("gathering");
                 break;
             case EventSpec.DIPLOMACY://diplomacy
-                setDataFromXml(EventSpec.DIPLOMACY);
-                setEventDataFromXml(diplomacy);
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
+                buildDataFromXml("gathering");
                 break;
-            /*case 3:
-                eventText = "Trading Post";
-                break;*/
         }
     }
-    private EventResult getEventResult(XmlNodeList nodelist)
-    {
-        int chance = Random.Range(1, 101);
-        EventResult evres = new EventResult();
-        int accChance = 0;
-        for (int i = 0; i < nodelist.Count; i++)
-        {
-            int eventchance = int.Parse(nodelist[i].SelectSingleNode("chance").InnerText);
-            accChance += eventchance;
-            if (accChance >= chance)
-            {
-                XmlNodeList outcomes = nodelist[i].SelectNodes("eventOutcome/outcome");
-                string resString ="";
-                for(int j = 0; j<outcomes.Count;j++)
-                {
-                    string[] ranges = outcomes[j].SelectSingleNode("range").InnerText.Split(',');
-                    int amount = Random.Range(int.Parse(ranges[0]), int.Parse(ranges[1]) + 1);
-                    resString = amount + " " + renameString(outcomes[j].SelectSingleNode("piece").InnerText);
-                    resString += " " + outcomes[j].SelectSingleNode("extraFlavor").InnerText;
-                    if(j != outcomes.Count - 1)
-                    {
-                        resString += ", ";
-                    }
-                }
-
-                evres.Result = resString; //renameString(nodelist[i].SelectSingleNode("outcome").InnerText);
-                evres.ResultText = renameString(nodelist[i].SelectSingleNode("flavourText").InnerText);
-                break;
-            }
-        }
-        return evres;
-    }
-
+    /// <summary>
+    /// Renames boardgame pieces based on their enum name
+    /// </summary>
+    /// <param name="text"></param>
+    /// <returns></returns>
     private string renameString(string text)
     {
         string alterString = text;
@@ -105,82 +70,150 @@ public class Event {
         }
         return alterString;
     }
-
+    
     /// <summary>
-    /// Gets the data for the event based on its type
+    /// Builds events based on creation rules
     /// </summary>
-    /// <param name="eventType"></param>
-    private void setEventDataFromXml(string eventType)
+    /// <param name="eventtype">string type, related to the xml file</param>
+    private void buildDataFromXml(string eventtype)
     {
-        int numEvents = Random.Range(0, 2) + 2;
+        //Basic option
+        EventOptions.Add(generateEvent(0, 1, eventtype));
+        //Second option
+        EventOptions.Add(generateEvent(1, 2, eventtype));
+        //Third option
+        EventOptions.Add(generateEvent(2, 3, eventtype));
+    }
+    /// <summary>
+    /// Generates the content of the events based on the condition
+    /// </summary>
+    /// <param name="conType">Type of conditions, 0 for required, 1 for basic, 2 for advanced</param>
+    /// <param name="numCon">Number of conditions</param>
+    /// <param name="eventtype">The type of event, gathering, diplomacy, research</param>
+    /// <returns></returns>
+    private EventOption generateEvent(int conType, int numCon, string eventtype)
+    {
+        // test vars
+        //int conType = 0;
+        //int numCon = 1;
+        //int numOut = 1;
+        //string eventtype = "gathering";
+        //string eventLevel = "basic";
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(filepath);
-        XmlNode basic = xmlDoc.SelectSingleNode(eventType + Tbasic);
-        XmlNodeList basicList = basic.SelectNodes("event/results/result");
+        xmlDoc.Load(eventstructurepath);
+        XmlNodeList conditionList = xmlDoc.SelectNodes(eventconditions);
 
-        EventResult evbasic = getEventResult(basicList);
-        evbasic.FlavorText = renameString(basic.SelectSingleNode("event/eventText").InnerText);
-        
-        EventConditions.Add(evbasic);
+        //Event options
+        EventOption evOpt = new EventOption();
 
-        //second
-        XmlNode second = xmlDoc.SelectSingleNode(eventType + Tsecond);
-        XmlNodeList secondEventList = second.SelectNodes("event");
-        // random event
-        XmlNode tempevent = secondEventList[Random.Range(0, secondEventList.Count)];
-        XmlNodeList secresults = tempevent.SelectNodes("results/result");
-        EventResult evsec = getEventResult(secresults);
-        evsec.FlavorText = renameString(tempevent.SelectSingleNode("eventText").InnerText);
-        EventConditions.Add(evsec);
-
-        //third
-        if (numEvents == 3)
+        // add crew member condition
+        for (int i = 0; i < conditionList.Count; i++)
         {
-
-            XmlNode gatherThird = xmlDoc.SelectSingleNode(eventType + Tthird);
-            XmlNodeList thirdEventList = gatherThird.SelectNodes("event");
-            // random event
-            tempevent = thirdEventList[Random.Range(0, thirdEventList.Count)];
-            XmlNodeList thiresults = tempevent.SelectNodes("results/result");
-            EventResult evres = getEventResult(thiresults);
-            evres.FlavorText = renameString(tempevent.SelectSingleNode("eventText").InnerText);
-            EventConditions.Add(evres);
+            XmlNode xn = conditionList[i];
+            if (int.Parse(xn.SelectSingleNode("type").InnerText) <= 0)
+            {
+                Piece basPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
+                if (evOpt.Conditions.ContainsKey(basPiece))
+                {
+                    evOpt.Conditions[basPiece] += int.Parse(xn.SelectSingleNode("amount").InnerText);
+                }
+                else
+                {
+                    evOpt.Conditions.Add(basPiece, int.Parse(xn.SelectSingleNode("amount").InnerText));
+                }
+                break;
+            }
         }
-    }
-
-    private void setDataFromXml(EventSpec eventtype)
-    {
-        XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(eventxmlpath);
-        EventOption opt = new EventOption();
-        //Get conditions
-        XmlNodeList conditionList = xmlDoc.SelectNodes("eventSystem/eventConditions/condition");
-        int conSelect = Random.Range(0, conditionList.Count);
-        Piece tempConPiece = DataManager.instance.BoardPieces[conditionList[conSelect].SelectSingleNode("piece").InnerText];
-        opt.Conditions.Add(tempConPiece, int.Parse( conditionList[conSelect].SelectSingleNode("amount").InnerText));
-
-        //Get outcomes
-        XmlNodeList outcomeList = xmlDoc.SelectNodes("eventSystem/eventOutcome/outcome");
-        int outSelect = Random.Range(0, outcomeList.Count);
-<<<<<<< HEAD
-        Piece tempOutPiece = DataManager.instance.BoardPieces[outcomeList[outSelect].SelectSingleNode("piece").InnerText];
-        opt.Results.Add(tempOutPiece, int.Parse(outcomeList[outSelect].SelectSingleNode("amount").InnerText));
+        // Select event conditions
+        for (int j = 0; j < numCon-1; j++)
+        {   
+            int[] conSelect = DataManager.randomArray(conditionList.Count);
+            for (int i = 0; i < conditionList.Count; i++)
+            {
+                XmlNode xn = conditionList[conSelect[i]];
+                //TODO have the checked value in a field
+                //TODO have range on conditions?
+                //Select a condition which is limited by the condition type parameter   
+                if (int.Parse(xn.SelectSingleNode("type").InnerText) <= conType)
+                {
+                    Piece basPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
+                    if (evOpt.Conditions.ContainsKey(basPiece))
+                    {
+                        evOpt.Conditions[basPiece] += int.Parse(xn.SelectSingleNode("amount").InnerText);
+                    }
+                    else
+                    {
+                        evOpt.Conditions.Add(basPiece, int.Parse(xn.SelectSingleNode("amount").InnerText));
+                    }
+                    break;
+                }
+            }
+        }
         
+        //Select outcomes
+        XmlNodeList Outcome = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/outcome");
+        int[] outSelect = DataManager.randomArray(Outcome.Count);
+        for (int i = 0; i < outSelect.Length; i++)
+        {
+            XmlNode xn = Outcome[outSelect[i]];
+            XmlNodeList xnConlist = xn.SelectNodes("conditions/condition");
+            bool found = true;
+            for (int j = 0; j < xnConlist.Count; j++)
+            {
+                XmlNode xnCon = xnConlist[j];
+                if (!evOpt.Conditions.ContainsKey(DataManager.instance.BoardPieces[xnCon.SelectSingleNode("piece").InnerText]))
+                {
+                    found = false;
+                    break;
+                }
+            }
+            if (found)
+            {
+                string critString = "/normal";
+                if((Random.Range(0, 100) + 1) > crit)
+                {
+                    critString = "/critical";
+                }
+
+                evOpt.Results.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
+                evOpt.Results.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
+                evOpt.Results.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
+                break;
+            }
+        }
+<<<<<<< HEAD
+        //Set flavors
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/" + eventtype + "/introflavor/flavor");
 =======
-
-        //get pieces?
-        generateConditionFlavor(xmlDoc, conSelect);
-
->>>>>>> 6705cc10881f15fa3437b5b5e2151e4cb2f555b6
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + "/flavor");
+>>>>>>> b2d5355b48031c2fe52aed6c135a7def716fc0c4
+        int[] flSel = DataManager.randomArray(entryflavs.Count);
+        entryFlavor = entryflavs[flSel[0]].InnerText;
+        
+        return evOpt;
     }
 
-    private void generateConditionFlavor(XmlDocument doc, int condNum)
+    private EventOutcome generateOutcome(XmlNode selectedNode, string typepath, string crit, EventOutcomeType type)
     {
-        string flav = "";
-        XmlNodeList condList = doc.SelectNodes("eventSystem/eventConditions/condition");
-        XmlNodeList flavList = condList[condNum].SelectNodes("flavors");
-        int r = Random.Range(0, flavList.Count);
-        flav = flavList[r].InnerText;
-        Debug.Log("Flavor text found: " + flav);
+        EventOutcome evo = new EventOutcome();
+        XmlNodeList outOptions = selectedNode.SelectNodes(typepath + crit + "/option");
+        int[] optArr = DataManager.randomArray(outOptions.Count);
+        XmlNodeList pieces = outOptions[optArr[0]].SelectNodes("piece");
+        evo.Chance = int.Parse(selectedNode.SelectSingleNode(typepath).Attributes["chance"].Value);
+        evo.Type = type;
+        foreach (XmlNode piece in pieces)
+        {
+            Piece outPiece = DataManager.instance.BoardPieces[piece.SelectSingleNode("name").InnerText];
+            string[] rangestr = piece.SelectSingleNode("range").InnerText.Split(',');
+            int[] range = new int[] { int.Parse(rangestr[0]), int.Parse(rangestr[1]) };
+            evo.AddPiece(outPiece, range);
+        }
+        // Fetching Result Flavor text
+       /* XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
+        int[] flavArr = DataManager.randomArray(resFlavors.Count);
+        string resFlavText = resFlavors[flavArr[0]].InnerText;
+        evo.outcomeFlavor = resFlavText;*/
+
+        return evo;
     }
 }
