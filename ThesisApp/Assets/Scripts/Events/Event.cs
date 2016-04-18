@@ -216,7 +216,32 @@ public class Event {
             }
         }
         //Set flavors
-        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + "/flavor");
+        string location = "";
+        switch (eventtype)
+        {
+            case "gathering":
+                int r = Random.Range(0, 5);
+                switch (r)
+                {
+                    case 0:
+                        location = "/mine";
+                        break;
+                    case 1:
+                        location = "/quarry";
+                        break;
+                    case 2:
+                        location = "/wreckage";
+                        break;
+                    case 3:
+                        location = "/factory";
+                        break;
+                    case 4:
+                        location = "/village";
+                        break;
+                }
+                break;
+        }
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + location+"/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
         
