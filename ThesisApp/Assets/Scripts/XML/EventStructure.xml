@@ -538,7 +538,44 @@
       </failure>
     </outcome>
   </gathering>
-
+  <research>
+    <outcome>
+      <conditions>
+        <conditon>
+          <piece></piece>
+          <amount></amount>
+        </conditon>
+      </conditions>
+      <success chance="">
+      
+      </success>
+      <neutral chance="">
+      
+    </neutral>
+      <failure chance="">
+      
+    </failure>
+    </outcome>
+  </research>
+  <diplomacy>
+    <outcome>
+      <conditions>
+        <conditon>
+          <piece></piece>
+          <amount></amount>
+        </conditon>
+      </conditions>
+      <success chance="">
+      
+      </success>
+      <neutral chance="">
+      
+    </neutral>
+      <failure chance="">
+      
+    </failure>
+    </outcome>
+  </diplomacy>
   <introflavor>
     <gathering>
       <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
@@ -557,7 +594,7 @@
       <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
       <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
     </gathering>
-    <alchemy>
+    <research>
       <flavor>As you approach, you see nothing but green forests all over.</flavor>
       <flavor>You see a large blue lake filled with glimmering reflections on the surface. It is truly a beautiful sight.</flavor>
       <flavor>There is a thin layer of floating dust and rocks on the ground. The entire area seem to be filled with magic.</flavor>
@@ -573,7 +610,7 @@
       <flavor>There are glowing sigils all over the ground in this area. Clearly this site has been used for magical practices.</flavor>
       <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
       <flavor>This "island" is more like the remains of a comet that has exploded. There are floating rock formations everywhere, clustered together. It is possible to walk on them, but caution is advised.</flavor>
-    </alchemy>
+    </research>
     <diplomacy>
       <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
       <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
