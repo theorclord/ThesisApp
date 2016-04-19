@@ -246,7 +246,42 @@ public class NodeController : MonoBehaviour {
                         outPiece = pair.Key;
                     }
                     int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
-                    resultString += outPiece.BoardName + " " + num;
+                    resultString += outPiece.BoardName + " ";// + num;
+                    if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
+                    {
+                        switch (num)
+                        {
+                            case 1:
+                                resultString += "Created";
+                                break;
+                            case -1:
+                                resultString += "Damaged";
+                                break;
+                            case -10:
+                                resultString += "Destroyed";
+                                break;
+                        }
+                    }else if(outPiece.BoardName == "Castle Crew")
+                    {
+                        switch (num)
+                        {
+                            case 1:
+                                resultString += "Recruited";
+                                break;
+                            case -1:
+                                resultString += "Injured";
+                                break;
+                            case -10:
+                                resultString += "Dead";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        if (num > 0) resultString += "+"+num;
+                        if (num < 0) resultString += num;
+
+                    }
                     resPieces.Add(outPiece.BoardName);
                     resPieceNumbs.Add(num);
                     if (eo.Pieces.Count != tempCount)
