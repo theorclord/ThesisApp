@@ -50,7 +50,6 @@
   </conditions>
 
   <conditionflavor>
-    <!--GATHERING-->
     <basics>
       <crew>
         <flavor>
@@ -95,6 +94,7 @@
         <flavor></flavor>
       </randomroom>
     </basics>
+    <!--GATHERING-->
     <mine>
       <crew>
         <flavor> to explore the mine's riches.</flavor>
@@ -276,49 +276,16 @@
     <!--RESEARCH-->
     <forest>
       <crew>
-          <flavor> to explore the village's riches.</flavor>
-        </crew>
-        <material>
-          <flavor> to repair items that may get broken.</flavor>
-          <flavor> to repair potential old machinery in the village.</flavor>
-        </material>
-        <crystal>
-          <flavor> to use for light as you venture into the village.</flavor>
-          <flavor> to power up potential old machinery in the village.</flavor>
-        </crystal>
-        <minersguild>
-          <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
-        </minersguild>
-        <workshop>
-          <flavor> to make sure your facilities don't get broken too badly.</flavor>
-        </workshop>
-        <alchemy>
-          <flavor> to create a strength potion for your crew.</flavor>
-        </alchemy>
-        <alchemylab>
-          <flavor> to have ready possible healing potions if injuries occur.</flavor>
-        </alchemylab>
-        <cleric>
-          <flavor> to bless the expedition in hopes that it will be successful.</flavor>
-        </cleric>
-        <ambassador>
-          <flavor> to be diplomatic with potential encounters.</flavor>
-        </ambassador>
-        <randomroom>
-          <flavor></flavor>
-        </randomroom>
-    </forest>
-    <rockformation>
-      <crew>
-        <flavor> to explore the village's riches.</flavor>
+        <flavor> to explore the vast forest.</flavor>
+        <flavor> to venture into the mysterious forest.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the village.</flavor>
+        <flavor> to create a potential shelter if needed.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture into the village.</flavor>
-        <flavor> to power up potential old machinery in the village.</flavor>
+        <flavor> to use for light to guide you through the forest.</flavor>
+        <flavor> to signal your presence in the woods.</flavor>
       </crystal>
       <minersguild>
         <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
@@ -327,7 +294,41 @@
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create bravery potions for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible new research that can be made from your findings.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </forest>
+    <rockformation>
+      <crew>
+        <flavor> to explore the floating rocks.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to create bridges between the rocks.</flavor>
+      </material>
+      <crystal>
+        <flavor> to hopefully bind the rocks together.</flavor>
+        <flavor> to create a beacon so your castle can pick you up.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a anti-gravity potion so your crew don't fall to their death.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -344,15 +345,16 @@
     </rockformation>
     <magicsite>
       <crew>
-        <flavor> to explore the village's riches.</flavor>
+        <flavor> to explore the magical site.</flavor>
+        <flavor> to travel to the magic area below.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the village.</flavor>
+        <flavor> to create shielding from potential harmful magic.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture into the village.</flavor>
-        <flavor> to power up potential old machinery in the village.</flavor>
+        <flavor> to use for a magical counter measure.</flavor>
+        <flavor> to combine with other magical essenses that might be down there.</flavor>
       </crystal>
       <minersguild>
         <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
@@ -361,7 +363,7 @@
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create magic resistance potions for your crew.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -378,15 +380,17 @@
     </magicsite>
     <lake>
       <crew>
-        <flavor> to explore the village's riches.</flavor>
+        <flavor> to explore the lake.</flavor>
+        <flavor> to venture down to the lake.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the village.</flavor>
+        <flavor> to create a makeshift boat.</flavor>
+        <flavor> to create a raft to go onto the lake.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture into the village.</flavor>
-        <flavor> to power up potential old machinery in the village.</flavor>
+        <flavor> to use for light in the water and illuminate the depths.</flavor>
+        <flavor> to shine light on whatever might be in the water.</flavor>
       </crystal>
       <minersguild>
         <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
@@ -395,7 +399,7 @@
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create underwater breathing potions for your crew.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -412,15 +416,16 @@
     </lake>
     <ruins>
       <crew>
-        <flavor> to explore the village's riches.</flavor>
+        <flavor> to explore the great ruins.</flavor>
+        <flavor> to venture into the ruins of old.</flavor>
       </crew>
       <material>
         <flavor> to repair items that may get broken.</flavor>
-        <flavor> to repair potential old machinery in the village.</flavor>
+        <flavor> to rebuild old artifacts that may prove useful.</flavor>
       </material>
       <crystal>
-        <flavor> to use for light as you venture into the village.</flavor>
-        <flavor> to power up potential old machinery in the village.</flavor>
+        <flavor> to use for light as you venture into the ruins.</flavor>
+        <flavor> to power up potential ancient machinery in the ruins.</flavor>
       </crystal>
       <minersguild>
         <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
@@ -429,7 +434,7 @@
         <flavor> to make sure your facilities don't get broken too badly.</flavor>
       </workshop>
       <alchemy>
-        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to create potions of ancient knowledge for your crew.</flavor>
       </alchemy>
       <alchemylab>
         <flavor> to have ready possible healing potions if injuries occur.</flavor>
@@ -1348,7 +1353,7 @@
   
   <endflavor>
     <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
-    <flavor>Your castle runs out of control and crashes into the island. The castle collapse and everybody dies. THE END!</flavor>
+    <flavor>Your castle runs out of control and crashes into an island. The castle collapse and everybody dies. THE END!</flavor>
     <flavor>When reaching the final island, you remember that magic and power crystals don't really exist. So you wake yourself up, and get out of bed.</flavor>
   </endflavor>
 
