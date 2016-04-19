@@ -48,7 +48,7 @@ public class Event {
             case EventSpec.RESEARCH://research
                 //TODO Set eventText
                 eventText = "Research Event";
-                buildDataFromXml("gathering");
+                buildDataFromXml("research");
                 break;
             case EventSpec.DIPLOMACY://diplomacy
                 //TODO Set eventText
@@ -245,6 +245,32 @@ public class Event {
                         break;
                 }
                 break;
+
+            case "research":
+                switch (r)
+                {
+                    case 0:
+                        locationXmlString = "/forest";
+                        evOpt.locType = Location.MINE;
+                        break;
+                    case 1:
+                        locationXmlString = "/rockformation";
+                        evOpt.locType = Location.QUARRY;
+                        break;
+                    case 2:
+                        locationXmlString = "/magicsite";
+                        evOpt.locType = Location.WRECKAGE;
+                        break;
+                    case 3:
+                        locationXmlString = "/lake";
+                        evOpt.locType = Location.FACTORY;
+                        break;
+                    case 4:
+                        locationXmlString = "/ruins";
+                        evOpt.locType = Location.VILLAGE;
+                        break;
+                }
+                break;
         }
         evOpt.locationXmlString = locationXmlString;
         XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + locationXmlString + "/flavor");
@@ -257,8 +283,10 @@ public class Event {
     private EventOutcome generateOutcome(XmlNode selectedNode, string typepath, string crit, EventOutcomeType type)
     {
         EventOutcome evo = new EventOutcome();
+        
         XmlNodeList outOptions = selectedNode.SelectNodes(typepath + crit + "/option");
         int[] optArr = DataManager.randomArray(outOptions.Count);
+        //Debug.Log(selectedNode.LocalName+typepath + crit+"/option");//"size of Array(research):" + optArr.Length);
         XmlNodeList pieces = outOptions[optArr[0]].SelectNodes("piece");
         evo.Chance = int.Parse(selectedNode.SelectSingleNode(typepath).Attributes["chance"].Value);
         evo.Type = type;
