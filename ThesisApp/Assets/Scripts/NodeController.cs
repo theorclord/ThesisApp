@@ -117,7 +117,7 @@ public class NodeController : MonoBehaviour {
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
             button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 50 * i);
             string buttonText = "";
             int numCon = 0;
             string btx = "";
@@ -158,7 +158,8 @@ public class NodeController : MonoBehaviour {
 
         // TODO Clean up
         // TODO Set flavor text based on eventOption
-        eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
+        eventPanel.transform.FindChild("NameScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
         string eventtext = "";
         eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
         eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
