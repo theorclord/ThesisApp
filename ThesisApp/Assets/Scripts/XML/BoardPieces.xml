@@ -50,4 +50,9 @@
     <enumName>randomRoom</enumName>
     <type>room</type>
   </piece>
+  <piece>
+    <flavorName>Nothing Gained</flavorName>
+    <enumName>blank</enumName>
+    <type>resource</type>
+  </piece>
 </Pieces>
