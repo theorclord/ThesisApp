@@ -117,27 +117,89 @@ public class NodeController : MonoBehaviour {
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
             button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 35 * i);
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 50 * i);
             string buttonText = "";
             int numCon = 0;
-            foreach(KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
+            string btx = "";
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(eventstructurepath);
+            foreach (KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
             {
+                string pieceName = getPieceNameForXml(pair.Key.BoardName);
+                //Basic first, then add the location based for the piece.
+                XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
+                
+                int[] flSel = DataManager.randomArray(butFlav.Count);
+                if(pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
+                {
+                    btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/first").InnerText;
+                    btx += pair.Value;
+                    btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/second").InnerText;
+                }
+                else
+                {
+                    btx += butFlav[flSel[0]].InnerText;
+                }
+                Debug.Log("Location: " + e.EventOptions[tempint].locationXmlString);
+                butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
+                flSel = DataManager.randomArray(butFlav.Count);
+                btx += butFlav[flSel[0]].InnerText;
+
                 buttonText += pair.Key.BoardName + " " + pair.Value; 
                 numCon++;
                 if(e.EventOptions[tempint].Conditions.Count != numCon)
                 {
                     buttonText += ", ";
+                    btx += " ";
                 }
             }
-            button.transform.GetChild(0).GetComponent<Text>().text = buttonText;
+            button.transform.GetChild(0).GetComponent<Text>().text = btx;
         }
 
         // TODO Clean up
         // TODO Set flavor text based on eventOption
-        eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
-        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
+        eventPanel.transform.FindChild("NameScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
+        eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
         eventPanel.SetActive(true);
+    }
+
+    public string getPieceNameForXml(string name)
+    {
+        string outS = "";
+        switch (name)
+        {
+            case "Castle Crew":
+                outS = "/crew";
+                break;
+            case "Building Material":
+                outS = "/material";
+                break;
+            case "Crystal Charge":
+                outS = "/crystal";
+                break;
+            case "Miners Guild":
+                outS = "/minersguild";
+                break;
+            case "Workshop":
+                outS = "/workshop";
+                break;
+            case "Alchemical Material":
+                outS = "/alchemy";
+                break;
+            case "Alchemical Lab":
+                outS = "/alchemylab";
+                break;
+            case "Cleric Quarters":
+                outS = "/cleric";
+                break;
+            case "Ambassadors Quarters":
+                outS = "/ambassador";
+                break;
+        }
+        return outS;
     }
 
     public void ResolveEvent(int eventnum)
@@ -193,6 +255,52 @@ public class NodeController : MonoBehaviour {
                         }
                         //resultString += outPiece.BoardName + " " + num;
                         /*
+                    // + num;
+                    if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
+                    {
+                        resultString += outPiece.BoardName + " ";
+                        switch (num)
+                        {
+                            case 1:
+                                resultString += "Created";
+                                break;
+                            case -1:
+                                resultString += "Damaged";
+                                break;
+                            case -10:
+                                resultString += "Destroyed";
+                                break;
+                        }
+                    }else if(outPiece.BoardName == "Castle Crew")
+                    {
+                        switch (num)
+                        {
+                            case 10:
+                                resultString += outPiece.BoardName + " ";
+                                resultString += "Recruited";
+                                break;
+                            case 1:
+                                resultString += "Injured ";
+                                resultString += outPiece.BoardName + " ";
+                                resultString += "Recruited";
+                                break;
+                            case -1:
+                                resultString += outPiece.BoardName + " ";
+                                resultString += "Injured";
+                                break;
+                            case -10:
+                                resultString += outPiece.BoardName + " ";
+                                resultString += "Dead";
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        resultString += outPiece.BoardName + " ";
+                        if (num > 0) resultString += "+"+num;
+                        if (num < 0) resultString += num;
+
+                    }
                         if (eo.Pieces.Count != tempCount)
                         {
                             resultString += ", ";
@@ -250,6 +358,11 @@ public class NodeController : MonoBehaviour {
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }else if((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruitedinjured/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }else if((int)resPieceNumbs[i]== 10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruited/flavor");
                         r = Random.Range(0, list.Count);

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Utility
         public Dictionary<Piece, int> Conditions { get; set; }
         public List<EventOutcomeGroup> Results { get; set; }
         public Location locType { get; set; }
+        public string locationXmlString { get; set; }
 
         public EventOption()
         {

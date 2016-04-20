@@ -52,51 +52,404 @@
   <conditionflavor>
     <basics>
       <crew>
-        <flavor></flavor>
+        <flavor>
+          <first>Send </first>
+          <second>x castle crew</second>
+        </flavor>
       </crew>
       <material>
-        <flavor></flavor>
+        <flavor>
+          <first>Bring </first>
+          <second>x building material</second>
+        </flavor>
       </material>
       <crystal>
-        <flavor></flavor>
+        <flavor>
+          <first>Take with </first>
+          <second>x power crystal</second>
+        </flavor>
       </crystal>
+      <alchemy>
+        <flavor>
+          <first>Use </first>
+          <second>x alchemy point</second>
+        </flavor>
+      </alchemy>
       <minersguild>
-        <flavor></flavor>
+        <flavor>Use the miner's guild</flavor>
       </minersguild>
       <workshop>
-        <flavor></flavor>
+        <flavor>Use the workshop</flavor>
       </workshop>
-      <alchemy>
-        <flavor></flavor>
-      </alchemy>
       <alchemylab>
-        <flavor></flavor>
+        <flavor>Take use of the alchemy lab</flavor>
       </alchemylab>
       <cleric>
-        <flavor></flavor>
+        <flavor>Use the cleric</flavor>
       </cleric>
       <ambassador>
-        <flavor></flavor>
+        <flavor>Use the ambassador</flavor>
       </ambassador>
       <randomroom>
         <flavor></flavor>
       </randomroom>
     </basics>
+    <!--GATHERING-->
     <mine>
-      
+      <crew>
+        <flavor> to explore the mine's riches.</flavor>
+        <flavor> to venture down into the mine.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the mine.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the mine.</flavor>
+        <flavor> to power up potential old machinery in the mine.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to mine what you can.</flavor>
+        <flavor> to make sure you have a strategy for how to mine the most resources.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+        <flavor> to be prepared to fix potentially broken tools.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+        <flavor> to give the crew nightvision.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+        <flavor> to prepare antidotes if they catch new diseases.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+        <flavor> to boost the faith of the crew so that they will not faulter.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+        <flavor> to act as a diplomatic safety net in case you meet unknown humanoids.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </mine>
     <quarry>
-      
+      <crew>
+        <flavor> to explore the quarry's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the quarry.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture down the quarry.</flavor>
+        <flavor> to power up potential old machinery in the quarry.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor>
+          to something quarry.<!--ensure that you have the machinery needed to be able to mine what you can.-->
+        </flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly when in the quarry.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create strength potions so you can get as much from the quarry as possible.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </quarry>
     <wreckage>
-      
+      <crew>
+        <flavor> to explore the wreckage's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the wreckage.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you enter the wreckage.</flavor>
+        <flavor> to power up potential old machinery within the wreckage.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to use the wreckage to your advantage.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a oil that can be used on the wreckage.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </wreckage>
     <factory>
-      
+      <crew>
+        <flavor> to explore the factory's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the factory.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture into the factory.</flavor>
+        <flavor> to power up potential old machinery in the factory.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </factory>
     <village>
-      
+      <crew>
+        <flavor> to explore the village's riches.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to repair potential old machinery in the village.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture into the village.</flavor>
+        <flavor> to power up potential old machinery in the village.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a strength potion for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
     </village>
+    <!--RESEARCH-->
+    <forest>
+      <crew>
+        <flavor> to explore the vast forest.</flavor>
+        <flavor> to venture into the mysterious forest.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to create a potential shelter if needed.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light to guide you through the forest.</flavor>
+        <flavor> to signal your presence in the woods.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create bravery potions for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible new research that can be made from your findings.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </forest>
+    <rockformation>
+      <crew>
+        <flavor> to explore the floating rocks.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to create bridges between the rocks.</flavor>
+      </material>
+      <crystal>
+        <flavor> to hopefully bind the rocks together.</flavor>
+        <flavor> to create a beacon so your castle can pick you up.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create a anti-gravity potion so your crew don't fall to their death.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </rockformation>
+    <magicsite>
+      <crew>
+        <flavor> to explore the magical site.</flavor>
+        <flavor> to travel to the magic area below.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to create shielding from potential harmful magic.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for a magical counter measure.</flavor>
+        <flavor> to combine with other magical essenses that might be down there.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create magic resistance potions for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </magicsite>
+    <lake>
+      <crew>
+        <flavor> to explore the lake.</flavor>
+        <flavor> to venture down to the lake.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to create a makeshift boat.</flavor>
+        <flavor> to create a raft to go onto the lake.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light in the water and illuminate the depths.</flavor>
+        <flavor> to shine light on whatever might be in the water.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create underwater breathing potions for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </lake>
+    <ruins>
+      <crew>
+        <flavor> to explore the great ruins.</flavor>
+        <flavor> to venture into the ruins of old.</flavor>
+      </crew>
+      <material>
+        <flavor> to repair items that may get broken.</flavor>
+        <flavor> to rebuild old artifacts that may prove useful.</flavor>
+      </material>
+      <crystal>
+        <flavor> to use for light as you venture into the ruins.</flavor>
+        <flavor> to power up potential ancient machinery in the ruins.</flavor>
+      </crystal>
+      <minersguild>
+        <flavor> to ensure that you have the machinery needed to be able to gather what you can.</flavor>
+      </minersguild>
+      <workshop>
+        <flavor> to make sure your facilities don't get broken too badly.</flavor>
+      </workshop>
+      <alchemy>
+        <flavor> to create potions of ancient knowledge for your crew.</flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor> to have ready possible healing potions if injuries occur.</flavor>
+      </alchemylab>
+      <cleric>
+        <flavor> to bless the expedition in hopes that it will be successful.</flavor>
+      </cleric>
+      <ambassador>
+        <flavor> to be diplomatic with potential encounters.</flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </ruins>
   </conditionflavor>
 
 
@@ -182,6 +535,12 @@
                 <flavor>There wasn't much to be collected here, after all.</flavor>
               </flavors>
             </option>
+            <!--<option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>-->
           </normal>
           <critical>
             <option>
@@ -607,20 +966,14 @@
             <option>
               <piece>
                 <name>scrap</name>
-                <range>1,2</range>
+                <range>3,4</range>
               </piece>
-              <piece>
-                <name>scrap</name>
-                <range>2,2</range>
-              </piece>
+            </option>
+            <option>
               <piece>
                 <name>sciencePoint</name>
                 <range>2,2</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
             </option>
           </normal>
           <critical>
@@ -633,13 +986,12 @@
                 <name>sciencePoint</name>
                 <range>2,2</range>
               </piece>
+            </option>
+            <option>
               <piece>
                 <name>randomRoom</name>
                 <range>1,1</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
             </option>
           </critical>
         </success>
@@ -650,9 +1002,6 @@
                 <name>scrap</name>
                 <range>2,3</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
             </option>
           </normal>
           <critical>
@@ -661,9 +1010,6 @@
                 <name>scrap</name>
                 <range>2,3</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
             </option>
           </critical>
         </neutral>
@@ -674,24 +1020,18 @@
                 <name>randomRoom</name>
                 <range>-10,-10</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
             </option>
           </normal>
           <critical>
             <option>
               <piece>
-                <name>randomRoom</name>
-                <range>-1,-1</range>
-              </piece>
-              <piece>
                 <name>crewMember</name>
                 <range>-10,-10</range>
               </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
             </option>
           </critical>
         </failure>
@@ -813,10 +1153,1046 @@
       </outcome>
     </two>
     <three>
-      
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>medLab</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>3,3</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>3,3</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>3,3</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>labRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>MechanicRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="45">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="15">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>diplomacy</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+              <piece>
+                <name>labRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
     </three>
   </gathering>
-    
+
+  <research>
+    <one>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="15">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="70">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="15">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>labRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+    </one>
+    <two>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>2</amount>
+          </condition>
+        </conditions>
+        <success chance ="40">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>3,3</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="50">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>sciencePoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>energyPoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+    </two>
+    <three>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>medLab</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>MechanicRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="45">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="15">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>crewMember</piece>
+            <amount>1</amount>
+          </condition>
+          <condition>
+            <piece>diplomacy</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+              <piece>
+                <name>labRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+    </three>
+  </research>
+
   <introflavor>
     <gathering>
       <!-- split it into locations-->
@@ -846,7 +2222,7 @@
         <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
       </village>
     </gathering>
-    
+
     <research>
       <forest>
         <flavor>As you approach, you see nothing but green forests all over.</flavor>
@@ -874,7 +2250,7 @@
         <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
       </ruins>
     </research>
-    
+
     <diplomacy>
       <cathedral>
         <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
@@ -883,7 +2259,7 @@
         <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
       </settlement>
     </diplomacy>
-    
+
     <abandoned>
       <main>
         <flavor>You realize this place used to belong to </flavor>
@@ -905,10 +2281,10 @@
       </extra>
     </abandoned>
   </introflavor>
-  
+
   <endflavor>
     <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
-    <flavor>Your castle runs out of control and crashes into the island. The castle collapse and everybody dies. THE END!</flavor>
+    <flavor>Your castle runs out of control and crashes into an island. The castle collapse and everybody dies. THE END!</flavor>
     <flavor>When reaching the final island, you remember that magic and power crystals don't really exist. So you wake yourself up, and get out of bed.</flavor>
   </endflavor>
 
@@ -917,64 +2293,71 @@
       <flavor>Within your findings, you discover a new alchemical material. </flavor>
       <flavor>As you unload your bags from the expedition on the island, you see a strange new spore on one of your castle member's shoe. </flavor>
       <flavor>What is this? Some chemical material that has never been seen before! </flavor>
-      <flavor>On the island, you were able to extract some sort of new and weird plant.</flavor>
-      <flavor>Your castle member has found a strange new plant that can be used in alchemy.</flavor>
-      <flavor>Your castle member returns with a new alchemical compound.</flavor>
+      <flavor>On the island, you were able to extract some sort of new and weird plant. </flavor>
+      <flavor>Your castle member has found a strange new plant that can be used in alchemy. </flavor>
+      <flavor>Your castle member returns with a new alchemical compound. </flavor>
     </alchemy>
     <scrap>
       <flavor>Your expedition yielded some usable building materials. </flavor>
       <flavor>There were some new materials down on the island that you thought could be used in your castle. </flavor>
-      <flavor>Your castle crew scavenged all the materials possible.</flavor>
+      <flavor>Your castle crew scavenged all the materials possible. </flavor>
+      <flavor>You were able to gather a bit of building material from the island. </flavor>
     </scrap>
     <crewinjured>
       <flavor>During the quest, a castle member got badly injured and need medical attention. </flavor>
       <flavor>One of your castle members twisted his foot whilst stepping on to the island, and needs some medical attention. </flavor>
       <flavor>One of your crew has fallen ill with some type of nasty flu. </flavor>
-      <flavor>Your castle member returns from the quest with minor injuries. He should visit the medical ward nonetheless.</flavor>
+      <flavor>Your castle member returns from the quest with minor injuries. He should visit the medical ward nonetheless. </flavor>
     </crewinjured>
     <crewdead>
       <flavor>One castle member was unable to make it back alive. May he rest in peace. </flavor>
       <flavor>While entering the area, one of your crew member choked on a piece of bread from his lunch and suffocated. </flavor>
-      <flavor>After feeling ill for some time, one of your castle member has fallen down lifeless.</flavor>
-      <flavor>Unfortunately for the person down on the island, he were bitten by a venomous snake, and died after only 10 seconds.</flavor>
-      <flavor>Your castle member suffered an allergic reaction to some substance down on the island. He didn't make it.</flavor>
+      <flavor>After feeling ill for some time, one of your castle member has fallen down lifeless. </flavor>
+      <flavor>Unfortunately for the person down on the island, he were bitten by a venomous snake, and died after only 10 seconds. </flavor>
+      <flavor>Your castle member suffered an allergic reaction to some substance down on the island. He didn't make it. </flavor>
     </crewdead>
     <crewrecruited>
       <flavor>While on the island, a strange figure wanted to join your forces and help your cause. </flavor>
       <flavor>As you head back to the castle, you see a man standing infront of the gates. He wants to team up with you. </flavor>
       <flavor>You were able to recruit a new soul down on the island. Welcome aboard! </flavor>
+      <flavor>Your crew's diplomatic skillset was enough to convince an islander to join your forces. </flavor>
     </crewrecruited>
     <crewrecruitedinjured>
       <flavor>Down on the island, you found a man who was badly injured. He agrees to join you if you are able to mend his wounds. </flavor>
       <flavor>Heading back, you see a person crawling on his stomach, making a painful sound. You decide to recruit him and heal him back to health. </flavor>
       <flavor>A person wants to join your castle crew, but he is in need of some medicine. </flavor>
+      <flavor>You found a wounded man on the island, and he agreed to join your forces if you can heal him. </flavor>
     </crewrecruitedinjured>
     <energygained>
       <flavor>While completing the quest, your castle member found a crystal that looks identical to the one powering your castle. </flavor>
       <flavor>Somehow, your castle's power crystal is shining more brightly now than it did before. </flavor>
-      <flavor>As you enter your castle again, the power crystal flashes a massive flash and is now more potent than before.</flavor>
+      <flavor>As you enter your castle again, the power crystal flashes a massive flash and is now more potent than before. </flavor>
+      <flavor>You were able to uncover a piece of crystal from the island, and you bring it back to the castle. </flavor>
     </energygained>
     <energylost>
       <flavor>As you return from your quest, you notice that the power crystal in your castle is glowing less brightly. </flavor>
       <flavor>As you fly away from the island, a piece of your power crystal falls off.   </flavor>
-      <flavor>You are not sure just why, but your power crystal is fading slowly.</flavor>
-      <flavor>When returning from the quest, your power crystal seems to have been drained from sources unknown.</flavor>
-      <flavor>When landing on the surface, you hit too hard, and the power crystal flickers and shines a little less bright.</flavor>
+      <flavor>You are not sure just why, but your power crystal is fading slowly. </flavor>
+      <flavor>When returning from the quest, your power crystal seems to have been drained from sources unknown. </flavor>
+      <flavor>When landing on the surface, you hit too hard, and the power crystal flickers and shines a little less bright. </flavor>
     </energylost>
     <roomdamaged>
       <flavor>When retreating from the island, one of your rooms seems to be shaking uncontrollably. </flavor>
       <flavor>Having overused your spacial capacity, one of your rooms starts to crack in the walls. </flavor>
       <flavor>One of your castle members has gone berserk in a room and damaged a lot of its contents.</flavor>
+      <flavor>When your crew returns from the island, they unpack, but something seems to have reacted with the atmosphere and a room starts to crumble. </flavor>
     </roomdamaged>
     <roomdestroyed>
       <flavor>Something happened on your castle as you landed on the island, and one of your rooms caved in on itself. </flavor>
       <flavor>Your power crystal overcharged, and a beam of magic light hit one of your rooms and destroyed it. </flavor>
       <flavor>There was some sort of reaction happening in one of the rooms as your castle crew returned. It blew up! </flavor>
+      <flavor>The latest attempt to take off from the island, caused one of your rooms to collaps on itself. </flavor>
     </roomdestroyed>
     <roomgained>
       <flavor>While exploring the island, you discover a new way of expanding your castle magically. </flavor>
       <flavor>As you return to your castle, you see that a new room has magically appeared! </flavor>
-      <flavor>Your castle crew have found new strength, and are willing to expand the castle.</flavor>
+      <flavor>Your castle crew have found new strength, and are willing to expand the castle. </flavor>
+      <flavor>Engraved on a rock, you see a layout of a structure that might be benefitial to your castle. </flavor>
     </roomgained>
   </resultflavor>
 

@@ -26,6 +26,7 @@ public class Event {
     public string eventText = "";
     public string eventReward = "";
     public string entryFlavor = "";
+    public string locationXmlString = "";
 
     public List<EventOption> EventOptions { get; set; }
 
@@ -47,7 +48,7 @@ public class Event {
             case EventSpec.RESEARCH://research
                 //TODO Set eventText
                 eventText = "Research Event";
-                buildDataFromXml("gathering");
+                buildDataFromXml("research");
                 break;
             case EventSpec.DIPLOMACY://diplomacy
                 //TODO Set eventText
@@ -77,12 +78,13 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype)
     {
+        int r = Random.Range(0, 5); //which type of location
         //Basic option
-        EventOptions.Add(generateEvent(0, 1, eventtype));
+        EventOptions.Add(generateEvent(0, 1, eventtype, r));
         //Second option
-        EventOptions.Add(generateEvent(1, 2, eventtype));
+        EventOptions.Add(generateEvent(1, 2, eventtype, r));
         //Third option
-        EventOptions.Add(generateEvent(2, 3, eventtype));
+        EventOptions.Add(generateEvent(2, 3, eventtype, r));
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -91,7 +93,7 @@ public class Event {
     /// <param name="numCon">Number of conditions</param>
     /// <param name="eventtype">The type of event, gathering, diplomacy, research</param>
     /// <returns></returns>
-    private EventOption generateEvent(int conType, int numCon, string eventtype)
+    private EventOption generateEvent(int conType, int numCon, string eventtype, int r)
     {
         // test vars
         //int conType = 0;
@@ -222,37 +224,62 @@ public class Event {
             }
         }
         //Set flavors
-        string location = "";
         switch (eventtype)
         {
             case "gathering":
-                int r = Random.Range(0, 5);
                 switch (r)
                 {
                     case 0:
-                        location = "/mine";
+                        locationXmlString = "/mine";
                         evOpt.locType = Location.MINE;
                         break;
                     case 1:
-                        location = "/quarry";
+                        locationXmlString = "/quarry";
                         evOpt.locType = Location.QUARRY;
                         break;
                     case 2:
-                        location = "/wreckage";
+                        locationXmlString = "/wreckage";
                         evOpt.locType = Location.WRECKAGE;
                         break;
                     case 3:
-                        location = "/factory";
+                        locationXmlString = "/factory";
                         evOpt.locType = Location.FACTORY;
                         break;
                     case 4:
-                        location = "/village";
+                        locationXmlString = "/village";
+                        evOpt.locType = Location.VILLAGE;
+                        break;
+                }
+                break;
+
+            case "research":
+                switch (r)
+                {
+                    case 0:
+                        locationXmlString = "/forest";
+                        evOpt.locType = Location.MINE;
+                        break;
+                    case 1:
+                        locationXmlString = "/rockformation";
+                        evOpt.locType = Location.QUARRY;
+                        break;
+                    case 2:
+                        locationXmlString = "/magicsite";
+                        evOpt.locType = Location.WRECKAGE;
+                        break;
+                    case 3:
+                        locationXmlString = "/lake";
+                        evOpt.locType = Location.FACTORY;
+                        break;
+                    case 4:
+                        locationXmlString = "/ruins";
                         evOpt.locType = Location.VILLAGE;
                         break;
                 }
                 break;
         }
-        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + location+"/flavor");
+        evOpt.locationXmlString = locationXmlString;
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + locationXmlString + "/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
         
@@ -262,8 +289,10 @@ public class Event {
     private EventOutcome generateOutcome(XmlNode selectedNode, string typepath, string crit, EventOutcomeType type)
     {
         EventOutcome evo = new EventOutcome();
+        
         XmlNodeList outOptions = selectedNode.SelectNodes(typepath + crit + "/option");
         int[] optArr = DataManager.randomArray(outOptions.Count);
+        //Debug.Log(selectedNode.LocalName+typepath + crit+"/option");//"size of Array(research):" + optArr.Length);
         XmlNodeList pieces = outOptions[optArr[0]].SelectNodes("piece");
         evo.Chance = int.Parse(selectedNode.SelectSingleNode(typepath).Attributes["chance"].Value);
         evo.Type = type;
