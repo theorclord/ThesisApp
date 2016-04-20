@@ -966,14 +966,30 @@
             <option>
               <piece>
                 <name>scrap</name>
+<<<<<<< HEAD
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+=======
                 <range>3,4</range>
               </piece>
             </option>
             <option>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
               <piece>
                 <name>sciencePoint</name>
                 <range>2,2</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
@@ -986,12 +1002,21 @@
                 <name>sciencePoint</name>
                 <range>2,2</range>
               </piece>
+<<<<<<< HEAD
+=======
             </option>
             <option>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
               <piece>
                 <name>randomRoom</name>
                 <range>1,1</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </critical>
         </success>
@@ -1002,6 +1027,12 @@
                 <name>scrap</name>
                 <range>2,3</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
@@ -1010,6 +1041,12 @@
                 <name>scrap</name>
                 <range>2,3</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </critical>
         </neutral>
@@ -1020,123 +1057,18 @@
                 <name>randomRoom</name>
                 <range>-10,-10</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
             <option>
               <piece>
-                <name>crewMember</name>
-                <range>-10,-10</range>
-              </piece>
-              <piece>
-                <name>randomRoom</name>
-                <range>-1,-1</range>
-              </piece>
-            </option>
-          </critical>
-        </failure>
-      </outcome>
-      <outcome>
-        <conditions>
-          <condition>
-            <piece>crewMember</piece>
-            <amount>1</amount>
-          </condition>
-          <condition>
-            <piece>medLab</piece>
-            <amount>1</amount>
-          </condition>
-        </conditions>
-        <success chance ="50">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>energyPoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>2,2</range>
-              </piece>
-              <piece>
-                <name>randomRoom</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </success>
-        <neutral chance="20">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </neutral>
-        <failure chance="60">
-          <normal>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
+<<<<<<< HEAD
                 <name>randomRoom</name>
                 <range>-1,-1</range>
               </piece>
@@ -1147,6 +1079,14 @@
               <flavors>
                 <flavor></flavor>
               </flavors>
+=======
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
             </option>
           </critical>
         </failure>
@@ -1243,6 +1183,7 @@
                 <name>crewMember</name>
                 <range>-1,-1</range>
               </piece>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </critical>
         </failure>
@@ -1254,7 +1195,11 @@
             <amount>1</amount>
           </condition>
           <condition>
+<<<<<<< HEAD
+            <piece>medLab</piece>
+=======
             <piece>labRoom</piece>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             <amount>1</amount>
           </condition>
         </conditions>
@@ -1263,14 +1208,30 @@
             <option>
               <piece>
                 <name>scrap</name>
+<<<<<<< HEAD
+                <range>1,2</range>
+              </piece>
+=======
                 <range>2,2</range>
               </piece>
             </option>
             <option>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
               <piece>
                 <name>energyPoint</name>
                 <range>1,1</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+                <flavor></flavor>
+              </flavors>
+            </option>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,3</range>
+=======
             </option>
           </normal>
           <critical>
@@ -1296,17 +1257,44 @@
               <piece>
                 <name>scrap</name>
                 <range>2,2</range>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
               </piece>
               <piece>
                 <name>sciencePoint</name>
                 <range>1,1</range>
               </piece>
+<<<<<<< HEAD
+              <flavors>
+                <flavor></flavor>
+                <flavor></flavor>
+              </flavors>
+=======
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
             <option>
               <piece>
                 <name>scrap</name>
+<<<<<<< HEAD
+                <range>1,2</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>2,2</range>
+              </piece>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="20">
+=======
                 <range>2,2</range>
               </piece>
               <piece>
@@ -1377,18 +1365,47 @@
           </critical>
         </success>
         <neutral chance="40">
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
           <normal>
             <option>
               <piece>
                 <name>scrap</name>
+<<<<<<< HEAD
+                <range>2,3</range>
+              </piece>
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
                 <range>2,2</range>
               </piece>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
             <option>
               <piece>
                 <name>scrap</name>
+<<<<<<< HEAD
+                <range>2,3</range>
+              </piece>
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
                 <range>2,2</range>
               </piece>
             </option>
@@ -1407,12 +1424,24 @@
                 <name>randomRoom</name>
                 <range>-1,-1</range>
               </piece>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </normal>
           <critical>
             <option>
               <piece>
                 <name>randomRoom</name>
+<<<<<<< HEAD
+                <range>-1,-1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+              <flavors>
+                <flavor></flavor>
+              </flavors>
+=======
                 <range>-10,-10</range>
               </piece>
             </option>
@@ -1421,10 +1450,19 @@
                 <name>energyPoint</name>
                 <range>-1,-1</range>
               </piece>
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
             </option>
           </critical>
         </failure>
       </outcome>
+<<<<<<< HEAD
+    </two>
+    <three>
+      
+    </three>
+  </gathering>
+    
+=======
       <outcome>
         <conditions>
           <condition>
@@ -2193,6 +2231,7 @@
     </three>
   </research>
 
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
   <introflavor>
     <gathering>
       <!-- split it into locations-->

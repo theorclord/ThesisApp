@@ -17,5 +17,12 @@ namespace Assets.Scripts.Utility
             set { speed = value; }
         }
 
+        public Dictionary<Faction,int> FactionRelations { get; set; }
+
+        public PlayerStats()
+        {
+            FactionRelations = new Dictionary<Faction, int>();
+        }
+
     }
 }

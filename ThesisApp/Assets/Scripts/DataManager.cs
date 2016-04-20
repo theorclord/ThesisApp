@@ -21,16 +21,23 @@ public class DataManager : MonoBehaviour {
 
     public Dictionary<string, Piece> BoardPieces { get; set; }
 
+    public Dictionary<string, Faction> Factions { get; set; }
+
     public List<SavedResult> SavedEvents
     {
         get; set;
     }
 
     //XML loading variables
-    private string xmlfilepath = "assets/scripts/XML/BoardPieces.xml";
+    private string boardPiecesXml = "assets/scripts/XML/BoardPieces.xml";
     private string piecesString = "Pieces/piece";
     private string identifier = "enumName";
     private string pieceName = "flavorName";
+
+    private string factionXml = "assets/scripts/XML/Factions.xml";
+    private string factionString = "factions/faction";
+    private string factionId = "enumName";
+    private string factionName = "name";
     void Awake()
     {
         if (!instance)
@@ -48,16 +55,31 @@ public class DataManager : MonoBehaviour {
         Player = new PlayerStats();
         BoardPieces = new Dictionary<string, Piece>();
         Nodes = new List<WorldNodeStats>();
+        Factions = new Dictionary<string, Faction>();
         loadBoardPieces();
+        loadFactions();
         //Load world
         InitializeNodes();
 
     }
 
+    private void loadFactions()
+    {
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load(factionXml);
+        XmlNodeList pieces = xmlDoc.SelectNodes(factionString);
+        foreach (XmlNode node in pieces)
+        {
+            Faction newFaction = new Faction(node.SelectSingleNode(factionName).InnerText);
+            
+            Factions.Add(node.SelectSingleNode(factionId).InnerText, newFaction);
+        }
+    }
+
     private void loadBoardPieces()
     {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(xmlfilepath);
+        xmlDoc.Load(boardPiecesXml);
         XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
         foreach(XmlNode node in pieces)
         {

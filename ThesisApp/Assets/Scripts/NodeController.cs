@@ -160,7 +160,6 @@ public class NodeController : MonoBehaviour {
         // TODO Set flavor text based on eventOption
         eventPanel.transform.FindChild("NameScreen").gameObject.active = true;
         eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
-        string eventtext = "";
         eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
         eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
@@ -214,40 +213,48 @@ public class NodeController : MonoBehaviour {
         //resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
 
         //New function
-        string resultString = "";
         string resFlavor = "";
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
-        ArrayList resPieces = new ArrayList();
-        ArrayList resPieceNumbs = new ArrayList();
-        for (int i = 0; i < curEvent.EventOptions[eventnum].Results.Count; i++)
+        Dictionary<Piece, int> outcomePairs = new Dictionary<Piece, int>();
+        for (int k = 0; k < curEvent.EventOptions[eventnum].Results.Count; k++)
         {
-            EventOutcome eo = curEvent.EventOptions[eventnum].Results[i];
-            if(eo.Chance >= chance-accumChance)
+            EventOutcomeGroup eog = curEvent.EventOptions[eventnum].Results[k];
+            for (int i = 0; i < eog.Outcomes.Count; i++)
             {
-                resFlavor = eo.outcomeFlavor;
-                int tempCount = 0;
-                foreach(KeyValuePair<Piece,int[]> pair in eo.Pieces)
+                EventOutcome eo = eog.Outcomes[i];
+                if (eo.Chance >= chance - accumChance)
                 {
-                    tempCount++;
-                    Piece outPiece = null;
-                    if( pair.Key.BoardName == "RandomRoom")
+                    resFlavor = eo.outcomeFlavor;
+                    foreach (KeyValuePair<Piece, int[]> pair in eo.Pieces)
                     {
-                        List<Piece> tempRooms = new List<Piece>();
-                        foreach(KeyValuePair<string, Piece> piecePair in DataManager.instance.BoardPieces)
+                        Piece outPiece = null;
+                        if (pair.Key.BoardName == "RandomRoom")
                         {
-                            if(piecePair.Value.Type == BoardType.ROOM)
+                            List<Piece> tempRooms = new List<Piece>();
+                            foreach (KeyValuePair<string, Piece> piecePair in DataManager.instance.BoardPieces)
                             {
-                                tempRooms.Add(piecePair.Value);
+                                if (piecePair.Value.Type == BoardType.ROOM)
+                                {
+                                    tempRooms.Add(piecePair.Value);
+                                }
                             }
+                            int[] roomOrder = DataManager.randomArray(tempRooms.Count);
+                            outPiece = tempRooms[roomOrder[0]];
                         }
-                        int[] roomOrder = DataManager.randomArray(tempRooms.Count);
-                        outPiece = tempRooms[roomOrder[0]];
-                    } else
-                    {
-                        outPiece = pair.Key;
-                    }
-                    int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        else
+                        {
+                            outPiece = pair.Key;
+                        }
+                        int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        if (outcomePairs.ContainsKey(outPiece))
+                        {
+                            outcomePairs[outPiece] = outcomePairs[outPiece] + num;
+                        } else {
+                            outcomePairs.Add(outPiece, num);
+                        }
+                        //resultString += outPiece.BoardName + " " + num;
+                        /*
                     // + num;
                     if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
                     {
@@ -294,20 +301,37 @@ public class NodeController : MonoBehaviour {
                         if (num < 0) resultString += num;
 
                     }
-                    resPieces.Add(outPiece.BoardName);
-                    resPieceNumbs.Add(num);
-                    if (eo.Pieces.Count != tempCount)
-                    {
-                        resultString += ", ";
+                        if (eo.Pieces.Count != tempCount)
+                        {
+                            resultString += ", ";
+                        }
+                        */
                     }
+                    break;
                 }
-                break;
-            } else
-            {
-                accumChance += eo.Chance;
+                else
+                {
+                    accumChance += eo.Chance;
+                }
             }
         }
-        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
+        //Build outcome string
+        ArrayList resPieces = new ArrayList();
+        ArrayList resPieceNumbs = new ArrayList();
+        string resultString = "";
+        int tempCount = 0;
+        foreach (KeyValuePair<Piece,int> pieceNum in outcomePairs)
+        {
+            tempCount++;
+            resultString += pieceNum.Key.BoardName + " " + pieceNum.Value;
+            resPieces.Add(pieceNum.Key.BoardName);
+            resPieceNumbs.Add(pieceNum.Value);
+            if (outcomePairs.Count != tempCount)
+            {
+                resultString += ", ";
+            }
+        }
+        resultPanel.transform.FindChild("OutcomeScreen").transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
         // This should be the flavor text
 
         string resultflavortext = "";
@@ -492,6 +516,6 @@ public class NodeController : MonoBehaviour {
         }
 
 
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
+        resultPanel.transform.FindChild("ResolutionScreen").transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
     }
 }

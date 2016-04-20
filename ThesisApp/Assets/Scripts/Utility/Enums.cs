@@ -44,6 +44,12 @@ namespace Assets.Scripts.Utility
         NEUTRAL,
         FAILURE
     }
+
+    public enum EventChance
+    {
+        CRITICAL,
+        NORMAL
+    }
     public enum BoardType
     {
         RESOURCE,

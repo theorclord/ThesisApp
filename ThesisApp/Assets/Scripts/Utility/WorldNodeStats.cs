@@ -19,6 +19,8 @@ namespace Assets.Scripts.Utility
         public NodeType Type
         { get; set; }
         public List<NodeStats> Nodes { get; set; }
+
+        public Faction NodeFaction;
         public WorldNodeStats(Vector3 pos, string name, string description)
         {
             Nodes = new List<NodeStats>();

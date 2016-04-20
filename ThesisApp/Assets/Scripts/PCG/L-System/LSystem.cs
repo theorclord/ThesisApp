@@ -267,16 +267,20 @@ public class LSystem {
             }
         }
 
+        // Assign faction
+        int[] ranFacArr = DataManager.randomArray(DataManager.instance.Factions.Count);
+        int countFac = 0;
+        foreach(KeyValuePair<string,Faction> pair in DataManager.instance.Factions)
+        {
+            if(ranFacArr[0] == countFac)
+            {
+                newNode.NodeFaction = pair.Value;
+            }
+            countFac++;
+        }
+
         if (!duplicate)
         {
-            /* if (newNode.Type == NodeType.TRADING)
-             {
-                 NodeStats ns = new NodeStats(new Vector3(0, 0), "Trading post", "A Trading post used to trade post", null);
-                 newNode.Nodes.Add(ns);
-             }
-             else
-             {*/
-
             int numIntNodes = Random.Range(1, 4);
             int[] eventTypeOrder = new int[] { 0, 1, 2 };
             for (int i = 0; i < eventTypeOrder.Length; i++)
@@ -310,7 +314,6 @@ public class LSystem {
                         break;
                 } 
             }
-            //}
             DataManager.instance.Nodes.Add(newNode);
         }
     }
