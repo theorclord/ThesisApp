@@ -160,7 +160,8 @@ public class NodeController : MonoBehaviour {
         // TODO Set flavor text based on eventOption
         eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
         string eventtext = "";
-        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
+        eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
         eventPanel.SetActive(true);
     }
