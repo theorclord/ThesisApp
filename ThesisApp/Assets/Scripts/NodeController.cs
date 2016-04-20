@@ -246,9 +246,10 @@ public class NodeController : MonoBehaviour {
                         outPiece = pair.Key;
                     }
                     int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
-                    resultString += outPiece.BoardName + " ";// + num;
+                    // + num;
                     if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
                     {
+                        resultString += outPiece.BoardName + " ";
                         switch (num)
                         {
                             case 1:
@@ -265,19 +266,28 @@ public class NodeController : MonoBehaviour {
                     {
                         switch (num)
                         {
+                            case 10:
+                                resultString += outPiece.BoardName + " ";
+                                resultString += "Recruited";
+                                break;
                             case 1:
+                                resultString += "Injured ";
+                                resultString += outPiece.BoardName + " ";
                                 resultString += "Recruited";
                                 break;
                             case -1:
+                                resultString += outPiece.BoardName + " ";
                                 resultString += "Injured";
                                 break;
                             case -10:
+                                resultString += outPiece.BoardName + " ";
                                 resultString += "Dead";
                                 break;
                         }
                     }
                     else
                     {
+                        resultString += outPiece.BoardName + " ";
                         if (num > 0) resultString += "+"+num;
                         if (num < 0) resultString += num;
 
@@ -321,6 +331,11 @@ public class NodeController : MonoBehaviour {
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }else if((int)resPieceNumbs[i] == 1)
+                    {
+                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruitedinjured/flavor");
+                        r = Random.Range(0, list.Count);
+                        resultflavortext += list[r].InnerText;
+                    }else if((int)resPieceNumbs[i]== 10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruited/flavor");
                         r = Random.Range(0, list.Count);

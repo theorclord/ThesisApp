@@ -149,7 +149,8 @@
         <flavor> to power up potential old machinery in the quarry.</flavor>
       </crystal>
       <minersguild>
-        <flavor> to something quarry.<!--ensure that you have the machinery needed to be able to mine what you can.-->
+        <flavor>
+          to something quarry.<!--ensure that you have the machinery needed to be able to mine what you can.-->
         </flavor>
       </minersguild>
       <workshop>
@@ -534,6 +535,12 @@
                 <flavor>There wasn't much to be collected here, after all.</flavor>
               </flavors>
             </option>
+            <!--<option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>-->
           </normal>
           <critical>
             <option>
@@ -957,7 +964,7 @@
             <amount>1</amount>
           </condition>
         </conditions>
-      <success chance ="15">
+        <success chance ="15">
           <normal>
             <option>
               <piece>
@@ -1031,7 +1038,7 @@
                 <range>-1,-1</range>
               </piece>
             </option>
-          <option>
+            <option>
               <piece>
                 <name>crewMember</name>
                 <range>-1,-1</range>
@@ -1258,10 +1265,10 @@
       </outcome>
     </two>
     <three>
-      
+
     </three>
   </research>
-    
+
   <introflavor>
     <gathering>
       <!-- split it into locations-->
@@ -1291,7 +1298,7 @@
         <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
       </village>
     </gathering>
-    
+
     <research>
       <forest>
         <flavor>As you approach, you see nothing but green forests all over.</flavor>
@@ -1319,7 +1326,7 @@
         <flavor>As you arrive, you see the remnants of what used to be a great civilization. The ruins are astounding, and there has clearly been people living here at some point in time.</flavor>
       </ruins>
     </research>
-    
+
     <diplomacy>
       <cathedral>
         <flavor>You spot a cathedral of some sort. You are not quite sure what it is, but it sure is massive!</flavor>
@@ -1328,7 +1335,7 @@
         <flavor>When landing on the island, you see something resembling a town hall. Maybe there are people there.</flavor>
       </settlement>
     </diplomacy>
-    
+
     <abandoned>
       <main>
         <flavor>You realize this place used to belong to </flavor>
@@ -1350,7 +1357,7 @@
       </extra>
     </abandoned>
   </introflavor>
-  
+
   <endflavor>
     <flavor>As you reach this island, you realize that you have found the way home. You survived the journey. GOOD JOB!</flavor>
     <flavor>Your castle runs out of control and crashes into an island. The castle collapse and everybody dies. THE END!</flavor>
