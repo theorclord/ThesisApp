@@ -1362,64 +1362,71 @@
       <flavor>Within your findings, you discover a new alchemical material. </flavor>
       <flavor>As you unload your bags from the expedition on the island, you see a strange new spore on one of your castle member's shoe. </flavor>
       <flavor>What is this? Some chemical material that has never been seen before! </flavor>
-      <flavor>On the island, you were able to extract some sort of new and weird plant.</flavor>
-      <flavor>Your castle member has found a strange new plant that can be used in alchemy.</flavor>
-      <flavor>Your castle member returns with a new alchemical compound.</flavor>
+      <flavor>On the island, you were able to extract some sort of new and weird plant. </flavor>
+      <flavor>Your castle member has found a strange new plant that can be used in alchemy. </flavor>
+      <flavor>Your castle member returns with a new alchemical compound. </flavor>
     </alchemy>
     <scrap>
       <flavor>Your expedition yielded some usable building materials. </flavor>
       <flavor>There were some new materials down on the island that you thought could be used in your castle. </flavor>
-      <flavor>Your castle crew scavenged all the materials possible.</flavor>
+      <flavor>Your castle crew scavenged all the materials possible. </flavor>
+      <flavor>You were able to gather a bit of building material from the island. </flavor>
     </scrap>
     <crewinjured>
       <flavor>During the quest, a castle member got badly injured and need medical attention. </flavor>
       <flavor>One of your castle members twisted his foot whilst stepping on to the island, and needs some medical attention. </flavor>
       <flavor>One of your crew has fallen ill with some type of nasty flu. </flavor>
-      <flavor>Your castle member returns from the quest with minor injuries. He should visit the medical ward nonetheless.</flavor>
+      <flavor>Your castle member returns from the quest with minor injuries. He should visit the medical ward nonetheless. </flavor>
     </crewinjured>
     <crewdead>
       <flavor>One castle member was unable to make it back alive. May he rest in peace. </flavor>
       <flavor>While entering the area, one of your crew member choked on a piece of bread from his lunch and suffocated. </flavor>
-      <flavor>After feeling ill for some time, one of your castle member has fallen down lifeless.</flavor>
-      <flavor>Unfortunately for the person down on the island, he were bitten by a venomous snake, and died after only 10 seconds.</flavor>
-      <flavor>Your castle member suffered an allergic reaction to some substance down on the island. He didn't make it.</flavor>
+      <flavor>After feeling ill for some time, one of your castle member has fallen down lifeless. </flavor>
+      <flavor>Unfortunately for the person down on the island, he were bitten by a venomous snake, and died after only 10 seconds. </flavor>
+      <flavor>Your castle member suffered an allergic reaction to some substance down on the island. He didn't make it. </flavor>
     </crewdead>
     <crewrecruited>
       <flavor>While on the island, a strange figure wanted to join your forces and help your cause. </flavor>
       <flavor>As you head back to the castle, you see a man standing infront of the gates. He wants to team up with you. </flavor>
       <flavor>You were able to recruit a new soul down on the island. Welcome aboard! </flavor>
+      <flavor>Your crew's diplomatic skillset was enough to convince an islander to join your forces. </flavor>
     </crewrecruited>
     <crewrecruitedinjured>
       <flavor>Down on the island, you found a man who was badly injured. He agrees to join you if you are able to mend his wounds. </flavor>
       <flavor>Heading back, you see a person crawling on his stomach, making a painful sound. You decide to recruit him and heal him back to health. </flavor>
       <flavor>A person wants to join your castle crew, but he is in need of some medicine. </flavor>
+      <flavor>You found a wounded man on the island, and he agreed to join your forces if you can heal him. </flavor>
     </crewrecruitedinjured>
     <energygained>
       <flavor>While completing the quest, your castle member found a crystal that looks identical to the one powering your castle. </flavor>
       <flavor>Somehow, your castle's power crystal is shining more brightly now than it did before. </flavor>
-      <flavor>As you enter your castle again, the power crystal flashes a massive flash and is now more potent than before.</flavor>
+      <flavor>As you enter your castle again, the power crystal flashes a massive flash and is now more potent than before. </flavor>
+      <flavor>You were able to uncover a piece of crystal from the island, and you bring it back to the castle. </flavor>
     </energygained>
     <energylost>
       <flavor>As you return from your quest, you notice that the power crystal in your castle is glowing less brightly. </flavor>
       <flavor>As you fly away from the island, a piece of your power crystal falls off.   </flavor>
-      <flavor>You are not sure just why, but your power crystal is fading slowly.</flavor>
-      <flavor>When returning from the quest, your power crystal seems to have been drained from sources unknown.</flavor>
-      <flavor>When landing on the surface, you hit too hard, and the power crystal flickers and shines a little less bright.</flavor>
+      <flavor>You are not sure just why, but your power crystal is fading slowly. </flavor>
+      <flavor>When returning from the quest, your power crystal seems to have been drained from sources unknown. </flavor>
+      <flavor>When landing on the surface, you hit too hard, and the power crystal flickers and shines a little less bright. </flavor>
     </energylost>
     <roomdamaged>
       <flavor>When retreating from the island, one of your rooms seems to be shaking uncontrollably. </flavor>
       <flavor>Having overused your spacial capacity, one of your rooms starts to crack in the walls. </flavor>
       <flavor>One of your castle members has gone berserk in a room and damaged a lot of its contents.</flavor>
+      <flavor>When your crew returns from the island, they unpack, but something seems to have reacted with the atmosphere and a room starts to crumble. </flavor>
     </roomdamaged>
     <roomdestroyed>
       <flavor>Something happened on your castle as you landed on the island, and one of your rooms caved in on itself. </flavor>
       <flavor>Your power crystal overcharged, and a beam of magic light hit one of your rooms and destroyed it. </flavor>
       <flavor>There was some sort of reaction happening in one of the rooms as your castle crew returned. It blew up! </flavor>
+      <flavor>The latest attempt to take off from the island, caused one of your rooms to collaps on itself. </flavor>
     </roomdestroyed>
     <roomgained>
       <flavor>While exploring the island, you discover a new way of expanding your castle magically. </flavor>
       <flavor>As you return to your castle, you see that a new room has magically appeared! </flavor>
-      <flavor>Your castle crew have found new strength, and are willing to expand the castle.</flavor>
+      <flavor>Your castle crew have found new strength, and are willing to expand the castle. </flavor>
+      <flavor>Engraved on a rock, you see a layout of a structure that might be benefitial to your castle. </flavor>
     </roomgained>
   </resultflavor>
 
