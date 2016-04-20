@@ -201,15 +201,21 @@ public class Event {
                     {
                         critString = "/critical";
                     }
-
+                    EventOutcomeGroup evgroup = new EventOutcomeGroup();
+                    evgroup.Outcomes.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
+                    evgroup.Outcomes.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
+                    evgroup.Outcomes.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
+                    evOpt.Results.Add(evgroup);
+                    /*
                     evOpt.Results.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
                     evOpt.Results.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
                     evOpt.Results.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
+                    */
                     break;
                 }
             }
-            //Debug.Log("Selected part " + conSelectnum);
-            //Debug.Log("Added conditions " +addedCons);
+            Debug.Log("Selected part " + conSelectnum);
+            Debug.Log("Added conditions " +addedCons);
             if( conSelectnum != 1)
             {
                 conSelectnum--;
@@ -268,6 +274,7 @@ public class Event {
             int[] range = new int[] { int.Parse(rangestr[0]), int.Parse(rangestr[1]) };
             evo.AddPiece(outPiece, range);
         }
+
         // Fetching Result Flavor text
        /* XmlNodeList resFlavors = outOptions[optArr[0]].SelectSingleNode("flavors").SelectNodes("flavor");
         int[] flavArr = DataManager.randomArray(resFlavors.Count);

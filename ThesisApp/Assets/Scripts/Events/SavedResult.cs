@@ -8,6 +8,10 @@ namespace Assets.Scripts.Events
 {
     public class SavedResult
     {
+        public Location Type { get; set; }
+        public EventOutcomeType OutcomeType { get; set; }
+
+
         //Event conditions
         public Dictionary<Piece, int> Conditions { get; set; }
         //Event Outcome

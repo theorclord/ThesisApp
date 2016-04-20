@@ -49,57 +49,7 @@
     </condition>
   </conditions>
 
-  <conditionflavor>
-    <basics>
-      <crew>
-        <flavor></flavor>
-      </crew>
-      <material>
-        <flavor></flavor>
-      </material>
-      <crystal>
-        <flavor></flavor>
-      </crystal>
-      <minersguild>
-        <flavor></flavor>
-      </minersguild>
-      <workshop>
-        <flavor></flavor>
-      </workshop>
-      <alchemy>
-        <flavor></flavor>
-      </alchemy>
-      <alchemylab>
-        <flavor></flavor>
-      </alchemylab>
-      <cleric>
-        <flavor></flavor>
-      </cleric>
-      <ambassador>
-        <flavor></flavor>
-      </ambassador>
-      <randomroom>
-        <flavor></flavor>
-      </randomroom>
-    </basics>
-    <mine>
-      
-    </mine>
-    <quarry>
-      
-    </quarry>
-    <wreckage>
-      
-    </wreckage>
-    <factory>
-      
-    </factory>
-    <village>
-      
-    </village>
-  </conditionflavor>
-
-
+<<<<<<< HEAD
   <gathering>
     <one>
       <outcome>
@@ -591,232 +541,608 @@
           </critical>
         </failure>
       </outcome>
-      <outcome>
-        <conditions>
-          <condition>
-            <piece>crewMember</piece>
-            <amount>1</amount>
-          </condition>
-          <condition>
-            <piece>energyPoint</piece>
-            <amount>1</amount>
-          </condition>
-        </conditions>
-        <success chance ="20">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>scrap</name>
-                <range>2,2</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>2,2</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>2,2</range>
-              </piece>
-              <piece>
-                <name>randomRoom</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </success>
-        <neutral chance="20">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </neutral>
-        <failure chance="60">
-          <normal>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-1,-1</range>
-              </piece>
-              <piece>
-                <name>crewMember</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </failure>
-      </outcome>
-      <outcome>
-        <conditions>
-          <condition>
-            <piece>crewMember</piece>
-            <amount>1</amount>
-          </condition>
-          <condition>
-            <piece>medLab</piece>
-            <amount>1</amount>
-          </condition>
-        </conditions>
-        <success chance ="50">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>energyPoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>2,2</range>
-              </piece>
-              <piece>
-                <name>randomRoom</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </success>
-        <neutral chance="20">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </neutral>
-        <failure chance="60">
-          <normal>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-1,-1</range>
-              </piece>
-              <piece>
-                <name>crewMember</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </failure>
-      </outcome>
     </two>
     <three>
-      
     </three>
+
+
+    <introflavor>
+      <flavor>As you approach, you spot a mine. The tracks look old but somewhat functional</flavor>
+      <flavor>There is a large opening in one of the mountains. it is an old mine. there are still residues of minerals shining in the light.</flavor>
+      <flavor>Something smells like coal and iron. upon investigating the surroundings, you discover a mine that looks rich in minerals.</flavor>
+      <flavor>This place has clearly been an expedition point some time, because they left a huge quarry behind..</flavor>
+      <flavor>This looks like some sort of crater. when close up, however, you see that it is in fact a large quarry.</flavor>
+      <flavor>Upon arrival at the island, you see a large quarry in the center. this location has obviously had a lot of riches, but are there any left?</flavor>
+      <flavor>The rubbles from an airship remain on the edge of the island</flavor>
+      <flavor>You see a huge structure that looks like your castle.</flavor>
+      <flavor>An old airship seems to have crashed here long ago.</flavor>
+      <flavor>You see an old construction site nearby.</flavor>
+      <flavor>An abandoned factory appears in the distance.</flavor>
+      <flavor>You spot the ruins of an old factory.</flavor>
+      <flavor>There seems to be a collection of houses and different sort of building here, from the looks of it.</flavor>
+      <flavor>In the distance you see an old village. you are not completely sure if there are anyone still living here.</flavor>
+      <flavor>Whoever raised all these buildings sure knew what they were doing. The constructions are fascinating.</flavor>
+    </introflavor>
+=======
+  <conditionflavor>
+    <basics>
+      <crew>
+        <flavor></flavor>
+      </crew>
+      <material>
+        <flavor></flavor>
+      </material>
+      <crystal>
+        <flavor></flavor>
+      </crystal>
+      <minersguild>
+        <flavor></flavor>
+      </minersguild>
+      <workshop>
+        <flavor></flavor>
+      </workshop>
+      <alchemy>
+        <flavor></flavor>
+      </alchemy>
+      <alchemylab>
+        <flavor></flavor>
+      </alchemylab>
+      <cleric>
+        <flavor></flavor>
+      </cleric>
+      <ambassador>
+        <flavor></flavor>
+      </ambassador>
+      <randomroom>
+        <flavor></flavor>
+      </randomroom>
+    </basics>
+    <mine>
+      
+    </mine>
+    <quarry>
+      
+    </quarry>
+    <wreckage>
+      
+    </wreckage>
+    <factory>
+      
+    </factory>
+    <village>
+      
+    </village>
+  </conditionflavor>
+  
+  
+  <gathering>
+    <outcome>
+      <conditions>
+        <condition>
+          <piece>crewMember</piece>
+          <amount>1</amount>
+        </condition>
+      </conditions>
+      <success chance ="15">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <flavors>
+              <flavor>Your castle member was able to collect some resources for you.</flavor>
+              <flavor>This is all that the castle member was able to find.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>You seem to have found some strange new material that an alchemist would take interest in.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>The quest was bountiful, and you found additional materials.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member returns with more material than you expected, and a strange new element is found amongst it.</flavor>
+              <flavor>After a long search, the castle member returns with a strange new item and what looks like a lot of resources.</flavor>
+              <flavor>The quest was a great success. There was brought back many resources and an unknown new alchemical substance.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </success>
+      <neutral chance="70">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member couldn't find much of value, but at least there was something.</flavor>
+              <flavor>There wasn't much to be collected here, after all.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>
+            <flavors>
+              <flavor>All that could be gathered was this.</flavor>
+              <flavor>Not much. But it is something.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </neutral>
+      <failure chance="15">
+        <normal>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member got severly injured, and couldn't collect anything. Hurry up and bring get the cleric!</flavor>
+              <flavor>As your castle member returns, he suddenly collaps to the ground. You can clearly see that he has been injured.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>EngineeringRoom</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>As your trusted servant returns, your gathering room is overloaded, and is temporarily disabled.</flavor>
+              <flavor>Your gathering room is not working properly anymore. It will have to be mended.</flavor>
+              <flavor>The room of gathering seems to be malfunctioning. Maybe you should try fixing it.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-10,-10</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member got trapped and were unable to make it out. Rest in peace.</flavor>
+              <flavor>As your castle member returns, he takes a few steps and then falls down lifeless. His life will be remembered.</flavor>
+              <flavor>Your castle member made a valiant effort to do your bidding, but unfortunately was unable to make it back alive.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>energyPoint</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member seems to have brought something back, and you notice your power crystal is weakened.</flavor>
+              <flavor>Something has happened to your power crystal since the last event. It is losing power.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </failure>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>
+          <piece>crewMember</piece>
+          <amount>2</amount>
+        </condition>
+      </conditions>
+      <success chance ="40">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>Within the findings that were brought back, you find something that looks like an alchemical compound.</flavor>
+              <flavor>You see some strange new material within the resources that were collected.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>2,3</range>
+            </piece>
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>The brave souls have returned, and are carrying more resources than expected, along with a strange plant.</flavor>
+              <flavor>Your castle members really went out of their way, and collected extra resources and some weird looking mushrooms.</flavor>
+              <flavor>Some strange growth was found on the quest, along with an abundancy of materials.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <piece>
+              <name>energyPoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>The quest was very bountyful indeed. As the members return, they bring with them a strange new material, and the power crystal seems to be shining more brightly!</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <piece>
+              <name>sciencePoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>One castle member is carrying extra materials, and the other has some strange-looking plant.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>
+            <piece>
+              <name>sciencePoint</name>
+              <range>2,2</range>
+            </piece>
+            <flavors>
+              <flavor>Happy with the findings, your castle members return with much extra alchemical compound.</flavor>
+              <flavor>On their quest they found an area rich with alchemical ingredients.</flavor>
+              <flavor>The crew members packs are full of green plants and colorful flowers that can be used to create potions.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </success>
+      <neutral chance="50">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>2,3</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle members returns with extra resources.</flavor>
+              <flavor>You will be pleased to know that the persons you sent out, have returned with additional resources.</flavor>
+              <flavor>As your castle members come back, you see that they have problems carrying the extra findings.</flavor>
+              <flavor>It has been a good day, and your castle members just returned with more resources than expected.</flavor>
+              <flavor>With their backpacks bulging, your castle members return with many riches,</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>2,3</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle members returns with extra resources.</flavor>
+              <flavor>You will be pleased to know that the persons you sent out, have returned with additional resources.</flavor>
+              <flavor>As your castle members come back, you see that they have problems carrying the extra findings.</flavor>
+              <flavor>It has been a good day, and your castle members just returned with more resources than expected.</flavor>
+              <flavor>With their backpacks bulging, your castle members return with many riches,</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </neutral>
+      <failure chance="10">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece> 
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle members did a great job collecting all they could, but one of them got injured on the way back.</flavor>
+              <flavor>As the castle members return, one of them hurts his back from carrying all the resources.</flavor>
+              <flavor>One of your castle members went out of his way to try to reach some extra materials, but got injured in the process.</flavor>
+              <flavor>A returning castle member seems to have a broken leg, but at least he carried out his duty.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>You weren't able to find much, but you found something at least.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-10,-10</range>
+            </piece>
+            <flavors>
+              <flavor>Only one crew member returns, as the other was unable to make it back alive.</flavor>
+              <flavor>The quest was completed, but one of the members died along the way.</flavor>
+              <flavor>One of the castle members got poisoned somehow, and did not make it back.</flavor>
+              <flavor>Only one member returns, as the other one died from exhaustion.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>Trying to collect more materials, there was an accident. and one of the castle members got badly injured.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </failure>
+    </outcome>
+    <outcome>
+      <conditions>
+        <condition>
+          <piece>crewMember</piece>
+          <amount>1</amount>
+        </condition>
+        <condition>
+          <piece>sciencePoint</piece>
+          <amount>1</amount>
+        </condition>
+      </conditions>
+      <success chance ="20">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>3,4</range>
+            </piece>
+            <flavors>
+              <flavor>Success! More resources than planned.</flavor>
+              <flavor>Your castle member returns with extra materials.</flavor>
+              <flavor>the castle member were able to collect more than planned.</flavor>
+              <flavor>A little extra resources are always good, and your castle member got just that.</flavor>
+              <flavor>The quest was sucessful, and you were able to collect more resources.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>4,5</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member is barely able to carry all his findings back!</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>1,2</range>
+            </piece>  
+            <piece>
+              <name>scrap</name>
+              <range>1,1</range>
+            </piece>
+            <piece>
+              <name>energyPoint</name>
+              <range>1,1</range>
+            </piece>
+            <flavors>
+              <flavor>As the castle member is returning, you see that the power crystal is shining a bit more brightly than before,</flavor>
+              <flavor>The castle member was able to find some sort of fragment that resembles your power crystal a lot.</flavor>
+              <flavor>Among the material collected, you also find a power crystal fragment.</flavor>
+              <flavor>As you look through the resources brought back, you see something shining.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </success>
+      <neutral chance="60">
+        <normal>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>2,3</range>
+            </piece>
+            <flavors>
+              <flavor>The mission was successful.</flavor>
+              <flavor>Nothing bad seems to have happened.</flavor>
+              <flavor>Not the best results, but it is something.</flavor>
+              <flavor>You would expect the castle member to be more efficient, but this was not the case.</flavor>
+              <flavor>At least nobody died.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>scrap</name>
+              <range>2,3</range>
+            </piece>
+            <flavors>
+              <flavor>The mission was successful.</flavor>
+              <flavor>Nothing bad seems to have happened.</flavor>
+              <flavor>Not the best results, but it is something.</flavor>
+              <flavor>You would expect the castle member to be more efficient, but this was not the case.</flavor>
+              <flavor>At least nobody died.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </neutral>
+      <failure chance="20">
+        <normal>
+          <option>
+            <piece>
+              <name>EngineeringRoom</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>As the castle member returns, the gathering room is reacting to the compounds, and is damaged.</flavor>
+              <flavor>Some of the equipment were badly damaged whilst gathering materials.</flavor>
+              <flavor>As the castle member returns, the gathering room starts smoking. Something went wrong.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>EngineeringRoom</name>
+              <range>-1,-1</range>
+            </piece> 
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member seems to be injured from the quest, and as he returns, he manages to thow the resources into the gathering room and damage some of the equipment there.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member were barely able to make it back. He is lucky to be alive.</flavor>
+            </flavors>
+          </option>
+        </normal>
+        <critical>
+          <option>
+            <piece>
+              <name>EngineeringRoom</name>
+              <range>-10,-10</range>
+            </piece>
+            <flavors>
+              <flavor>Your gathering room were unable to handle the resources gathered, and burst up in flames!</flavor>
+              <flavor>The gathering room exploded from some weird reaction.</flavor>
+              <flavor>Your gathering room collapsed in on itself after trying to rearrange some of the equipment after use.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-1,-1</range>
+            </piece>
+            <piece>
+              <name>randomRoom</name>
+              <range>-10,-10</range>
+            </piece>
+            <flavors>
+              <flavor>One of your rooms mysteriously collapsed, and a castle member got injured in the process.</flavor>
+            </flavors>
+          </option>
+          <option>
+            <piece>
+              <name>crewMember</name>
+              <range>-10,-10</range>
+            </piece>
+            <flavors>
+              <flavor>Your castle member never returned. His life will forever be remembered.</flavor>
+            </flavors>
+          </option>
+        </critical>
+      </failure>
+    </outcome>
+>>>>>>> 52f6559b46ff7b1df693eda86e9452ae758c8841
   </gathering>
-    
+  <research>
+    <outcome>
+      <conditions>
+        <conditon>
+          <piece></piece>
+          <amount></amount>
+        </conditon>
+      </conditions>
+      <success chance="">
+      
+      </success>
+      <neutral chance="">
+      
+    </neutral>
+      <failure chance="">
+      
+    </failure>
+    </outcome>
+  </research>
+  <diplomacy>
+    <outcome>
+      <conditions>
+        <conditon>
+          <piece></piece>
+          <amount></amount>
+        </conditon>
+      </conditions>
+      <success chance="">
+      
+      </success>
+      <neutral chance="">
+      
+    </neutral>
+      <failure chance="">
+      
+    </failure>
+    </outcome>
+  </diplomacy>
   <introflavor>
     <gathering>
       <!-- split it into locations-->

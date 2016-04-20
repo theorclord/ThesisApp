@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<factions>
+  <faction>
+    <name>Highbournes</name>
+    <enumName>highbourne</enumName>
+  </faction>
+  <faction>
+    <name>Nomads</name>
+    <enumName>nomad</enumName>
+  </faction>
+  <faction>
+    <name>Humans</name>
+    <enumName>human</enumName>
+  </faction>
+</factions>
