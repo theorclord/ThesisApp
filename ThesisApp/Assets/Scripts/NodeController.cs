@@ -331,8 +331,7 @@ public class NodeController : MonoBehaviour {
                 resultString += ", ";
             }
         }
-
-        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
+        resultPanel.transform.FindChild("OutcomeScreen").transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
         // This should be the flavor text
 
         string resultflavortext = "";
@@ -517,6 +516,6 @@ public class NodeController : MonoBehaviour {
         }
 
 
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
+        resultPanel.transform.FindChild("ResolutionScreen").transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
     }
 }
