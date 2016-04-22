@@ -1,0 +1,26 @@
+﻿    using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Assets.Scripts.Utility
+{
+    public class EventOption
+    {
+        public Dictionary<Piece, int> Conditions { get; set; }
+        public List<EventOutcomeGroup> Results { get; set; }
+        public Location locType { get; set; }
+<<<<<<< HEAD
+=======
+        public string locationXmlString { get; set; }
+        public string FlavorText { get; set; }
+        public string ResultFlavor { get; set; }
+>>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
+
+        public EventOption()
+        {
+            Conditions = new Dictionary<Piece, int>();
+            Results = new List<EventOutcomeGroup>();
+        }
+    }
+}
