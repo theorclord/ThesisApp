@@ -12,7 +12,7 @@ public class RuleCollection{
     }
 
     public void GenerateRules()
-    {
+    {/*
         // First Rule
         LRule rule1 = new LRule();
         rule1.name = "First";
@@ -68,6 +68,16 @@ public class RuleCollection{
         rule6.expandingIterations = 2;
         rule6.delta = Mathf.PI / 2;
         ruleCollection.Add(rule6);
+        */
+        // Seventh Rule *Test*
+        LRule rule7 = new LRule();
+        rule7.name = "Test";
+        rule7.axiom = "[N][+++N][---N][------N]";
+        rule7.rules.Add("N", "N[-N][+N][NN]");
+        rule7.expandingIterations = 3;
+        rule7.delta = Mathf.PI / 6; //30deg
+        ruleCollection.Add(rule7);
+
         
     }
     

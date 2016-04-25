@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using Assets.Scripts.Utility;
 using System.Xml;
 
-public class LSystem {
-    
+public class LSystem
+{
+
     public string axiom { get; set; }
     //public IDictionary ruleSets = new Dictionary<string, string>();
     public string expanded { get; set; }
@@ -21,9 +22,9 @@ public class LSystem {
         for (int i = 0; i < depth; i++)
         {
             char[] currDSA = result.ToCharArray();
-           // Debug.Log("Length of Currdsa:" + currDSA.Length);
+            // Debug.Log("Length of Currdsa:" + currDSA.Length);
             string newString = "";
-            for(int j = 0; j < currDSA.Length; j++)
+            for (int j = 0; j < currDSA.Length; j++)
             {
                 if (ruleSets.Contains(currDSA[j].ToString()))
                 {
@@ -34,52 +35,97 @@ public class LSystem {
                     newString += currDSA[j];
                 }
             }
-            
+
             result = newString;
         }
 
         bool replaced = false;
         char[] resList = result.ToCharArray();
+        string tmpS = "";
+        int index = resList.Length-1;
+        bool found = false;
+
+        while (!found)
+        {
+            if (resList[index] == '[' || resList[index] == ']' || resList[index] == '-' || resList[index] == '+')
+            {
+                index--;
+            }
+            else
+            {
+                found = true;
+            }
+        }
+
+        for (int i = 0; i < resList.Length; i++)
+        {
+            if (i == index)
+            {
+                tmpS += "E";
+            }
+            else
+            {
+                tmpS += resList[i].ToString();
+            }
+        }
+        /*
+
+        for (int s = resList.Length - 1; s > 0; s--)
+        {
+            if (resList[s] != '[' && resList[s] != ']' && resList[s] != '-' && resList[s] != '+' && !replaced)
+            {
+                tmpS += "E";
+                replaced = true;
+            }
+            else
+            {
+                tmpS += resList[s].ToString();
+            }
+        }*/
+        //tmpS += resList[0].ToString();
+        result = tmpS;/*
         while (!replaced)
-        { 
-            int a = Random.Range(resList.Length/2, resList.Length);
+        {
+
+            int x = resList.Length;
+            int a = Random.Range(resList.Length / 2, resList.Length);
             if (resList[a] != '[' && resList[a] != ']' && resList[a] != '-' && resList[a] != '+')
             {
-               // Debug.Log("Found candidate: " + resList[a].ToString());
+                // Debug.Log("Found candidate: " + resList[a].ToString());
                 string tmpRes = "";
-                for(int i = 0; i < a; i++)
+                for (int i = 0; i < a; i++)
                 {
                     tmpRes += resList[i].ToString();
                 }
                 tmpRes += "E";
-                for(int i = a+1; i < resList.Length; i++)
+                for (int i = a + 1; i < resList.Length; i++)
                 {
                     tmpRes += resList[i].ToString();
                 }
                 result = tmpRes;
                 replaced = true;
             }
-        }
-       // result = addPOIs(result);
+        }*/
+        // result = addPOIs(result);
         if (!result.Contains("S"))
         {
             string b = "S" + result;
             result = b;
             //Debug.Log("does not contain S");
-          /*  for(int i = 0; i < result.ToCharArray().Length; i++)
-            {
-                if (result.ToCharArray()[i] == 'N')
-                {
-                    char[] tmp = result.ToCharArray();
-                    tmp[i] = 'S';
-                    string a = tmp.ToString();
-                    break;
-                }
-            }*/
+            /*  for(int i = 0; i < result.ToCharArray().Length; i++)
+              {
+                  if (result.ToCharArray()[i] == 'N')
+                  {
+                      char[] tmp = result.ToCharArray();
+                      tmp[i] = 'S';
+                      string a = tmp.ToString();
+                      break;
+                  }
+              }*/
         }
-       // result += "E";
+        // result += "E";
         expanded = result;
-        
+
         Debug.Log(result);
     }
 
@@ -115,7 +161,7 @@ public class LSystem {
     public void interpret()
     {
         Stack statestack = new Stack();
-        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0,distance,delta);
+        State s = new State(Random.Range(0.0f, 20.0f), Random.Range(0.0f, 20.0f), 0, distance, delta);
         double x, y;
         char[] chars = expanded.ToCharArray();
         int numNodes = 0;
@@ -137,7 +183,7 @@ public class LSystem {
                     NodeType type = NodeType.START;
                     //Test generate 10 random nodes
                     //Set player start based on start node
-                    
+
                     DataManager.instance.Player.Position = new Vector3(position.x, position.y + 1.3f);
 
                     //NodeStats (World Node)
@@ -244,7 +290,7 @@ public class LSystem {
             }
         }
     }
-    
+
     /// <summary>
     /// Generates the stats for the individual nodes in the world node
     /// </summary>
@@ -253,11 +299,11 @@ public class LSystem {
     {
         bool duplicate = false;
 
-        foreach(WorldNodeStats wn in DataManager.instance.Nodes)
+        foreach (WorldNodeStats wn in DataManager.instance.Nodes)
         {
-            if(wn.Position == newNode.Position)
+            if (wn.Position == newNode.Position)
             {
-                if(newNode.Type == NodeType.GOAL && wn.Type != NodeType.GOAL)
+                if (newNode.Type == NodeType.GOAL && wn.Type != NodeType.GOAL)
                 {
                     wn.Type = NodeType.GOAL;
                 }
@@ -270,9 +316,9 @@ public class LSystem {
         // Assign faction
         int[] ranFacArr = DataManager.randomArray(DataManager.instance.Factions.Count);
         int countFac = 0;
-        foreach(KeyValuePair<string,Faction> pair in DataManager.instance.Factions)
+        foreach (KeyValuePair<string, Faction> pair in DataManager.instance.Factions)
         {
-            if(ranFacArr[0] == countFac)
+            if (ranFacArr[0] == countFac)
             {
                 newNode.NodeFaction = pair.Value;
             }
@@ -312,7 +358,7 @@ public class LSystem {
                     case EventSpec.RESEARCH:
                         setNameAndFlavor("Research", ns);
                         break;
-                } 
+                }
             }
             DataManager.instance.Nodes.Add(newNode);
         }
@@ -322,7 +368,7 @@ public class LSystem {
         // Get name of nodes from xml
         XmlDocument nodeNameCollection = new XmlDocument();
         nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
-        XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/" +type+"/nodeFlavour");
+        XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/" + type + "/nodeFlavour");
         int selectedTitle = Random.Range(0, nameList.Count);
         string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
         string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
