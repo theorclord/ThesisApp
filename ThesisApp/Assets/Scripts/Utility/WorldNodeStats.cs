@@ -20,7 +20,7 @@ namespace Assets.Scripts.Utility
         { get; set; }
         public List<NodeStats> Nodes { get; set; }
 
-        public Faction NodeFaction;
+        public Faction NodeFaction { get; set; }
         public WorldNodeStats(Vector3 pos, string name, string description)
         {
             Nodes = new List<NodeStats>();

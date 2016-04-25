@@ -78,13 +78,13 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype)
     {
-        int r = Random.Range(0, 5); //which type of location
+        int loc = Random.Range(0, 5); //which type of location
         //Basic option
-        EventOptions.Add(generateEvent(0, 1, eventtype, r));
+        EventOptions.Add(generateEvent(0, 1, eventtype, loc));
         //Second option
-        EventOptions.Add(generateEvent(1, 2, eventtype, r));
+        EventOptions.Add(generateEvent(1, 2, eventtype, loc));
         //Third option
-        EventOptions.Add(generateEvent(2, 3, eventtype, r));
+        EventOptions.Add(generateEvent(2, 3, eventtype, loc));
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -93,7 +93,7 @@ public class Event {
     /// <param name="numCon">Number of conditions</param>
     /// <param name="eventtype">The type of event, gathering, diplomacy, research</param>
     /// <returns></returns>
-    private EventOption generateEvent(int conType, int numCon, string eventtype, int r)
+    private EventOption generateEvent(int conType, int numCon, string eventtype, int location)
     {
         // test vars
         //int conType = 0;
@@ -216,8 +216,8 @@ public class Event {
                     break;
                 }
             }
-            Debug.Log("Selected part " + conSelectnum);
-            Debug.Log("Added conditions " +addedCons);
+            //Debug.Log("Selected part " + conSelectnum);
+            //Debug.Log("Added conditions " +addedCons);
             if( conSelectnum != 1)
             {
                 conSelectnum--;
@@ -227,7 +227,7 @@ public class Event {
         switch (eventtype)
         {
             case "gathering":
-                switch (r)
+                switch (location)
                 {
                     case 0:
                         locationXmlString = "/mine";
@@ -253,7 +253,7 @@ public class Event {
                 break;
 
             case "research":
-                switch (r)
+                switch (location)
                 {
                     case 0:
                         locationXmlString = "/forest";

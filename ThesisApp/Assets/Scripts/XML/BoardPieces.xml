@@ -48,7 +48,7 @@
   <piece>
     <flavorName>RandomRoom</flavorName>
     <enumName>randomRoom</enumName>
-    <type>room</type>
+    <type>systemVar</type>
   </piece>
   <piece>
     <flavorName>Nothing Gained</flavorName>

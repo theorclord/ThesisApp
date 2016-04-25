@@ -158,9 +158,9 @@ public class NodeController : MonoBehaviour {
 
         // TODO Clean up
         // TODO Set flavor text based on eventOption
-        eventPanel.transform.FindChild("NameScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("NameScreen").gameObject.SetActive(true);
         eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
-        eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("FlavourScreen").gameObject.SetActive(true);
         eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
         eventPanel.SetActive(true);
@@ -208,12 +208,28 @@ public class NodeController : MonoBehaviour {
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
-        //Old function
-        //resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
-        //resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
 
-        //New function
-        string resFlavor = "";
+        //Find outcome
+        //check player faction relation
+        //100 points for each state
+        //-150 -> -50 enemy
+        // -50 -> 50 neutral
+        // 50 -> 150 friendly
+        int facRelVal = 0;
+        Dictionary<Faction, int> facRel = DataManager.instance.Player.FactionRelations;
+        Faction activeFac = DataManager.instance.ActiveNode.NodeFaction;
+        if (facRel.ContainsKey(activeFac))
+        {
+            // get relation
+            facRelVal = facRel[activeFac];
+        } else
+        {
+            // Set new faction
+            facRel.Add(activeFac, 0);
+            facRelVal = 0;
+        }
+        //TODO change the chance of success depending on the faction relation
+
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
         Dictionary<Piece, int> outcomePairs = new Dictionary<Piece, int>();
@@ -225,10 +241,11 @@ public class NodeController : MonoBehaviour {
                 EventOutcome eo = eog.Outcomes[i];
                 if (eo.Chance >= chance - accumChance)
                 {
-                    resFlavor = eo.outcomeFlavor;
+                    //resFlavor = eo.outcomeFlavor;
                     foreach (KeyValuePair<Piece, int[]> pair in eo.Pieces)
                     {
                         Piece outPiece = null;
+                        //Handle random room
                         if (pair.Key.BoardName == "RandomRoom")
                         {
                             List<Piece> tempRooms = new List<Piece>();
@@ -246,6 +263,8 @@ public class NodeController : MonoBehaviour {
                         {
                             outPiece = pair.Key;
                         }
+                        //have the range depend on the faction. 
+                        //If the faction is friendly, take the max val, if enemy min val
                         int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
                         if (outcomePairs.ContainsKey(outPiece))
                         {
@@ -253,59 +272,6 @@ public class NodeController : MonoBehaviour {
                         } else {
                             outcomePairs.Add(outPiece, num);
                         }
-                        //resultString += outPiece.BoardName + " " + num;
-                        /*
-                    // + num;
-                    if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
-                    {
-                        resultString += outPiece.BoardName + " ";
-                        switch (num)
-                        {
-                            case 1:
-                                resultString += "Created";
-                                break;
-                            case -1:
-                                resultString += "Damaged";
-                                break;
-                            case -10:
-                                resultString += "Destroyed";
-                                break;
-                        }
-                    }else if(outPiece.BoardName == "Castle Crew")
-                    {
-                        switch (num)
-                        {
-                            case 10:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Recruited";
-                                break;
-                            case 1:
-                                resultString += "Injured ";
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Recruited";
-                                break;
-                            case -1:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Injured";
-                                break;
-                            case -10:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Dead";
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        resultString += outPiece.BoardName + " ";
-                        if (num > 0) resultString += "+"+num;
-                        if (num < 0) resultString += num;
-
-                    }
-                        if (eo.Pieces.Count != tempCount)
-                        {
-                            resultString += ", ";
-                        }
-                        */
                     }
                     break;
                 }
@@ -332,8 +298,9 @@ public class NodeController : MonoBehaviour {
             }
         }
         resultPanel.transform.FindChild("OutcomeScreen").transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
+        
+        
         // This should be the flavor text
-
         string resultflavortext = "";
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventstructurepath);
