@@ -235,9 +235,10 @@ public class NodeController : MonoBehaviour
         int failureChange = 0;
         int neutralChange = 0;
 
-        if(facRelVal > 50)
+        if(facRelVal >= 50)
         {
             //faction is allied
+
             switch (eventnum)
             {
                 case 0:
@@ -256,7 +257,7 @@ public class NodeController : MonoBehaviour
                 default:
                     break;
             }
-        } else if(facRelVal <-50)
+        } else if(facRelVal <=-50)
         {
             //faction is enemy
             switch (eventnum)
@@ -329,11 +330,11 @@ public class NodeController : MonoBehaviour
                         }
                         //If the faction is friendly, take the max val, if enemy min val
                         int num = 0;
-                        if(facRelVal > 50)
+                        if(facRelVal >= 50)
                         {
                             num = pair.Value[1] + 1;
                         }
-                        else if (facRelVal <-50)
+                        else if (facRelVal <=-50)
                         {
                             num = pair.Value[0];
                         } else
