@@ -48,7 +48,8 @@ public class Event {
             case EventSpec.RESEARCH://research
                 //TODO Set eventText
                 eventText = "Research Event";
-                buildDataFromXml("research");
+                //buildDataFromXml("research");
+                buildDataFromXml("gathering");
                 break;
             case EventSpec.DIPLOMACY://diplomacy
                 //TODO Set eventText
@@ -79,12 +80,14 @@ public class Event {
     private void buildDataFromXml(string eventtype)
     {
         int loc = Random.Range(0, 5); //which type of location
+        float timer = Time.realtimeSinceStartup;
         //Basic option
         EventOptions.Add(generateEvent(0, 1, eventtype, loc));
         //Second option
         EventOptions.Add(generateEvent(1, 2, eventtype, loc));
         //Third option
         EventOptions.Add(generateEvent(2, 3, eventtype, loc));
+        Debug.Log(Time.realtimeSinceStartup - timer);
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -154,9 +157,14 @@ public class Event {
         int addedCons = 0;
 
         Dictionary<Piece, int> usedConds = new Dictionary<Piece, int>();
+        //Dictionary<Piece, int> usedConds = evOpt.Conditions;
+
+        //int numRuns = 0;
+        
         //Select outcomes
-        while (addedCons < numCon)
+        while (addedCons < numCon )
         {
+            //numRuns++;
             string numberString = "";
             switch (conSelectnum)
             {
@@ -170,6 +178,7 @@ public class Event {
                     numberString = "/three";
                     break;
             }
+            //numberString = "/one";
 
             XmlNodeList Outcome = xmlDoc.SelectNodes("eventstructure/" + eventtype + numberString + "/outcome");
             int[] outSelect = DataManager.randomArray(Outcome.Count);
@@ -203,7 +212,13 @@ public class Event {
                         XmlNode xnCon = xnConlist[j];
                         addedCons = addedCons + int.Parse(xnCon.SelectSingleNode("amount").InnerText);
                         Piece conPiece = DataManager.instance.BoardPieces[xnCon.SelectSingleNode("piece").InnerText];
-                        usedConds.Add(conPiece, int.Parse(xnCon.SelectSingleNode("amount").InnerText));
+                        if (usedConds.ContainsKey(conPiece))
+                        {
+                            usedConds[conPiece] += int.Parse(xnCon.SelectSingleNode("amount").InnerText);
+                        } else
+                        {
+                            usedConds.Add(conPiece, int.Parse(xnCon.SelectSingleNode("amount").InnerText));
+                        }
                     }
                     
                     string critString = "/normal";
@@ -230,7 +245,14 @@ public class Event {
             {
                 conSelectnum--;
             }
+        }/*
+        Debug.Log("Number of runs " + numRuns);
+        Debug.Log("Pieces ");
+        foreach(KeyValuePair<Piece,int> pair in evOpt.Conditions)
+        {
+            Debug.Log(pair.Key.BoardName);
         }
+        */
         //Set flavors
         switch (eventtype)
         {
@@ -290,7 +312,6 @@ public class Event {
         XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + locationXmlString + "/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
-        
         return evOpt;
     }
 

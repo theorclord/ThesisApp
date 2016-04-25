@@ -458,6 +458,162 @@
       <outcome>
         <conditions>
           <condition>
+            <piece>scrap</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>EngineeringRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
             <piece>crewMember</piece>
             <amount>1</amount>
           </condition>
@@ -469,10 +625,6 @@
                 <name>scrap</name>
                 <range>1,2</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member was able to collect some resources for you.</flavor>
-                <flavor>This is all that the castle member was able to find.</flavor>
-              </flavors>
             </option>
           </normal>
           <critical>
@@ -485,9 +637,6 @@
                 <name>sciencePoint</name>
                 <range>1,1</range>
               </piece>
-              <flavors>
-                <flavor>You seem to have found some strange new material that an alchemist would take interest in.</flavor>
-              </flavors>
             </option>
             <option>
               <piece>
@@ -498,9 +647,6 @@
                 <name>scrap</name>
                 <range>1,1</range>
               </piece>
-              <flavors>
-                <flavor>The quest was bountiful, and you found additional materials.</flavor>
-              </flavors>
             </option>
             <option>
               <piece>
@@ -515,11 +661,6 @@
                 <name>sciencePoint</name>
                 <range>1,1</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member returns with more material than you expected, and a strange new element is found amongst it.</flavor>
-                <flavor>After a long search, the castle member returns with a strange new item and what looks like a lot of resources.</flavor>
-                <flavor>The quest was a great success. There was brought back many resources and an unknown new alchemical substance.</flavor>
-              </flavors>
             </option>
           </critical>
         </success>
@@ -530,17 +671,7 @@
                 <name>scrap</name>
                 <range>1,2</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member couldn't find much of value, but at least there was something.</flavor>
-                <flavor>There wasn't much to be collected here, after all.</flavor>
-              </flavors>
             </option>
-            <!--<option>
-              <piece>
-                <name>crewMember</name>
-                <range>1,1</range>
-              </piece>
-            </option>-->
           </normal>
           <critical>
             <option>
@@ -548,10 +679,6 @@
                 <name>scrap</name>
                 <range>1,2</range>
               </piece>
-              <flavors>
-                <flavor>All that could be gathered was this.</flavor>
-                <flavor>Not much. But it is something.</flavor>
-              </flavors>
             </option>
           </critical>
         </neutral>
@@ -562,21 +689,12 @@
                 <name>crewMember</name>
                 <range>-1,-1</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member got severly injured, and couldn't collect anything. Hurry up and bring get the cleric!</flavor>
-                <flavor>As your castle member returns, he suddenly collaps to the ground. You can clearly see that he has been injured.</flavor>
-              </flavors>
             </option>
             <option>
               <piece>
                 <name>EngineeringRoom</name>
                 <range>-1,-1</range>
               </piece>
-              <flavors>
-                <flavor>As your trusted servant returns, your gathering room is overloaded, and is temporarily disabled.</flavor>
-                <flavor>Your gathering room is not working properly anymore. It will have to be mended.</flavor>
-                <flavor>The room of gathering seems to be malfunctioning. Maybe you should try fixing it.</flavor>
-              </flavors>
             </option>
           </normal>
           <critical>
@@ -585,21 +703,458 @@
                 <name>crewMember</name>
                 <range>-10,-10</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member got trapped and were unable to make it out. Rest in peace.</flavor>
-                <flavor>As your castle member returns, he takes a few steps and then falls down lifeless. His life will be remembered.</flavor>
-                <flavor>Your castle member made a valiant effort to do your bidding, but unfortunately was unable to make it back alive.</flavor>
-              </flavors>
             </option>
             <option>
               <piece>
                 <name>energyPoint</name>
                 <range>-1,-1</range>
               </piece>
-              <flavors>
-                <flavor>Your castle member seems to have brought something back, and you notice your power crystal is weakened.</flavor>
-                <flavor>Something has happened to your power crystal since the last event. It is losing power.</flavor>
-              </flavors>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>sciencePoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>EngineeringRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>energyPoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>medLab</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>labRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>MechanicRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="45">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="15">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>diplomacy</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+              <piece>
+                <name>labRoom</name>
+                <range>-1,-1</range>
+              </piece>
             </option>
           </critical>
         </failure>
@@ -1032,121 +1587,6 @@
                 <name>randomRoom</name>
                 <range>-1,-1</range>
               </piece>
-            </option>
-          </critical>
-        </failure>
-      </outcome>
-      <outcome>
-        <conditions>
-          <condition>
-            <piece>crewMember</piece>
-            <amount>1</amount>
-          </condition>
-          <condition>
-            <piece>medLab</piece>
-            <amount>1</amount>
-          </condition>
-        </conditions>
-        <success chance ="50">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>energyPoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>1,2</range>
-              </piece>
-              <piece>
-                <name>sciencePoint</name>
-                <range>2,2</range>
-              </piece>
-              <piece>
-                <name>randomRoom</name>
-                <range>1,1</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </success>
-        <neutral chance="20">
-          <normal>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>scrap</name>
-                <range>2,3</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </critical>
-        </neutral>
-        <failure chance="60">
-          <normal>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
-            </option>
-          </normal>
-          <critical>
-            <option>
-              <piece>
-                <name>randomRoom</name>
-                <range>-1,-1</range>
-              </piece>
-              <piece>
-                <name>crewMember</name>
-                <range>-10,-10</range>
-              </piece>
-              <flavors>
-                <flavor></flavor>
-              </flavors>
             </option>
           </critical>
         </failure>
@@ -1610,6 +2050,520 @@
             <option>
               <piece>
                 <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>sciencePoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>scrap</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>energyPoint</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>sciencePoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>medLab</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>labRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>blank</name>
+                <range>0,0</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>MechanicRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="45">
+          <normal>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="15">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
+            <piece>diplomacy</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="50">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>10,10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>crewMember</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="40">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="10">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+              <piece>
+                <name>labRoom</name>
                 <range>-1,-1</range>
               </piece>
             </option>
