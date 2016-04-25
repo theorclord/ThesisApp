@@ -6,7 +6,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Xml;
 
-public class NodeController : MonoBehaviour {
+public class NodeController : MonoBehaviour
+{
 
     private GameObject selected;
 
@@ -35,7 +36,7 @@ public class NodeController : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                
+
                 selected = hit.transform.gameObject;
                 if (selected.tag == "LocationNode")
                 {
@@ -67,7 +68,7 @@ public class NodeController : MonoBehaviour {
     private void generateNodes()
     {
         WorldNodeStats stats = DataManager.instance.ActiveNode;
-        foreach( NodeStats nodestat in stats.Nodes)
+        foreach (NodeStats nodestat in stats.Nodes)
         {
             GameObject nodeObj = Instantiate(Resources.Load("Prefabs/NodeNode"), nodestat.Position, Quaternion.identity) as GameObject;
             NodeNode node = nodeObj.GetComponent<NodeNode>();
@@ -91,7 +92,7 @@ public class NodeController : MonoBehaviour {
                     nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
                     break;
             }
-            
+
         }
     }
 
@@ -123,14 +124,14 @@ public class NodeController : MonoBehaviour {
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(eventstructurepath);
-            foreach (KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
+            foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);
                 //Basic first, then add the location based for the piece.
                 XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
-                
+
                 int[] flSel = DataManager.randomArray(butFlav.Count);
-                if(pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
+                if (pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
                 {
                     btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/first").InnerText;
                     btx += pair.Value;
@@ -145,9 +146,9 @@ public class NodeController : MonoBehaviour {
                 flSel = DataManager.randomArray(butFlav.Count);
                 btx += butFlav[flSel[0]].InnerText;
 
-                buttonText += pair.Key.BoardName + " " + pair.Value; 
+                buttonText += pair.Key.BoardName + " " + pair.Value;
                 numCon++;
-                if(e.EventOptions[tempint].Conditions.Count != numCon)
+                if (e.EventOptions[tempint].Conditions.Count != numCon)
                 {
                     buttonText += ", ";
                     btx += " ";
@@ -222,7 +223,8 @@ public class NodeController : MonoBehaviour {
         {
             // get relation
             facRelVal = facRel[activeFac];
-        } else
+        }
+        else
         {
             // Set new faction
             facRel.Add(activeFac, 0);
@@ -269,7 +271,9 @@ public class NodeController : MonoBehaviour {
                         if (outcomePairs.ContainsKey(outPiece))
                         {
                             outcomePairs[outPiece] = outcomePairs[outPiece] + num;
-                        } else {
+                        }
+                        else
+                        {
                             outcomePairs.Add(outPiece, num);
                         }
                     }
@@ -286,10 +290,56 @@ public class NodeController : MonoBehaviour {
         ArrayList resPieceNumbs = new ArrayList();
         string resultString = "";
         int tempCount = 0;
-        foreach (KeyValuePair<Piece,int> pieceNum in outcomePairs)
+        foreach (KeyValuePair<Piece, int> pieceNum in outcomePairs)
         {
             tempCount++;
-            resultString += pieceNum.Key.BoardName + " " + pieceNum.Value;
+
+            if (pieceNum.Key.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
+            {
+                resultString += pieceNum.Key.BoardName + " ";
+                switch (pieceNum.Value)
+                {
+                    case 1:
+                        resultString += "Created";
+                        break;
+                    case -1:
+                        resultString += "Damaged";
+                        break;
+                    case -10:
+                        resultString += "Destroyed";
+                        break;
+                }
+            }
+            else if (pieceNum.Key.BoardName == "Castle Crew")
+            {
+                switch (pieceNum.Value)
+                {
+                    case 10:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Recruited";
+                        break;
+                    case 1:
+                        resultString += "Injured ";
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Recruited";
+                        break;
+                    case -1:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Injured";
+                        break;
+                    case -10:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Dead";
+                        break;
+                }
+            }
+            else
+            {
+                resultString += pieceNum.Key.BoardName + " ";
+                if (pieceNum.Value > 0) resultString += "+" + pieceNum.Value;
+                if (pieceNum.Value < 0) resultString += pieceNum.Value;
+
+            }
             resPieces.Add(pieceNum.Key.BoardName);
             resPieceNumbs.Add(pieceNum.Value);
             if (outcomePairs.Count != tempCount)
@@ -298,8 +348,8 @@ public class NodeController : MonoBehaviour {
             }
         }
         resultPanel.transform.FindChild("OutcomeScreen").transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
-        
-        
+
+
         // This should be the flavor text
         string resultflavortext = "";
         XmlDocument xmlDoc = new XmlDocument();
@@ -307,28 +357,31 @@ public class NodeController : MonoBehaviour {
         XmlNodeList list;
         for (int i = 0; i < resPieces.Count; i++)
         {
-            string s = (string) resPieces[i];
+            string s = (string)resPieces[i];
             int r;
             switch (s)
             {
-                
+
                 case "Castle Crew":
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewdead/flavor");
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i] == -1)
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewinjured/flavor");
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i] == 1)
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruitedinjured/flavor");
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i]== 10)
+                    }
+                    else if ((int)resPieceNumbs[i] == 10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruited/flavor");
                         r = Random.Range(0, list.Count);
@@ -336,9 +389,9 @@ public class NodeController : MonoBehaviour {
                     }
                     break;
                 case "Building Material":
-                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/scrap/flavor");
-                        r = Random.Range(0, list.Count);
-                        resultflavortext += list[r].InnerText;
+                    list = xmlDoc.SelectNodes("eventstructure/resultflavor/scrap/flavor");
+                    r = Random.Range(0, list.Count);
+                    resultflavortext += list[r].InnerText;
                     break;
                 case "Crystal Charge":
                     if ((int)resPieceNumbs[i] < 0)
@@ -355,19 +408,19 @@ public class NodeController : MonoBehaviour {
                     }
                     break;
                 case "Miners Guild":
-                    if((int)resPieceNumbs[i] == -10)
+                    if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
-                    else if((int)resPieceNumbs[i] == -1)
+                    else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
                         r = Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
-                    else if((int)resPieceNumbs[i]==1)
+                    else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
                         r = Random.Range(0, list.Count);
