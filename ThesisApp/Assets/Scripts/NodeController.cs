@@ -117,7 +117,7 @@ public class NodeController : MonoBehaviour {
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
             button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 50 * i);
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 55 * i);
             string buttonText = "";
             int numCon = 0;
             string btx = "";
