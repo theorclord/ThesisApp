@@ -134,7 +134,6 @@ public class Event {
             {
                 XmlNode xn = conditionList[conSelect[i]];
                 //TODO have the checked value in a field
-                //TODO have range on conditions?
                 //Select a condition which is limited by the condition type parameter   
                 if (int.Parse(xn.SelectSingleNode("type").InnerText) <= conType)
                 {
@@ -153,6 +152,8 @@ public class Event {
         }
         int conSelectnum = numCon;
         int addedCons = 0;
+
+        Dictionary<Piece, int> usedConds = new Dictionary<Piece, int>();
         //Select outcomes
         while (addedCons < numCon)
         {
@@ -189,6 +190,11 @@ public class Event {
                         found = false;
                         break;
                     }
+                    if(usedConds.ContainsKey(conPiece) && !(evOpt.Conditions[conPiece]-usedConds[conPiece] >= int.Parse(xnCon.SelectSingleNode("amount").InnerText)))
+                    {
+                        found = false;
+                        break;
+                    }
                 }
                 if (found)
                 {
@@ -196,6 +202,8 @@ public class Event {
                     {
                         XmlNode xnCon = xnConlist[j];
                         addedCons = addedCons + int.Parse(xnCon.SelectSingleNode("amount").InnerText);
+                        Piece conPiece = DataManager.instance.BoardPieces[xnCon.SelectSingleNode("piece").InnerText];
+                        usedConds.Add(conPiece, int.Parse(xnCon.SelectSingleNode("amount").InnerText));
                     }
                     
                     string critString = "/normal";

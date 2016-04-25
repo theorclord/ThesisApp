@@ -230,7 +230,55 @@ public class NodeController : MonoBehaviour
             facRel.Add(activeFac, 0);
             facRelVal = 0;
         }
-        //TODO change the chance of success depending on the faction relation
+
+        int succesChange = 0;
+        int failureChange = 0;
+        int neutralChange = 0;
+
+        if(facRelVal > 50)
+        {
+            //faction is allied
+            switch (eventnum)
+            {
+                case 0:
+                    succesChange += 10;
+                    neutralChange += -10;
+                    break;
+                case 1:
+                    succesChange += 15;
+                    neutralChange += -10;
+                    failureChange += -5;
+                    break;
+                case 2:
+                    succesChange += 5;
+                    failureChange += -5;
+                    break;
+                default:
+                    break;
+            }
+        } else if(facRelVal <-50)
+        {
+            //faction is enemy
+            switch (eventnum)
+            {
+                case 0:
+                    succesChange += -10;
+                    neutralChange += -5;
+                    failureChange += 15;
+                    break;
+                case 1:
+                    succesChange += -10;
+                    failureChange += 10;
+                    break;
+                case 2:
+                    succesChange += -10;
+                    neutralChange += 5;
+                    failureChange += 5;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
@@ -241,9 +289,23 @@ public class NodeController : MonoBehaviour
             for (int i = 0; i < eog.Outcomes.Count; i++)
             {
                 EventOutcome eo = eog.Outcomes[i];
-                if (eo.Chance >= chance - accumChance)
+                int modChance = eo.Chance;
+                switch (eo.Type)
                 {
-                    //resFlavor = eo.outcomeFlavor;
+                    case EventOutcomeType.SUCCESS:
+                        modChance += succesChange;
+                        break;
+                    case EventOutcomeType.NEUTRAL:
+                        modChance += neutralChange;
+                        break;
+                    case EventOutcomeType.FAILURE:
+                        modChance += failureChange;
+                        break;
+                    default:
+                        break;
+                }
+                if (modChance >= chance - accumChance)
+                {
                     foreach (KeyValuePair<Piece, int[]> pair in eo.Pieces)
                     {
                         Piece outPiece = null;
@@ -265,9 +327,19 @@ public class NodeController : MonoBehaviour
                         {
                             outPiece = pair.Key;
                         }
-                        //have the range depend on the faction. 
                         //If the faction is friendly, take the max val, if enemy min val
-                        int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        int num = 0;
+                        if(facRelVal > 50)
+                        {
+                            num = pair.Value[1] + 1;
+                        }
+                        else if (facRelVal <-50)
+                        {
+                            num = pair.Value[0];
+                        } else
+                        {
+                            num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        }
                         if (outcomePairs.ContainsKey(outPiece))
                         {
                             outcomePairs[outPiece] = outcomePairs[outPiece] + num;
@@ -281,7 +353,7 @@ public class NodeController : MonoBehaviour
                 }
                 else
                 {
-                    accumChance += eo.Chance;
+                    accumChance += modChance;
                 }
             }
         }
