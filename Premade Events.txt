@@ -1,0 +1,22 @@
+We need to save:
+	Location Type (Mine, forest, etc.)
+	Event Outcome Type (Success/Neutral/failure)
+	Conditions selected (1x Crew + 1x Lab etc.)
+	Outcomes (4x Material + 1x Energy ...)
+	Turn counter (+1 on trigger enter world node)
+	faction that owned the island
+	name of the island
+	
+
+The events themselves:
+	1st event: Random occurrance of option 3
+	Save event and contents as described above.
+	
+	Next event (Premade):
+	Use: - Prev Location type
+		- Name of island
+		- faction name 
+		- conditions from prev event
+		- allegiance for the faction
+		
+	Buttons: Allegiance and faction needed.
