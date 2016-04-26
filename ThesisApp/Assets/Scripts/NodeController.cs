@@ -78,7 +78,7 @@ public class NodeController : MonoBehaviour
         // Number of options available for the players. 
         // Random determine if 2 or 3. 
         // Third option should be semi rare
-        int thirdChance = 20;
+        int thirdChance = 30;
         int procent = Random.Range(0, 100)+1;
         int numOption = 2;
         if (procent <= thirdChance)
