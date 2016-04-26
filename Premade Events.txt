@@ -20,3 +20,5 @@ The events themselves:
 		- allegiance for the faction
 		
 	Buttons: Allegiance and faction needed.
+	
+	Outcomes: also based on faction and allegiance.
