@@ -8,14 +8,15 @@ namespace Assets.Scripts.Events
 {
     public class SavedResult
     {
-        public Location Type { get; set; }
+        public Location Location { get; set; }
         public EventOutcomeType OutcomeType { get; set; }
-
 
         //Event conditions
         public Dictionary<Piece, int> Conditions { get; set; }
         //Event Outcome
         public Dictionary<Piece, int> Outcomes { get; set; }
+
+        public Faction Alligance { get; set; }
 
         public SavedResult()
         {

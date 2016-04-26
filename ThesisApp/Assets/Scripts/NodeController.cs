@@ -5,6 +5,7 @@ using Assets.Scripts.Utility;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Xml;
+using Assets.Scripts.Events;
 
 public class NodeController : MonoBehaviour
 {
@@ -67,6 +68,16 @@ public class NodeController : MonoBehaviour
 
     private void generateNodes()
     {
+        // Number of options available for the players. 
+        // Random determine if 2 or 3. 
+        // Third option should be semi rare
+        int thirdChance = 20;
+        int procent = Random.Range(0, 100)+1;
+        int numOption = 2;
+        if (procent <= thirdChance)
+        {
+            numOption = 3;
+        } 
         WorldNodeStats stats = DataManager.instance.ActiveNode;
         foreach (NodeStats nodestat in stats.Nodes)
         {
@@ -74,7 +85,7 @@ public class NodeController : MonoBehaviour
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
-            nodestat.nodeEvent.GenerateEvent(nodestat.type);
+            nodestat.nodeEvent.GenerateEvent(nodestat.type, numOption);
             node.nodeEvent = nodestat.nodeEvent;
             node.type = nodestat.type;
             switch (node.type)
@@ -87,10 +98,12 @@ public class NodeController : MonoBehaviour
                     nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/ResearchMaterial") as Material;
                     nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
                     break;
+                    /*
                 case EventSpec.DIPLOMACY:
                     nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/DiplomacyMaterial") as Material;
                     nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
                     break;
+                    */
             }
 
         }
@@ -205,11 +218,14 @@ public class NodeController : MonoBehaviour
 
     public void ResolveEvent(int eventnum)
     {
+        // Saved results
+        SavedResult savRes = new SavedResult();
         Event curEvent = selectNode.nodeEvent;
+        //Save conditions
+        savRes.Conditions = curEvent.EventOptions[eventnum].Conditions;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
-
         //Find outcome
         //check player faction relation
         //100 points for each state
@@ -230,7 +246,8 @@ public class NodeController : MonoBehaviour
             facRel.Add(activeFac, 0);
             facRelVal = 0;
         }
-
+        // Save faction
+        savRes.Alligance = activeFac;
         int succesChange = 0;
         int failureChange = 0;
         int neutralChange = 0;
@@ -280,7 +297,8 @@ public class NodeController : MonoBehaviour
                     break;
             }
         }
-
+        // Save location
+        savRes.Location = curEvent.EventOptions[eventnum].locType;
         int chance = Random.Range(0, 100) + 1;
         int accumChance = 0;
         Dictionary<Piece, int> outcomePairs = new Dictionary<Piece, int>();
@@ -295,12 +313,15 @@ public class NodeController : MonoBehaviour
                 {
                     case EventOutcomeType.SUCCESS:
                         modChance += succesChange;
+                        savRes.OutcomeType = EventOutcomeType.SUCCESS;
                         break;
                     case EventOutcomeType.NEUTRAL:
                         modChance += neutralChange;
+                        savRes.OutcomeType = EventOutcomeType.NEUTRAL;
                         break;
                     case EventOutcomeType.FAILURE:
                         modChance += failureChange;
+                        savRes.OutcomeType = EventOutcomeType.FAILURE;
                         break;
                     default:
                         break;
@@ -358,6 +379,8 @@ public class NodeController : MonoBehaviour
                 }
             }
         }
+        // Saving the outcomes
+        savRes.Outcomes = outcomePairs;
         //Build outcome string
         ArrayList resPieces = new ArrayList();
         ArrayList resPieceNumbs = new ArrayList();

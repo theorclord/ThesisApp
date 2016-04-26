@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Scripts.Utility;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Events;
 
 /// <summary>
 /// Responsible for moving the player around in the world map
@@ -31,8 +32,6 @@ public class WorldPlayer : MonoBehaviour {
     {
         if(other.transform.gameObject == target)
         {
-            //TODO: Should initialize the node layout for next scene
-
             bool canGo = true;
             if (target.GetComponent<WorldNode>().Visited)
             {
@@ -59,8 +58,10 @@ public class WorldPlayer : MonoBehaviour {
             {
                 if (canGo)
                 {
-                   // Transform t = target.gameObject.transform.FindChild("Sprite");
-                   // t.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Sprits/IslandConquered") as Sprite;
+                    // Loading preevents if conditions are right
+                    int preEventsCount = DataManager.instance.SavedEvents.Count;
+                    SavedResult savRes = DataManager.instance.SavedEvents[preEventsCount];
+
                     SceneManager.LoadScene("NodeScene");
                 }
             }

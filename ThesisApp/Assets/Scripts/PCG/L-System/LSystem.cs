@@ -308,10 +308,10 @@ public class LSystem {
                 {
                     case EventSpec.GATHER:
                         setNameAndFlavor("Gather", ns);
-                        break;
+                        break;/*
                     case EventSpec.DIPLOMACY:
                         setNameAndFlavor("Diplomacy", ns);
-                        break;
+                        break;*/
                     case EventSpec.RESEARCH:
                         setNameAndFlavor("Research", ns);
                         break;

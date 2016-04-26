@@ -35,7 +35,7 @@ public class Event {
         EventOptions = new List<EventOption>();
     }
 
-    public void GenerateEvent(EventSpec eventType)
+    public void GenerateEvent(EventSpec eventType, int NumberOptions)
     {
         //Add PCG to create the different types of events and rewards
         switch (eventType)
@@ -43,19 +43,21 @@ public class Event {
             case EventSpec.GATHER:// gather
                 //TODO Set eventText
                 eventText = "Gathering Event";
-                buildDataFromXml("gathering");
+                buildDataFromXml("gathering", NumberOptions);
                 break;
             case EventSpec.RESEARCH://research
                 //TODO Set eventText
                 eventText = "Research Event";
-                //buildDataFromXml("research");
-                buildDataFromXml("gathering");
+                buildDataFromXml("research", NumberOptions);
+                //buildDataFromXml("gathering");
                 break;
+                /*
             case EventSpec.DIPLOMACY://diplomacy
                 //TODO Set eventText
                 eventText = "Diplomacy Event";
                 buildDataFromXml("gathering");
                 break;
+                */
         }
     }
     
@@ -63,17 +65,20 @@ public class Event {
     /// Builds events based on creation rules
     /// </summary>
     /// <param name="eventtype">string type, related to the xml file</param>
-    private void buildDataFromXml(string eventtype)
+    private void buildDataFromXml(string eventtype, int numOpt)
     {
         int loc = Random.Range(0, 5); //which type of location
-        //float timer = Time.realtimeSinceStartup;
+        for(int i = 0; i < numOpt; i++)
+        {
+            EventOptions.Add(generateEvent(i, i+1, eventtype, loc));
+        }/*
         //Basic option
         EventOptions.Add(generateEvent(0, 1, eventtype, loc));
         //Second option
         EventOptions.Add(generateEvent(1, 2, eventtype, loc));
         //Third option
         EventOptions.Add(generateEvent(2, 3, eventtype, loc));
-        //Debug.Log(Time.realtimeSinceStartup - timer);
+        */
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -273,23 +278,23 @@ public class Event {
                 {
                     case 0:
                         locationXmlString = "/forest";
-                        evOpt.locType = Location.MINE;
+                        evOpt.locType = Location.FOREST;
                         break;
                     case 1:
                         locationXmlString = "/rockformation";
-                        evOpt.locType = Location.QUARRY;
+                        evOpt.locType = Location.ROCKFORMATION;
                         break;
                     case 2:
                         locationXmlString = "/magicsite";
-                        evOpt.locType = Location.WRECKAGE;
+                        evOpt.locType = Location.MAGICSITE;
                         break;
                     case 3:
                         locationXmlString = "/lake";
-                        evOpt.locType = Location.FACTORY;
+                        evOpt.locType = Location.LAKE;
                         break;
                     case 4:
                         locationXmlString = "/ruins";
-                        evOpt.locType = Location.VILLAGE;
+                        evOpt.locType = Location.RUINS;
                         break;
                 }
                 break;

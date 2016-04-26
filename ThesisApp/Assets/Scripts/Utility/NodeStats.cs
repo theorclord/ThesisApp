@@ -39,9 +39,11 @@ namespace Assets.Scripts.Utility
                 case 1:
                     type = EventSpec.RESEARCH;
                     break;
+                    /*
                 case 2:
                     type = EventSpec.DIPLOMACY;
                     break;
+                    */
             }
         }
 

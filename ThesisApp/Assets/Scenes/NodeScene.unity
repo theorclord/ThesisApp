@@ -226,6 +226,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11487578, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1887003898}
+    - target: {fileID: 11487578, guid: 65795aea184959943a0ec0ebab667083, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePanel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65795aea184959943a0ec0ebab667083, type: 2}
   m_IsPrefabParent: 0

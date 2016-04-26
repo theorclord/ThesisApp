@@ -27,8 +27,8 @@ namespace Assets.Scripts.Utility
     public enum EventSpec
     {
         GATHER,
-        RESEARCH,
-        DIPLOMACY
+        RESEARCH/*,
+        DIPLOMACY*/
     }
 
     public enum EventDifficulty

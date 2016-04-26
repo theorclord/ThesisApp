@@ -1969,6 +1969,84 @@
       <outcome>
         <conditions>
           <condition>
+            <piece>EngineeringRoom</piece>
+            <amount>1</amount>
+          </condition>
+        </conditions>
+        <success chance ="20">
+          <normal>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>energyPoint</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>1,1</range>
+              </piece>
+              <piece>
+                <name>energyPoint</name>
+                <range>1,1</range>
+              </piece>
+            </option>
+          </critical>
+        </success>
+        <neutral chance="60">
+          <normal>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>scrap</name>
+                <range>2,2</range>
+              </piece>
+            </option>
+          </critical>
+        </neutral>
+        <failure chance="20">
+          <normal>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-1,-1</range>
+              </piece>
+            </option>
+          </normal>
+          <critical>
+            <option>
+              <piece>
+                <name>crewMember</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+            <option>
+              <piece>
+                <name>randomRoom</name>
+                <range>-10,-10</range>
+              </piece>
+            </option>
+          </critical>
+        </failure>
+      </outcome>
+      <outcome>
+        <conditions>
+          <condition>
             <piece>crewMember</piece>
             <amount>1</amount>
           </condition>
