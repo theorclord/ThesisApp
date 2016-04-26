@@ -65,7 +65,7 @@ public class WorldController : MonoBehaviour {
                     RectTransform rt = destpanel.GetComponent<RectTransform>();
 
                     float distanceToTarget = Vector3.Distance(hit.transform.position, playerToken.transform.position);
-                    Debug.Log("Distance = " + distanceToTarget);
+                    //Debug.Log("Distance = " + distanceToTarget);
 
                     if(distanceToTarget <= maxDistance && !destpanel.activeSelf)
                     {
@@ -74,8 +74,8 @@ public class WorldController : MonoBehaviour {
                     Vector3 pos = new Vector3(hit.transform.position.x + (hit.transform.localScale.x / 2), hit.transform.position.y - (hit.transform.localScale.y / 2), hit.transform.position.z);
                     pos = new Vector3(mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).x + (rt.rect.width / 2), mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).y, mainCam.GetComponent<Camera>().WorldToScreenPoint(pos).z);
                     destpanel.transform.position = pos;
-                    destpanel.transform.FindChild("LocationName").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeName;
-                    destpanel.transform.FindChild("LocationDescription").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeDesciption;
+                    destpanel.transform.FindChild("NamePanel").FindChild("LocationName").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeName;
+                    destpanel.transform.FindChild("DescriptionPanel").FindChild("LocationDescription").GetComponent<Text>().text = target.GetComponent<WorldNode>().NodeDesciption;
                     destpanel.SetActive(true);
                     }
                 }

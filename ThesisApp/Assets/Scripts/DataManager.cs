@@ -10,23 +10,20 @@ public class DataManager : MonoBehaviour {
     public Sprite IslandSprite;
     public Sprite ConqueredSprite;
     public Sprite GoalSprite;
-    public PlayerStats Player
-    { get; set; }
-    public List<WorldNodeStats> Nodes
-    { get; private set; }
+    public PlayerStats Player { get; set; }
+    public List<WorldNodeStats> Nodes { get; private set; }
     public float cameraZoom = 5.0f;
 
-    public WorldNodeStats ActiveNode
-    { get; set; }
+    public WorldNodeStats ActiveNode { get; set; }
 
     public Dictionary<string, Piece> BoardPieces { get; set; }
 
     public Dictionary<string, Faction> Factions { get; set; }
 
-    public List<SavedResult> SavedEvents
-    {
-        get; set;
-    }
+    public List<SavedResult> SavedEvents { get; set; }
+    public SavedResult ActiveDiplomaticEvent { get; set; }
+
+    public int TurnCounter { get; set; }
 
     //XML loading variables
     private string boardPiecesXml = "assets/scripts/XML/BoardPieces.xml";
@@ -52,6 +49,7 @@ public class DataManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        SavedEvents = new List<SavedResult>();
         Player = new PlayerStats();
         BoardPieces = new Dictionary<string, Piece>();
         Nodes = new List<WorldNodeStats>();

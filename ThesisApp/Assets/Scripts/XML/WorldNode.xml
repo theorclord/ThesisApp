@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorldNodes>
+  <WorldNode>
+    <name>Esgar</name>
+    <description>A beautiful abandoned island</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Tarnost</name>
+    <description>A garrisoned bastion</description>
+  </WorldNode>
+</WorldNodes>

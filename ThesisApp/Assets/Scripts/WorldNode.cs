@@ -19,30 +19,7 @@ public class WorldNode : MonoBehaviour {
         set
         {
             visited = value;
-            // Changes the halo of the world node
-            if (Type == NodeType.START)
-            {
-                setAllHaloInactive();
-                this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            }
-            else if (Type == NodeType.GOAL)
-            {
-                setAllHaloInactive();
-                this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
-            }
-            else if (Type == NodeType.NORMAL)
-            {
-                if (Visited)
-                {
-                    setAllHaloInactive();
-                    this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                }
-                else
-                {
-                    setAllHaloInactive();
-                    this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
-                }
-            }
+            setRingId();
         }
     }
     public NodeType Type
@@ -53,44 +30,49 @@ public class WorldNode : MonoBehaviour {
         // Changes the halo of the world node
         if (Type == NodeType.START)
         {
-            setAllHaloInactive();
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 1, 0));
         }
         else if (Type == NodeType.GOAL)
         {
-            setAllHaloInactive();
-            this.gameObject.transform.GetChild(3).gameObject.SetActive(true);
+            gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 0, 1));
         }
         else if (Type == NodeType.NORMAL)
         {
             if (Visited)
             {
-                setAllHaloInactive();
-                this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 0, 1));
             }
             else
             {
-                setAllHaloInactive();
-                this.gameObject.transform.GetChild(2).gameObject.SetActive(true);
+                gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 1, 1));
             }
         }
     }
-
-    void setAllHaloInactive()
+    private void setRingId()
     {
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(2).gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(3).gameObject.SetActive(false);
+        // Changes the halo of the world node
+        if (Type == NodeType.START)
+        {
+            this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 1, 0));
+        }
+        else if (Type == NodeType.GOAL)
+        {
+            this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0, 0, 1));
+        }
+        else if (Type == NodeType.NORMAL)
+        {
+            if (Visited)
+            {
+                this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 0, 1));
+            }
+            else
+            {
+                this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 1, 1));
+            }
+        }
     }
-	
 	// Update is called once per frame
 	void Update () {
         
 	}
-
-    public void GetNodeLayout()
-    {
-        //TODO return the layout needed
-    }
 }

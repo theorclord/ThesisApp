@@ -9,8 +9,9 @@ namespace Assets.Scripts.Events
     public class SavedResult
     {
         public Location Location { get; set; }
+        public string IslandName { get; set; }
         public EventOutcomeType OutcomeType { get; set; }
-
+        public int TurnCount { get; set; }
         //Event conditions
         public Dictionary<Piece, int> Conditions { get; set; }
         //Event Outcome

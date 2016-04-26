@@ -21,18 +21,12 @@ namespace Assets.Scripts.Utility
         public List<NodeStats> Nodes { get; set; }
 
         public Faction NodeFaction { get; set; }
-        public WorldNodeStats(Vector3 pos, string name, string description)
-        {
-            Nodes = new List<NodeStats>();
-            Position = pos;
-            Name = name;
-            Description = description;
-            Visited = false;
-            Type = NodeType.NORMAL;
-        }
 
         public WorldNodeStats()
         {
+            Nodes = new List<NodeStats>();
+            Visited = false;
+            Type = NodeType.NORMAL;
         }
 
 

@@ -32,6 +32,7 @@ public class WorldPlayer : MonoBehaviour {
     {
         if(other.transform.gameObject == target)
         {
+            DataManager.instance.TurnCounter++;
             bool canGo = true;
             if (target.GetComponent<WorldNode>().Visited)
             {
@@ -47,7 +48,6 @@ public class WorldPlayer : MonoBehaviour {
             }
             
             target.GetComponent<WorldNode>().Visited = true;
-            other.transform.GetComponent<WorldNode>().GetNodeLayout();
             DataManager.instance.Player.Position = transform.position;
             if(target.GetComponent<WorldNode>().Type == NodeType.GOAL)
             {
@@ -58,10 +58,6 @@ public class WorldPlayer : MonoBehaviour {
             {
                 if (canGo)
                 {
-                    // Loading preevents if conditions are right
-                    int preEventsCount = DataManager.instance.SavedEvents.Count;
-                    SavedResult savRes = DataManager.instance.SavedEvents[preEventsCount];
-
                     SceneManager.LoadScene("NodeScene");
                 }
             }

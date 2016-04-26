@@ -26,6 +26,13 @@ public class NodeController : MonoBehaviour
         nodeInfoPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("NodeInformation").gameObject;
         eventPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
         resultPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("EventResolution").gameObject;
+
+        // Loading preevents if conditions are right
+        if (DataManager.instance.ActiveDiplomaticEvent != null && DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
+        {
+            Debug.Log("The Special event runs");
+            //Load special event scene
+        }
     }
 
     // Update is called once per frame
@@ -224,6 +231,8 @@ public class NodeController : MonoBehaviour
         Event curEvent = selectNode.nodeEvent;
         //Save conditions
         savRes.Conditions = curEvent.EventOptions[eventnum].Conditions;
+        savRes.TurnCount = DataManager.instance.TurnCounter;
+        savRes.IslandName = selectNode.TitleName;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
@@ -631,8 +640,16 @@ public class NodeController : MonoBehaviour
                     break;
             }
         }
-
-
+        int savNumCon = 0;
+        foreach(KeyValuePair<Piece,int> pieceNum in savRes.Conditions)
+        {
+            savNumCon += pieceNum.Value;
+        }
+        if(savNumCon == 3)
+        {
+            DataManager.instance.ActiveDiplomaticEvent = savRes;
+        }
+        DataManager.instance.SavedEvents.Add(savRes);
         resultPanel.transform.FindChild("ResolutionScreen").transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
     }
 }

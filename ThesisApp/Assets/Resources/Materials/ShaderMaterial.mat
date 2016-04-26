@@ -93,18 +93,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _OuterRadius
-        second: 0.5
-      data:
-        first:
-          name: _InnerRadius
-        second: 0.49
-      data:
-        first:
-          name: _Hardness
-        second: 3
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -139,6 +127,18 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _OuterRadius
+        second: 0.5
+      data:
+        first:
+          name: _InnerRadius
+        second: 0.4
+      data:
+        first:
+          name: _Hardness
+        second: 3
       data:
         first:
           name: _Edge
