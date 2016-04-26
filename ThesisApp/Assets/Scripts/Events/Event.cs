@@ -58,20 +58,6 @@ public class Event {
                 break;
         }
     }
-    /// <summary>
-    /// Renames boardgame pieces based on their enum name
-    /// </summary>
-    /// <param name="text"></param>
-    /// <returns></returns>
-    private string renameString(string text)
-    {
-        string alterString = text;
-        foreach(KeyValuePair<string,Piece> pair in DataManager.instance.BoardPieces)
-        {
-            alterString = alterString.Replace(pair.Key, pair.Value.BoardName);
-        }
-        return alterString;
-    }
     
     /// <summary>
     /// Builds events based on creation rules
@@ -80,14 +66,14 @@ public class Event {
     private void buildDataFromXml(string eventtype)
     {
         int loc = Random.Range(0, 5); //which type of location
-        float timer = Time.realtimeSinceStartup;
+        //float timer = Time.realtimeSinceStartup;
         //Basic option
         EventOptions.Add(generateEvent(0, 1, eventtype, loc));
         //Second option
         EventOptions.Add(generateEvent(1, 2, eventtype, loc));
         //Third option
         EventOptions.Add(generateEvent(2, 3, eventtype, loc));
-        Debug.Log(Time.realtimeSinceStartup - timer);
+        //Debug.Log(Time.realtimeSinceStartup - timer);
     }
     /// <summary>
     /// Generates the content of the events based on the condition

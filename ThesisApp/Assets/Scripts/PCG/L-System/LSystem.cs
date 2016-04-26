@@ -281,6 +281,7 @@ public class LSystem {
 
         if (!duplicate)
         {
+            /*
             int numIntNodes = Random.Range(1, 4);
             int[] eventTypeOrder = new int[] { 0, 1, 2 };
             for (int i = 0; i < eventTypeOrder.Length; i++)
@@ -289,7 +290,9 @@ public class LSystem {
                 int temp = eventTypeOrder[random];
                 eventTypeOrder[random] = eventTypeOrder[i];
                 eventTypeOrder[i] = temp;
-            }
+            }*/
+            int[] eventTypeOrder = DataManager.randomArray(2);
+            int numIntNodes = eventTypeOrder.Length;
 
             for (int j = 0; j < numIntNodes; j++)
             {
