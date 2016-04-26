@@ -1,0 +1,40 @@
+Lsystem:
+	
+	RuleCollection:
+	Consists of LRule list
+		LRule = Name:string, axiom:string, rules:list, expandingIterations:int, delta:float
+		Axiom : Starting string - This is what the LSystem builds and expands on.
+		Rules (example; "O", "O[--N][+N]") : Each iteration, every found "O" in the axiom string is replaced with "O[--N][+N]".
+		ExpandingIteration : Number of times the LSystem goes through the Axiom/ResultString and replaces each character with an associated rule.
+		Delta : Turning angle of the system; Mathf.PI/2 = 90 turn angle.
+		
+	
+	LSystem.expand(int depth, IDictionary ruleSets)
+		gets the axiom as a starting point, goes through the string and generates a list of all the characters as a string array. 
+		For each element in the list, this function checks if there exists a rule for replacing that character, and adds the resulting replacement to that index.
+		This is repeated until end of list.
+	
+		This loop is repeated "depth" number of times, where depth is the ExpandingIteration number.
+		
+		at the end of the loop, the resulting string generated from the list, is checked for and ending and a start reference, if it does not exist, it will be added.
+		
+		returns the result string.
+		
+		
+	LSystem.interpret()
+		goes through the result string from expand(), and adds world objects for each char that is represented in the Switch().
+		'+' and '-' changes the angle, '[' and ']' pushes and pops (respectively) to the stack that keeps track of the positioning.
+		'Char' are placing the world objects.
+		
+		For each letter found, the algorithm moves the position forward in the direction that is saved.
+		
+		
+	LSystem.generateNodeStats(WorldNodeStats newNode)
+		checks if duplicate position : if so, it is not generated.
+		else: checks position, and if the nodeType is Goal. if so, it sets the node type to goal.
+		
+		Factions?
+		
+		
+	LSystem.setNameAndFlavor(String type, NodeStats ns)
+		gets the name and flavor from the XML file and adds it to the node.

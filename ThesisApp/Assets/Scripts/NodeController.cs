@@ -102,6 +102,7 @@ public class NodeController : MonoBehaviour
                 case EventSpec.DIPLOMACY:
                     nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/DiplomacyMaterial") as Material;
                     nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
+                    // ADD NEW DIPLOMACY PANEL
                     break;
                     */
             }
