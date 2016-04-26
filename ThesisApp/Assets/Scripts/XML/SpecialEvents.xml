@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<specialEvents>
+  <combination>
+    <type>HumanMine</type>
+    <intro>While you were in the mines of </intro>
+    <body>
+      your machinery left behind a lot of oil staines on the floor, and the Humans living on that island were quickly aware that you had been there.
+    </body>
+    <extra>
+      They want to know how your machinery works, and how they can use it to drive
+      away the Nomads.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Invite them into your castle to show them how it works.
+        </button>
+        <ally>
+          The humans take notes on how to build the precious machinery.
+        </ally>
+        <neutral>
+          They are happy to learn your methods and have a peace offering.
+        </neutral>
+        <enemy>
+          The humans were not really expecting your cooperation, and
+          agrees to spare your crew.
+        </enemy>
+      </one>
+      <two>
+        <button>Tell them that you don't support wars, and that you can't tell them.</button>
+        <ally>
+          They understand your views, and one of the humans offer
+          a crystal piece in hopes that you will change your mind.
+        </ally>
+        <neutral>
+          They seem mildly dissappointed, but one of them agrees with you
+          and offers himself to join your cause.
+        </neutral>
+        <enemy>
+          They weren't expecting you to cooperate, so they use brute force and
+          take out one of your crew.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+  <combination>
+    <type>HumanFactory</type>
+    <intro>
+      Your machinery left behind large tracks all over the floor in the factory of 
+    </intro>
+    <body>
+      . And the humans that used to run that factory have taken notice of your visit.
+    </body>
+    <extra>
+      They want to learn about your machines and get the blueprints so they can make
+      their own machinery and take the land of the Highbournes.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Give them the blueprints and a tutorial on how to make them.
+        </button>
+        <ally>
+          They appreciate your help and give you a gift in return for your help.
+        </ally>
+        <neutral>
+          The humans cheer. They were getting desperate.
+        </neutral>
+        <enemy>
+          They are stunned that you would actually share this information with them.
+        </enemy>
+      </one>
+      <two>
+        <button>Tell them to make their own machines and back off your intellectual property.</button>
+        <ally>
+          They are mildly insulted, but understands your point.
+        </ally>
+        <neutral>
+          The humans were not really expecting you to help out, but they leave
+          you a peace offering.
+        </neutral>
+        <enemy>
+          They expected you to decline, and were prepared for this outcome.
+          They start hacking on your castle.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+  <combination>
+    <type>HighbourneForest</type>
+    <intro>
+      Down in the vast forests of 
+    </intro>
+    <body>
+      , your cleric set up protective wards all over the place, and the Highbournes
+      living there have walked straight into them and are aware of your visit.
+    </body>
+    <extra>
+      They want you to tell them how to remove it, as it can cause Nomads to
+      come wandering in.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Give them the counter measures for the wards.
+        </button>
+        <ally>
+          You have redeemed your previous mistake,
+          and they bow their heads at you.
+        </ally>
+        <neutral>
+          They thank you for your cooperation and put forward an herb you have
+          never seen before.
+        </neutral>
+        <enemy>
+          They turn around, arrogantly, and walks away.
+        </enemy>
+      </one>
+      <two>
+        <button>Tell them that you can not remove them, and that they are forever.</button>
+        <ally>
+          They are upset at this and decide to cast a spell of sickness on one of your crew.
+        </ally>
+        <neutral>
+          They seem displeased, but they accept the reality anyways.
+        </neutral>
+        <enemy>
+          The Highbourne leader looks at one of your crew with fiery eyes, and
+          the crew falls down lifeless.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+  <combination>
+    <type>HighbourneMagic</type>
+    <intro>
+      Your cleric made a holy chant when you were at the magic site of 
+    </intro>
+    <body>
+      , and some Highbournes heard it and have followed you ever since. 
+    </body>
+    <extra>
+      They feel that your holy chanting was blasphemous to their beliefs and they
+      want you to apologize, like the humans never did.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Apologize politely and say that it will never happen again.
+        </button>
+        <ally>
+          They know you by reputation and they forgive you...this time.
+        </ally>
+        <neutral>
+          Highbournes need more than excuses. You did not manage to
+          convince them.
+        </neutral>
+        <enemy>
+          They leave without a word. You have no idea what they are thinking.
+        </enemy>
+      </one>
+      <two>
+        <button>Refuse to apologize and explain that you have the right to your own beliefs.</button>
+        <ally>
+          The highbournes respect your right to believe in what you want.
+          But they want to send one of them to follow you and observe the righteousness
+          of your actions.
+        </ally>
+        <neutral>
+          They seem impressed by your rightful mind. You might have ganed
+          their respect.
+        </neutral>
+        <enemy>
+          "Your castle starts crumbling as their chief raises his arms.
+          He is using his magical powers to punish you.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+  <combination>
+    <type>NomadWreckage</type>
+    <intro>
+      During the exploration of the wreckage on 
+    </intro>
+    <body>
+      , the nomads have seen your alchemist preparing some potions.
+    </body>
+    <extra>
+       Their people has recently suffered a disease caused by the Highbournes, and
+      alchemic knowledge might prove useful to them.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Teach them how to create basic potions to help them face epidemics efficiently
+        </button>
+        <ally>
+          You have helped them more than you can imagine today. They decide
+          to repay you with what little they have.
+        </ally>
+        <neutral>
+          They are pleased by your choice, and they will remember it.
+        </neutral>
+        <enemy>
+          Your reaction is unexpected. They will remember the help you gave
+          them today.
+        </enemy>
+      </one>
+      <two>
+        <button>
+          Apologize and explain that you need the alchemy potions to yourself in case
+          your crew gets diseases of their own.
+        </button>
+        <ally>
+          Your decline is making them very upset. You decide to leave as the
+          situation is becoming dangerous.
+        </ally>
+        <neutral>
+          They understand your choice but seem disapointed
+          as you leave them to their doom.
+        </neutral>
+        <enemy>
+          Your reputation preceded you and they your decline was expected.
+          They seem to be ready for anything to get what they want.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+  <combination>
+    <type>NomadVillage</type>
+    <intro>
+      After you left the village on the island of 
+    </intro>
+    <body>
+      the nomads have seen you making use of your alchemic powers. 
+    </body>
+    <extra>
+      The village you visited has recently been salvaged by a local group of human bandits.
+      The nomads are asking for revenge and your alchemic skills have impressed them.
+    </extra>
+    <options>
+      <one>
+        <button>
+          Show them how to make your impressive potions and send them on their way.
+        </button>
+        <ally>
+          They observe you and leave to prepare their revenge.
+        </ally>
+        <neutral>
+          They observe you and leave to prepare their revenge.
+        </neutral>
+        <enemy>
+          Pain has driven them mad, they  attack you to salvage your castle.
+          Your crew fights them back and you quickly leave.
+        </enemy>
+      </one>
+      <two>
+        <button>
+          Explain to them that revenge is probably not the solution and decline their
+          demand.
+        </button>
+        <ally>
+          They are impressed by your peaceful methods. One of   them
+          would like to join your crew.
+        </ally>
+        <neutral>
+          Peaceful thoughts will not ease their craving for revenge.
+          They will remember that.
+        </neutral>
+        <enemy>
+          They are too tired to be upset. You hope that avoiding violence was
+          the best way to help them.
+        </enemy>
+      </two>
+    </options>
+  </combination>
+</specialEvents>
