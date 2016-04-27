@@ -41,64 +41,82 @@ public class NodeController : MonoBehaviour
         {
             if (CheckFactionLocation())
             {
-
-                Debug.Log("The Special event runs");
-                //Load special event scene
-                specialPanel.SetActive(true);
-                //LOAD XML
-                XmlDocument doc = new XmlDocument();
-                doc.Load(specEvPath);
-
-                /**
-                get the event
-                    name, locationtype, faction
-                */
-                string name = DataManager.instance.ActiveDiplomaticEvent.IslandName;
-                string location = DataManager.instance.ActiveDiplomaticEvent.Location.ToString();
-                string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
-                //
-                string combination = faction + location;
-                //Debug.Log(combination);
-                string intro = "";
-                string body = "";
-                string extra = "";
-                string button1 = "";
-                string button2 = "";
-                string superAllegiance = "";
-                
-                switch (DataManager.instance.Player.getStanding(DataManager.instance.ActiveDiplomaticEvent.Alligance))
-                {
-                    case Standing.ENEMY:
-                        superAllegiance = "/enemy";
-                        break;
-                    case Standing.FRIENDLY:
-                        superAllegiance = "/ally";
-                        break;
-                    case Standing.NEUTRAL:
-                        superAllegiance = "/neutral";
-                        break;
-                }
-                //DataManager.instance.ActiveDiplomaticEvent.
-                XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='"+combination+"']");
-                Debug.Log("size of combination: "+combs.Count);
-                foreach(XmlNode xn in combs)
-                {
-                    intro = xn.SelectSingleNode("intro").InnerText;
-                    body = xn.SelectSingleNode("body").InnerText;
-                    extra = xn.SelectSingleNode("extra").InnerText;
-                    button1 = xn.SelectSingleNode("options/one/button").InnerText;
-                    button2 = xn.SelectSingleNode("options/two/button").InnerText;
-                    allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance).InnerText;
-                    allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance).InnerText;
-                }
-
-                specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
-                specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
-                specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
-
+                InitSpecialEvent();
             }
         }
     }
+
+    void InitSpecialEvent()
+    {
+        Debug.Log("The Special event runs");
+        //Load special event scene
+        specialPanel.SetActive(true);
+        //LOAD XML
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+
+        /**
+        get the event
+            name, locationtype, faction
+        */
+        string name = DataManager.instance.ActiveDiplomaticEvent.IslandName;
+        string location = DataManager.instance.ActiveDiplomaticEvent.Location.ToString();
+        string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+        //
+        string combination = faction + location;
+        //Debug.Log(combination);
+        string intro = "";
+        string body = "";
+        string extra = "";
+        string button1 = "";
+        string button2 = "";
+        string superAllegiance = "";
+
+        switch (DataManager.instance.Player.getStanding(DataManager.instance.ActiveDiplomaticEvent.Alligance))
+        {
+            case Standing.ENEMY:
+                superAllegiance = "/enemy";
+                break;
+            case Standing.FRIENDLY:
+                superAllegiance = "/ally";
+                break;
+            case Standing.NEUTRAL:
+                superAllegiance = "/neutral";
+                break;
+        }
+        //DataManager.instance.ActiveDiplomaticEvent.
+        XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='" + combination + "']");
+        Debug.Log("size of combination: " + combs.Count);
+        foreach (XmlNode xn in combs)
+        {
+            intro = xn.SelectSingleNode("intro").InnerText;
+            body = xn.SelectSingleNode("body").InnerText;
+            extra = xn.SelectSingleNode("extra").InnerText;
+            button1 = xn.SelectSingleNode("options/one/button").InnerText;
+            button2 = xn.SelectSingleNode("options/two/button").InnerText;
+            allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance).InnerText;
+            allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance).InnerText;
+        }
+
+        specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
+        specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
+        specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
+
+    }
+
+    public void buttonOneClicked()
+    {
+        specialPanel.SetActive(false);
+        resultPanel.SetActive(true);
+        resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance1;
+    }
+    public void buttonTwoClicked()
+    {
+        specialPanel.SetActive(false);
+        resultPanel.SetActive(true);
+        resultPanel.transform.FindChild("ResolutionScreen").FindChild("Text").GetComponent<Text>().text = allegiance2;
+    }
+
 
     bool CheckFactionLocation()
     {
@@ -316,11 +334,6 @@ public class NodeController : MonoBehaviour
                 break;
         }
         return outS;
-    }
-
-    void buttonOneClicked()
-    {
-
     }
 
     public void ResolveEvent(int eventnum)
