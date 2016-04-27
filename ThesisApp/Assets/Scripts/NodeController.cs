@@ -16,6 +16,7 @@ public class NodeController : MonoBehaviour
     private GameObject eventPanel;
     private NodeNode selectNode;
     private GameObject resultPanel;
+    private GameObject specialPanel;
 
     private bool panelOpen;
     private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
@@ -26,12 +27,14 @@ public class NodeController : MonoBehaviour
         nodeInfoPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("NodeInformation").gameObject;
         eventPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
         resultPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("EventResolution").gameObject;
+        specialPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("PremadeEventPanel").gameObject);
 
         // Loading preevents if conditions are right
         if (DataManager.instance.ActiveDiplomaticEvent != null && DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
         {
-            Debug.Log("The Special event runs");
+            //Debug.Log("The Special event runs");
             //Load special event scene
+            specialPanel.SetActive(true);
         }
     }
 
@@ -122,7 +125,6 @@ public class NodeController : MonoBehaviour
         panelOpen = false;
         panel.SetActive(false);
     }
-
 
     public void ExploreNode(GameObject Sender)
     {
@@ -245,6 +247,12 @@ public class NodeController : MonoBehaviour
         int facRelVal = 0;
         Dictionary<Faction, int> facRel = DataManager.instance.Player.FactionRelations;
         Faction activeFac = DataManager.instance.ActiveNode.NodeFaction;
+        // Hard code faction for mines for special events
+        if (curEvent.EventOptions[eventnum].locationXmlString == "/mine")
+        {
+            activeFac = DataManager.instance.Factions["human"];
+        }
+        
         if (facRel.ContainsKey(activeFac))
         {
             // get relation
