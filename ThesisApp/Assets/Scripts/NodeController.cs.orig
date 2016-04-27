@@ -5,8 +5,11 @@ using Assets.Scripts.Utility;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Xml;
+using Assets.Scripts.Events;
+using System;
 
-public class NodeController : MonoBehaviour {
+public class NodeController : MonoBehaviour
+{
 
     private GameObject selected;
 
@@ -14,9 +17,18 @@ public class NodeController : MonoBehaviour {
     private GameObject eventPanel;
     private NodeNode selectNode;
     private GameObject resultPanel;
+<<<<<<< HEAD
+    private GameObject specialPanel;
+=======
+    private GameObject specEvPanel;
+
+    private string allegiance1 = "";
+    private string allegiance2 = "";
+>>>>>>> 1c5a80a910617a8a98331eb14e53783164e81919
 
     private bool panelOpen;
     private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
+    private string specEvPath = "assets/scripts/XML/SpecialEvents.xml";
     // Use this for initialization
     void Start()
     {
@@ -24,6 +36,112 @@ public class NodeController : MonoBehaviour {
         nodeInfoPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("NodeInformation").gameObject;
         eventPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
         resultPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("EventResolution").gameObject;
+<<<<<<< HEAD
+        specialPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("PremadeEventPanel").gameObject);
+=======
+        specEvPanel = GameObject.Find("Canvas").gameObject.transform.FindChild("PremadeEventPanel").gameObject;
+>>>>>>> 1c5a80a910617a8a98331eb14e53783164e81919
+
+        // Loading preevents if conditions are right
+        // Either Nomad:Wreckage/Village, Human:Factory/Mine, Highbourne:Forest/MagicSite
+
+        if (DataManager.instance.ActiveDiplomaticEvent != null && DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
+        {
+<<<<<<< HEAD
+            //Debug.Log("The Special event runs");
+            //Load special event scene
+            specialPanel.SetActive(true);
+=======
+            if (CheckFactionLocation())
+            {
+
+                Debug.Log("The Special event runs");
+                //Load special event scene
+                specEvPanel.SetActive(true);
+                //LOAD XML
+                XmlDocument doc = new XmlDocument();
+                doc.Load(specEvPath);
+
+                /**
+                get the event
+                    name, locationtype, faction
+                */
+                string name = DataManager.instance.ActiveDiplomaticEvent.IslandName;
+                string location = DataManager.instance.ActiveDiplomaticEvent.Location.ToString();
+                string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+                //
+                string combination = faction + location;
+                //Debug.Log(combination);
+                string intro = "";
+                string body = "";
+                string extra = "";
+                string button1 = "";
+                string button2 = "";
+                string superAllegiance = "";
+                
+                switch (DataManager.instance.Player.getStanding(DataManager.instance.ActiveDiplomaticEvent.Alligance))
+                {
+                    case Standing.ENEMY:
+                        superAllegiance = "/enemy";
+                        break;
+                    case Standing.FRIENDLY:
+                        superAllegiance = "/ally";
+                        break;
+                    case Standing.NEUTRAL:
+                        superAllegiance = "/neutral";
+                        break;
+                }
+                //DataManager.instance.ActiveDiplomaticEvent.
+                XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='"+combination+"']");
+                Debug.Log("size of combination: "+combs.Count);
+                foreach(XmlNode xn in combs)
+                {
+                    intro = xn.SelectSingleNode("intro").InnerText;
+                    body = xn.SelectSingleNode("body").InnerText;
+                    extra = xn.SelectSingleNode("extra").InnerText;
+                    button1 = xn.SelectSingleNode("options/one/button").InnerText;
+                    button2 = xn.SelectSingleNode("options/two/button").InnerText;
+                    allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance).InnerText;
+                    allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance).InnerText;
+                }
+
+                specEvPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
+                specEvPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
+                specEvPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
+
+            }
+        }
+    }
+
+    bool CheckFactionLocation()
+    {
+        // Either Nomad:Wreckage/Village, Human:Factory/Mine, Highbourne:Forest/MagicSite
+        bool match = false;
+        string bn = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+        switch (bn)
+        {
+            case "Nomads":
+                if (DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "WRECKAGE" || DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "VILLAGE")
+                {
+                    match = true;
+                }
+                break;
+            case "Highbournes":
+                if (DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "FOREST" || DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "MAGICSITE")
+                {
+                    match = true;
+                }
+                break;
+            case "Humans":
+                if (DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "MINE" || DataManager.instance.ActiveDiplomaticEvent.Location.ToString() == "FACTORY")
+                {
+                    match = true;
+                }
+                break;
+>>>>>>> 1c5a80a910617a8a98331eb14e53783164e81919
+        }
+
+        return match;
     }
 
     // Update is called once per frame
@@ -35,7 +153,7 @@ public class NodeController : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                
+
                 selected = hit.transform.gameObject;
                 if (selected.tag == "LocationNode")
                 {
@@ -66,14 +184,29 @@ public class NodeController : MonoBehaviour {
 
     private void generateNodes()
     {
+        // Number of options available for the players. 
+        // Random determine if 2 or 3. 
+        // Third option should be semi rare
+<<<<<<< HEAD
+        int thirdChance = 30;
+        int procent = Random.Range(0, 100)+1;
+=======
+        int thirdChance = 100;
+        int procent = UnityEngine.Random.Range(0, 100) + 1;
+>>>>>>> 1c5a80a910617a8a98331eb14e53783164e81919
+        int numOption = 2;
+        if (procent <= thirdChance)
+        {
+            numOption = 3;
+        }
         WorldNodeStats stats = DataManager.instance.ActiveNode;
-        foreach( NodeStats nodestat in stats.Nodes)
+        foreach (NodeStats nodestat in stats.Nodes)
         {
             GameObject nodeObj = Instantiate(Resources.Load("Prefabs/NodeNode"), nodestat.Position, Quaternion.identity) as GameObject;
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
-            nodestat.nodeEvent.GenerateEvent(nodestat.type);
+            nodestat.nodeEvent.GenerateEvent(nodestat.type, numOption);
             node.nodeEvent = nodestat.nodeEvent;
             node.type = nodestat.type;
             switch (node.type)
@@ -86,12 +219,15 @@ public class NodeController : MonoBehaviour {
                     nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/ResearchMaterial") as Material;
                     nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
                     break;
+                    /*
                 case EventSpec.DIPLOMACY:
                     nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/DiplomacyMaterial") as Material;
                     nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
+                    // ADD NEW DIPLOMACY PANEL
                     break;
+                    */
             }
-            
+
         }
     }
 
@@ -100,7 +236,6 @@ public class NodeController : MonoBehaviour {
         panelOpen = false;
         panel.SetActive(false);
     }
-
 
     public void ExploreNode(GameObject Sender)
     {
@@ -117,20 +252,20 @@ public class NodeController : MonoBehaviour {
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
             button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 50 * i);
+            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 55 * i);
             string buttonText = "";
             int numCon = 0;
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(eventstructurepath);
-            foreach (KeyValuePair<Piece,int> pair in e.EventOptions[tempint].Conditions)
+            foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);
                 //Basic first, then add the location based for the piece.
                 XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
-                
+
                 int[] flSel = DataManager.randomArray(butFlav.Count);
-                if(pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
+                if (pieceName == "/crew" || pieceName == "/material" || pieceName == "/crystal" || pieceName == "/alchemy")
                 {
                     btx += xmlDoc.SelectSingleNode("eventstructure/conditionflavor/basics" + pieceName + "/flavor/first").InnerText;
                     btx += pair.Value;
@@ -145,9 +280,9 @@ public class NodeController : MonoBehaviour {
                 flSel = DataManager.randomArray(butFlav.Count);
                 btx += butFlav[flSel[0]].InnerText;
 
-                buttonText += pair.Key.BoardName + " " + pair.Value; 
+                buttonText += pair.Key.BoardName + " " + pair.Value;
                 numCon++;
-                if(e.EventOptions[tempint].Conditions.Count != numCon)
+                if (e.EventOptions[tempint].Conditions.Count != numCon)
                 {
                     buttonText += ", ";
                     btx += " ";
@@ -158,16 +293,10 @@ public class NodeController : MonoBehaviour {
 
         // TODO Clean up
         // TODO Set flavor text based on eventOption
-<<<<<<< HEAD
-        eventPanel.transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
-        eventPanel.transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
-=======
-        eventPanel.transform.FindChild("NameScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("NameScreen").gameObject.SetActive(true);
         eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
-        string eventtext = "";
-        eventPanel.transform.FindChild("FlavourScreen").gameObject.active = true;
+        eventPanel.transform.FindChild("FlavourScreen").gameObject.SetActive(true);
         eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
->>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
         panelOpen = true;
         eventPanel.SetActive(true);
     }
@@ -208,19 +337,105 @@ public class NodeController : MonoBehaviour {
         return outS;
     }
 
+    void buttonOneClicked()
+    {
+
+    }
+
     public void ResolveEvent(int eventnum)
     {
+        // Saved results
+        SavedResult savRes = new SavedResult();
         Event curEvent = selectNode.nodeEvent;
+        //Save conditions
+        savRes.Conditions = curEvent.EventOptions[eventnum].Conditions;
+        savRes.TurnCount = DataManager.instance.TurnCounter;
+        savRes.IslandName = selectNode.TitleName;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
-        //Old function
-        //resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].ResultText;
-        //resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = selectNode.nodeEvent.EventConditions[eventnum].Result;
+        //Find outcome
+        //check player faction relation
+        //100 points for each state
+        //-150 -> -50 enemy
+        // -50 -> 50 neutral
+        // 50 -> 150 friendly
+        int facRelVal = 0;
+        Dictionary<Faction, int> facRel = DataManager.instance.Player.FactionRelations;
+        Faction activeFac = DataManager.instance.ActiveNode.NodeFaction;
+        // Hard code faction for mines for special events
+        if (curEvent.EventOptions[eventnum].locationXmlString == "/mine")
+        {
+            activeFac = DataManager.instance.Factions["human"];
+        }
+        
+        if (facRel.ContainsKey(activeFac))
+        {
+            // get relation
+            facRelVal = facRel[activeFac];
+        }
+        else
+        {
+            // Set new faction
+            facRel.Add(activeFac, 0);
+            facRelVal = 0;
+        }
+        // Save faction
+        Debug.Log(activeFac.BoardName);
+        savRes.Alligance = activeFac;
+        int succesChange = 0;
+        int failureChange = 0;
+        int neutralChange = 0;
 
-        //New function
-        string resFlavor = "";
-        int chance = Random.Range(0, 100) + 1;
+        if (facRelVal >= 50)
+        {
+            //faction is allied
+
+            switch (eventnum)
+            {
+                case 0:
+                    succesChange += 10;
+                    neutralChange += -10;
+                    break;
+                case 1:
+                    succesChange += 15;
+                    neutralChange += -10;
+                    failureChange += -5;
+                    break;
+                case 2:
+                    succesChange += 5;
+                    failureChange += -5;
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (facRelVal <= -50)
+        {
+            //faction is enemy
+            switch (eventnum)
+            {
+                case 0:
+                    succesChange += -10;
+                    neutralChange += -5;
+                    failureChange += 15;
+                    break;
+                case 1:
+                    succesChange += -10;
+                    failureChange += 10;
+                    break;
+                case 2:
+                    succesChange += -10;
+                    neutralChange += 5;
+                    failureChange += 5;
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Save location
+        savRes.Location = curEvent.EventOptions[eventnum].locType;
+        int chance = UnityEngine.Random.Range(0, 100) + 1;
         int accumChance = 0;
         Dictionary<Piece, int> outcomePairs = new Dictionary<Piece, int>();
         for (int k = 0; k < curEvent.EventOptions[eventnum].Results.Count; k++)
@@ -229,12 +444,30 @@ public class NodeController : MonoBehaviour {
             for (int i = 0; i < eog.Outcomes.Count; i++)
             {
                 EventOutcome eo = eog.Outcomes[i];
-                if (eo.Chance >= chance - accumChance)
+                int modChance = eo.Chance;
+                switch (eo.Type)
                 {
-                    resFlavor = eo.outcomeFlavor;
+                    case EventOutcomeType.SUCCESS:
+                        modChance += succesChange;
+                        savRes.OutcomeType = EventOutcomeType.SUCCESS;
+                        break;
+                    case EventOutcomeType.NEUTRAL:
+                        modChance += neutralChange;
+                        savRes.OutcomeType = EventOutcomeType.NEUTRAL;
+                        break;
+                    case EventOutcomeType.FAILURE:
+                        modChance += failureChange;
+                        savRes.OutcomeType = EventOutcomeType.FAILURE;
+                        break;
+                    default:
+                        break;
+                }
+                if (modChance >= chance - accumChance)
+                {
                     foreach (KeyValuePair<Piece, int[]> pair in eo.Pieces)
                     {
                         Piece outPiece = null;
+                        //Handle random room
                         if (pair.Key.BoardName == "RandomRoom")
                         {
                             List<Piece> tempRooms = new List<Piece>();
@@ -248,103 +481,98 @@ public class NodeController : MonoBehaviour {
                             int[] roomOrder = DataManager.randomArray(tempRooms.Count);
                             outPiece = tempRooms[roomOrder[0]];
                         }
-<<<<<<< HEAD
                         else
                         {
                             outPiece = pair.Key;
                         }
-                        int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        //If the faction is friendly, take the max val, if enemy min val
+                        int num = 0;
+                        if (facRelVal >= 50)
+                        {
+                            num = pair.Value[1] + 1;
+                        }
+                        else if (facRelVal <= -50)
+                        {
+                            num = pair.Value[0];
+                        }
+                        else
+                        {
+                            num = UnityEngine.Random.Range(pair.Value[0], pair.Value[1] + 1);
+                        }
                         if (outcomePairs.ContainsKey(outPiece))
                         {
                             outcomePairs[outPiece] = outcomePairs[outPiece] + num;
-                        } else {
+                        }
+                        else
+                        {
                             outcomePairs.Add(outPiece, num);
                         }
-                        //resultString += outPiece.BoardName + " " + num;
-                        /*
-                        if (eo.Pieces.Count != tempCount)
-                        {
-                            resultString += ", ";
-                        }
-                        */
-=======
-                        int[] roomOrder = DataManager.randomArray(tempRooms.Count);
-                        outPiece = tempRooms[roomOrder[0]];
-                    } else
-                    {
-                        outPiece = pair.Key;
-                    }
-                    int num = Random.Range(pair.Value[0], pair.Value[1] + 1);
-                    // + num;
-                    if(outPiece.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
-                    {
-                        resultString += outPiece.BoardName + " ";
-                        switch (num)
-                        {
-                            case 1:
-                                resultString += "Created";
-                                break;
-                            case -1:
-                                resultString += "Damaged";
-                                break;
-                            case -10:
-                                resultString += "Destroyed";
-                                break;
-                        }
-                    }else if(outPiece.BoardName == "Castle Crew")
-                    {
-                        switch (num)
-                        {
-                            case 10:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Recruited";
-                                break;
-                            case 1:
-                                resultString += "Injured ";
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Recruited";
-                                break;
-                            case -1:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Injured";
-                                break;
-                            case -10:
-                                resultString += outPiece.BoardName + " ";
-                                resultString += "Dead";
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        resultString += outPiece.BoardName + " ";
-                        if (num > 0) resultString += "+"+num;
-                        if (num < 0) resultString += num;
-
-                    }
-                    resPieces.Add(outPiece.BoardName);
-                    resPieceNumbs.Add(num);
-                    if (eo.Pieces.Count != tempCount)
-                    {
-                        resultString += ", ";
->>>>>>> 52a4029ec79da4a104a3feab27050a15f4839e6b
                     }
                     break;
                 }
                 else
                 {
-                    accumChance += eo.Chance;
+                    accumChance += modChance;
                 }
             }
         }
+        // Saving the outcomes
+        savRes.Outcomes = outcomePairs;
         //Build outcome string
         ArrayList resPieces = new ArrayList();
         ArrayList resPieceNumbs = new ArrayList();
         string resultString = "";
         int tempCount = 0;
-        foreach (KeyValuePair<Piece,int> pieceNum in outcomePairs)
+        foreach (KeyValuePair<Piece, int> pieceNum in outcomePairs)
         {
             tempCount++;
-            resultString += pieceNum.Key.BoardName + " " + pieceNum.Value;
+
+            if (pieceNum.Key.Type == BoardType.ROOM) // || outPiece.BoardName == "Castle Crew")
+            {
+                resultString += pieceNum.Key.BoardName + " ";
+                switch (pieceNum.Value)
+                {
+                    case 1:
+                        resultString += "Created";
+                        break;
+                    case -1:
+                        resultString += "Damaged";
+                        break;
+                    case -10:
+                        resultString += "Destroyed";
+                        break;
+                }
+            }
+            else if (pieceNum.Key.BoardName == "Castle Crew")
+            {
+                switch (pieceNum.Value)
+                {
+                    case 10:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Recruited";
+                        break;
+                    case 1:
+                        resultString += "Injured ";
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Recruited";
+                        break;
+                    case -1:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Injured";
+                        break;
+                    case -10:
+                        resultString += pieceNum.Key.BoardName + " ";
+                        resultString += "Dead";
+                        break;
+                }
+            }
+            else
+            {
+                resultString += pieceNum.Key.BoardName + " ";
+                if (pieceNum.Value > 0) resultString += "+" + pieceNum.Value;
+                if (pieceNum.Value < 0) resultString += pieceNum.Value;
+
+            }
             resPieces.Add(pieceNum.Key.BoardName);
             resPieceNumbs.Add(pieceNum.Value);
             if (outcomePairs.Count != tempCount)
@@ -352,80 +580,83 @@ public class NodeController : MonoBehaviour {
                 resultString += ", ";
             }
         }
+        resultPanel.transform.FindChild("OutcomeScreen").transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
 
-        resultPanel.transform.FindChild("Outcome").GetComponent<Text>().text = resultString;
+
         // This should be the flavor text
-
         string resultflavortext = "";
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(eventstructurepath);
         XmlNodeList list;
         for (int i = 0; i < resPieces.Count; i++)
         {
-            string s = (string) resPieces[i];
+            string s = (string)resPieces[i];
             int r;
             switch (s)
             {
-                
+
                 case "Castle Crew":
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewdead/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i] == -1)
+                    }
+                    else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewinjured/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i] == 1)
+                    }
+                    else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruitedinjured/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
-                    }else if((int)resPieceNumbs[i]== 10)
+                    }
+                    else if ((int)resPieceNumbs[i] == 10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/crewrecruited/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
                 case "Building Material":
-                        list = xmlDoc.SelectNodes("eventstructure/resultflavor/scrap/flavor");
-                        r = Random.Range(0, list.Count);
-                        resultflavortext += list[r].InnerText;
+                    list = xmlDoc.SelectNodes("eventstructure/resultflavor/scrap/flavor");
+                    r = UnityEngine.Random.Range(0, list.Count);
+                    resultflavortext += list[r].InnerText;
                     break;
                 case "Crystal Charge":
                     if ((int)resPieceNumbs[i] < 0)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/energylost/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/energygained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
                 case "Miners Guild":
-                    if((int)resPieceNumbs[i] == -10)
+                    if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
-                    else if((int)resPieceNumbs[i] == -1)
+                    else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
-                    else if((int)resPieceNumbs[i]==1)
+                    else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
@@ -433,44 +664,44 @@ public class NodeController : MonoBehaviour {
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
                 case "Alchemical Material":
                     list = xmlDoc.SelectNodes("eventstructure/resultflavor/alchemy/flavor");
-                    r = Random.Range(0, list.Count);
+                    r = UnityEngine.Random.Range(0, list.Count);
                     resultflavortext += list[r].InnerText;
                     break;
                 case "Alchemical Lab":
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
@@ -478,19 +709,19 @@ public class NodeController : MonoBehaviour {
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
@@ -498,19 +729,19 @@ public class NodeController : MonoBehaviour {
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
@@ -518,26 +749,34 @@ public class NodeController : MonoBehaviour {
                     if ((int)resPieceNumbs[i] == -10)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdestroyed/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == -1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomdamaged/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     else if ((int)resPieceNumbs[i] == 1)
                     {
                         list = xmlDoc.SelectNodes("eventstructure/resultflavor/roomgained/flavor");
-                        r = Random.Range(0, list.Count);
+                        r = UnityEngine.Random.Range(0, list.Count);
                         resultflavortext += list[r].InnerText;
                     }
                     break;
             }
         }
-
-
-        resultPanel.transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
+        int savNumCon = 0;
+        foreach (KeyValuePair<Piece, int> pieceNum in savRes.Conditions)
+        {
+            savNumCon += pieceNum.Value;
+        }
+        if (savNumCon == 3)
+        {
+            DataManager.instance.ActiveDiplomaticEvent = savRes;
+        }
+        DataManager.instance.SavedEvents.Add(savRes);
+        resultPanel.transform.FindChild("ResolutionScreen").transform.FindChild("ResolutionText").GetComponent<Text>().text = resultflavortext;
     }
 }

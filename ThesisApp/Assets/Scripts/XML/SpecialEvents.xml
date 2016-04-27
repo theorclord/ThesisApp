@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <specialEvents>
-  <combination>
+  <combination type="HumansMINE">
     <type>HumanMine</type>
     <intro>While you were in the mines of </intro>
     <body>
@@ -43,7 +43,7 @@
       </two>
     </options>
   </combination>
-  <combination>
+  <combination type="HumansFACTORY">
     <type>HumanFactory</type>
     <intro>
       Your machinery left behind large tracks all over the floor in the factory of 
@@ -86,7 +86,7 @@
       </two>
     </options>
   </combination>
-  <combination>
+  <combination type="HighbournesFOREST">
     <type>HighbourneForest</type>
     <intro>
       Down in the vast forests of 
@@ -131,7 +131,7 @@
       </two>
     </options>
   </combination>
-  <combination>
+  <combination type="HighbournesMAGICSITE">
     <type>HighbourneMagic</type>
     <intro>
       Your cleric made a holy chant when you were at the magic site of 
@@ -177,7 +177,7 @@
       </two>
     </options>
   </combination>
-  <combination>
+  <combination type="NomadsWRECKAGE">
     <type>NomadWreckage</type>
     <intro>
       During the exploration of the wreckage on 
@@ -226,7 +226,7 @@
       </two>
     </options>
   </combination>
-  <combination>
+  <combination type="NomadsVILLAGE">
     <type>NomadVillage</type>
     <intro>
       After you left the village on the island of 

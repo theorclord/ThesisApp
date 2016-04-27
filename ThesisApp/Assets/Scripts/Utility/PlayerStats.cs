@@ -8,6 +8,10 @@ namespace Assets.Scripts.Utility
 {
     public class PlayerStats
     {
+
+        private int Fthresh = 50;
+        private int Ethresh = -50;
+        
         public Vector3 Position
         { get; set; }
         private float speed = 10;
@@ -22,6 +26,22 @@ namespace Assets.Scripts.Utility
         public PlayerStats()
         {
             FactionRelations = new Dictionary<Faction, int>();
+        }
+
+        public Standing getStanding(Faction f)
+        {
+            int a = FactionRelations[f];
+            if(a >= Fthresh)
+            {
+                return Standing.FRIENDLY;
+            }else if(a <= Ethresh)
+            {
+                return Standing.ENEMY;
+            }
+            else
+            {
+                return Standing.NEUTRAL;
+            }
         }
 
     }

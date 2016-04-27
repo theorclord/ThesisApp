@@ -56,6 +56,13 @@ namespace Assets.Scripts.Utility
         ROOM
     }
 
+    public enum Standing
+    {
+        FRIENDLY,
+        NEUTRAL,
+        ENEMY
+    }
+
     public enum Location
     {
         MINE,

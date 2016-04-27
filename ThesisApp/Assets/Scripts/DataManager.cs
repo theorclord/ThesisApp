@@ -68,6 +68,7 @@ public class DataManager : MonoBehaviour {
         XmlNodeList pieces = xmlDoc.SelectNodes(factionString);
         foreach (XmlNode node in pieces)
         {
+            //Debug.Log(node.SelectSingleNode(factionName).InnerText);
             Faction newFaction = new Faction(node.SelectSingleNode(factionName).InnerText);
             
             Factions.Add(node.SelectSingleNode(factionId).InnerText, newFaction);
