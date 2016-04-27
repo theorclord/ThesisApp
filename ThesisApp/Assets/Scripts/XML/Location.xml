@@ -2,52 +2,62 @@
 <locations>
   <location>
     <name>mine</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>MineSprite</file>
+    <coordinates>-3.89,0</coordinates>
+    <size>1.5,1.5</size>
   </location>
   <location>
     <name>quarry</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>MineSprite</file>
+    <coordinates>-3.89,0</coordinates>
+    <size>1.5,1.5</size>
   </location>
   <location>
     <name>wreckage</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Wreckage</file>
+    <coordinates>0.69,0.59</coordinates>
+    <size>0.5,0.5</size>
   </location>
   <location>
     <name>factory</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>factory</file>
+    <coordinates>2.54,-1.18</coordinates>
+    <size>1,1</size>
   </location>
   <location>
     <name>village</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Village</file>
+    <coordinates>-0.43,-0.93</coordinates>
+    <size>1.5,1.5</size>
   </location>
   <location>
     <name>forest</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Forest 1</file>
+    <coordinates>-2.34,-0.72</coordinates>
+    <size>1,1</size>
   </location>
   <location>
     <name>rockformation</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Cluster</file>
+    <coordinates>-8.39,0</coordinates>
+    <size>1,1</size>
   </location>
   <location>
     <name>magicsite</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Magic Site</file>
+    <coordinates>-2.44,-0.45</coordinates>
+    <size>0.75,0.75</size>
   </location>
   <location>
     <name>lake</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>LakeSprite</file>
+    <coordinates>3.72,-0.18</coordinates>
+    <size>1.5,1.5</size>
   </location>
   <location>
     <name>ruins</name>
-    <file></file>
-    <coordinates>10,10</coordinates>
+    <file>Ruins</file>
+    <coordinates>-1.28,1.37</coordinates>
+    <size>1,1</size>
   </location>
 </locations>

@@ -153,6 +153,22 @@ public class NodeController : MonoBehaviour
     {
         if (!panelOpen && Input.GetMouseButtonDown(0))
         {
+            
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            Debug.Log(hit);
+            Debug.Log(hit.collider);
+            if (hit.collider != null)
+            {
+                Debug.Log("Collider hit");
+                selected = hit.transform.gameObject;
+                if (selected.tag == "LocationNode")
+                {
+                    if (selected.GetComponent<NodeNode>() != null)
+                    {
+                        showLocationInfo(selected);
+                    }
+                }
+            }/*
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
@@ -167,6 +183,7 @@ public class NodeController : MonoBehaviour
                     }
                 }
             }
+            */
         }
 
     }
@@ -201,32 +218,34 @@ public class NodeController : MonoBehaviour
         WorldNodeStats stats = DataManager.instance.ActiveNode;
         foreach (NodeStats nodestat in stats.Nodes)
         {
-            GameObject nodeObj = Instantiate(Resources.Load("Prefabs/NodeNode"), nodestat.Position, Quaternion.identity) as GameObject;
+            //GameObject nodeObj = Instantiate(Resources.Load("Prefabs/NodeNode"), nodestat.Position, Quaternion.identity) as GameObject;
+            GameObject nodeObj = null;
+            nodestat.nodeEvent.GenerateEvent(nodestat.type, numOption);
+            string locationString = nodestat.nodeEvent.locationXmlString;
+            //Load location data
+            XmlDocument LocationData = new XmlDocument();
+            LocationData.Load("assets/scripts/XML/Location.xml");
+            XmlNodeList locations = LocationData.SelectNodes("locations/location");
+            // Set information of location based on nodes
+            foreach(XmlNode location in locations)
+            {
+                if(location.SelectSingleNode("name").InnerText == locationString)
+                {
+                    string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
+                    Vector3 locPos = new Vector3(float.Parse(coord[0]),float.Parse(coord[1]));
+                    nodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
+                    string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
+                    nodeObj.transform.localScale = new Vector3(float.Parse(scale[0]),float.Parse(scale[1]));
+                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof (Sprite)) as Sprite;
+                    break;
+                }
+            }
+            
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
-            nodestat.nodeEvent.GenerateEvent(nodestat.type, numOption);
             node.nodeEvent = nodestat.nodeEvent;
-            string locationString = node.nodeEvent.locationXmlString;
             node.type = nodestat.type;
-            switch (node.type)
-            {
-                case EventSpec.GATHER:
-                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/GatherMaterial") as Material;
-                    nodeObj.transform.FindChild("Gathering").gameObject.SetActive(true);
-                    break;
-                case EventSpec.RESEARCH:
-                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/ResearchMaterial") as Material;
-                    nodeObj.transform.FindChild("Research").gameObject.SetActive(true);
-                    break;
-                    /*
-                case EventSpec.DIPLOMACY:
-                    nodeObj.transform.GetComponent<MeshRenderer>().material = Resources.Load("Materials/DiplomacyMaterial") as Material;
-                    nodeObj.transform.FindChild("Diplomacy").gameObject.SetActive(true);
-                    // ADD NEW DIPLOMACY PANEL
-                    break;
-                    */
-            }
         }
     }
 
