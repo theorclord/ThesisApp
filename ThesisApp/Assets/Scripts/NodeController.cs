@@ -207,6 +207,7 @@ public class NodeController : MonoBehaviour
             node.TitleName = nodestat.TitleName;
             nodestat.nodeEvent.GenerateEvent(nodestat.type, numOption);
             node.nodeEvent = nodestat.nodeEvent;
+            string locationString = node.nodeEvent.locationXmlString;
             node.type = nodestat.type;
             switch (node.type)
             {
@@ -226,7 +227,6 @@ public class NodeController : MonoBehaviour
                     break;
                     */
             }
-
         }
     }
 
@@ -275,7 +275,7 @@ public class NodeController : MonoBehaviour
                     btx += butFlav[flSel[0]].InnerText;
                 }
                 Debug.Log("Location: " + e.EventOptions[tempint].locationXmlString);
-                butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
+                butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
                 flSel = DataManager.randomArray(butFlav.Count);
                 btx += butFlav[flSel[0]].InnerText;
 

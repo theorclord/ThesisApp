@@ -26,7 +26,7 @@ public class Event {
     public string eventText = "";
     public string eventReward = "";
     public string entryFlavor = "";
-    public string locationXmlString = "";
+    public string locationXmlString { get; set; }
 
     public List<EventOption> EventOptions { get; set; }
 
@@ -222,11 +222,6 @@ public class Event {
                     evgroup.Outcomes.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
                     evgroup.Outcomes.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
                     evOpt.Results.Add(evgroup);
-                    /*
-                    evOpt.Results.Add(generateOutcome(xn, "success", critString, EventOutcomeType.SUCCESS));
-                    evOpt.Results.Add(generateOutcome(xn, "neutral", critString, EventOutcomeType.NEUTRAL));
-                    evOpt.Results.Add(generateOutcome(xn, "failure", critString, EventOutcomeType.FAILURE));
-                    */
                     break;
                 }
             }
@@ -251,23 +246,23 @@ public class Event {
                 switch (location)
                 {
                     case 0:
-                        locationXmlString = "/mine";
+                        locationXmlString = "mine";
                         evOpt.locType = Location.MINE;
                         break;
                     case 1:
-                        locationXmlString = "/quarry";
+                        locationXmlString = "quarry";
                         evOpt.locType = Location.QUARRY;
                         break;
                     case 2:
-                        locationXmlString = "/wreckage";
+                        locationXmlString = "wreckage";
                         evOpt.locType = Location.WRECKAGE;
                         break;
                     case 3:
-                        locationXmlString = "/factory";
+                        locationXmlString = "factory";
                         evOpt.locType = Location.FACTORY;
                         break;
                     case 4:
-                        locationXmlString = "/village";
+                        locationXmlString = "village";
                         evOpt.locType = Location.VILLAGE;
                         break;
                 }
@@ -277,30 +272,30 @@ public class Event {
                 switch (location)
                 {
                     case 0:
-                        locationXmlString = "/forest";
+                        locationXmlString = "forest";
                         evOpt.locType = Location.FOREST;
                         break;
                     case 1:
-                        locationXmlString = "/rockformation";
+                        locationXmlString = "rockformation";
                         evOpt.locType = Location.ROCKFORMATION;
                         break;
                     case 2:
-                        locationXmlString = "/magicsite";
+                        locationXmlString = "magicsite";
                         evOpt.locType = Location.MAGICSITE;
                         break;
                     case 3:
-                        locationXmlString = "/lake";
+                        locationXmlString = "lake";
                         evOpt.locType = Location.LAKE;
                         break;
                     case 4:
-                        locationXmlString = "/ruins";
+                        locationXmlString = "ruins";
                         evOpt.locType = Location.RUINS;
                         break;
                 }
                 break;
         }
         evOpt.locationXmlString = locationXmlString;
-        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + locationXmlString + "/flavor");
+        XmlNodeList entryflavs = xmlDoc.SelectNodes("eventstructure/introflavor/" + eventtype + "/"+ locationXmlString + "/flavor");
         int[] flSel = DataManager.randomArray(entryflavs.Count);
         entryFlavor = entryflavs[flSel[0]].InnerText;
         return evOpt;
