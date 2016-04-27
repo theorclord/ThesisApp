@@ -275,7 +275,7 @@ public class NodeController : MonoBehaviour
         // TODO Clean up
         // TODO Set flavor text based on eventOption
         eventPanel.transform.FindChild("NameScreen").gameObject.SetActive(true);
-        eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = e.eventText + "\n";
+        eventPanel.transform.FindChild("NameScreen").transform.FindChild("EventType").GetComponent<Text>().text = selectNode.TitleName;//e.eventText + "\n";
         eventPanel.transform.FindChild("FlavourScreen").gameObject.SetActive(true);
         eventPanel.transform.FindChild("FlavourScreen").transform.FindChild("EventText").GetComponent<Text>().text = e.entryFlavor;
         panelOpen = true;
@@ -345,6 +345,7 @@ public class NodeController : MonoBehaviour
         Dictionary<Faction, int> facRel = DataManager.instance.Player.FactionRelations;
         Faction activeFac = DataManager.instance.ActiveNode.NodeFaction;
         // Hard code faction for mines for special events
+        //TODO remove
         if (curEvent.EventOptions[eventnum].locationXmlString == "/mine")
         {
             activeFac = DataManager.instance.Factions["human"];

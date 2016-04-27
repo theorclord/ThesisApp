@@ -73,6 +73,11 @@ public class DataManager : MonoBehaviour {
             
             Factions.Add(node.SelectSingleNode(factionId).InnerText, newFaction);
         }
+        //set faction relations
+        foreach(KeyValuePair<string,Faction> factionPair in Factions)
+        {
+            Player.FactionRelations.Add(factionPair.Value, 0);
+        }
     }
 
     private void loadBoardPieces()
