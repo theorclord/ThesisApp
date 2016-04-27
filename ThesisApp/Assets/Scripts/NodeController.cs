@@ -19,6 +19,9 @@ public class NodeController : MonoBehaviour
     private GameObject resultPanel;
     private GameObject specEvPanel;
 
+    private string allegiance1 = "";
+    private string allegiance2 = "";
+
     private bool panelOpen;
     private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
     private string specEvPath = "assets/scripts/XML/SpecialEvents.xml";
@@ -41,7 +44,7 @@ public class NodeController : MonoBehaviour
 
                 Debug.Log("The Special event runs");
                 //Load special event scene
-                specEvPanel.active = true;
+                specEvPanel.SetActive(true);
                 //LOAD XML
                 XmlDocument doc = new XmlDocument();
                 doc.Load(specEvPath);
@@ -62,8 +65,7 @@ public class NodeController : MonoBehaviour
                 string button1 = "";
                 string button2 = "";
                 string superAllegiance = "";
-                string allegiance1 = "";
-                string allegiance2 = "";
+                
                 switch (DataManager.instance.Player.getStanding(DataManager.instance.ActiveDiplomaticEvent.Alligance))
                 {
                     case Standing.ENEMY:
@@ -78,15 +80,16 @@ public class NodeController : MonoBehaviour
                 }
                 //DataManager.instance.ActiveDiplomaticEvent.
                 XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='"+combination+"']");
+                Debug.Log("size of combination: "+combs.Count);
                 foreach(XmlNode xn in combs)
                 {
-                    intro = xn.SelectSingleNode("/intro").InnerText;
-                    body = xn.SelectSingleNode("/body").InnerText;
-                    extra = xn.SelectSingleNode("/extra").InnerText;
-                    button1 = xn.SelectSingleNode("/options/one/button").InnerText;
-                    button2 = xn.SelectSingleNode("/options/two/button").InnerText;
-                    allegiance1 = xn.SelectSingleNode("/options/one" + superAllegiance).InnerText;
-                    allegiance2 = xn.SelectSingleNode("/options/two" + superAllegiance).InnerText;
+                    intro = xn.SelectSingleNode("intro").InnerText;
+                    body = xn.SelectSingleNode("body").InnerText;
+                    extra = xn.SelectSingleNode("extra").InnerText;
+                    button1 = xn.SelectSingleNode("options/one/button").InnerText;
+                    button2 = xn.SelectSingleNode("options/two/button").InnerText;
+                    allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance).InnerText;
+                    allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance).InnerText;
                 }
 
                 specEvPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
@@ -170,7 +173,7 @@ public class NodeController : MonoBehaviour
         // Number of options available for the players. 
         // Random determine if 2 or 3. 
         // Third option should be semi rare
-        int thirdChance = 20;
+        int thirdChance = 100;
         int procent = UnityEngine.Random.Range(0, 100) + 1;
         int numOption = 2;
         if (procent <= thirdChance)
@@ -314,6 +317,11 @@ public class NodeController : MonoBehaviour
                 break;
         }
         return outS;
+    }
+
+    void buttonOneClicked()
+    {
+
     }
 
     public void ResolveEvent(int eventnum)
