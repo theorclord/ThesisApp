@@ -69,6 +69,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< .merge_file_a08836
 --- !u!1 &144714
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +87,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+=======
+>>>>>>> .merge_file_a01620
 --- !u!1 &146274
 GameObject:
   m_ObjectHideFlags: 1
@@ -223,6 +226,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: An original place
+<<<<<<< .merge_file_a08836
 --- !u!114 &11416496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +254,8 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+=======
+>>>>>>> .merge_file_a01620
 --- !u!114 &11417010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -524,12 +530,15 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190668}
+<<<<<<< .merge_file_a08836
 --- !u!222 &22298828
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144714}
+=======
+>>>>>>> .merge_file_a01620
 --- !u!224 &22422374
 RectTransform:
   m_ObjectHideFlags: 1
@@ -565,6 +574,7 @@ RectTransform:
   m_AnchoredPosition: {x: -0.89951706, y: -0.24999237}
   m_SizeDelta: {x: 2, y: -0.5}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< .merge_file_a08836
 --- !u!224 &22439434
 RectTransform:
   m_ObjectHideFlags: 1
@@ -582,6 +592,8 @@ RectTransform:
   m_AnchoredPosition: {x: 68.2, y: 104.5}
   m_SizeDelta: {x: 42.4, y: 41.5}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> .merge_file_a01620
 --- !u!224 &22443808
 RectTransform:
   m_ObjectHideFlags: 1
@@ -665,7 +677,10 @@ RectTransform:
   - {fileID: 22451894}
   - {fileID: 22434132}
   - {fileID: 22422374}
+<<<<<<< .merge_file_a08836
   - {fileID: 22439434}
+=======
+>>>>>>> .merge_file_a01620
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.3505309, y: 0}

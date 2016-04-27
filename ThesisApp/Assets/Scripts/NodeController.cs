@@ -19,9 +19,12 @@ public class NodeController : MonoBehaviour
     private GameObject resultPanel;
     private GameObject specialPanel;
 
+
+    private SpecialResults sr = new SpecialResults();
     private string allegiance1 = "";
     private string allegiance2 = "";
-
+    private string locationButton1 = "";
+    private string locationButton2 = "";
     private bool panelOpen;
     private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
     private string specEvPath = "assets/scripts/XML/SpecialEvents.xml";
@@ -55,6 +58,8 @@ public class NodeController : MonoBehaviour
         XmlDocument doc = new XmlDocument();
         doc.Load(specEvPath);
 
+        sr = new SpecialResults();
+
         /**
         get the event
             name, locationtype, faction
@@ -86,6 +91,8 @@ public class NodeController : MonoBehaviour
         }
         //DataManager.instance.ActiveDiplomaticEvent.
         XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='" + combination + "']");
+        locationButton1 = "specialEvents/combination[@type='" + combination + "']/options/one"+superAllegiance+"/results/result";
+        locationButton2 = "specialEvents/combination[@type='" + combination + "']/options/two"+superAllegiance + "/results/result";
         Debug.Log("size of combination: " + combs.Count);
         foreach (XmlNode xn in combs)
         {
@@ -94,29 +101,172 @@ public class NodeController : MonoBehaviour
             extra = xn.SelectSingleNode("extra").InnerText;
             button1 = xn.SelectSingleNode("options/one/button").InnerText;
             button2 = xn.SelectSingleNode("options/two/button").InnerText;
-            allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance).InnerText;
-            allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance).InnerText;
+            allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance+"/text").InnerText;
+            allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance + "/text").InnerText;
         }
 
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
+        
 
     }
 
     public void buttonOneClicked()
     {
+        SpecialResults sr2 = new SpecialResults();
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
+        for(int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].SetActive(false);
+        }
+        //GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject;
         specialPanel.SetActive(false);
         resultPanel.SetActive(true);
         resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance1;
+        XmlNodeList results = doc.SelectNodes(locationButton1);
+        foreach(XmlNode xn in results)
+        {
+            int value = int.Parse(xn.SelectSingleNode("value").InnerText);
+            string name = xn.SelectSingleNode("name").InnerText;
+            Debug.Log(xn.SelectSingleNode("type").InnerText);
+            switch (xn.SelectSingleNode("type").InnerText)
+            {
+                case "reputation":
+                    sr2.reputations.Add(name, value);
+                    break;
+                case "resource":
+                    sr2.resources.Add(name, value);
+                    break;
+                case "room":
+                    sr2.rooms.Add(name, value);
+                    break;
+            }
+        }
+        resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
     }
     public void buttonTwoClicked()
     {
+        SpecialResults sr2 = new SpecialResults();
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].SetActive(false);
+        }
         specialPanel.SetActive(false);
         resultPanel.SetActive(true);
-        resultPanel.transform.FindChild("ResolutionScreen").FindChild("Text").GetComponent<Text>().text = allegiance2;
+        resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance2;
+        XmlNodeList results = doc.SelectNodes(locationButton2);
+        Debug.Log("Size of results: " + results.Count);
+        foreach (XmlNode xn in results)
+        {
+            int value = int.Parse(xn.SelectSingleNode("value").InnerText);
+            string name = xn.SelectSingleNode("name").InnerText;
+            Debug.Log(xn.SelectSingleNode("type").InnerText);
+            switch (xn.SelectSingleNode("type").InnerText)
+            {
+                case "reputation":
+                    sr2.reputations.Add(name, value);
+                    break;
+                case "resource":
+                    sr2.resources.Add(name, value);
+                    break;
+                case "room":
+                    sr2.rooms.Add(name, value);
+                    break;
+            }
+        }
+        resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
     }
 
+    private string getFlavor(SpecialResults sr)
+    {
+        string res = "";
+        foreach(string k in sr.reputations.Keys)
+        {
+            res += "Reptutation change: " + k + ": " + sr.reputations[k]+"\n";
+        }
+        foreach(string k in sr.resources.Keys)
+        {
+            if(k == "crewMember")
+            {
+                switch (sr.resources[k])
+                {
+                    case 1:
+                        res += "Crew gained: injured." + "\n";
+                        break;
+                    case 10:
+                        res += "Crew gained: healthy" + "\n";
+                        break;
+                    case -1:
+                        res += "Crew injured.\n";
+                        break;
+                    case -10:
+                        res += "Castle crew dead.\n";
+                        break;
+                }
+            }
+            else
+            {
+                string name = "";
+                switch (k)
+                {
+                    case "sciencePoint":
+                        name = "Alchemy Point";
+                        break;
+                    case "energyPoint":
+                        name = "Crystal Charge";
+                        break;
+                    case "scrap":
+                        name = "Building Material";
+                        break;
+                }
+                res += "Resource gained: " + name + ": " + sr.resources[k] + "\n";
+            }
+        }
+        foreach(string k in sr.rooms.Keys)
+        {
+            string roomName = "";
+            string roomRes = "";
+            if(k == "randomRoom")
+            {
+                List<Piece> tempRooms = new List<Piece>();
+                foreach (KeyValuePair<string, Piece> piecePair in DataManager.instance.BoardPieces)
+                {
+                    if (piecePair.Value.Type == BoardType.ROOM)
+                    {
+                        tempRooms.Add(piecePair.Value);
+                    }
+                }
+                int[] roomOrder = DataManager.randomArray(tempRooms.Count);
+                Piece outPiece = tempRooms[roomOrder[0]];
+                roomName = outPiece.BoardName;
+            }
+            else if(k == "labRoom")
+            {
+                roomName = "Alchemy Lab";
+            }
+            switch (sr.rooms[k])
+            {
+                case 1:
+                    roomRes = " Created.";
+                    break;
+                case -1:
+                    roomRes = " Damaged.";
+                    break;
+                case -10:
+                    roomRes = " Destroyed.";
+                    break;
+            }
+            
+            res += "Room change: " + roomName + roomRes + "\n";
+        }
+        return res;
+    }
 
     bool CheckFactionLocation()
     {
