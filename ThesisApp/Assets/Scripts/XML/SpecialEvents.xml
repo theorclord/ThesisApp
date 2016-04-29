@@ -26,27 +26,27 @@
         <neutral>
           <text>They are happy to learn your methods and have a peace offering.</text>
           <results>
-          <result>
-            <type>reputation</type>
-            <value>50</value>
-            <name>humans</name>
-          </result>
-        </results>
+            <result>
+              <type>reputation</type>
+              <value>50</value>
+              <name>humans</name>
+            </result>
+          </results>
         </neutral>
         <enemy>
           <text>The humans were not really expecting your cooperation, and agrees to spare your crew.</text>
           <results>
-          <result>
-            <type>reputation</type>
-            <value>-50</value>
-            <name>nomads</name>
-          </result>
-          <result>
-            <type>reputation</type>
-            <value>50</value>
-            <name>humans</name>
-          </result>
-        </results>
+            <result>
+              <type>reputation</type>
+              <value>-50</value>
+              <name>nomads</name>
+            </result>
+            <result>
+              <type>reputation</type>
+              <value>50</value>
+              <name>humans</name>
+            </result>
+          </results>
         </enemy>
       </one>
       <two>
@@ -234,17 +234,17 @@
         <enemy>
           <text>They turn around, arrogantly, and walks away.</text>
           <results>
-          <result>
-            <type>reputation</type>
-            <value>-50</value>
-            <name>highbournes</name>
-          </result>
-          <result>
-            <type>reputation</type>
-            <value>50</value>
-            <name>nomads</name>
-          </result>
-        </results>  
+            <result>
+              <type>reputation</type>
+              <value>-50</value>
+              <name>highbournes</name>
+            </result>
+            <result>
+              <type>reputation</type>
+              <value>50</value>
+              <name>nomads</name>
+            </result>
+          </results>
         </enemy>
       </one>
       <two>
@@ -304,10 +304,10 @@
           <text>Highbournes need more than excuses. You did not manage to convince them.</text>
           <results>
             <result>
-            <type>reputation</type>
-            <value>-50</value>
-            <name>highbournes</name>
-          </result>
+              <type>reputation</type>
+              <value>-50</value>
+              <name>highbournes</name>
+            </result>
           </results>
         </neutral>
         <enemy>
@@ -529,4 +529,41 @@
       </two>
     </options>
   </combination>
+
+  <!--Random other events-->
+  <fightevent>
+    <type>Fight</type>
+    <intro>As you arrive at the island, you see a bunch of </intro>
+    <body> fighting against a lot of </body>
+    <extra>. If you ever wanted to intervene and chose your allegiance, now is the chance.</extra>
+    <faction1>Highbournes</faction1>
+    <faction2>Humans</faction2>
+    <button>Help out the </button>
+    <text>are forever grateful for your assistance.</text>
+    <value>100</value>
+  </fightevent>
+
+  <fightevent>
+    <type>Fight</type>
+    <intro>As you arrive at the island, you see a horde of </intro>
+    <body> in a massive battle against </body>
+    <extra>. This is your chance to prove your valor.</extra>
+    <faction1>Nomads</faction1>
+    <faction2>Humans</faction2>
+    <button>Join the </button>
+    <text>are so happy you helped them.</text>
+    <value>100</value>
+  </fightevent>
+
+  <fightevent>
+    <type>Fight</type>
+    <intro>When landing, the entire air is filled with dust. There is a battle going on between the </intro>
+    <body> and the </body>
+    <extra>. Pick your side carefully.</extra>
+    <faction1>Highbournes</faction1>
+    <faction2>Nomads</faction2>
+    <button>Pick the side of the </button>
+    <text>will never forget your help.</text>
+    <value>100</value>
+  </fightevent>
 </specialEvents>

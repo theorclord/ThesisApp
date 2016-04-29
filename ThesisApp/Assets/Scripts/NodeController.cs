@@ -19,6 +19,8 @@ public class NodeController : MonoBehaviour
     private GameObject resultPanel;
     private GameObject specialPanel;
 
+    public SpecialResults fight = new SpecialResults();
+    private bool specEv = false;
 
     private SpecialResults sr = new SpecialResults();
     private string allegiance1 = "";
@@ -46,7 +48,45 @@ public class NodeController : MonoBehaviour
             {
                 InitSpecialEvent();
             }
+            else
+            {
+                int a = UnityEngine.Random.Range(0, 3);
+                if (a == 0)
+                {
+                    pickOtherSpecial();
+                }
+            }
         }
+    }
+
+    private void pickOtherSpecial()
+    {
+        fight = new SpecialResults();
+        specEv = true;
+        specialPanel.SetActive(true);
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+        XmlNodeList fights = doc.SelectNodes("specialEvents/fightevent");
+        int a = UnityEngine.Random.Range(0, fights.Count);
+        string faction1 = fights[a].SelectSingleNode("faction1").InnerText;
+        string faction2 = fights[a].SelectSingleNode("faction2").InnerText;
+        string intro = fights[a].SelectSingleNode("intro").InnerText;
+        string body = fights[a].SelectSingleNode("body").InnerText;
+        string extra = fights[a].SelectSingleNode("extra").InnerText;
+        string eventflavor = intro + faction1 + body + faction2 + extra;
+        string button1text = fights[a].SelectSingleNode("button").InnerText + faction1;
+        string button2text = fights[a].SelectSingleNode("button").InnerText + faction2;
+        string resultflavor = fights[a].SelectSingleNode("text").InnerText;
+        int repvalue = int.Parse(fights[a].SelectSingleNode("value").InnerText);
+        fight.reputations.Add(faction1, repvalue);
+        fight.reputations.Add(faction2, repvalue);
+        fight.resultflavor = resultflavor;
+        // set the flavors
+        specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = eventflavor;
+        specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1text;
+        specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2text;
+        string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+        
     }
 
     void InitSpecialEvent()
@@ -91,8 +131,8 @@ public class NodeController : MonoBehaviour
         }
         //DataManager.instance.ActiveDiplomaticEvent.
         XmlNodeList combs = doc.SelectNodes("specialEvents/combination[@type='" + combination + "']");
-        locationButton1 = "specialEvents/combination[@type='" + combination + "']/options/one"+superAllegiance+"/results/result";
-        locationButton2 = "specialEvents/combination[@type='" + combination + "']/options/two"+superAllegiance + "/results/result";
+        locationButton1 = "specialEvents/combination[@type='" + combination + "']/options/one" + superAllegiance + "/results/result";
+        locationButton2 = "specialEvents/combination[@type='" + combination + "']/options/two" + superAllegiance + "/results/result";
         Debug.Log("size of combination: " + combs.Count);
         foreach (XmlNode xn in combs)
         {
@@ -101,14 +141,14 @@ public class NodeController : MonoBehaviour
             extra = xn.SelectSingleNode("extra").InnerText;
             button1 = xn.SelectSingleNode("options/one/button").InnerText;
             button2 = xn.SelectSingleNode("options/two/button").InnerText;
-            allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance+"/text").InnerText;
+            allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance + "/text").InnerText;
             allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance + "/text").InnerText;
         }
 
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
-        
+
 
     }
 
@@ -118,35 +158,64 @@ public class NodeController : MonoBehaviour
         XmlDocument doc = new XmlDocument();
         doc.Load(specEvPath);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
-        for(int i = 0; i < nodes.Length; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             nodes[i].SetActive(false);
         }
-        //GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject;
         specialPanel.SetActive(false);
         resultPanel.SetActive(true);
-        resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance1;
-        XmlNodeList results = doc.SelectNodes(locationButton1);
-        foreach(XmlNode xn in results)
+        if (!specEv)
         {
-            int value = int.Parse(xn.SelectSingleNode("value").InnerText);
-            string name = xn.SelectSingleNode("name").InnerText;
-            Debug.Log(xn.SelectSingleNode("type").InnerText);
-            switch (xn.SelectSingleNode("type").InnerText)
+            //GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject;
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance1;
+            XmlNodeList results = doc.SelectNodes(locationButton1);
+            foreach (XmlNode xn in results)
             {
-                case "reputation":
-                    sr2.reputations.Add(name, value);
-                    break;
-                case "resource":
-                    sr2.resources.Add(name, value);
-                    break;
-                case "room":
-                    sr2.rooms.Add(name, value);
-                    break;
+                int value = int.Parse(xn.SelectSingleNode("value").InnerText);
+                string name = xn.SelectSingleNode("name").InnerText;
+                Debug.Log(xn.SelectSingleNode("type").InnerText);
+                switch (xn.SelectSingleNode("type").InnerText)
+                {
+                    case "reputation":
+                        sr2.reputations.Add(name, value);
+                        break;
+                    case "resource":
+                        sr2.resources.Add(name, value);
+                        break;
+                    case "room":
+                        sr2.rooms.Add(name, value);
+                        break;
+                }
             }
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+
         }
-        resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+        else
+        {
+            
+            string outcomeText = "";
+            int index = 0;
+            foreach (string s in fight.reputations.Keys)
+            {
+                if (index == 0)
+                {
+                    outcomeText += s + ": +" + fight.reputations[s] + "\n";
+                    resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The "+ s + " " +fight.resultflavor;
+                    index++;
+                }
+                else
+                {
+                    outcomeText += s + ": -" + fight.reputations[s];
+                    index++;
+                }
+            }
+
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
+            fight = null;
+        }
+        DataManager.instance.ActiveDiplomaticEvent = null;
     }
+
     public void buttonTwoClicked()
     {
         SpecialResults sr2 = new SpecialResults();
@@ -159,40 +228,68 @@ public class NodeController : MonoBehaviour
         }
         specialPanel.SetActive(false);
         resultPanel.SetActive(true);
-        resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance2;
-        XmlNodeList results = doc.SelectNodes(locationButton2);
-        Debug.Log("Size of results: " + results.Count);
-        foreach (XmlNode xn in results)
+        if (!specEv)
         {
-            int value = int.Parse(xn.SelectSingleNode("value").InnerText);
-            string name = xn.SelectSingleNode("name").InnerText;
-            Debug.Log(xn.SelectSingleNode("type").InnerText);
-            switch (xn.SelectSingleNode("type").InnerText)
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance2;
+            XmlNodeList results = doc.SelectNodes(locationButton2);
+            Debug.Log("Size of results: " + results.Count);
+            foreach (XmlNode xn in results)
             {
-                case "reputation":
-                    sr2.reputations.Add(name, value);
-                    break;
-                case "resource":
-                    sr2.resources.Add(name, value);
-                    break;
-                case "room":
-                    sr2.rooms.Add(name, value);
-                    break;
+                int value = int.Parse(xn.SelectSingleNode("value").InnerText);
+                string name = xn.SelectSingleNode("name").InnerText;
+                Debug.Log(xn.SelectSingleNode("type").InnerText);
+                switch (xn.SelectSingleNode("type").InnerText)
+                {
+                    case "reputation":
+                        sr2.reputations.Add(name, value);
+                        break;
+                    case "resource":
+                        sr2.resources.Add(name, value);
+                        break;
+                    case "room":
+                        sr2.rooms.Add(name, value);
+                        break;
+                }
             }
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+            
         }
-        resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+        else
+        {
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = fight.resultflavor;
+            string outcomeText = "";
+            int index = 0;
+            foreach (string s in fight.reputations.Keys)
+            {
+                if (index == 0)
+                {
+                    outcomeText += s + ": -" + fight.reputations[s] + "\n";
+                    index++;
+                }
+                else
+                {
+                    outcomeText += s + ": +" + fight.reputations[s];
+                    resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The " + s + " " + fight.resultflavor;
+                    index++;
+                }
+            }
+
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
+            fight = null;
+        }
+        DataManager.instance.ActiveDiplomaticEvent = null;
     }
 
     private string getFlavor(SpecialResults sr)
     {
         string res = "";
-        foreach(string k in sr.reputations.Keys)
+        foreach (string k in sr.reputations.Keys)
         {
-            res += "Reptutation change: " + k + ": " + sr.reputations[k]+"\n";
+            res += "Reptutation change: " + k + ": " + sr.reputations[k] + "\n";
         }
-        foreach(string k in sr.resources.Keys)
+        foreach (string k in sr.resources.Keys)
         {
-            if(k == "crewMember")
+            if (k == "crewMember")
             {
                 switch (sr.resources[k])
                 {
@@ -228,11 +325,11 @@ public class NodeController : MonoBehaviour
                 res += "Resource gained: " + name + ": " + sr.resources[k] + "\n";
             }
         }
-        foreach(string k in sr.rooms.Keys)
+        foreach (string k in sr.rooms.Keys)
         {
             string roomName = "";
             string roomRes = "";
-            if(k == "randomRoom")
+            if (k == "randomRoom")
             {
                 List<Piece> tempRooms = new List<Piece>();
                 foreach (KeyValuePair<string, Piece> piecePair in DataManager.instance.BoardPieces)
@@ -246,7 +343,7 @@ public class NodeController : MonoBehaviour
                 Piece outPiece = tempRooms[roomOrder[0]];
                 roomName = outPiece.BoardName;
             }
-            else if(k == "labRoom")
+            else if (k == "labRoom")
             {
                 roomName = "Alchemy Lab";
             }
@@ -262,7 +359,7 @@ public class NodeController : MonoBehaviour
                     roomRes = " Destroyed.";
                     break;
             }
-            
+
             res += "Room change: " + roomName + roomRes + "\n";
         }
         return res;
@@ -303,7 +400,7 @@ public class NodeController : MonoBehaviour
     {
         if (!panelOpen && Input.GetMouseButtonDown(0))
         {
-            
+
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             Debug.Log(hit);
             Debug.Log(hit.collider);
@@ -377,20 +474,20 @@ public class NodeController : MonoBehaviour
             LocationData.Load("assets/scripts/XML/Location.xml");
             XmlNodeList locations = LocationData.SelectNodes("locations/location");
             // Set information of location based on nodes
-            foreach(XmlNode location in locations)
+            foreach (XmlNode location in locations)
             {
-                if(location.SelectSingleNode("name").InnerText == locationString)
+                if (location.SelectSingleNode("name").InnerText == locationString)
                 {
                     string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
-                    Vector3 locPos = new Vector3(float.Parse(coord[0]),float.Parse(coord[1]));
+                    Vector3 locPos = new Vector3(float.Parse(coord[0]), float.Parse(coord[1]));
                     nodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
                     string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
-                    nodeObj.transform.localScale = new Vector3(float.Parse(scale[0]),float.Parse(scale[1]));
-                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof (Sprite)) as Sprite;
+                    nodeObj.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]));
+                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof(Sprite)) as Sprite;
                     break;
                 }
             }
-            
+
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
@@ -532,7 +629,7 @@ public class NodeController : MonoBehaviour
         {
             activeFac = DataManager.instance.Factions["human"];
         }
-        
+
         if (facRel.ContainsKey(activeFac))
         {
             // get relation
