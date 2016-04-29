@@ -50,7 +50,7 @@ public class NodeController : MonoBehaviour
             }
             else
             {
-                int a = UnityEngine.Random.Range(0, 3);
+                int a = UnityEngine.Random.Range(0, 5);
                 if (a == 0)
                 {
                     pickOtherSpecial();
@@ -61,6 +61,7 @@ public class NodeController : MonoBehaviour
 
     private void pickOtherSpecial()
     {
+        Debug.Log("Picking Fight Event");
         fight = new SpecialResults();
         specEv = true;
         specialPanel.SetActive(true);
@@ -200,11 +201,13 @@ public class NodeController : MonoBehaviour
                 if (index == 0)
                 {
                     outcomeText += s + ": +" + fight.reputations[s] + "\n";
+                    DataManager.instance.Player.AddReputation(new Faction(s), fight.reputations[s]);
                     resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The "+ s + " " +fight.resultflavor;
                     index++;
                 }
                 else
                 {
+                    DataManager.instance.Player.AddReputation(new Faction(s), (-1)*fight.reputations[s]);
                     outcomeText += s + ": -" + fight.reputations[s];
                     index++;
                 }
@@ -213,7 +216,7 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = null;
+        DataManager.instance.ActiveDiplomaticEvent = new SavedResult();
     }
 
     public void buttonTwoClicked()
@@ -264,11 +267,13 @@ public class NodeController : MonoBehaviour
                 if (index == 0)
                 {
                     outcomeText += s + ": -" + fight.reputations[s] + "\n";
+                    DataManager.instance.Player.AddReputation(new Faction(s), (-1)*fight.reputations[s]);
                     index++;
                 }
                 else
                 {
                     outcomeText += s + ": +" + fight.reputations[s];
+                    DataManager.instance.Player.AddReputation(new Faction(s), fight.reputations[s]);
                     resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The " + s + " " + fight.resultflavor;
                     index++;
                 }
@@ -277,7 +282,7 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = null;
+        DataManager.instance.ActiveDiplomaticEvent = new SavedResult() ;
     }
 
     private string getFlavor(SpecialResults sr)
@@ -286,6 +291,7 @@ public class NodeController : MonoBehaviour
         foreach (string k in sr.reputations.Keys)
         {
             res += "Reptutation change: " + k + ": " + sr.reputations[k] + "\n";
+            DataManager.instance.Player.AddReputation(new Faction(k), sr.reputations[k]);
         }
         foreach (string k in sr.resources.Keys)
         {

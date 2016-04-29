@@ -28,6 +28,22 @@ namespace Assets.Scripts.Utility
             FactionRelations = new Dictionary<Faction, int>();
         }
 
+        public void AddReputation(Faction f, int value)
+        {
+            Debug.Log("inside add rep");
+            foreach(Faction fc in FactionRelations.Keys)
+            {
+                Debug.Log(fc.BoardName + ", "+ f.BoardName);
+                if(fc.BoardName == f.BoardName)
+                {
+                    Debug.Log("Rep Before: " + fc.BoardName + " " + FactionRelations[fc]);
+                    FactionRelations[fc] += value;
+                    Debug.Log("Rep After: " + fc.BoardName + " " + FactionRelations[fc]);
+                    break;
+                }
+            }
+        }
+
         public Standing getStanding(Faction f)
         {
             int a = FactionRelations[f];

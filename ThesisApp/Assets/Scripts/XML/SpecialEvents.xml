@@ -14,12 +14,12 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </ally>
@@ -29,7 +29,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </neutral>
@@ -39,12 +39,12 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </enemy>
@@ -67,7 +67,7 @@
             <result>
               <type>reputation</type>
               <value>-25</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>resource</type>
@@ -82,7 +82,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>resource</type>
@@ -108,12 +108,12 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>reputation</type>
               <value>-100</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
             <result>
               <type>resource</type>
@@ -128,7 +128,7 @@
             <result>
               <type>reputation</type>
               <value>25</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </neutral>
@@ -138,7 +138,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </enemy>
@@ -151,12 +151,12 @@
             <result>
               <type>reputation</type>
               <value>-25</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>reputation</type>
               <value>25</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </ally>
@@ -166,7 +166,7 @@
             <result>
               <type>reputation</type>
               <value>-25</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>resource</type>
@@ -181,7 +181,7 @@
             <result>
               <type>reputation</type>
               <value>-25</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
             <result>
               <type>room</type>
@@ -207,12 +207,12 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>25</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </ally>
@@ -222,7 +222,7 @@
             <result>
               <type>reputation</type>
               <value>25</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
             <result>
               <type>resource</type>
@@ -237,12 +237,12 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
           </results>
         </enemy>
@@ -265,7 +265,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </neutral>
@@ -296,7 +296,7 @@
             <result>
               <type>reputation</type>
               <value>-100</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </ally>
@@ -306,7 +306,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </neutral>
@@ -316,7 +316,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </enemy>
@@ -339,7 +339,7 @@
             <result>
               <type>reputation</type>
               <value>100</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </neutral>
@@ -380,12 +380,12 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>-25</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </neutral>
@@ -395,12 +395,12 @@
             <result>
               <type>reputation</type>
               <value>100</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </enemy>
@@ -413,7 +413,7 @@
             <result>
               <type>reputation</type>
               <value>-100</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
           </results>
         </ally>
@@ -423,7 +423,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
           </results>
         </neutral>
@@ -454,7 +454,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>humans</name>
+              <name>Humans</name>
             </result>
           </results>
         </ally>
@@ -464,7 +464,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
           </results>
         </neutral>
@@ -474,7 +474,7 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>resource</type>
@@ -492,7 +492,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>resource</type>
@@ -507,12 +507,12 @@
             <result>
               <type>reputation</type>
               <value>-50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>highbournes</name>
+              <name>Highbournes</name>
             </result>
           </results>
         </neutral>
@@ -522,7 +522,7 @@
             <result>
               <type>reputation</type>
               <value>50</value>
-              <name>nomads</name>
+              <name>Nomads</name>
             </result>
           </results>
         </enemy>

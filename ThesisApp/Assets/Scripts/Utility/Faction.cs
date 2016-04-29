@@ -13,6 +13,10 @@ namespace Assets.Scripts.Utility
         {
             BoardName = name;
         }
+        public Faction()
+        {
+            BoardName = "";
+        }
 
         public string BoardName { get; set; }
     }

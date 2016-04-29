@@ -23,6 +23,7 @@ namespace Assets.Scripts.Events
         {
             Conditions = new Dictionary<Piece, int>();
             Outcomes = new Dictionary<Piece, int>();
+            Alligance = new Faction();
         }
     }
 }
