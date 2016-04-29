@@ -381,12 +381,27 @@ public class NodeController : MonoBehaviour
             {
                 if(location.SelectSingleNode("name").InnerText == locationString)
                 {
+                    //Visiul node 
                     string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
                     Vector3 locPos = new Vector3(float.Parse(coord[0]),float.Parse(coord[1]));
-                    nodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
+                    GameObject VisualnodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
+                    Vector3 nodeObjPos = new Vector3(locPos.x, locPos.y + 1);
                     string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
-                    nodeObj.transform.localScale = new Vector3(float.Parse(scale[0]),float.Parse(scale[1]));
-                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof (Sprite)) as Sprite;
+                    VisualnodeObj.transform.localScale = new Vector3(float.Parse(scale[0]),float.Parse(scale[1]));
+                    VisualnodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof (Sprite)) as Sprite;
+                    //Selection node obj
+                    nodeObj = Instantiate(Resources.Load("Prefabs/NodeIcon"), nodeObjPos, Quaternion.identity) as GameObject;
+                    string iconString = "";
+                    switch (nodestat.type)
+                    {
+                        case EventSpec.GATHER:
+                            iconString = "ExploreIcon";
+                            break;
+                        case EventSpec.RESEARCH:
+                            iconString = "AlchemyIcon";
+                            break;
+                    }
+                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("BoardMarkers/" + iconString, typeof(Sprite)) as Sprite;
                     break;
                 }
             }
@@ -443,7 +458,7 @@ public class NodeController : MonoBehaviour
                 {
                     btx += butFlav[flSel[0]].InnerText;
                 }
-                Debug.Log("Location: " + e.EventOptions[tempint].locationXmlString);
+                //Debug.Log("Location: " + e.EventOptions[tempint].locationXmlString);
                 butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/" + e.EventOptions[tempint].locationXmlString + pieceName + "/flavor");
                 flSel = DataManager.randomArray(butFlav.Count);
                 btx += butFlav[flSel[0]].InnerText;
