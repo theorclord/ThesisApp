@@ -117,6 +117,7 @@ public class WorldController : MonoBehaviour {
                 oneClick = false;
                 Debug.Log("Double click");
                 mainCam.GetComponent<Camera>().orthographicSize = 5 ;
+                mainCam.transform.position = new Vector3(DataManager.instance.Player.Position.x,DataManager.instance.Player.Position.y,-10);
             }
         }
         if (oneClick)
