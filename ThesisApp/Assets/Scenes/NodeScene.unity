@@ -1375,7 +1375,7 @@ GameObject:
   - 222: {fileID: 1468946497}
   - 114: {fileID: 1468946496}
   m_Layer: 5
-  m_Name: Text
+  m_Name: FactionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,48 +1437,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468946494}
---- !u!1001 &1619780558
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 448576, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 603fcad316ef0cf4f8845a56cccc7f40, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1626307021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,7 +2124,7 @@ GameObject:
   - 222: {fileID: 2140979039}
   - 114: {fileID: 2140979038}
   m_Layer: 5
-  m_Name: Image
+  m_Name: FactionIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
