@@ -74,9 +74,7 @@ namespace Assets.Scripts.Utility
         ROCKFORMATION,
         MAGICSITE,
         LAKE,
-        RUINS,
-        CATHEDRAL,
-        SETTLEMENT
+        RUINS
     }
     class Enums
     {

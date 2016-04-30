@@ -9,7 +9,7 @@ public class Event {
     //XML path
     private string eventstructurepath = "assets/scripts/XML/EventStructure.xml";
     private string eventconditions = "eventstructure/conditions/condition";
-
+    public int locType { get; set;}  
     // Crit val
     private int crit = 75;
     //XML gather values
@@ -29,7 +29,10 @@ public class Event {
     public string locationXmlString { get; set; }
 
     public List<EventOption> EventOptions { get; set; }
-
+    public void SetLocType(int loc)
+    {
+        locType = loc;
+    }
     public Event()
     {
         EventOptions = new List<EventOption>();
@@ -67,10 +70,10 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype, int numOpt)
     {
-        int loc = Random.Range(0, 5); //which type of location
+        //int loc = Random.Range(0, 5); //which type of location
         for(int i = 0; i < numOpt; i++)
         {
-            EventOptions.Add(generateEvent(i, i+1, eventtype, loc));
+            EventOptions.Add(generateEvent(i, i+1, eventtype, locType));
         }/*
         //Basic option
         EventOptions.Add(generateEvent(0, 1, eventtype, loc));
