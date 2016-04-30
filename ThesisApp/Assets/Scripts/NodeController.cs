@@ -479,7 +479,6 @@ public class NodeController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null && !DataManager.instance.specialActive)
             {
-                Debug.Log("Collider hit");
                 selected = hit.transform.gameObject;
                 if (selected.tag == "LocationNode")
                 {
@@ -606,7 +605,10 @@ public class NodeController : MonoBehaviour
         Event e = selectNode.nodeEvent;
         // Set conditions and choices:
         Transform buttoncont = eventPanel.transform.FindChild("ButtonController");
-
+        for(int i = 0; i < buttoncont.childCount; i++)
+        {
+            buttoncont.GetChild(i).gameObject.SetActive(false);
+        }
         //EventOption button section
         for (int i = 0; i < e.EventOptions.Count; i++)
         {

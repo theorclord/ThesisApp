@@ -70,18 +70,10 @@ public class Event {
     /// <param name="eventtype">string type, related to the xml file</param>
     private void buildDataFromXml(string eventtype, int numOpt)
     {
-        //int loc = Random.Range(0, 5); //which type of location
         for(int i = 0; i < numOpt; i++)
         {
             EventOptions.Add(generateEvent(i, i+1, eventtype, locType));
-        }/*
-        //Basic option
-        EventOptions.Add(generateEvent(0, 1, eventtype, loc));
-        //Second option
-        EventOptions.Add(generateEvent(1, 2, eventtype, loc));
-        //Third option
-        EventOptions.Add(generateEvent(2, 3, eventtype, loc));
-        */
+        }
     }
     /// <summary>
     /// Generates the content of the events based on the condition
@@ -123,18 +115,39 @@ public class Event {
                 break;
             }
         }
+        bool roomAdded = false;
         // Select event conditions
         for (int j = 0; j < numCon-1; j++)
         {   
             int[] conSelect = DataManager.randomArray(conditionList.Count);
             for (int i = 0; i < conditionList.Count; i++)
             {
+                bool roomExist = false;
                 XmlNode xn = conditionList[conSelect[i]];
-                //TODO have the checked value in a field
                 //Select a condition which is limited by the condition type parameter   
                 if (int.Parse(xn.SelectSingleNode("type").InnerText) <= conType)
                 {
                     Piece basPiece = DataManager.instance.BoardPieces[xn.SelectSingleNode("piece").InnerText];
+                    if( !roomAdded && conType == 2 && basPiece.Type != BoardType.ROOM )
+                    {
+                        continue;
+                    }
+                    roomAdded = true;
+                    // ensures there is only one room.
+                    if(basPiece.Type == BoardType.ROOM)
+                    {
+                        foreach(KeyValuePair<Piece, int> pieceNum in evOpt.Conditions)
+                        {
+                            if(pieceNum.Key.Type == BoardType.ROOM)
+                            {
+                                roomExist = true;
+                            }
+                        }
+                        if (roomExist)
+                        {
+                            continue;
+                        }
+                    }
                     if (evOpt.Conditions.ContainsKey(basPiece))
                     {
                         evOpt.Conditions[basPiece] += int.Parse(xn.SelectSingleNode("amount").InnerText);
@@ -151,10 +164,7 @@ public class Event {
         int addedCons = 0;
 
         Dictionary<Piece, int> usedConds = new Dictionary<Piece, int>();
-        //Dictionary<Piece, int> usedConds = evOpt.Conditions;
 
-        //int numRuns = 0;
-        
         //Select outcomes
         while (addedCons < numCon )
         {
@@ -234,14 +244,7 @@ public class Event {
             {
                 conSelectnum--;
             }
-        }/*
-        Debug.Log("Number of runs " + numRuns);
-        Debug.Log("Pieces ");
-        foreach(KeyValuePair<Piece,int> pair in evOpt.Conditions)
-        {
-            Debug.Log(pair.Key.BoardName);
         }
-        */
         //Set flavors
         switch (eventtype)
         {
