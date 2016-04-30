@@ -548,7 +548,7 @@ public class NodeController : MonoBehaviour
             {
                 if (location.SelectSingleNode("name").InnerText == locationString)
                 {
-                    //Visiul node 
+                    //Visual node 
                     string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
                     Vector3 locPos = new Vector3(float.Parse(coord[0]), float.Parse(coord[1]));
                     GameObject VisualnodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
@@ -616,7 +616,7 @@ public class NodeController : MonoBehaviour
                     //Instantiate image of condition. height same as button. start pos 415
                     GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
                     resourceIcon.transform.SetParent(buttoncont);
-                    resourceIcon.transform.localPosition = new Vector3(415f + 65f * (conditionCount+ k), -55 * i);
+                    resourceIcon.transform.localPosition = new Vector3(415f + 65f * (conditionCount), -55 * i);
                     switch (pair.Key.BoardName)
                     {
                         case "Castle Crew":
@@ -631,9 +631,22 @@ public class NodeController : MonoBehaviour
                         case "Alchemical Material":
                             resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/AlchemyPoint", typeof(Sprite)) as Sprite;
                             break;
+                        case "Miners Guild":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/MineMaster", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Cleric Quarters":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/PriestMaster", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Workshop":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/MechMaster", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Alchemical Lab":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/AlchemyMaster", typeof(Sprite)) as Sprite;
+                            break;
                         default:
                             break;
                     }
+                    conditionCount++;
                 }
 
                 // Make button text
@@ -664,7 +677,6 @@ public class NodeController : MonoBehaviour
                     buttonText += ", ";
                     btx += " ";
                 }
-                conditionCount++;
             }
             button.transform.GetChild(0).GetComponent<Text>().text = btx;
         }
