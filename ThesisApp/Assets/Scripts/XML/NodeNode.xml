@@ -3,45 +3,45 @@
   <Gather>
     <nodeFlavour>
       <name>Mine</name>
-      <flavour>This is a mine</flavour>
+      <flavour>There is a great mine located on the island.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Quarry</name>
-      <flavour>This is a quarry</flavour>
+      <flavour>You spot a well built quarry.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Wreckage</name>
-      <flavour>This is a wreckage</flavour>
+      <flavour>This seems to be a wreckage of some sort.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Factory</name>
-      <flavour>This is a factory</flavour>
+      <flavour>An old factory. You are not quite sure what it was used for.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Village</name>
-      <flavour>This is a village</flavour>
+      <flavour>There is a small village here.</flavour>
     </nodeFlavour>
   </Gather>
   <Research>
     <nodeFlavour>
       <name>Forest</name>
-      <flavour>This is a forest</flavour>
+      <flavour>A large forest spanning a huge area.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Rock Formation</name>
-      <flavour>This is a rock formation</flavour>
+      <flavour>There are a formation of floating rocks.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Magic Site</name>
-      <flavour>This is a magic site</flavour>
+      <flavour>Some sort of ritualistic site for use of magic.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Lake</name>
-      <flavour>This is a lake</flavour>
+      <flavour>There is a vast lake with a glimmering surface here.</flavour>
     </nodeFlavour>
     <nodeFlavour>
       <name>Ruins</name>
-      <flavour>This is a ruin</flavour>
+      <flavour>Some sort of ancient ruin.</flavour>
     </nodeFlavour>
   </Research>
 </NodeNode>
