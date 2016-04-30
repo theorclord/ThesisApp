@@ -210,14 +210,6 @@ public class LSystem
         // Set position and type
         wns.Position = position;
         wns.Type = type;
-        // Set name and description
-        XmlDocument worldNodesDoc = new XmlDocument();
-        worldNodesDoc.Load("assets/scripts/XML/WorldNode.xml");
-        XmlNodeList worldNodes = worldNodesDoc.SelectNodes("WorldNodes/WorldNode");
-        int[] nameOrder = DataManager.randomArray(worldNodes.Count);
-
-        wns.WorldName = worldNodes[nameOrder[0]].SelectSingleNode("name").InnerText;
-        wns.Description = worldNodes[nameOrder[0]].SelectSingleNode("description").InnerText;
 
         //check for duplications
         bool duplicate = false;
@@ -250,6 +242,19 @@ public class LSystem
                 }
                 countFac++;
             }
+            // Set name and description
+            XmlDocument worldNodesDoc = new XmlDocument();
+            worldNodesDoc.Load("assets/scripts/XML/WorldNode.xml");
+            XmlNodeList worldNodes = worldNodesDoc.SelectNodes("WorldNodes/WorldNode");
+            int[] nameOrder = DataManager.randomArray(worldNodes.Count);
+
+            wns.WorldName = worldNodes[nameOrder[0]].SelectSingleNode("name").InnerText;
+
+            //Set description based on faction
+            //wns.Description = worldNodes[nameOrder[0]].SelectSingleNode("description").InnerText;
+
+            wns.Description = "You spot an island floating in the distance. It seems to be controlled by the " + wns.NodeFaction.BoardName;
+
             // set the events
             int[] eventTypeOrder = DataManager.randomArray(2);
             int numIntNodes = eventTypeOrder.Length;
