@@ -22,7 +22,7 @@ public class NodeController : MonoBehaviour
     public SpecialResults fight = new SpecialResults();
     private bool specEv = false;
 
-    private SpecialResults sr = new SpecialResults();
+    //private SpecialResults sr = new SpecialResults();
     private string allegiance1 = "";
     private string allegiance2 = "";
     private string locationButton1 = "";
@@ -47,6 +47,8 @@ public class NodeController : MonoBehaviour
             if (CheckFactionLocation())
             {
                 InitSpecialEvent();
+                DataManager.instance.specialActive = true;
+
             }
             else
             {
@@ -54,6 +56,8 @@ public class NodeController : MonoBehaviour
                 if (a == 0)
                 {
                     pickOtherSpecial();
+                    DataManager.instance.specialActive = true;
+
                 }
             }
         }
@@ -77,8 +81,10 @@ public class NodeController : MonoBehaviour
         string eventflavor = intro + faction1 + body + faction2 + extra;
         string button1text = fights[a].SelectSingleNode("button").InnerText + faction1;
         string button2text = fights[a].SelectSingleNode("button").InnerText + faction2;
+        string button3text = "Leave the island and let them settle their own fight.";
         string resultflavor = fights[a].SelectSingleNode("text").InnerText;
         int repvalue = int.Parse(fights[a].SelectSingleNode("value").InnerText);
+        fight.neutral = int.Parse(fights[a].SelectSingleNode("neutral").InnerText);
         fight.reputations.Add(faction1, repvalue);
         fight.reputations.Add(faction2, repvalue);
         fight.resultflavor = resultflavor;
@@ -86,7 +92,13 @@ public class NodeController : MonoBehaviour
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = eventflavor;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1text;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2text;
+<<<<<<< HEAD
+        //string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+=======
+        specialPanel.transform.FindChild("ButtonController").GetChild(2).gameObject.SetActive(true);
+        specialPanel.transform.FindChild("ButtonController").GetChild(2).FindChild("Text").GetComponent<Text>().text = button3text;
         string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+>>>>>>> 8783978e1c5f7679124015e87f03233e6fdfb0e6
         
     }
 
@@ -99,7 +111,7 @@ public class NodeController : MonoBehaviour
         XmlDocument doc = new XmlDocument();
         doc.Load(specEvPath);
 
-        sr = new SpecialResults();
+        //sr = new SpecialResults();
 
         /**
         get the event
@@ -216,7 +228,8 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult();
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult();
+        DataManager.instance.specialActive = false;
     }
 
     public void buttonTwoClicked()
@@ -282,7 +295,63 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult() ;
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult() ;
+        DataManager.instance.specialActive = false;
+    }
+
+    public void leaveButtonClicked()
+    {
+        SpecialResults sr2 = new SpecialResults();
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].SetActive(false);
+        }
+        specialPanel.SetActive(false);
+        resultPanel.SetActive(true);
+        if (!specEv)
+        {
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance2;
+            XmlNodeList results = doc.SelectNodes(locationButton2);
+            Debug.Log("Size of results: " + results.Count);
+            foreach (XmlNode xn in results)
+            {
+                int value = int.Parse(xn.SelectSingleNode("neutral").InnerText);
+                string name = xn.SelectSingleNode("name").InnerText;
+                Debug.Log(xn.SelectSingleNode("type").InnerText);
+                switch (xn.SelectSingleNode("type").InnerText)
+                {
+                    case "reputation":
+                        sr2.reputations.Add(name, value);
+                        break;
+                    case "resource":
+                        sr2.resources.Add(name, value);
+                        break;
+                    case "room":
+                        sr2.rooms.Add(name, value);
+                        break;
+                }
+            }
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+
+        }
+        else
+        {
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = fight.resultflavor;
+            string outcomeText = "";
+            foreach (string s in fight.reputations.Keys)
+            {
+                outcomeText += s + ": -" + fight.neutral + "\n";
+                DataManager.instance.Player.AddReputation(new Faction(s), (-1) * fight.neutral);
+            }
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "You leave without interfering.";
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
+            fight = null;
+        }
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult() ;
+        DataManager.instance.specialActive = false;
     }
 
     private string getFlavor(SpecialResults sr)
@@ -410,7 +479,7 @@ public class NodeController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             Debug.Log(hit);
             Debug.Log(hit.collider);
-            if (hit.collider != null)
+            if (hit.collider != null && !DataManager.instance.specialActive)
             {
                 Debug.Log("Collider hit");
                 selected = hit.transform.gameObject;
@@ -486,8 +555,7 @@ public class NodeController : MonoBehaviour
                 {
                     //Visiul node 
                     string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
-<<<<<<< HEAD
-                    Vector3 locPos = new Vector3(float.Parse(coord[0]),float.Parse(coord[1]));
+                    Vector3 locPos = new Vector3(float.Parse(coord[0]), float.Parse(coord[1]));
                     GameObject VisualnodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
                     Vector3 nodeObjPos = new Vector3(locPos.x, locPos.y + 1);
                     string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
@@ -506,13 +574,6 @@ public class NodeController : MonoBehaviour
                             break;
                     }
                     nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("BoardMarkers/" + iconString, typeof(Sprite)) as Sprite;
-=======
-                    Vector3 locPos = new Vector3(float.Parse(coord[0]), float.Parse(coord[1]));
-                    nodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
-                    string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
-                    nodeObj.transform.localScale = new Vector3(float.Parse(scale[0]), float.Parse(scale[1]));
-                    nodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof(Sprite)) as Sprite;
->>>>>>> f6b32e0ec14b00d98894a85f7ec7e22bdcb56ebb
                     break;
                 }
             }
@@ -552,8 +613,15 @@ public class NodeController : MonoBehaviour
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(eventstructurepath);
+            int conditionCount = 0;
             foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
+                //Instantiate image of condition. height same as button. start pos 415
+                GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
+                resourceIcon.transform.SetParent(buttoncont);
+                resourceIcon.transform.localPosition = new Vector3(415f + 60f*conditionCount, - 55 * i);
+
+                // Make button text
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);
                 //Basic first, then add the location based for the piece.
                 XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
@@ -581,6 +649,7 @@ public class NodeController : MonoBehaviour
                     buttonText += ", ";
                     btx += " ";
                 }
+                conditionCount++;
             }
             button.transform.GetChild(0).GetComponent<Text>().text = btx;
         }

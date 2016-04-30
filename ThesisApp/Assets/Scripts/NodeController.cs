@@ -81,8 +81,10 @@ public class NodeController : MonoBehaviour
         string eventflavor = intro + faction1 + body + faction2 + extra;
         string button1text = fights[a].SelectSingleNode("button").InnerText + faction1;
         string button2text = fights[a].SelectSingleNode("button").InnerText + faction2;
+        string button3text = "Leave the island and let them settle their own fight.";
         string resultflavor = fights[a].SelectSingleNode("text").InnerText;
         int repvalue = int.Parse(fights[a].SelectSingleNode("value").InnerText);
+        fight.neutral = int.Parse(fights[a].SelectSingleNode("neutral").InnerText);
         fight.reputations.Add(faction1, repvalue);
         fight.reputations.Add(faction2, repvalue);
         fight.resultflavor = resultflavor;
@@ -90,7 +92,8 @@ public class NodeController : MonoBehaviour
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = eventflavor;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1text;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2text;
-        //string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+        specialPanel.transform.FindChild("ButtonController").GetChild(2).gameObject.SetActive(true);
+        specialPanel.transform.FindChild("ButtonController").GetChild(2).FindChild("Text").GetComponent<Text>().text = button3text;
         
     }
 
@@ -284,6 +287,61 @@ public class NodeController : MonoBehaviour
                 }
             }
 
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
+            fight = null;
+        }
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult() ;
+        DataManager.instance.specialActive = false;
+    }
+
+    public void leaveButtonClicked()
+    {
+        SpecialResults sr2 = new SpecialResults();
+        XmlDocument doc = new XmlDocument();
+        doc.Load(specEvPath);
+        GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].SetActive(false);
+        }
+        specialPanel.SetActive(false);
+        resultPanel.SetActive(true);
+        if (!specEv)
+        {
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = allegiance2;
+            XmlNodeList results = doc.SelectNodes(locationButton2);
+            Debug.Log("Size of results: " + results.Count);
+            foreach (XmlNode xn in results)
+            {
+                int value = int.Parse(xn.SelectSingleNode("neutral").InnerText);
+                string name = xn.SelectSingleNode("name").InnerText;
+                Debug.Log(xn.SelectSingleNode("type").InnerText);
+                switch (xn.SelectSingleNode("type").InnerText)
+                {
+                    case "reputation":
+                        sr2.reputations.Add(name, value);
+                        break;
+                    case "resource":
+                        sr2.resources.Add(name, value);
+                        break;
+                    case "room":
+                        sr2.rooms.Add(name, value);
+                        break;
+                }
+            }
+            resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = getFlavor(sr2);
+
+        }
+        else
+        {
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = fight.resultflavor;
+            string outcomeText = "";
+            foreach (string s in fight.reputations.Keys)
+            {
+                outcomeText += s + ": -" + fight.neutral + "\n";
+                DataManager.instance.Player.AddReputation(new Faction(s), (-1) * fight.neutral);
+            }
+            resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "You leave without interfering.";
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
@@ -553,10 +611,30 @@ public class NodeController : MonoBehaviour
             int conditionCount = 0;
             foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
-                //Instantiate image of condition. height same as button. start pos 415
-                GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
-                resourceIcon.transform.SetParent(buttoncont);
-                resourceIcon.transform.localPosition = new Vector3(415f + 60f*conditionCount, - 55 * i);
+                for(int k =0; k < pair.Value; k++)
+                {
+                    //Instantiate image of condition. height same as button. start pos 415
+                    GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
+                    resourceIcon.transform.SetParent(buttoncont);
+                    resourceIcon.transform.localPosition = new Vector3(415f + 65f * (conditionCount+ k), -55 * i);
+                    switch (pair.Key.BoardName)
+                    {
+                        case "Castle Crew":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/CM generic", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Building Material":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/scrap", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Crystal Charge":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/CrystalPiece", typeof(Sprite)) as Sprite;
+                            break;
+                        case "Alchemical Material":
+                            resourceIcon.GetComponent<Image>().sprite = Resources.Load("BoardMarkers/AlchemyPoint", typeof(Sprite)) as Sprite;
+                            break;
+                        default:
+                            break;
+                    }
+                }
 
                 // Make button text
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);

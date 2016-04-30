@@ -287,9 +287,45 @@ public class LSystem
         XmlDocument nodeNameCollection = new XmlDocument();
         nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
         XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/" + type + "/nodeFlavour");
-        int selectedTitle = Random.Range(0, nameList.Count);
+        int selectedTitle = Random.Range(0, 5);
+        ns.nodeEvent.SetLocType(selectedTitle);
+        /*switch (ns.nodeEvent.locType)
+        {
+            case Location.MINE:
+                selectedTitle = 0;
+                break;
+            case Location.QUARRY:
+                selectedTitle = 1;
+                break;
+            case Location.WRECKAGE:
+                selectedTitle = 2;
+                break;
+            case Location.FACTORY:
+                selectedTitle = 3;
+                break;
+            case Location.VILLAGE:
+                selectedTitle = 4;
+                break;
+            case Location.FOREST:
+                selectedTitle = 0;
+                break;
+            case Location.ROCKFORMATION:
+                selectedTitle = 1;
+                break;
+            case Location.MAGICSITE:
+                selectedTitle = 2;
+                break;
+            case Location.LAKE:
+                selectedTitle = 3;
+                break;
+            case Location.RUINS:
+                selectedTitle = 4;
+                break;
+
+        }
+        */
         string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
-        string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavourText").InnerText;
+        string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavour").InnerText;
         ns.TitleName = titlename;
         ns.FlavourText = flavour;
     }

@@ -37,11 +37,13 @@
       <amount>1</amount>
       <type>2</type>
     </condition>
+    <!--
     <condition>
       <piece>diplomacy</piece>
       <amount>1</amount>
       <type>2</type>
     </condition>
+    -->
     <condition>
       <piece>EngineeringRoom</piece>
       <amount>1</amount>
