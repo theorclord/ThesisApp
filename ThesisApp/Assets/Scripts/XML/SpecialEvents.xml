@@ -541,6 +541,7 @@
     <button>Help out the </button>
     <text>are forever grateful for your assistance.</text>
     <value>100</value>
+    <neutral>25</neutral>
   </fightevent>
 
   <fightevent>
@@ -553,6 +554,7 @@
     <button>Join the </button>
     <text>are so happy you helped them.</text>
     <value>100</value>
+    <neutral>25</neutral>
   </fightevent>
 
   <fightevent>
@@ -565,5 +567,6 @@
     <button>Pick the side of the </button>
     <text>will never forget your help.</text>
     <value>100</value>
+    <neutral>25</neutral>
   </fightevent>
 </specialEvents>
