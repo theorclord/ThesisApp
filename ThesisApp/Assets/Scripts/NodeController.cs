@@ -472,8 +472,6 @@ public class NodeController : MonoBehaviour
         {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            Debug.Log(hit);
-            Debug.Log(hit.collider);
             if (hit.collider != null && !DataManager.instance.specialActive)
             {
                 Debug.Log("Collider hit");
@@ -508,6 +506,15 @@ public class NodeController : MonoBehaviour
     private void showLocationInfo(GameObject selected)
     {
         selectNode = selected.GetComponent<NodeNode>();
+        switch (selectNode.type)
+        {
+            case EventSpec.GATHER:
+                nodeInfoPanel.transform.FindChild("TypeIcon").GetComponent<Image>().sprite = Resources.Load("BoardMarkers/GatherCardIcon", typeof(Sprite)) as Sprite;
+                break;
+            case EventSpec.RESEARCH:
+                nodeInfoPanel.transform.FindChild("TypeIcon").GetComponent<Image>().sprite = Resources.Load("BoardMarkers/AlchemyCardIcon", typeof(Sprite)) as Sprite;
+                break;
+        }
         nodeInfoPanel.SetActive(true);
         nodeInfoPanel.transform.Find("LocationName").GetComponent<Text>().text = selectNode.TitleName;
         nodeInfoPanel.transform.Find("FlavorText").GetComponent<Text>().text = selectNode.FlavourText;
@@ -552,7 +559,7 @@ public class NodeController : MonoBehaviour
                     string[] coord = location.SelectSingleNode("coordinates").InnerText.Split(',');
                     Vector3 locPos = new Vector3(float.Parse(coord[0]), float.Parse(coord[1]));
                     GameObject VisualnodeObj = Instantiate(Resources.Load("Prefabs/Node2D"), locPos, Quaternion.identity) as GameObject;
-                    Vector3 nodeObjPos = new Vector3(locPos.x, locPos.y + 1);
+                    Vector3 nodeObjPos = new Vector3(locPos.x, locPos.y + 1.5f);
                     string[] scale = location.SelectSingleNode("size").InnerText.Split(',');
                     VisualnodeObj.transform.localScale = new Vector3(float.Parse(scale[0]),float.Parse(scale[1]));
                     VisualnodeObj.GetComponent<SpriteRenderer>().sprite = Resources.Load("LocationSprite/" + location.SelectSingleNode("file").InnerText, typeof (Sprite)) as Sprite;
