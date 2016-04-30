@@ -76,16 +76,16 @@
         </flavor>
       </alchemy>
       <minersguild>
-        <flavor>Use the miner's guild</flavor>
+        <flavor>Send your most skillful miners</flavor>
       </minersguild>
       <workshop>
         <flavor>Use the workshop</flavor>
       </workshop>
       <alchemylab>
-        <flavor>Take use of the alchemy lab</flavor>
+        <flavor>Use your advanced alchemical knowledge</flavor>
       </alchemylab>
       <cleric>
-        <flavor>Use the cleric</flavor>
+        <flavor>Use your cleric's holy powers</flavor>
       </cleric>
       <ambassador>
         <flavor>Use the ambassador</flavor>
