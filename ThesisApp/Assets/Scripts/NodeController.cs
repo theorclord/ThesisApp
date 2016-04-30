@@ -22,7 +22,7 @@ public class NodeController : MonoBehaviour
     public SpecialResults fight = new SpecialResults();
     private bool specEv = false;
 
-    private SpecialResults sr = new SpecialResults();
+    //private SpecialResults sr = new SpecialResults();
     private string allegiance1 = "";
     private string allegiance2 = "";
     private string locationButton1 = "";
@@ -90,7 +90,7 @@ public class NodeController : MonoBehaviour
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = eventflavor;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1text;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2text;
-        string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
+        //string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
         
     }
 
@@ -103,7 +103,7 @@ public class NodeController : MonoBehaviour
         XmlDocument doc = new XmlDocument();
         doc.Load(specEvPath);
 
-        sr = new SpecialResults();
+        //sr = new SpecialResults();
 
         /**
         get the event
@@ -550,8 +550,15 @@ public class NodeController : MonoBehaviour
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(eventstructurepath);
+            int conditionCount = 0;
             foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
+                //Instantiate image of condition. height same as button. start pos 415
+                GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
+                resourceIcon.transform.SetParent(buttoncont);
+                resourceIcon.transform.localPosition = new Vector3(415f + 60f*conditionCount, - 55 * i);
+
+                // Make button text
                 string pieceName = getPieceNameForXml(pair.Key.BoardName);
                 //Basic first, then add the location based for the piece.
                 XmlNodeList butFlav = xmlDoc.SelectNodes("eventstructure/conditionflavor/basics" + pieceName + "/flavor");
@@ -579,6 +586,7 @@ public class NodeController : MonoBehaviour
                     buttonText += ", ";
                     btx += " ";
                 }
+                conditionCount++;
             }
             button.transform.GetChild(0).GetComponent<Text>().text = btx;
         }
