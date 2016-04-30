@@ -47,6 +47,8 @@ public class NodeController : MonoBehaviour
             if (CheckFactionLocation())
             {
                 InitSpecialEvent();
+                DataManager.instance.specialActive = true;
+
             }
             else
             {
@@ -54,6 +56,8 @@ public class NodeController : MonoBehaviour
                 if (a == 0)
                 {
                     pickOtherSpecial();
+                    DataManager.instance.specialActive = true;
+
                 }
             }
         }
@@ -216,7 +220,8 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult();
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult();
+        DataManager.instance.specialActive = false;
     }
 
     public void buttonTwoClicked()
@@ -282,7 +287,8 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult() ;
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult() ;
+        DataManager.instance.specialActive = false;
     }
 
     private string getFlavor(SpecialResults sr)
@@ -410,7 +416,7 @@ public class NodeController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             Debug.Log(hit);
             Debug.Log(hit.collider);
-            if (hit.collider != null)
+            if (hit.collider != null && !DataManager.instance.specialActive)
             {
                 Debug.Log("Collider hit");
                 selected = hit.transform.gameObject;
