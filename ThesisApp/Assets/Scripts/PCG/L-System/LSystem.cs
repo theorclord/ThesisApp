@@ -216,7 +216,7 @@ public class LSystem
         XmlNodeList worldNodes = worldNodesDoc.SelectNodes("WorldNodes/WorldNode");
         int[] nameOrder = DataManager.randomArray(worldNodes.Count);
 
-        wns.Name = worldNodes[nameOrder[0]].SelectSingleNode("name").InnerText;
+        wns.WorldName = worldNodes[nameOrder[0]].SelectSingleNode("name").InnerText;
         wns.Description = worldNodes[nameOrder[0]].SelectSingleNode("description").InnerText;
 
         //check for duplications
@@ -327,6 +327,7 @@ public class LSystem
         string titlename = nameList.Item(selectedTitle).SelectSingleNode("name").InnerText;
         string flavour = nameList.Item(selectedTitle).SelectSingleNode("flavour").InnerText;
         ns.TitleName = titlename;
+        //ns.islandName = DataManager.instance.ActiveNode.islandName;
         ns.FlavourText = flavour;
     }
 }

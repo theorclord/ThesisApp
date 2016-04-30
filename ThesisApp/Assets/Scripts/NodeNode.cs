@@ -4,6 +4,7 @@ using Assets.Scripts.Utility;
 
 public class NodeNode : MonoBehaviour {
 
+    public string islandName { get; set; }
     public string TitleName
     { get; set; }
     public string FlavourText

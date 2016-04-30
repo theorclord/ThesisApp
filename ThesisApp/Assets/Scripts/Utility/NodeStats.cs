@@ -8,6 +8,7 @@ namespace Assets.Scripts.Utility
 {
     public class NodeStats
     {
+        public string islandName { get; set; }
         public Vector3 Position
         { get; set; }
         public string TitleName

@@ -112,7 +112,7 @@ public class NodeController : MonoBehaviour
         get the event
             name, locationtype, faction
         */
-        string name = DataManager.instance.ActiveDiplomaticEvent.IslandName;
+        string name = DataManager.instance.ActiveNode.WorldName;
         string location = DataManager.instance.ActiveDiplomaticEvent.Location.ToString();
         string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
         //
@@ -152,7 +152,7 @@ public class NodeController : MonoBehaviour
             allegiance1 = xn.SelectSingleNode("options/one" + superAllegiance + "/text").InnerText;
             allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance + "/text").InnerText;
         }
-
+        
         specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
@@ -576,6 +576,7 @@ public class NodeController : MonoBehaviour
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
+            node.islandName = nodestat.islandName;
             node.nodeEvent = nodestat.nodeEvent;
             node.type = nodestat.type;
         }
@@ -735,7 +736,7 @@ public class NodeController : MonoBehaviour
         //Save conditions
         savRes.Conditions = curEvent.EventOptions[eventnum].Conditions;
         savRes.TurnCount = DataManager.instance.TurnCounter;
-        savRes.IslandName = selectNode.TitleName;
+        savRes.IslandName = selectNode.islandName;// TitleName;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);

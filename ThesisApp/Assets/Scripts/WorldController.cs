@@ -180,7 +180,7 @@ public class WorldController : MonoBehaviour {
                 GameObject obj = Resources.Load("Prefabs/NodeWorldNormal") as GameObject;
                 GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
                 WorldNode wn = node.GetComponent<WorldNode>();
-                wn.NodeName = stat.Name;
+                wn.NodeName = stat.WorldName;
                 wn.NodeDesciption = stat.Description;
                 wn.Visited = stat.Visited;
                 wn.Type = stat.Type;
@@ -195,7 +195,7 @@ public class WorldController : MonoBehaviour {
                 GameObject obj = Resources.Load("Prefabs/NodeWorldGoal") as GameObject;
                 GameObject node = Instantiate(obj, stat.Position, Quaternion.identity) as GameObject;
                 WorldNode wn = node.GetComponent<WorldNode>();
-                wn.NodeName = stat.Name;
+                wn.NodeName = stat.WorldName;
                 wn.NodeDesciption = stat.Description;
                 wn.Visited = stat.Visited;
                 wn.Type = stat.Type;
