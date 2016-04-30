@@ -38,7 +38,12 @@ public class NodeController : MonoBehaviour
         eventPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("EventPanel").gameObject);
         resultPanel = GameObject.FindGameObjectWithTag("MainCanvas").transform.FindChild("EventResolution").gameObject;
         specialPanel = (GameObject.Find("Canvas").gameObject.transform.FindChild("PremadeEventPanel").gameObject);
+        
+        GameObject.Find("FactionPanel").transform.FindChild("Faction").FindChild("FactionIcon").GetComponent<Image>().sprite = 
+            Resources.Load("BoardMarkers/"+DataManager.instance.ActiveNode.NodeFaction.BoardName, typeof(Sprite)) as Sprite;
 
+        GameObject.Find("FactionPanel").transform.FindChild("TextBox").FindChild("FactionText").GetComponent<Text>().text = 
+            DataManager.instance.ActiveNode.NodeFaction.BoardName + " controlled";
         // Loading preevents if conditions are right
         // Either Nomad:Wreckage/Village, Human:Factory/Mine, Highbourne:Forest/MagicSite
 
