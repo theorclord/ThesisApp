@@ -1663,7 +1663,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11489402, guid: 704004e2cc637ec4ca7073c4ed94e34b, type: 2}
+    - target: {fileID: 11417964, guid: 704004e2cc637ec4ca7073c4ed94e34b, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1887003898}
@@ -1671,7 +1671,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1887003898}
-    - target: {fileID: 11417964, guid: 704004e2cc637ec4ca7073c4ed94e34b, type: 2}
+    - target: {fileID: 11489402, guid: 704004e2cc637ec4ca7073c4ed94e34b, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1887003898}
+    - target: {fileID: 11403434, guid: 704004e2cc637ec4ca7073c4ed94e34b, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1887003898}
