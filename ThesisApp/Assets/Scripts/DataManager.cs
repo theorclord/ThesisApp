@@ -6,6 +6,8 @@ using System.Xml;
 using Assets.Scripts.Events;
 
 public class DataManager : MonoBehaviour {
+    public bool specialActive = false;
+
     public static DataManager instance;
     public Sprite IslandSprite;
     public Sprite ConqueredSprite;
