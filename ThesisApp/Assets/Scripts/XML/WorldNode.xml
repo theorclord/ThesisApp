@@ -8,4 +8,96 @@
     <name>Tarnost</name>
     <description>A garrisoned bastion</description>
   </WorldNode>
+  <WorldNode>
+    <name>Yavin</name>
+    <description>A large gas planet</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Shire</name>
+    <description>Small village full of hobbits</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Bulguard</name>
+    <description>An original place</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Baldur's Gate</name>
+    <description>Large city with plenty of adventure</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Giant's Nest</name>
+    <description>Something smells really awful here...</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Eagle Point</name>
+    <description>Looks like this place was once a scouting facility of some sort.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Fraglor</name>
+    <description>The conditions on may not be ideal, but very promising. If nothing else, it would be perfect as a new home.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Xerthor</name>
+    <description>The conditions are violent, but it is a violence that is strangely beautiful, yet eerily frightening.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Renbor</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Klewam</name>
+    <description>The coral underwater are perhaps more astonishing than the organisms on the surface, which is because they look almost the same, especially from a distance.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Gostag</name>
+    <description>It looks like some sort of fragmented element is scattered all across this area.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Arekgir</name>
+    <description>Mystery is glowing in the distance.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Kestuythea</name>
+    <description>Looks like someone else might have been here before us.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Leclurn</name>
+    <description>So. Much. FLOWERS!</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Ehiri</name>
+    <description>If only this place had a bar.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Foruta</name>
+    <description>Aturof?</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Whabezuno</name>
+    <description>welcome to Whazvenoru? Whazuben? WHAT IS THIS!?</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Thecunus</name>
+    <description>More like The Cocunuts! No? ... oh well. </description>
+  </WorldNode>
+  <WorldNode>
+    <name>Drurn</name>
+    <description>This place sounds like it was made by dwarves of old.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Cubrippe</name>
+    <description>Many creatures seems to be huddling up in a pile.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Efleon</name>
+    <description>Ever played pokemon? This sure sounds like one!</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Chilia</name>
+    <description>Ye. There is Chili EVERYWHERE!</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Thion</name>
+    <description>This place has no flavour.</description>
+  </WorldNode>
 </WorldNodes>
