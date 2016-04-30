@@ -216,7 +216,7 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult();
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult();
     }
 
     public void buttonTwoClicked()
@@ -282,7 +282,7 @@ public class NodeController : MonoBehaviour
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
             fight = null;
         }
-        DataManager.instance.ActiveDiplomaticEvent = new SavedResult() ;
+        DataManager.instance.ActiveDiplomaticEvent = null;// new SavedResult() ;
     }
 
     private string getFlavor(SpecialResults sr)

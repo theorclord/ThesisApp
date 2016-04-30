@@ -11,6 +11,9 @@ namespace Assets.Scripts.Utility
 
         private int Fthresh = 50;
         private int Ethresh = -50;
+        private int maxRep = 150;
+        private int minRep = -150;
+
         
         public Vector3 Position
         { get; set; }
@@ -38,6 +41,13 @@ namespace Assets.Scripts.Utility
                 {
                     Debug.Log("Rep Before: " + fc.BoardName + " " + FactionRelations[fc]);
                     FactionRelations[fc] += value;
+                    if(FactionRelations[fc] > maxRep)
+                    {
+                        FactionRelations[fc] = maxRep;
+                    }else if(FactionRelations[fc] < minRep)
+                    {
+                        FactionRelations[fc] = minRep;
+                    }
                     Debug.Log("Rep After: " + fc.BoardName + " " + FactionRelations[fc]);
                     break;
                 }
