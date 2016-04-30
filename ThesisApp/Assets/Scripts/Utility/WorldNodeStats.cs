@@ -8,9 +8,10 @@ namespace Assets.Scripts.Utility
 {
     public class WorldNodeStats
     {
+        public string islandName { get; set; }
         public Vector3 Position
         { get; set; }
-        public string Name
+        public string WorldName
         { get; set; }
         public string Description
         { get; set; }
