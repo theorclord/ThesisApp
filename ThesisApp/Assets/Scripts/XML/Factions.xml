@@ -2,14 +2,14 @@
 <factions>
   <faction>
     <name>Highbournes</name>
-    <enumName>highbourne</enumName>
+    <enumName>Highbournes</enumName>
   </faction>
   <faction>
     <name>Nomads</name>
-    <enumName>nomad</enumName>
+    <enumName>Nomads</enumName>
   </faction>
   <faction>
     <name>Humans</name>
-    <enumName>human</enumName>
+    <enumName>Humans</enumName>
   </faction>
 </factions>

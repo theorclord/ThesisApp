@@ -46,6 +46,34 @@ public class WorldController : MonoBehaviour {
         // Move camera to player
         mainCam.transform.position = new Vector3(DataManager.instance.Player.Position.x,DataManager.instance.Player.Position.y,-10f);
         mainCam.GetComponent<Camera>().orthographicSize = DataManager.instance.cameraZoom;
+
+        // Notify alliance change
+        if(DataManager.instance.AllianceChange.Count> 0)
+        {
+            string allianceChange = "";
+            for(int i=0; i < DataManager.instance.AllianceChange.Count; i++)
+            {
+                Faction fac = DataManager.instance.AllianceChange[i];
+                int rel = DataManager.instance.Player.FactionRelations[fac];
+                string state = "";
+                if (rel >= 50)
+                {
+                    state = "Friendly";
+                }
+                else if (rel > -50)
+                {
+                    state = "Neutral";
+                }
+                else
+                {
+                    state = "Hostile";
+                }
+                allianceChange += "Faction: "+ fac.BoardName +" has become "+ state +"\n";
+            }
+            GameObject.Find("Canvas").transform.FindChild("FactionChange").gameObject.SetActive(true);
+            GameObject.Find("Canvas").transform.FindChild("FactionChange").FindChild("Text").GetComponent<Text>().text = allianceChange;
+        }
+        
     }
 
     // Update is called once per frame
@@ -148,11 +176,17 @@ public class WorldController : MonoBehaviour {
 
     /// <summary>
     /// Closes the panel with destination information
+    /// deprecated
     /// </summary>
     public void CloseButton()
 	{
 		GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
 	}
+
+    public void CloseButton(GameObject sender)
+    {
+        sender.SetActive(false);
+    }
 
     /// <summary>
     /// Sets the destination for the player and closes the panel

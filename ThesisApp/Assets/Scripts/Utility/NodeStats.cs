@@ -8,7 +8,6 @@ namespace Assets.Scripts.Utility
 {
     public class NodeStats
     {
-        public string islandName { get; set; }
         public Vector3 Position
         { get; set; }
         public string TitleName
@@ -20,14 +19,6 @@ namespace Assets.Scripts.Utility
         { get; set; }
 
         public EventSpec type { get; set; }
-        
-        public NodeStats(Vector3 pos, string titlename, string flavourText, Event e)
-        {
-            Position = pos;
-            TitleName = titlename;
-            FlavourText = flavourText;
-            nodeEvent = e;
-        }
 
         public void setEventType(int typeNumber)
         {

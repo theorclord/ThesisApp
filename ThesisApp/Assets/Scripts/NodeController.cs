@@ -49,8 +49,10 @@ public class NodeController : MonoBehaviour
 
         if (DataManager.instance.ActiveDiplomaticEvent != null && DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
         {
+            Debug.Log("Special hit");
             if (CheckFactionLocation())
             {
+                Debug.Log("Special event");
                 InitSpecialEvent();
                 DataManager.instance.specialActive = true;
 
@@ -60,6 +62,7 @@ public class NodeController : MonoBehaviour
                 int a = UnityEngine.Random.Range(0, 5);
                 if (a == 0)
                 {
+                    Debug.Log("Other event");
                     pickOtherSpecial();
                     DataManager.instance.specialActive = true;
 
@@ -117,7 +120,7 @@ public class NodeController : MonoBehaviour
         get the event
             name, locationtype, faction
         */
-        string name = DataManager.instance.ActiveNode.WorldName;
+        string PrevLocName = DataManager.instance.ActiveDiplomaticEvent.IslandName;
         string location = DataManager.instance.ActiveDiplomaticEvent.Location.ToString();
         string faction = DataManager.instance.ActiveDiplomaticEvent.Alligance.BoardName;
         //
@@ -158,7 +161,7 @@ public class NodeController : MonoBehaviour
             allegiance2 = xn.SelectSingleNode("options/two" + superAllegiance + "/text").InnerText;
         }
         
-        specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + name + body + extra;
+        specialPanel.transform.FindChild("FlavourScreen").FindChild("EventText").GetComponent<Text>().text = intro + PrevLocName + body + extra;
         specialPanel.transform.FindChild("ButtonController").GetChild(0).FindChild("Text").GetComponent<Text>().text = button1;
         specialPanel.transform.FindChild("ButtonController").GetChild(1).FindChild("Text").GetComponent<Text>().text = button2;
 
@@ -210,16 +213,17 @@ public class NodeController : MonoBehaviour
             int index = 0;
             foreach (string s in fight.reputations.Keys)
             {
+                Debug.Log(s);
                 if (index == 0)
                 {
                     outcomeText += s + ": +" + fight.reputations[s] + "\n";
-                    DataManager.instance.Player.AddReputation(new Faction(s), fight.reputations[s]);
+                    DataManager.instance.Player.AddReputation(DataManager.instance.Factions[s], fight.reputations[s]);
                     resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The "+ s + " " +fight.resultflavor;
                     index++;
                 }
                 else
                 {
-                    DataManager.instance.Player.AddReputation(new Faction(s), (-1)*fight.reputations[s]);
+                    DataManager.instance.Player.AddReputation(DataManager.instance.Factions[s], (-1)*fight.reputations[s]);
                     outcomeText += s + ": -" + fight.reputations[s];
                     index++;
                 }
@@ -280,13 +284,13 @@ public class NodeController : MonoBehaviour
                 if (index == 0)
                 {
                     outcomeText += s + ": -" + fight.reputations[s] + "\n";
-                    DataManager.instance.Player.AddReputation(new Faction(s), (-1)*fight.reputations[s]);
+                    DataManager.instance.Player.AddReputation(DataManager.instance.Factions[s], (-1)*fight.reputations[s]);
                     index++;
                 }
                 else
                 {
                     outcomeText += s + ": +" + fight.reputations[s];
-                    DataManager.instance.Player.AddReputation(new Faction(s), fight.reputations[s]);
+                    DataManager.instance.Player.AddReputation(DataManager.instance.Factions[s], fight.reputations[s]);
                     resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "The " + s + " " + fight.resultflavor;
                     index++;
                 }
@@ -344,7 +348,7 @@ public class NodeController : MonoBehaviour
             foreach (string s in fight.reputations.Keys)
             {
                 outcomeText += s + ": -" + fight.neutral + "\n";
-                DataManager.instance.Player.AddReputation(new Faction(s), (-1) * fight.neutral);
+                DataManager.instance.Player.AddReputation(DataManager.instance.Factions[s], (-1) * fight.neutral);
             }
             resultPanel.transform.FindChild("ResolutionScreen").FindChild("ResolutionText").GetComponent<Text>().text = "You leave without interfering.";
             resultPanel.transform.FindChild("OutcomeScreen").FindChild("Outcome").GetComponent<Text>().text = outcomeText;
@@ -360,7 +364,7 @@ public class NodeController : MonoBehaviour
         foreach (string k in sr.reputations.Keys)
         {
             res += "Reptutation change: " + k + ": " + sr.reputations[k] + "\n";
-            DataManager.instance.Player.AddReputation(new Faction(k), sr.reputations[k]);
+            DataManager.instance.Player.AddReputation(DataManager.instance.Factions[k], sr.reputations[k]);
         }
         foreach (string k in sr.resources.Keys)
         {
@@ -487,22 +491,7 @@ public class NodeController : MonoBehaviour
                         showLocationInfo(selected);
                     }
                 }
-            }/*
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-
-                selected = hit.transform.gameObject;
-                if (selected.tag == "LocationNode")
-                {
-                    if (selected.GetComponent<NodeNode>() != null)
-                    {
-                        showLocationInfo(selected);
-                    }
-                }
             }
-            */
         }
 
     }
@@ -536,7 +525,7 @@ public class NodeController : MonoBehaviour
         // Number of options available for the players. 
         // Random determine if 2 or 3. 
         // Third option should be semi rare
-        int thirdChance = 100;
+        int thirdChance = 50;
         int procent = UnityEngine.Random.Range(0, 100) + 1;
         int numOption = 2;
         if (procent <= thirdChance)
@@ -587,7 +576,6 @@ public class NodeController : MonoBehaviour
             NodeNode node = nodeObj.GetComponent<NodeNode>();
             node.FlavourText = nodestat.FlavourText;
             node.TitleName = nodestat.TitleName;
-            node.islandName = nodestat.islandName;
             node.nodeEvent = nodestat.nodeEvent;
             node.type = nodestat.type;
         }
@@ -750,7 +738,7 @@ public class NodeController : MonoBehaviour
         //Save conditions
         savRes.Conditions = curEvent.EventOptions[eventnum].Conditions;
         savRes.TurnCount = DataManager.instance.TurnCounter;
-        savRes.IslandName = selectNode.islandName;// TitleName;
+        savRes.IslandName = DataManager.instance.ActiveNode.WorldName;// TitleName;
         eventPanel.SetActive(false);
         panelOpen = true;
         resultPanel.SetActive(true);
@@ -1173,7 +1161,8 @@ public class NodeController : MonoBehaviour
         {
             savNumCon += pieceNum.Value;
         }
-        if (savNumCon == 3)
+        //DataManager.instance.ActiveDiplomaticEvent == null && 
+        if (savNumCon == 3 && DataManager.instance.ActiveDiplomaticEvent == null)
         {
             DataManager.instance.ActiveDiplomaticEvent = savRes;
         }

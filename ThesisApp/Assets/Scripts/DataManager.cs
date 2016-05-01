@@ -25,6 +25,8 @@ public class DataManager : MonoBehaviour {
     public List<SavedResult> SavedEvents { get; set; }
     public SavedResult ActiveDiplomaticEvent { get; set; }
 
+    public List<Faction> AllianceChange { get; set; }
+
     public int TurnCounter { get; set; }
 
     //XML loading variables
@@ -51,6 +53,7 @@ public class DataManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        AllianceChange = new List<Faction>();
         SavedEvents = new List<SavedResult>();
         Player = new PlayerStats();
         BoardPieces = new Dictionary<string, Piece>();

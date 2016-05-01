@@ -31,13 +31,40 @@ namespace Assets.Scripts.Utility
             FactionRelations = new Dictionary<Faction, int>();
         }
 
-        public void AddReputation(Faction f, int value)
+        public void AddReputation(Faction fac, int value)
         {
             Debug.Log("inside add rep");
-            foreach(Faction fc in FactionRelations.Keys)
+            Debug.Log(FactionRelations.Count);
+            Debug.Log(fac.BoardName);
+            int preVal = FactionRelations[fac];
+            FactionRelations[fac] += value;
+            if (FactionRelations[fac] > maxRep)
             {
-                Debug.Log(fc.BoardName + ", "+ f.BoardName);
-                if(fc.BoardName == f.BoardName)
+                FactionRelations[fac] = maxRep;
+            }
+            else if (FactionRelations[fac] < minRep)
+            {
+                FactionRelations[fac] = minRep;
+            }
+            
+            if(preVal > 50 && FactionRelations[fac] <= 50)
+            {
+                DataManager.instance.AllianceChange.Add(fac);
+            } else if(preVal < -50 && FactionRelations[fac] >= -50)
+            {
+                DataManager.instance.AllianceChange.Add(fac);
+            } else if(preVal > -50 && FactionRelations[fac] <= -50)
+            {
+                DataManager.instance.AllianceChange.Add(fac);
+            } else if(preVal < 50 && FactionRelations[fac] >= 50)
+            {
+                DataManager.instance.AllianceChange.Add(fac);
+            }
+            /*
+            foreach (Faction fc in FactionRelations.Keys)
+            {
+                Debug.Log(fc.BoardName + ", "+ fac.BoardName);
+                if(fc.BoardName == fac.BoardName)
                 {
                     Debug.Log("Rep Before: " + fc.BoardName + " " + FactionRelations[fc]);
                     FactionRelations[fc] += value;
@@ -52,6 +79,7 @@ namespace Assets.Scripts.Utility
                     break;
                 }
             }
+            */
         }
 
         public Standing getStanding(Faction f)
