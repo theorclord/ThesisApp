@@ -30,7 +30,7 @@ public class DataManager : MonoBehaviour {
     public int TurnCounter { get; set; }
 
     //XML loading variables
-    private string boardPiecesXml = "assets/scripts/XML/BoardPieces.xml";
+    //private string boardPiecesXml = "assets/scripts/XML/BoardPieces.xml";
     private string piecesString = "Pieces/piece";
     private string identifier = "enumName";
     private string pieceName = "flavorName";
@@ -68,8 +68,13 @@ public class DataManager : MonoBehaviour {
 
     private void loadFactions()
     {
+       // XmlDocument xmlDoc = new XmlDocument();
+        //xmlDoc.Load(factionXml);
+        TextAsset textAsset = Resources.Load("XML/Factions", typeof(TextAsset)) as TextAsset;
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(factionXml);
+        xmlDoc.LoadXml(textAsset.text);
+
+
         XmlNodeList pieces = xmlDoc.SelectNodes(factionString);
         foreach (XmlNode node in pieces)
         {
@@ -87,8 +92,12 @@ public class DataManager : MonoBehaviour {
 
     private void loadBoardPieces()
     {
+        //XmlDocument xmlDoc = new XmlDocument();
+        //xmlDoc.Load(boardPiecesXml);
+        TextAsset textAsset = Resources.Load("XML/BoardPieces", typeof(TextAsset)) as TextAsset;
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(boardPiecesXml);
+        xmlDoc.LoadXml(textAsset.text);
+        
         XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
         foreach(XmlNode node in pieces)
         {

@@ -244,7 +244,10 @@ public class LSystem
             }
             // Set name and description
             XmlDocument worldNodesDoc = new XmlDocument();
-            worldNodesDoc.Load("assets/scripts/XML/WorldNode.xml");
+            TextAsset textAsset = Resources.Load("XML/WorldNode", typeof(TextAsset)) as TextAsset;
+            //XmlDocument xmlDoc = new XmlDocument();
+            worldNodesDoc.LoadXml(textAsset.text);
+            //worldNodesDoc.Load("assets/scripts/XML/WorldNode.xml");
             XmlNodeList worldNodes = worldNodesDoc.SelectNodes("WorldNodes/WorldNode");
             int[] nameOrder = DataManager.randomArray(worldNodes.Count);
 
@@ -289,8 +292,12 @@ public class LSystem
     private void setNameAndFlavor(string type, NodeStats ns)
     {
         // Get name of nodes from xml
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        //nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
         XmlDocument nodeNameCollection = new XmlDocument();
-        nodeNameCollection.Load("assets/scripts/XML/NodeNode.xml");
+        TextAsset textAsset = Resources.Load("XML/NodeNode", typeof(TextAsset)) as TextAsset;
+        nodeNameCollection.LoadXml(textAsset.text);
+
         XmlNodeList nameList = nodeNameCollection.SelectNodes("NodeNode/" + type + "/nodeFlavour");
         int selectedTitle = Random.Range(0, 5);
         ns.nodeEvent.SetLocType(selectedTitle);

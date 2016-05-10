@@ -78,7 +78,11 @@ public class NodeController : MonoBehaviour
         specEv = true;
         specialPanel.SetActive(true);
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        //XmlDocument xmlDoc = new XmlDocument();
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
+        //doc.Load(specEvPath);
         XmlNodeList fights = doc.SelectNodes("specialEvents/fightevent");
         int a = UnityEngine.Random.Range(0, fights.Count);
         string faction1 = fights[a].SelectSingleNode("faction1").InnerText;
@@ -112,7 +116,11 @@ public class NodeController : MonoBehaviour
         specialPanel.SetActive(true);
         //LOAD XML
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
+        //XmlDocument doc = new XmlDocument();
+        //doc.Load(specEvPath);
 
         //sr = new SpecialResults();
 
@@ -172,7 +180,11 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+       // XmlDocument xmlDoc = new XmlDocument();
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
+       // doc.Load(specEvPath);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -240,7 +252,11 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        //XmlDocument xmlDoc = new XmlDocument();
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
+      //  doc.Load(specEvPath);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -307,7 +323,11 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        //XmlDocument xmlDoc = new XmlDocument();
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
+       // doc.Load(specEvPath);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -541,7 +561,10 @@ public class NodeController : MonoBehaviour
             string locationString = nodestat.nodeEvent.locationXmlString;
             //Load location data
             XmlDocument LocationData = new XmlDocument();
-            LocationData.Load("assets/scripts/XML/Location.xml");
+            //XmlDocument nodeNameCollection = new XmlDocument();
+            TextAsset textAsset = Resources.Load("XML/Location", typeof(TextAsset)) as TextAsset;
+            LocationData.LoadXml(textAsset.text);
+            //LocationData.Load("assets/scripts/XML/Location.xml");
             XmlNodeList locations = LocationData.SelectNodes("locations/location");
             // Set information of location based on nodes
             foreach (XmlNode location in locations)
@@ -610,7 +633,11 @@ public class NodeController : MonoBehaviour
             int numCon = 0;
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(eventstructurepath);
+            //XmlDocument nodeNameCollection = new XmlDocument();
+            TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+            xmlDoc.LoadXml(textAsset.text);
+           // XmlDocument xmlDoc = new XmlDocument();
+            //xmlDoc.Load(eventstructurepath);
             int conditionCount = 0;
             foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
@@ -975,7 +1002,11 @@ public class NodeController : MonoBehaviour
         // This should be the flavor text
         string resultflavortext = "";
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(eventstructurepath);
+        //XmlDocument nodeNameCollection = new XmlDocument();
+        TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
+        //XmlDocument xmlDoc = new XmlDocument();
+        //xmlDoc.Load(eventstructurepath);
         XmlNodeList list;
         for (int i = 0; i < resPieces.Count; i++)
         {

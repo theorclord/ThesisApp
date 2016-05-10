@@ -6,13 +6,13 @@ using Assets.Scripts.Utility;
 using UnityEngine.UI;
 
 public class WorldController : MonoBehaviour {
-
+    public GameObject debugger;
     private GameObject playerToken;
 
     //Camera movement
     public GameObject mainCam;
     private Vector3 lastPosition;
-    private float mouseSensitivity = 0.2f;
+    private float mouseSensitivity = 0.025f;
 
     private float maxDistance = 10.0f;
 
@@ -29,11 +29,13 @@ public class WorldController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+       // debugger.GetComponent<Text>().text = "Initialized";
         if(DataManager.instance.Nodes.Count == 0)
         {
             DataManager.instance.InitializeNodes();
         }
         spawnWorldNodes();
+        //debugger.GetComponent<Text>().text = "Nodes Spawned";
         GameObject player = Instantiate(Resources.Load("Prefabs/PlayerToken"), DataManager.instance.Player.Position, Quaternion.identity) as GameObject;
         playerToken = player;
         // Set player movement indicator
