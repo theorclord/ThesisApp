@@ -628,7 +628,7 @@ public class NodeController : MonoBehaviour
             GameObject button = Instantiate(Resources.Load("Prefabs/ChoiceButton") as GameObject);
             button.transform.SetParent(buttoncont);
             button.GetComponent<Button>().onClick.AddListener(delegate { ResolveEvent(tempint); });
-            button.transform.position = new Vector3(buttoncont.position.x, buttoncont.position.y - 55 * i);
+            button.transform.position = new Vector3(buttoncont.position.x - 50, buttoncont.position.y - button.transform.localScale.y * 55 * i);
             string buttonText = "";
             int numCon = 0;
             string btx = "";
@@ -646,7 +646,7 @@ public class NodeController : MonoBehaviour
                     //Instantiate image of condition. height same as button. start pos 415
                     GameObject resourceIcon = Instantiate(Resources.Load("Prefabs/ResourcesIcon") as GameObject);
                     resourceIcon.transform.SetParent(buttoncont);
-                    resourceIcon.transform.localPosition = new Vector3(415f + 65f * (conditionCount), -55 * i);
+                    resourceIcon.transform.localPosition = new Vector3(415f + 65f * (conditionCount), - button.transform.localScale.y * 55 * i);
                     switch (pair.Key.BoardName)
                     {
                         case "Castle Crew":
