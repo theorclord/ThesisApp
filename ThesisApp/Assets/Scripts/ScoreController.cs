@@ -10,7 +10,10 @@ public class ScoreController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(eventstructurepath);
+        TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
+        //XmlDocument xmlDoc = new XmlDocument();
+        //xmlDoc.Load(eventstructurepath);
         XmlNodeList list = xmlDoc.SelectNodes("eventstructure/endflavor/flavor");
         int r = Random.Range(0, list.Count);
         string endflavor = list[r].InnerText;

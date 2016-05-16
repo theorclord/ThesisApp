@@ -13,6 +13,7 @@ public class WorldController : MonoBehaviour {
     public GameObject mainCam;
     private Vector3 lastPosition;
     private float mouseSensitivity = 0.025f;
+    private float lastPressed = 0f;
 
     private float maxDistance = 10.0f;
 
@@ -121,14 +122,20 @@ public class WorldController : MonoBehaviour {
         // Move the camera if mouse button is held
         if (Input.GetMouseButton(0))
         {
-            Vector3 delta = Input.mousePosition - lastPosition;
-            mainCam.transform.Translate((-1) * delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
-            //Sets the destination panel to inactive if the camera moves
-            if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.activeSelf && lastPosition != Input.mousePosition)
+            if (Time.time - lastPressed >= 0.3f)
             {
-                GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+                Vector3 delta = Input.mousePosition - lastPosition;
+
+                mainCam.transform.Translate((-1) * delta.x * mouseSensitivity, (-1) * delta.y * mouseSensitivity, 0);
+
+                //Sets the destination panel to inactive if the camera moves
+                if (GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.activeSelf && lastPosition != Input.mousePosition)
+                {
+                    GameObject.Find("Canvas").transform.FindChild("DestinationPanel").gameObject.SetActive(false);
+                }
+                lastPosition = Input.mousePosition;
+            lastPressed = Time.time;
             }
-            lastPosition = Input.mousePosition;
         }
 
         //Zoom features
@@ -188,6 +195,19 @@ public class WorldController : MonoBehaviour {
     public void CloseButton(GameObject sender)
     {
         sender.SetActive(false);
+    }
+    public void ZoomInButton()
+    {
+            //Zoom in
+            mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(mainCam.GetComponent<Camera>().orthographicSize - 1 * zoomSpeed, minZoom, maxZoom);
+            DataManager.instance.cameraZoom = mainCam.GetComponent<Camera>().orthographicSize;
+    }
+
+    public void ZoomOutButton()
+    {
+            //Zoom out
+            mainCam.GetComponent<Camera>().orthographicSize = Mathf.Clamp(mainCam.GetComponent<Camera>().orthographicSize + 1 * zoomSpeed, minZoom, maxZoom);
+            DataManager.instance.cameraZoom = mainCam.GetComponent<Camera>().orthographicSize;
     }
 
     /// <summary>
