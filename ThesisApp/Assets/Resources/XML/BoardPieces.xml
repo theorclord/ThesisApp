@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Pieces>
+  <piece>
+    <flavorName>Castle Crew</flavorName>
+    <enumName>crewMember</enumName>
+    <type>resource</type>
+  </piece>
+  <piece>
+    <flavorName>Building Material</flavorName>
+    <enumName>scrap</enumName>
+    <type>resource</type>
+  </piece>
+  <piece>
+    <flavorName>Crystal Charge</flavorName>
+    <enumName>energyPoint</enumName>
+    <type>resource</type>
+  </piece>
+  <piece>
+    <flavorName>Miners Guild</flavorName>
+    <enumName>EngineeringRoom</enumName>
+    <type>room</type>
+  </piece>
+  <piece>
+    <flavorName>Workshop</flavorName>
+    <enumName>MechanicRoom</enumName>
+    <type>room</type>
+  </piece>
+  <piece>
+    <flavorName>Alchemical Material</flavorName>
+    <enumName>sciencePoint</enumName>
+    <type>resource</type>
+  </piece>
+  <piece>
+    <flavorName>Alchemical Lab</flavorName>
+    <enumName>labRoom</enumName>
+    <type>room</type>
+  </piece>
+  <piece>
+    <flavorName>Cleric Quarters</flavorName>
+    <enumName>medLab</enumName>
+    <type>room</type>
+  </piece>
+  <piece>
+    <flavorName>Ambassadors Quarters</flavorName>
+    <enumName>diplomacy</enumName>
+    <type>room</type>
+  </piece>
+  <piece>
+    <flavorName>RandomRoom</flavorName>
+    <enumName>randomRoom</enumName>
+    <type>systemVar</type>
+  </piece>
+  <piece>
+    <flavorName>A Speck of Dust</flavorName>
+    <enumName>blank</enumName>
+    <type>resource</type>
+  </piece>
+</Pieces>
