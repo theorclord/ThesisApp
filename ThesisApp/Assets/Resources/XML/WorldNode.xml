@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorldNodes>
+  <WorldNode>
+    <name>Esgar</name>
+    <description>A beautiful abandoned island</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Tarnost</name>
+    <description>A garrisoned bastion</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Yavin</name>
+    <description>A large gas planet</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Shire</name>
+    <description>An island of many weird humanoids</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Bulguard</name>
+    <description>An original place</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Baldur's Gate</name>
+    <description>Large city with plenty of adventure</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Giant's Nest</name>
+    <description>Something smells really awful here...</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Eagle Point</name>
+    <description>Looks like this place was once a scouting facility of some sort.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Fraglor</name>
+    <description>The conditions on may not be ideal, but very promising. If nothing else, it would be perfect as a new home.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Xerthor</name>
+    <description>The conditions are violent, but it is a violence that is strangely beautiful, yet eerily frightening.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Renbor</name>
+    <description>What is this place?</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Klewam</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Gostag</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Arekgir</name>
+    <description>Mystery is glowing in the distance.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Kestuythea</name>
+    <description>Looks like someone else might have been here before us.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Leclurn</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Ehiri</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Foruta</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Whabezuno</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Thecunus</name>
+    <description></description>
+  </WorldNode>
+  <WorldNode>
+    <name>Drurn</name>
+    <description>This place </description>
+  </WorldNode>
+  <WorldNode>
+    <name>Cubrippe</name>
+    <description>Many creatures seems to be huddling up in a pile.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Efleon</name>
+    <description>The island is hidden in the mist.</description>
+  </WorldNode>
+  <WorldNode>
+    <name>Chilia</name>
+    <description>The </description>
+  </WorldNode>
+  <WorldNode>
+    <name>Thion</name>
+    <description>This place has no flavour.</description>
+  </WorldNode>
+</WorldNodes>

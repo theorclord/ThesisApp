@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<factionsystem>
+  <factionnames>
+    <humans>Humans</humans>
+    <highbourne>Highbournes</highbourne>
+    <nomads>Nomads</nomads>
+  </factionnames>
+  
+  <factions>
+    <humans>
+      <friendly>
+        <flavor>Lots of life and joyeous sounds emminates from the distance. The humans living here sure seem nice.</flavor>
+        <flavor>When approaching, a warm welcome is being shown towards you by the humans living there.</flavor>
+      </friendly>
+      <neutral>
+        <flavor>As you approach, the people living there go inside. I don't think they care much about your presence.</flavor>
+        <flavor>All the people just stand back and look at you as you approach. they seem confused.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>The people here are aggressive towards you. they do not like intruders.</flavor>
+        <flavor>The people living nearby do not want to be disturbed, and you just have. They are not happy about that.</flavor>
+      </enemy>
+    </humans>
+
+    <highbourne>
+      <friendly>
+        <flavor>A small group of highbournes are gathered up and are waving happily as you approach their settlement.</flavor>
+        <flavor>Your presence is accepted with smiling faces from the locals, as you approach.</flavor>
+      </friendly>
+      <neutral>
+        <flavor>The people here don't look friendly, but they don't look dangerous either.</flavor>
+        <flavor>The highbournes seem to be slightly confused as to what you want.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>You have entered the realm of the highbournes. they are not pleased by this intrusion.</flavor>
+        <flavor>These creatures, the highbournes, are not looking very inviting. They don't say much, but you feel eery.</flavor>
+      </enemy>
+    </highbourne>
+
+    <nomads>
+      <friendly>
+        <flavor>The Nomads seem pleased by your visit and are gathering to see who you are.</flavor>
+        <flavor>The nomadic children wants to play with you. They sure are a curious bunch!</flavor>
+      </friendly>
+      <neutral>
+        <flavor>Eyes stare blankly at you. The nomads seem startled by your presence.</flavor>
+        <flavor>As you approach, the nomadic people living here seem indifferent to your existence.</flavor>
+      </neutral>
+      <enemy>
+        <flavor>The nomads here may be peaceful normally, but they seem to be aggravated by you as you are approaching.</flavor>
+        <flavor>The Nomads do not like to share, as that will reduce their resources. They are willing to fight if needed.</flavor>
+      </enemy>
+    </nomads>
+  </factions>
+</factionsystem>
