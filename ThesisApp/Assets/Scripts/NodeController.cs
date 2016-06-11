@@ -48,7 +48,7 @@ public class NodeController : MonoBehaviour
         // Either Nomad:Wreckage/Village, Human:Factory/Mine, Highbourne:Forest/MagicSite
 
         if (DataManager.instance.ActiveDiplomaticEvent != null && 
-            DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
+            DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount)
         {
             Debug.Log("Special hit");
             if (CheckFactionLocation())
@@ -61,7 +61,7 @@ public class NodeController : MonoBehaviour
             else
             {
                 int a = UnityEngine.Random.Range(0, 5);
-                if (a == 0)
+                if (0 == 0)
                 {
                     Debug.Log("Other event");
                     pickOtherSpecial();
@@ -533,7 +533,7 @@ public class NodeController : MonoBehaviour
         // Third option should be semi rare
         int thirdChance = 50;
         int procent = UnityEngine.Random.Range(0, 100) + 1;
-        int numOption = 2;
+        int numOption = 3;
         if (procent <= thirdChance)
         {
             numOption = 3;
