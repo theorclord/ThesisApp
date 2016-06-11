@@ -47,7 +47,8 @@ public class NodeController : MonoBehaviour
         // Loading preevents if conditions are right
         // Either Nomad:Wreckage/Village, Human:Factory/Mine, Highbourne:Forest/MagicSite
 
-        if (DataManager.instance.ActiveDiplomaticEvent != null && DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
+        if (DataManager.instance.ActiveDiplomaticEvent != null && 
+            DataManager.instance.TurnCounter >= DataManager.instance.ActiveDiplomaticEvent.TurnCount + 2)
         {
             Debug.Log("Special hit");
             if (CheckFactionLocation())
@@ -78,7 +79,8 @@ public class NodeController : MonoBehaviour
         specEv = true;
         specialPanel.SetActive(true);
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
         XmlNodeList fights = doc.SelectNodes("specialEvents/fightevent");
         int a = UnityEngine.Random.Range(0, fights.Count);
         string faction1 = fights[a].SelectSingleNode("faction1").InnerText;
@@ -112,7 +114,8 @@ public class NodeController : MonoBehaviour
         specialPanel.SetActive(true);
         //LOAD XML
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
 
         //sr = new SpecialResults();
 
@@ -172,7 +175,8 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -240,7 +244,8 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -307,7 +312,8 @@ public class NodeController : MonoBehaviour
     {
         SpecialResults sr2 = new SpecialResults();
         XmlDocument doc = new XmlDocument();
-        doc.Load(specEvPath);
+        TextAsset textAsset = Resources.Load("XML/SpecialEvents", typeof(TextAsset)) as TextAsset;
+        doc.LoadXml(textAsset.text);
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("LocationNode");
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -541,7 +547,8 @@ public class NodeController : MonoBehaviour
             string locationString = nodestat.nodeEvent.locationXmlString;
             //Load location data
             XmlDocument LocationData = new XmlDocument();
-            LocationData.Load("assets/scripts/XML/Location.xml");
+            TextAsset textAsset = Resources.Load("XML/Location", typeof(TextAsset)) as TextAsset;
+            LocationData.LoadXml(textAsset.text);
             XmlNodeList locations = LocationData.SelectNodes("locations/location");
             // Set information of location based on nodes
             foreach (XmlNode location in locations)
@@ -610,7 +617,8 @@ public class NodeController : MonoBehaviour
             int numCon = 0;
             string btx = "";
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(eventstructurepath);
+            TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+            xmlDoc.LoadXml(textAsset.text);
             int conditionCount = 0;
             foreach (KeyValuePair<Piece, int> pair in e.EventOptions[tempint].Conditions)
             {
@@ -975,7 +983,8 @@ public class NodeController : MonoBehaviour
         // This should be the flavor text
         string resultflavortext = "";
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(eventstructurepath);
+        TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList list;
         for (int i = 0; i < resPieces.Count; i++)
         {

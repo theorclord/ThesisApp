@@ -6,7 +6,7 @@ public class MenuController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        DataManager.instance.ClearAll();
 	}
 	
 	// Update is called once per frame
@@ -17,5 +17,10 @@ public class MenuController : MonoBehaviour {
     public void StartButton()
     {
         SceneManager.LoadScene("WorldScene");
+    }
+
+    public void ExitButton()
+    {
+        Application.Quit();
     }
 }

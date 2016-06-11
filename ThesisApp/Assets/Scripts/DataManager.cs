@@ -69,7 +69,8 @@ public class DataManager : MonoBehaviour {
     private void loadFactions()
     {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(factionXml);
+        TextAsset textAsset = Resources.Load("XML/Factions", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList pieces = xmlDoc.SelectNodes(factionString);
         foreach (XmlNode node in pieces)
         {
@@ -88,7 +89,8 @@ public class DataManager : MonoBehaviour {
     private void loadBoardPieces()
     {
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(boardPiecesXml);
+        TextAsset textAsset = Resources.Load("XML/BoardPieces", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList pieces = xmlDoc.SelectNodes(piecesString);
         foreach(XmlNode node in pieces)
         {
@@ -108,6 +110,17 @@ public class DataManager : MonoBehaviour {
     void Update () {
 	
 	}
+
+    public void ClearAll()
+    {
+        Nodes.Clear();
+        SavedEvents.Clear();
+        ActiveDiplomaticEvent = null;
+        AllianceChange.Clear();
+        TurnCounter = 0;
+        ActiveNode = null;
+        InitializeNodes();
+    }
 
     public void clearNodes()
     {

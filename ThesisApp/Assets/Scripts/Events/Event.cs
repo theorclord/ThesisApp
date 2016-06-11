@@ -91,7 +91,8 @@ public class Event {
         //string eventtype = "gathering";
         //string eventLevel = "basic";
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.Load(eventstructurepath);
+        TextAsset textAsset = Resources.Load("XML/EventStructure", typeof(TextAsset)) as TextAsset;
+        xmlDoc.LoadXml(textAsset.text);
         XmlNodeList conditionList = xmlDoc.SelectNodes(eventconditions);
 
         //Event options

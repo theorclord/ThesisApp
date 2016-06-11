@@ -70,6 +70,7 @@ public class WorldController : MonoBehaviour {
                 }
                 allianceChange += "Faction: "+ fac.BoardName +" has become "+ state +"\n";
             }
+            DataManager.instance.AllianceChange.Clear();
             GameObject.Find("Canvas").transform.FindChild("FactionChange").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.FindChild("FactionChange").FindChild("Text").GetComponent<Text>().text = allianceChange;
         }
